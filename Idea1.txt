@@ -1,0 +1,13 @@
+Game idea: vertical-scrolling shooter game 
+
+ 
+
+Vertical-scrolling shooter game is a very classic gaming type. For this idea, the game should be designed based on the general concept of this type but has some unique features. First, the shooting object will be controlled by keyboard, the enemies will appear dynamically along with others statically setup on the map. The map can be various landscapes for each level.  
+
+There will be some general features like fire system upgrading, bonus points earned by coins from the destroyed enemies, and more details will be discussed in Monday’s session. 
+
+Challenge 1: Accurate collision detection range for all the objects and distinguishing the difference of bullets and coins. 
+
+Challenge 2: Two operators would be good, but obviously challenging 
+
+Challenge 3: Resurrection from destruction and carry on with the previous fire system. 
