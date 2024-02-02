@@ -1,0 +1,11 @@
+This is a single-player skiing game where the player's goal is to navigate a skier through a series of obstacles. The player clicks the mouse to raise the skier. Over time, obstacles will appear at varying intervals, and players must precisely control the skier's jumps to avoid colliding with them. Each successful navigation past an obstacle increases the player's score.
+
+challege：
+1.Game Physics: Implementing the skier’s jumps and landings may require some knowledge of physics. We need to consider factors such as gravity, speed, and friction to make the game appear realistic.
+
+2.Obstacle Generation: We need to write code to generate obstacles at appropriate times. This may involve the use of random number generation and timers.
+
+3.Collision Detection: We need to be able to detect whether the skier has hit an obstacle. This may require complex geometric calculations, especially if the shapes of our obstacles and skier are complex.
+
+4.User Interface and Experience: We need to design an intuitive and easy-to-use user interface so that players can easily start the game, view their score, and restart. We also need to consider how to provide feedback to players so they know whether they have successfully navigated past an obstacle or if they have hit an obstacle.
+
