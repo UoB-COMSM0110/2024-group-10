@@ -2,6 +2,10 @@
 
  
 ![](../images/gameIdea1.jpg)
+
+Paper prototype video:
+
+https://github.com/UoB-COMSM0110/2024-group-10/assets/148199198/728b9f47-211e-4607-9fb6-e255dce2f6ae
 ## 1.Discription
 
 Vertical-scrolling shooter game is a very classic gaming type. For this idea, the game should be designed based on the general concept of this type but has some unique features. First, the shooting object will be controlled by keyboard, the enemies will appear dynamically along with others statically setup on the map. The map can be various landscapes for each level.  
@@ -19,6 +23,9 @@ There will be some general features like fire system upgrading, bonus points ear
 # Game idea2:single-player skiing game
 
 ![](../images/gameIdea2.jpg)
+Paper prototype video:
+
+https://github.com/UoB-COMSM0110/2024-group-10/assets/148199198/a57a42ce-ced5-46b5-8ebd-9ca6f5db98ce
 
 ## 1.Discription
 
