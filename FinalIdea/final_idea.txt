@@ -1,0 +1,27 @@
+Game idea: Vertical-Scrolling Shooter Game
+Name: TBC
+
+Description:
+A 2D game where the user will pilot a spaceship on the screen controlled using 
+the keyboard. Enemies will appear dynamically along with others set up statically 
+on the map. The goal is to earn points by defeating enemies and to evade attacks
+from the enemies to survive. As points increase, the difficulty level increases
+and the map landscape and enemies may change and become more difficult.
+
+Controls:
+W = Up
+A = Left
+S = Down
+D = Right
+Space = Shoot
+
+Features discussed:
+- Fire system upgrading
+- Bonus points earned by coins from destroyed enemies
+- Ability to select between different spaceship designs
+
+Potential challenges:
+- Accurate collision detection range for objects; distinguishing different
+  interactions for different game object types (eg. bullets, coins, enemies)
+- 2-player mode implementation
+- Resurrection / Extra lives system; carrying on with previous fire system 
