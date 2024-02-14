@@ -1,14 +1,14 @@
-Use Case: Aircraft Control and Collision Detection Optimization
+**Use Case: Aircraft Control and Collision Detection Optimization**
 
-Use Case Name: Aircraft Control and Collision Detection Optimization
+**Use Case Name**: Aircraft Control and Collision Detection Optimization
 
-Brief Description: Two key optimizations—refined aircraft turning control and continuous high-precision collision detection—to significantly enhance the player's control experience and the accuracy of interactions.
+**Brief Description**: Two key optimizations—refined aircraft turning control and continuous high-precision collision detection—to significantly enhance the player's control experience and the accuracy of interactions.
 1.	Refined Turning Control: Turning is no longer just a simple change in angle but can smoothly transition from slow to fast turning based on the duration of the player's inputs, making the control feel more natural and nuanced.
 2.	Continuous High-Precision Collision Detection: Collision detection in the game goes beyond simple rectangular or circular bounding boxes, enabling precise matching based on the actual contours of the aircraft and bullets.
 
-Precondition: The player has started the game and is in control of the aircraft.
+**Precondition**: The player has started the game and is in control of the aircraft.
 
-Basic Flow:
+**Basic Flow**:
 1.	Players control the aircraft's direction using the keyboard to dodge attacks.
 2.	When the player simultaneously presses the "W+A" keys on the keyboard, it results in turning left, and pressing "W+D" results in turning right. The game engine dynamically adjusts the turning speed and angle of the aircraft based on the duration of the simultaneous pressing of the "W" key (forward) and either the "A" or "D" key (left or right).
 3.	The game system generates bullet patterns based on the current level design and updates the aircraft's position in response to the player's actions.
@@ -19,7 +19,7 @@ Basic Flow:
 
 
    
-Alternative Flows:
+**Alternative Flows**:
 1.	Player Customizes Direction Key Settings
    
 i.	The player goes to settings, modifies control options, and changes direction keys (e.g., from “W+A”, “W+D” to other combinations).
