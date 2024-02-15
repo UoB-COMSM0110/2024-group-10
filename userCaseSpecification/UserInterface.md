@@ -1,4 +1,4 @@
-#User Interface 
+# User Interface 
 
 **Relevant user stories:**
 1. As a player I want to have an easy to understand interface so that I can have a more
@@ -7,7 +7,7 @@ enjoyable time playing the game and not spend time on complicated screens.
 and contains clear instructions for the game controls for the player so that it is easy for 
 the player to understand and play the game so we can get good feedback from players from the demo.
 
-##Use Case Specification:
+## Use Case Specification:
 
 **Basic description:**
 When first loading the game, a start menu opens allowing the player to select 1-player or 2-player mode.
