@@ -13,6 +13,8 @@
 2.	When the player simultaneously presses the "W+A" keys on the keyboard, it results in turning left, and pressing "W+D" results in turning right. The game engine dynamically adjusts the turning speed and angle of the aircraft based on the duration of the simultaneous pressing of the "W" key (forward) and either the "A" or "D" key (left or right).
 3.	The game system generates bullet patterns based on the current level design and updates the aircraft's position in response to the player's actions.
 4.	Accurate collision detection is performed in real-time, based on the actual contours of the aircraft and bullets, to determine if the aircraft has come into contact with bullets or enemies.
+
+  	**·** Bullets and aircraft graphics are rendered through code, and an edge detection algorithm is implemented within the game engine. This algorithm analyzes the edges of the pixels of the aircraft and bullets. Once it detects that the distance between the edges is less than a preset threshold, it is determined that a collision has occurred.
 5.	If a collision is detected, the game executes corresponding outcomes based on the nature of the collision, such as reducing life points or displaying explosion effects, and provides immediate feedback to the player.
 6.	The game interface is updated to display the player's current life points and score.
 7.	The player continues to challenge the level by dodging bullets and enemy attacks until the objective is achieved or the game ends.
