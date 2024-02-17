@@ -52,32 +52,32 @@ the highest score. Buttons on start screen are:
 
 **Alternative Flow:**
 1. "How to Play" Button on start screen to show player controls when pressed
-  - Can use image icons to illustrate
-  - Text saying "use directional keys to move the aircraft and space to shoot"
+   - Can use image icons to illustrate
+   - Text saying "use directional keys to move the aircraft and space to shoot"
 2. "Settings" Button on start screen to swap to settings screen with:
-  - Music volume adjustment using rectangular slider from 0 to 100
-  - SFX volume adjustment using rectangular slider from 0 to 100
-  - Collision detection precision adjustment using rectangular slider from "low" to "high"
-  - Player control modifiction: separate selection per movement type (eg. turn left). When
+   - Music volume adjustment using rectangular slider from 0 to 100
+   - SFX volume adjustment using rectangular slider from 0 to 100
+   - Collision detection precision adjustment using rectangular slider from "low" to "high"
+   - Player control modifiction: separate selection per movement type (eg. turn left). When
    selected, press the keys the user would like to use, and then updates.
-  - Tab to swap from player 1 controls setting adjustment to player 2 controls setting adjustment
+   - Tab to swap from player 1 controls setting adjustment to player 2 controls setting adjustment
 3. "High Score" Button on start screen:
-  - Shows a list of names and high scores for the top 10 scores
-  - Button to swap from single player high scores screen to 2-player high scores screen
+   - Shows a list of names and high scores for the top 10 scores
+   - Button to swap from single player high scores screen to 2-player high scores screen
 4. "Exit" Button - close the game 
 5. Press Esc key during the game to pause the game and open Pause Screen
-  - Text heading "Game Paused"
-  - "Resume" button to continue playing
-  - "Save and Exit" button: if the player presses to exit the game, save what level they are currently on
+   - Text heading "Game Paused"
+   - "Resume" button to continue playing
+   - "Save and Exit" button: if the player presses to exit the game, save what level they are currently on
    and the current score so they can continue
-  - "Settings" button: Open settings screen to adjust volume etc. as detailed above
+   - "Settings" button: Open settings screen to adjust volume etc. as detailed above
 6. Game over screen if player health reaches 0
-  - If player still has lives left, ask if they wish to continue the game with yes/no buttons.
-  - If no lives left, end game screen with heading "GAME OVER" and show player their score.
+   - If player still has lives left, ask if they wish to continue the game with yes/no buttons.
+   - If no lives left, end game screen with heading "GAME OVER" and show player their score.
    Story text eg. "You have failed and the aliens have taken over". 
 7. If game ends (victory or game over), check game high score database and compare with current score 
    to see if new high score has been achieved
-  - If a new high score, show congratulations message and open screen for user(s) to input their 
+   - If a new high score, show congratulations message and open screen for user(s) to input their 
    name(s) using keyboard input. If 2 players, show player 1 input screen then player 2.
-  - Store name(s) and high score in high score database.
-  - Return to start screen 
+   - Store name(s) and high score in high score database.
+   - Return to start screen 
