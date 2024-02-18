@@ -1,0 +1,37 @@
+Use Case 1: Fighter jet selection:
+Basic flow:
+1. After selecting game start, the UI interface will indicate the player to select from 3 different fighter jets.
+2. Each jet has it's unique wepon system.
+Alternative flows:
+1. The jets should be unlocked after finishing the campaign modes 
+2. If player click the quit button, the game will go back to the main menu.
+
+Use Case 2: Campain mode level design
+Use Case 2.1 General level design:
+Basic flow: 
+1. After user selects fighter jet, each different type of jets has it's own wepon system, including bullet, laser and missile.
+2. Enemy will disapper following certain patterns, the progress bar will indicate the progress of the current level.
+3. Boss will appear when the progress bar hits 90%.
+4. After destroying the boss, the player will enter next level.
+5. After all 3 levels are finished, the campaign mode is finished and 2 other modes will be locked.
+Alternative flow:
+1. After the jet is hit, the helath bar will deduct 1/3，the jet will be destoried after 3 hits.
+2. When all the jets are destoried, the player will have one chance to continue the game. The second failure will leads to the return to main menu.
+
+Use Case 2.2 Difficulty 
+Basic flow:
+1. The lives will be impacted by the difficulty.
+2. The enemy quantity will be impacted by the difficulty.
+Alternative flow:
+1. The player can choose to change the difficulty during the progression of the level, however the level will bring restared.
+
+Use case 2.3 Bonus system 
+Basic flow:
+1. After the enemies are destoried, bonus objects or coins will be created.
+2. The bonus objects includes wepon upgrading and bonus lives.
+3. The coins will converted to points once the player fethced them.
+Alternative flow:
+1. The maximum wepon syetem is 3，afterwards the objects will be turned into points.
+2. The maximum lives is 4， afterwards the objects will be turned into points.
+3. The objects will moving around the map andoi bounce the boundaries for 3 times, they will disappear the next time they reach the boundary.
+
