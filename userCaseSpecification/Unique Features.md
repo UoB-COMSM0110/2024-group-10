@@ -6,6 +6,7 @@
 - **Projectile Speed**: Each level of the game, the gravitional pull will increase, therefore the projectiles will move faster towards the player
 - **Spawning aliens**: At random intervals during the game, an alien will spawn and follow the player until it is defeated. As the gravitional pull increases, the speed of which the spawning alien follows the player increases.
 3. Precondition: The game has started, and the player has selected 1/multiplayer, selected the game mode and the type of spaceship.
+  
     **Endless Mode**
   1. As time goes on, the direction of the projectiles changes more frequently. 
   2. As the time goes on, the number of spawning aliens increases gradually, with a warning with the number about to spawn.
