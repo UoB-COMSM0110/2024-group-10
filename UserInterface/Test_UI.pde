@@ -11,7 +11,9 @@ enum Button {
 enum Screen {
   START,
   GAME,
-  PAUSE
+  PAUSE,
+  VICTORY,
+  GAMEOVER
 }
 
 boolean rectOver = false;
@@ -26,23 +28,25 @@ void setup(){
   size(1000, 1000);
   planecursor = loadImage("planecursor.gif");
   background(51);
+  textAlign(CENTER);
+  rectMode(CENTER);
 }
 
 void draw() {
   
   if (currentScreen == Screen.START){
     background(51);
-    createButton(mouseX,mouseY,350,500,250,100, Button.GAMEB);
+    createButton(mouseX,mouseY,500,500,250,100, Button.GAMEB);
     fill(255);
     textSize(50);
-    text("START", 405, 565);
+    text("START", 500, 515);
    
-    createButton(mouseX,mouseY,350,610,250,100, Button.EXITB);
+    createButton(mouseX,mouseY,500,610,250,100, Button.EXITB);
     fill(255);
     textSize(50);
-    text("EXIT", 425, 675); 
+    text("EXIT", 500, 625); 
    
-    text("Shooting Game Prototype Title", 180, 150);
+    text("Shooting Game Prototype Title", 500, 150);
     cursor(planecursor);
   }
   else if (currentScreen == Screen.GAME){
@@ -50,7 +54,7 @@ void draw() {
     noCursor();
     background(0);
     textSize(50);
-    text("Placeholder text: Gameplay screen here", 100, 150);
+    text("Placeholder text: Gameplay screen here", 500, 150);
     if(keyPressed) {
       if(key == ESC){
         currentScreen = Screen.PAUSE;
@@ -62,18 +66,56 @@ void draw() {
     cursor(planecursor);
     background(51);
     textSize(50);
-    text("GAME PAUSED", 330, 150);
+    text("GAME PAUSED", 500, 150);
     
-    createButton(mouseX,mouseY,350,250,250,100, Button.GAMEB);
+    createButton(mouseX,mouseY,500,250,250,100, Button.GAMEB);
     fill(255);
     textSize(40);
-    text("RESUME", 400, 315);
+    text("RESUME", 500, 265);
     
-    createButton(mouseX,mouseY,350,360,250,100, Button.STARTB);
+    createButton(mouseX,mouseY,500,360,250,100, Button.STARTB);
     fill(255);
     textSize(40);
-    text("MAIN MENU", 380, 420);
+    text("MAIN MENU", 500, 375);
   }
+  else if (currentScreen == Screen.GAMEOVER)
+  {
+    cursor(planecursor);
+    background(51);
+    
+    textSize(50);
+    text("GAME OVER!", 500, 200);
+    
+    textSize(30);
+    text("Oh no! \n You died. The aliens have won. \nBetter luck next time :(", 500, 300);
+    
+    textSize(50);
+    text("FINAL SCORE:", 500, 500);
+    
+    createButton(mouseX,mouseY,500,700,250,100, Button.STARTB);
+    fill(255);
+    textSize(40);
+    text("MAIN MENU", 500, 715);
+  }
+  else if (currentScreen == Screen.VICTORY)
+  {
+    cursor(planecursor);
+    background(51);
+    
+    textSize(50);
+    text("CONGRATULATIONS!", 500, 200);
+    
+    textSize(30);
+    text("A winner is you! \n The aliens have been defeated and the world is saved!", 500, 300);
+    
+    textSize(50);
+    text("FINAL SCORE:", 500, 500);
+    
+    createButton(mouseX,mouseY,500,700,250,100, Button.STARTB);
+    fill(255);
+    textSize(40);
+    text("MAIN MENU", 500, 715);
+  }  
   
   //println(currentButton);
   
@@ -115,8 +157,8 @@ void update(int x, int y, int rectX, int rectY, int rectW, int rectH, Button b) 
 }
 
 boolean overRect(int x, int y, int width, int height, Button b){
-  if (mouseX >= x && mouseX <= x+width && 
-      mouseY >= y && mouseY <= y+height) {
+  if (mouseX >= x-0.5*width && mouseX <= x+0.5*width && 
+      mouseY >= y-0.5*height && mouseY <= y+0.5*height) {
     currentButton = b;
     //println(currentButton);
     return true;
