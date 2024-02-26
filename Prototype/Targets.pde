@@ -30,8 +30,11 @@ class Target {
 }
 
 class TargetTwo extends Target {
+  int hitTimes;
+  
   TargetTwo (float x, float y) {
     super(x, y);
+    this.hitTimes = 0;
   }
   void update() {
     x += speed;
