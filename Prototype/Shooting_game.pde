@@ -131,7 +131,9 @@ void checkCollisionsLaser(ArrayList<Bullet> bullets, ArrayList<TargetTwo> target
       TargetTwo targetTwo = targetsTwo.get(j);
       if (bullet.hits(targetTwo)) {
         bullets.remove(i);
-        targetsTwo.remove(j);
+        targetTwo.hitTimes++;
+        if (targetTwo.hitTimes == 2)
+          targetsTwo.remove(j);
       }
     }
   }
