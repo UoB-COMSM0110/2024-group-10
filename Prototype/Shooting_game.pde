@@ -24,6 +24,11 @@ void draw() {
     player.update();
     player.display(); 
     
+    
+  fill(0); // 设置文本颜色为黑色
+  textSize(20); // 设置文本大小
+  text("Lives: " + player.lives, 30, 30); // 在屏幕左上角显示生命值
+    
     // Update and display player bullets
     updateAndDisplayBullets(playerBullets);
     
@@ -70,7 +75,11 @@ void draw() {
     
     // Game over condition
     if (player.hit) {
-      gameOver = true;
+      player.lives -= 1;
+      player.hit = false;
+      if (player.lives <= 0) {
+        gameOver = true; // 当生命值为0时游戏结束
+      }
     }
   } else {
     // Display game over message
@@ -131,9 +140,7 @@ void checkCollisionsLaser(ArrayList<Bullet> bullets, ArrayList<TargetTwo> target
       TargetTwo targetTwo = targetsTwo.get(j);
       if (bullet.hits(targetTwo)) {
         bullets.remove(i);
-        targetTwo.hitTimes++;
-        if (targetTwo.hitTimes == 2)
-          targetsTwo.remove(j);
+        targetsTwo.remove(j);
       }
     }
   }

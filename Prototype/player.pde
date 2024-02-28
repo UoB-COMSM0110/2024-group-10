@@ -2,6 +2,7 @@ class Player {
   float x, y;
   float speed = 5;
   boolean hit = false;
+  int lives = 3;
   
   Player(float x, float y) {
     this.x = x;
