@@ -6,6 +6,7 @@ ArrayList<Target> targets;
 ArrayList<TargetTwo> targetsTwo;
 ArrayList<Laser> lasers;
 boolean gameOver = false;
+PImage lives;
 
 void setup(){
   //UI related
@@ -15,6 +16,7 @@ void setup(){
   textAlign(CENTER);
   rectMode(CENTER);
   
+
   //Gameplay related
   player = new Player(width / 2, height - 20);
   playerBullets = new ArrayList<Bullet>();
@@ -22,6 +24,8 @@ void setup(){
   targets = new ArrayList<Target>();
   targetsTwo = new ArrayList<TargetTwo>();
   lasers = new ArrayList<Laser>();
+  lives = loadImage("PrototypeImages/lives.png"); 
+  lives.resize(36, 29); 
 }
 
 void draw() {
@@ -58,11 +62,16 @@ void draw() {
       // Update and display player
       player.update();
       player.display(); 
+      for (int i = 0; i < player.lives; i++) {
+           image(lives, 30 + (i * 40), 20); 
+            }
       
-      
-    fill(0); // 设置文本颜色为黑色
-    textSize(20); // 设置文本大小
-    text("Lives: " + player.lives, 30, 30); // 在屏幕左上角显示生命值
+    fill(0); 
+    textSize(20); 
+    //text("Lives: " + player.lives, 30, 30); 
+    for (int i = 0; i < player.lives; i++) {
+    image(lives, 30 + (i * 40), 20); 
+}
     text("hit time " + player.hitTime, 300, 30); 
       // Update and display player bullets
       updateAndDisplayBullets(playerBullets);
@@ -107,6 +116,7 @@ void draw() {
       checkCollisions(targetBullets, player);
       checkCollisionsLaser(lasers, player);
       checkCollisionsLaser(playerBullets, targetsTwo);
+      removeExplodedTargets(); 
       
       // Game over condition
       if (player.hit) {
@@ -238,14 +248,30 @@ void updateAndDisplayLasers(ArrayList<Laser> lasers) {
   }
 }
 
+void removeExplodedTargets() {
+    for (int i = targets.size() - 1; i >= 0; i--) {
+        if (targets.get(i).shouldBeRemoved) {
+            targets.remove(i);
+        }
+    }
+    for (int i = targetsTwo.size() - 1; i >= 0; i--) {
+        if (targetsTwo.get(i).shouldBeRemoved) {
+            targetsTwo.remove(i);
+        }
+    }
+}
+
+
 void checkCollisions(ArrayList<Bullet> bullets, ArrayList<Target> targets) {
   for (int i = bullets.size() - 1; i >= 0; i--) {
     Bullet bullet = bullets.get(i);
     for (int j = targets.size() - 1; j >= 0; j--) {
       Target target = targets.get(j);
       if (bullet.hits(target)) {
+        target.getHit();
         bullets.remove(i);
-        targets.remove(j);
+        //targets.remove(j);
+        break;
       }
     }
   }
@@ -257,8 +283,10 @@ void checkCollisionsLaser(ArrayList<Bullet> bullets, ArrayList<TargetTwo> target
     for (int j = targetsTwo.size() - 1; j >= 0; j--) {
       TargetTwo targetTwo = targetsTwo.get(j);
       if (bullet.hits(targetTwo)) {
+        targetTwo.getHit();
         bullets.remove(i);
-        targetsTwo.remove(j);
+        //targetsTwo.remove(j);
+        break;
       }
     }
   }
