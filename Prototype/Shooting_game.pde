@@ -10,7 +10,7 @@ boolean gameOver = false;
 void setup(){
   //UI related
   size(1000, 1000);
-  planecursor = loadImage("planecursor.gif");
+  planecursor = loadImage("PrototypeImages/planecursor.gif");
   background(51);
   textAlign(CENTER);
   rectMode(CENTER);
@@ -63,7 +63,7 @@ void draw() {
     fill(0); // 设置文本颜色为黑色
     textSize(20); // 设置文本大小
     text("Lives: " + player.lives, 30, 30); // 在屏幕左上角显示生命值
-      
+    text("hit time " + player.hitTime, 300, 30); 
       // Update and display player bullets
       updateAndDisplayBullets(playerBullets);
       
@@ -269,6 +269,7 @@ void checkCollisions(ArrayList<Bullet> bullets, Player player) {
     Bullet bullet = bullets.get(i);
     if (bullet.hits(player)) {
       player.hit = true;
+      player.gotHit() ;
       bullets.remove(i);
     }
   }
@@ -279,6 +280,7 @@ void checkCollisionsLaser(ArrayList<Laser> lasers, Player player) {
     Laser laser = lasers.get(i);
     if (laser.hits(player)) {
       player.hit = true;
+      player.gotHit() ;
       lasers.remove(i);
     }
   }
