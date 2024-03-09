@@ -3,11 +3,15 @@ class Bullet {
   float speed = 3;
   boolean isPlayer;
   float angle = random(0, TWO_PI);
+  PImage imgEnemyBullet;
+  PImage imgMeBullet;
   
   Bullet(float x, float y, boolean isPlayer) {
     this.x = x;
     this.y = y;
     this.isPlayer = isPlayer;
+    imgEnemyBullet = loadImage("PrototypeImages/enemy_bullet.png");
+    imgMeBullet = loadImage("PrototypeImages/me_bullet.png");
   }
   
   void update() {
@@ -19,8 +23,11 @@ class Bullet {
   }
   
   void display() {
-    fill(255, 0, 0);
-    ellipse(x, y, 10, 10);
+    if (isPlayer) {
+      image(imgMeBullet, x, y); // 如果是玩家，绘制 me_bullet
+    } else {
+      image(imgEnemyBullet, x, y); // 如果是敌人，绘制 enemy_bullet
+    }
   }
   
   boolean offscreen() {
@@ -44,14 +51,15 @@ class Bullet {
 }
 
 class Laser extends Bullet {
+  PImage imgLaser;
   
   Laser (float x, float y, boolean isPlayer) {
     super(x, y, isPlayer);
+     imgLaser = loadImage("PrototypeImages/laser.png");
   }
   
   void display() {
-    fill(150, 180, 100);
-    rect(x, y, 10, 100);
+    image(imgLaser, x, y);
   }
   
   void update() {
