@@ -7,6 +7,7 @@ ArrayList<TargetTwo> targetsTwo;
 ArrayList<Laser> lasers;
 boolean gameOver = false;
 PImage lives;
+int score = 0;
 
 void setup(){
   //UI related
@@ -48,6 +49,8 @@ void draw() {
     //reinitialise game stats
     gameOver = false;
     player.lives = 3;
+    player.hitTime = 0; // added this to reset hitTime
+    score = 0;
     player.x = width/2;
     player.y = height-20;
   }
@@ -73,6 +76,9 @@ void draw() {
     image(lives, 30 + (i * 40), 20); 
 }
     text("hit time " + player.hitTime, 300, 30); 
+    
+    text("Score: " + score, 300, 50);
+    
       // Update and display player bullets
       updateAndDisplayBullets(playerBullets);
       
@@ -271,6 +277,7 @@ void checkCollisions(ArrayList<Bullet> bullets, ArrayList<Target> targets) {
         target.getHit();
         bullets.remove(i);
         //targets.remove(j);
+        score++;
         break;
       }
     }
@@ -286,6 +293,7 @@ void checkCollisionsLaser(ArrayList<Bullet> bullets, ArrayList<TargetTwo> target
         targetTwo.getHit();
         bullets.remove(i);
         //targetsTwo.remove(j);
+        score++;
         break;
       }
     }
