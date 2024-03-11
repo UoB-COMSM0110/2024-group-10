@@ -9,6 +9,8 @@ boolean gameOver = false;
 PImage lives;
 int score = 0;
 
+ArrayList<Enemy> enemies;
+
 void setup(){
   //UI related
   size(1000, 1000);
@@ -27,6 +29,13 @@ void setup(){
   lasers = new ArrayList<Laser>();
   lives = loadImage("PrototypeImages/lives.png"); 
   lives.resize(36, 29); 
+  
+  // enemies
+  // come back to, might change the number of enemies
+  enemies = new ArrayList<Enemy>();
+  for (int i = 0; i < 1; i++) {
+    enemies.add(new Enemy(random(0, width), random(0, height), player));
+  }
 }
 
 void draw() {
@@ -68,6 +77,13 @@ void draw() {
       for (int i = 0; i < player.lives; i++) {
            image(lives, 30 + (i * 40), 20); 
             }
+      
+      // update + display enemies
+      for (int i = 0; i < enemies.size(); i++) {
+        Enemy enemy = enemies.get(i);
+        enemy.update();
+        enemy.display();
+      }
       
     fill(0); 
     textSize(20); 
@@ -124,6 +140,9 @@ void draw() {
       checkCollisionsLaser(playerBullets, targetsTwo);
       removeExplodedTargets(); 
       
+      // check for collisions between bullets and enemies
+      checkCollisionsEnemy(playerBullets, enemies);
+      
       // Game over condition
       if (player.hit) {
         player.lives -= 1;
@@ -173,7 +192,7 @@ void draw() {
     text("Oh no! \n You died. The aliens have won. \nBetter luck next time :(", 500, 300);
     
     textSize(50);
-    text("FINAL SCORE:", 500, 500);
+    text("FINAL SCORE: " + score, 500, 500);
     
     createButton(mouseX,mouseY,500,700,250,100, Button.STARTB);
     fill(255);
@@ -277,7 +296,7 @@ void checkCollisions(ArrayList<Bullet> bullets, ArrayList<Target> targets) {
         target.getHit();
         bullets.remove(i);
         //targets.remove(j);
-        score++;
+        score += 5;
         break;
       }
     }
@@ -293,7 +312,7 @@ void checkCollisionsLaser(ArrayList<Bullet> bullets, ArrayList<TargetTwo> target
         targetTwo.getHit();
         bullets.remove(i);
         //targetsTwo.remove(j);
-        score++;
+        score += 10;
         break;
       }
     }
@@ -318,6 +337,21 @@ void checkCollisionsLaser(ArrayList<Laser> lasers, Player player) {
       player.hit = true;
       player.gotHit() ;
       lasers.remove(i);
+    }
+  }
+}
+
+void checkCollisionsEnemy(ArrayList<Bullet> bullets, ArrayList<Enemy> enemies) {
+  for (int i = bullets.size() - 1; i >= 0; i--) {
+    Bullet bullet = bullets.get(i);
+    for (int j = enemies.size() - 1; j >= 0; j--) {
+      Enemy enemy = enemies.get(j);
+      if (bullet.hits(enemy)) {
+        enemy.getHit();
+        bullets.remove(i);
+        score += 20; 
+        break;
+      }
     }
   }
 }

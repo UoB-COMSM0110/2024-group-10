@@ -7,6 +7,7 @@ class Player {
   PImage imgNormal;
   PImage imgHit;
   int hitTime = -2000; // 记录被击中的时间，初始化为一个足够小的值
+  int score = 0;
   
   Player(float x, float y) {
     this.x = x;

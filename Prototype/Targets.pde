@@ -75,7 +75,7 @@ class TargetTwo extends Target {
     x += speed;
     
     // Shoot Laser
-    if (frameCount % 60 == 0) {
+    if (frameCount % 60 == 0 && !isExploding) {
       lasers.add(new Laser(x, y, false));
     }
   }
