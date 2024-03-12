@@ -16,10 +16,10 @@ class Enemy extends Target {
       PVector velocity = PVector.add(new PVector(0, 0), direction);
       x += velocity.x;
       y += velocity.y;
-        
-      // Shoot laser
-      if (!isExploding && frameCount % 60 == 0) {
-        lasers.add(new Laser(x, y, false));
+      
+     // Shoot bullet
+      if (frameCount % 60 == 0) {
+        targetBullets.add(new Bullet(x, y, false));
       }
     }
 }

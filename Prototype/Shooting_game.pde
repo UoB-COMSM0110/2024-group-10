@@ -10,6 +10,7 @@ PImage lives;
 int score = 0;
 
 ArrayList<Enemy> enemies;
+ArrayList<Integer> enemyRemovedTime = new ArrayList<Integer>();
 
 void setup(){
   //UI related
@@ -143,6 +144,24 @@ void draw() {
       // check for collisions between bullets and enemies
       checkCollisionsEnemy(playerBullets, enemies);
       
+      // Remove any enemies that were hit
+      for (int i = enemies.size() - 1; i >= 0; i--) {
+        Enemy enemy = enemies.get(i);
+        if (enemy.isExploding) {
+          enemies.remove(i);
+          enemyRemovedTime.add(millis());
+        }
+      }
+      
+      // Respawn any enemies that were removed more than 30 seconds ago
+       for (int i = enemyRemovedTime.size() - 1; i >= 0; i--) {
+        int time = enemyRemovedTime.get(i);
+        if (millis() - time > 30000) {
+          enemyRemovedTime.remove(i);
+          enemies.add(new Enemy(random(0, width), random(0, height), player));
+        }
+      }
+     
       // Game over condition
       if (player.hit) {
         player.lives -= 1;
@@ -246,9 +265,6 @@ void mousePressed(){
     currentScreen = Screen.START;
   }
 }
-
-
-
 
 //Gameplay related functions below:
 void updateAndDisplayBullets(ArrayList<Bullet> bullets) {
