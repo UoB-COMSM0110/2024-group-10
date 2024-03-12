@@ -5,6 +5,7 @@ ArrayList<Bullet> targetBullets;
 ArrayList<Target> targets;
 ArrayList<TargetTwo> targetsTwo;
 ArrayList<Laser> lasers;
+ArrayList<Life> lifes;
 boolean gameOver = false;
 PImage lives;
 int score = 0;
@@ -37,6 +38,9 @@ void setup(){
   for (int i = 0; i < 1; i++) {
     enemies.add(new Enemy(random(0, width), random(0, height), player));
   }
+  
+  // lives
+  lifes = new ArrayList<Life>();
 }
 
 void draw() {
@@ -86,6 +90,24 @@ void draw() {
         enemy.display();
       }
       
+      // display lives
+      for (int i = lifes.size() - 1; i >= 0; i--) {
+        Life life = lifes.get(i);
+        life.update();
+        life.display();
+
+        // Check whether the life hit the player
+        if (life.hits(player)) {
+          player.lives++;
+          lifes.remove(i);
+        }
+
+        // Remove Life if it's off the screen
+          if (life.offscreen()) {
+            lifes.remove(i);
+          }
+       }
+      
     fill(0); 
     textSize(20); 
     //text("Lives: " + player.lives, 30, 30); 
@@ -132,6 +154,11 @@ void draw() {
       // Add big target randomly
       if (frameCount % 300 == 0) {
         targetsTwo.add(new TargetTwo(50, 50));
+      }
+      
+      // for new lives every 30 seconds
+      if (frameCount % (30 * 60) == 0) {
+        lifes.add(new Life(random(width), 0, 3));
       }
       
       // Check for collisions between bullets and targets

@@ -1,31 +1,35 @@
 class Life {
   float x;
   float y;
-  float speed;
-  
-  Life(float startX, float startY, float speed) {
+  float fallSpeed;
+  PImage img;  
+
+  Life(float startX, float startY, float fallSpeed) {
     this.x = startX;
     this.y = startY;
-    this.speed = speed;
+    this.fallSpeed = fallSpeed;
+    this.img = lives;  // use the same image used for player lives
   }
 
   void update() {
-    this.y += this.speed;
+    this.y += this.fallSpeed;
   }
 
   void display() {
-    image(lives, x, y);
+    imageMode(CENTER);
+    image(this.img, this.x, this.y);
   }
-  
+
   boolean offscreen() {
     return (this.y > height);
   }
 
-  
-
-
-
-
-
-
+  boolean hits(Player p) {
+    float d = dist(this.x, this.y, p.x, p.y);
+    if (d < img.width/2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
