@@ -5,7 +5,8 @@ enum Button {
   NONE,
   GAMEB,
   EXITB,
-  STARTB
+  STARTB,
+  INSTRUCTIONB
 }
 
 enum Screen {
@@ -23,14 +24,18 @@ color rectColor = color(0,0,102);
 color currentColor = rectColor;
 color rectHighlight = color(0,0,50);
 Button currentButton = Button.NONE;
-Screen currentScreen = Screen.START;
+Screen currentScreen = Screen.INSTRUCTIONS;
 PImage planecursor;
+int buttonHeight = 100;
+int buttonWidth = 250;
+
 
 //UI related functions below:
-void createButton(int x, int y, int rectX, int rectY, int rectW, int rectH, Button b){
-  update(x,y,rectX,rectY,rectW,rectH, b);
+void createButton(int rectY, int rectW, int rectH, Button b){
+  int xpos=width/2;
+  update(mouseX,mouseY,xpos,rectY,rectW,rectH, b);
   stroke(255);
-  rect(rectX,rectY,rectW,rectH);
+  rect(xpos,rectY,rectW,rectH);
 }
 
 void update(int x, int y, int rectX, int rectY, int rectW, int rectH, Button b) {

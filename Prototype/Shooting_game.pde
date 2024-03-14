@@ -23,6 +23,8 @@ void setup(){
   background(51);
   textAlign(CENTER);
   rectMode(CENTER);
+  imageMode(CENTER);
+  strokeWeight(4);
   
 
   //Gameplay related
@@ -51,15 +53,22 @@ void draw() {
   //main menu
   if (currentScreen == Screen.START){
     background(51);
-    createButton(mouseX,mouseY,width/2,500,250,100, Button.GAMEB);
+    createButton(500,250,100, Button.GAMEB);
     fill(255);
     textSize(50);
     text("START", width/2, 515);
    
-    createButton(mouseX,mouseY,width/2,610,250,100, Button.EXITB);
+    createButton(610,350,100, Button.INSTRUCTIONB);
     fill(255);
     textSize(50);
-    text("EXIT", width/2, 625); 
+    text("INSTRUCTIONS", width/2, 625); 
+   
+    createButton(720,250,100, Button.EXITB);
+    fill(255);
+    textSize(50);
+    text("EXIT", width/2, 735);
+    
+
    
     text("Shooting Game Prototype Title", width/2, 150);
     cursor(planecursor);
@@ -220,12 +229,12 @@ void draw() {
     textSize(50);
     text("GAME PAUSED", width/2, 150);
     
-    createButton(mouseX,mouseY,width/2,250,250,100, Button.GAMEB);
+    createButton(250,250,100, Button.GAMEB);
     fill(255);
     textSize(40);
     text("RESUME", width/2, 265);
     
-    createButton(mouseX,mouseY,width/2,360,250,100, Button.STARTB);
+    createButton(360,250,100, Button.STARTB);
     fill(255);
     textSize(40);
     text("GIVE UP", width/2, 375);
@@ -244,7 +253,7 @@ void draw() {
     textSize(50);
     text("FINAL SCORE: " + score, width/2, 500);
     
-    createButton(mouseX,mouseY,width/2,700,250,100, Button.STARTB);
+    createButton(700,250,100, Button.STARTB);
     fill(255);
     textSize(40);
     text("MAIN MENU", width/2, 715);
@@ -261,12 +270,59 @@ void draw() {
     text("A winner is you! \n The aliens have been defeated and the world is saved!", width/2, 300);
     
     textSize(50);
-    text("FINAL SCORE:", width/2, 500);
+    text("FINAL SCORE: " + score, width/2, 500);
     
-    createButton(mouseX,mouseY,width/2,700,250,100, Button.STARTB);
+    createButton(700,250,100, Button.STARTB);
     fill(255);
     textSize(40);
     text("MAIN MENU", width/2, 715);
+  }
+  else if (currentScreen == Screen.INSTRUCTIONS)
+  {
+    cursor(planecursor);
+    background(150);
+    
+    //textSize(50);
+    //text("CONTROLS", width/2, 80);
+    
+    /*
+    textSize(30);
+    text("Shoot", width/4, 300);
+    text("Move", 3*width/4, 300);
+    
+    strokeWeight(4);
+    line(20,330,width-20,330);
+    
+    
+    textSize(30);
+    text("Aliens are attacking!! \nShoot the enemies to defeat them and gain points \nAvoid enemy attacks and survive until the end!", width/2, 400);
+       
+    Target basicEnemy = new Target(width/6, 550);
+    basicEnemy.display();
+    
+    TargetTwo spaceshipEnemy = new TargetTwo(width/6, 650);
+    spaceshipEnemy.display();
+    
+    textSize(15);
+    text("Stalker placeholder\n insert image here", 3*width/4, 550);
+    
+    */
+    textSize(30);
+    text("Aliens are attacking!! \nShoot the enemies to defeat them and gain points \nAvoid enemy attacks and survive until the end!", width/2, 50);
+    
+    stroke(100);
+    line(20,150,width-20,150);
+    
+    textSize(30);
+    text("Shoot", width/4, 350);
+    text("Move", 3*width/4, 350);
+    
+    
+    createButton(800,250,100, Button.STARTB);
+    fill(255);
+    textSize(40);
+    text("MAIN MENU", width/2, 815);
+    
   }  
   
 }
@@ -294,6 +350,9 @@ void mousePressed(){
   }
   else if (currentButton == Button.STARTB){
     currentScreen = Screen.START;
+  }
+  else if (currentButton == Button.INSTRUCTIONB){
+    currentScreen = Screen.INSTRUCTIONS;
   }
 }
 
