@@ -13,9 +13,12 @@ int score = 0;
 ArrayList<Enemy> enemies;
 ArrayList<Integer> enemyRemovedTime = new ArrayList<Integer>();
 
+void settings(){
+  size(1000, int(displayHeight*0.92));
+}
+
 void setup(){
   //UI related
-  size(1000, 1000);
   planecursor = loadImage("PrototypeImages/planecursor.gif");
   background(51);
   textAlign(CENTER);
