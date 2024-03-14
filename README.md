@@ -66,4 +66,4 @@ Creating several use case specifications allowed the group to break down the gam
 (Finish by adding a reflection about the use case diagram)
 
 **Class diagram**
-![class diagram.png](images/class%20diagram.png)
+![class diagram.jpg](images/class%20diagram.jpg)
