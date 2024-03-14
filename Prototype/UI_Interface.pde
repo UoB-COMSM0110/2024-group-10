@@ -13,7 +13,8 @@ enum Screen {
   GAME,
   PAUSE,
   VICTORY,
-  GAMEOVER
+  GAMEOVER,
+  INSTRUCTIONS
 }
 
 //UI related vars

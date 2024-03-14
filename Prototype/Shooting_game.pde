@@ -14,7 +14,7 @@ ArrayList<Enemy> enemies;
 ArrayList<Integer> enemyRemovedTime = new ArrayList<Integer>();
 
 void settings(){
-  size(1000, int(displayHeight*0.92));
+  size(1000, int(displayHeight*0.91));
 }
 
 void setup(){
@@ -48,19 +48,20 @@ void setup(){
 
 void draw() {
   
+  //main menu
   if (currentScreen == Screen.START){
     background(51);
-    createButton(mouseX,mouseY,500,500,250,100, Button.GAMEB);
+    createButton(mouseX,mouseY,width/2,500,250,100, Button.GAMEB);
     fill(255);
     textSize(50);
-    text("START", 500, 515);
+    text("START", width/2, 515);
    
-    createButton(mouseX,mouseY,500,610,250,100, Button.EXITB);
+    createButton(mouseX,mouseY,width/2,610,250,100, Button.EXITB);
     fill(255);
     textSize(50);
-    text("EXIT", 500, 625); 
+    text("EXIT", width/2, 625); 
    
-    text("Shooting Game Prototype Title", 500, 150);
+    text("Shooting Game Prototype Title", width/2, 150);
     cursor(planecursor);
     
     //reinitialise game stats
@@ -217,17 +218,17 @@ void draw() {
     cursor(planecursor);
     background(51);
     textSize(50);
-    text("GAME PAUSED", 500, 150);
+    text("GAME PAUSED", width/2, 150);
     
-    createButton(mouseX,mouseY,500,250,250,100, Button.GAMEB);
+    createButton(mouseX,mouseY,width/2,250,250,100, Button.GAMEB);
     fill(255);
     textSize(40);
-    text("RESUME", 500, 265);
+    text("RESUME", width/2, 265);
     
-    createButton(mouseX,mouseY,500,360,250,100, Button.STARTB);
+    createButton(mouseX,mouseY,width/2,360,250,100, Button.STARTB);
     fill(255);
     textSize(40);
-    text("GIVE UP", 500, 375);
+    text("GIVE UP", width/2, 375);
   }
   else if (currentScreen == Screen.GAMEOVER)
   {
@@ -235,18 +236,18 @@ void draw() {
     background(51);
     
     textSize(50);
-    text("GAME OVER!", 500, 200);
+    text("GAME OVER!", width/2, 200);
     
     textSize(30);
-    text("Oh no! \n You died. The aliens have won. \nBetter luck next time :(", 500, 300);
+    text("Oh no! \n You died. The aliens have won. \nBetter luck next time :(", width/2, 300);
     
     textSize(50);
-    text("FINAL SCORE: " + score, 500, 500);
+    text("FINAL SCORE: " + score, width/2, 500);
     
-    createButton(mouseX,mouseY,500,700,250,100, Button.STARTB);
+    createButton(mouseX,mouseY,width/2,700,250,100, Button.STARTB);
     fill(255);
     textSize(40);
-    text("MAIN MENU", 500, 715);
+    text("MAIN MENU", width/2, 715);
   }
   else if (currentScreen == Screen.VICTORY)
   {
@@ -254,18 +255,18 @@ void draw() {
     background(51);
     
     textSize(50);
-    text("CONGRATULATIONS!", 500, 200);
+    text("CONGRATULATIONS!", width/2, 200);
     
     textSize(30);
-    text("A winner is you! \n The aliens have been defeated and the world is saved!", 500, 300);
+    text("A winner is you! \n The aliens have been defeated and the world is saved!", width/2, 300);
     
     textSize(50);
-    text("FINAL SCORE:", 500, 500);
+    text("FINAL SCORE:", width/2, 500);
     
-    createButton(mouseX,mouseY,500,700,250,100, Button.STARTB);
+    createButton(mouseX,mouseY,width/2,700,250,100, Button.STARTB);
     fill(255);
     textSize(40);
-    text("MAIN MENU", 500, 715);
+    text("MAIN MENU", width/2, 715);
   }  
   
 }
