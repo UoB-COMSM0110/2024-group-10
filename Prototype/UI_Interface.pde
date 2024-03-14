@@ -6,7 +6,8 @@ enum Button {
   GAMEB,
   EXITB,
   STARTB,
-  INSTRUCTIONB
+  INSTRUCTIONB,
+  INSENEMY
 }
 
 enum Screen {
@@ -15,7 +16,8 @@ enum Screen {
   PAUSE,
   VICTORY,
   GAMEOVER,
-  INSTRUCTIONS
+  INSTRUCTIONS,
+  INSENEMY
 }
 
 //UI related vars

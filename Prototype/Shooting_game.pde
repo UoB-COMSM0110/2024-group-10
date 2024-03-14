@@ -317,11 +317,20 @@ void draw() {
     text("Shoot", width/4, 350);
     text("Move", 3*width/4, 350);
     
+    textSize(15);
+    text("Spacebar placeholder\n insert image here", width/4, 250);
+    text("Direction key placeholder\n insert image here", 3*width/4, 250);
     
-    createButton(800,250,100, Button.STARTB);
+    
+
+    
+    
+    line(20,830,width-20,830);
+    
+    createButton(900,250,100, Button.STARTB);
     fill(255);
     textSize(40);
-    text("MAIN MENU", width/2, 815);
+    text("MAIN MENU", width/2, 915);
     
   }  
   
