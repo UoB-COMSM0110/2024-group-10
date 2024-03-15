@@ -53,17 +53,17 @@ void draw() {
   //main menu
   if (currentScreen == Screen.START){
     background(51);
-    createButton(500,250,100, Button.GAMEB);
+    createButton(width/2,500,250,100, Button.GAMEB);
     fill(255);
     textSize(50);
     text("START", width/2, 515);
    
-    createButton(610,350,100, Button.INSTRUCTIONB);
+    createButton(width/2, 610,350,100, Button.INSTRUCTIONB);
     fill(255);
     textSize(50);
     text("INSTRUCTIONS", width/2, 625); 
    
-    createButton(720,250,100, Button.EXITB);
+    createButton(width/2, 720,250,100, Button.EXITB);
     fill(255);
     textSize(50);
     text("EXIT", width/2, 735);
@@ -229,12 +229,12 @@ void draw() {
     textSize(50);
     text("GAME PAUSED", width/2, 150);
     
-    createButton(250,250,100, Button.GAMEB);
+    createButton(width/2, 250,250,100, Button.GAMEB);
     fill(255);
     textSize(40);
     text("RESUME", width/2, 265);
     
-    createButton(360,250,100, Button.STARTB);
+    createButton(width/2, 360,250,100, Button.STARTB);
     fill(255);
     textSize(40);
     text("GIVE UP", width/2, 375);
@@ -253,7 +253,7 @@ void draw() {
     textSize(50);
     text("FINAL SCORE: " + score, width/2, 500);
     
-    createButton(700,250,100, Button.STARTB);
+    createButton(width/2, 700,250,100, Button.STARTB);
     fill(255);
     textSize(40);
     text("MAIN MENU", width/2, 715);
@@ -272,7 +272,7 @@ void draw() {
     textSize(50);
     text("FINAL SCORE: " + score, width/2, 500);
     
-    createButton(700,250,100, Button.STARTB);
+    createButton(width/2, 700,250,100, Button.STARTB);
     fill(255);
     textSize(40);
     text("MAIN MENU", width/2, 715);
@@ -280,7 +280,7 @@ void draw() {
   else if (currentScreen == Screen.INSTRUCTIONS)
   {
     cursor(planecursor);
-    background(150);
+    background(180);
             
     textSize(30);
     text("Aliens are attacking!! \nShoot the enemies to defeat them and gain points \nAvoid enemy attacks and survive until the end!", width/2, 50);
@@ -319,14 +319,19 @@ void draw() {
     
     line(20,830,width-20,830);
     
-    createButton(900,250,100, Button.STARTB);
+    createButton(width/2, 900,250,100, Button.STARTB);
     fill(255);
     textSize(40);
     text("MAIN MENU", width/2, 915);  
+    
+    createButton(3*width/4, 900,250,100, Button.ENEMYB);
+    fill(255);
+    textSize(40);
+    text("ENEMY INFO", 3*width/4, 915);  
   }
   else if(currentScreen == Screen.ENEMYINFO){
     cursor(planecursor);
-    background(150);
+    background(180);
     
     textSize(30);
     text("Aliens are attacking!! \nShoot the enemies to defeat them and gain points \nAvoid enemy attacks and survive until the end!", width/2, 50);
@@ -337,29 +342,45 @@ void draw() {
     Target basicEnemy = new Target(width/6, 250);
     basicEnemy.display();
     
+    Bullet exampleEnemyBullet = new Bullet(width/2, 287, false);
+    exampleEnemyBullet.display();
+    
     TargetTwo spaceshipEnemy = new TargetTwo(width/6, 450);
     spaceshipEnemy.display();
-    
+           
     textSize(15);
     text("Stalker placeholder\n insert image here", width/6, 650);
     
     textSize(20);
     textAlign(LEFT);
-    text("Jellyjellies like to float through life like they do your computer screen.\nThey do not think much on account of having no brain and their philosophy to life\nand war is 'random bullets go!'\nBe careful not to touch them they sting!\nAttack type: Jelly Shots (Warning: do not consume. The developers of this game\nwill not be held liable)", width/3.5, 200);
-    
+    fill(0,139,208,255);
+    text("Jellyjellies like to float through life like they will your computer screen.\nThey do not think much on account of having no brain and their philosophy to life\nand war is 'random bullets go!'\nBe careful not to touch them they sting!\nAttack type: Jelly Shots          (Warning: do not consume. The developers of this game\nwill not be held liable)", width/3.5, 200);
+    fill(81,75,116,255);
     text("Extra-purrestrials have long told legends of 'humans'. Beings who wielded a \ntechnology always just out of the grasp of cat-kind, tormenting their ancestors for \namusement and so called 'likes'. Well, now their descendents are here to return the \nfavour. \nAttack type: Pointier Lasers \nNote: Has developed advanced defensive technologies to protect their fluffy tummies", width/3.5, 400);
-    
-    text("Stalker text goes here", width/3.5, 650);
+    fill(255,0,0);
+    text("Huggoctopuses love to chase all the shiny things and hold them close to their heart. \nIncluding your ship. \nAttack type: Don't hug me I'm scared", width/3.5, 650);
     
     textAlign(CENTER);
     
     
     line(20,830,width-20,830);
     
-    createButton(900,250,100, Button.STARTB);
+    createButton(width/4, 900,250,100, Button.INSTRUCTIONB);
+    fill(255);
+    textSize(40);
+    text("PLAYER INFO", width/4, 915);  
+    
+    createButton(width/2, 900,250,100, Button.STARTB);
     fill(255);
     textSize(40);
     text("MAIN MENU", width/2, 915);  
+    
+    
+    translate(width/2, 450);
+    rotate(radians(90));
+    Laser exampleEnemyLaser = new Laser(35, -75, false);
+    exampleEnemyLaser.display();
+    
   }  
   
 }
@@ -390,6 +411,9 @@ void mousePressed(){
   }
   else if (currentButton == Button.INSTRUCTIONB){
     currentScreen = Screen.INSTRUCTIONS;
+  }
+  else if (currentButton == Button.ENEMYB){
+  currentScreen = Screen.ENEMYINFO;
   }
 }
 
