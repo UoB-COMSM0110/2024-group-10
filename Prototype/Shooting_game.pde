@@ -10,7 +10,7 @@ boolean gameOver = false;
 PImage lives;
 int score = 0;
 
-ArrayList<Enemy> enemies;
+ArrayList<Stalker> enemies;
 ArrayList<Integer> enemyRemovedTime = new ArrayList<Integer>();
 
 void settings(){
@@ -39,9 +39,9 @@ void setup(){
   
   // enemies
   // come back to, might change the number of enemies
-  enemies = new ArrayList<Enemy>();
+  enemies = new ArrayList<Stalker>();
   for (int i = 0; i < 1; i++) {
-    enemies.add(new Enemy(random(0, width), random(0, height), player));
+    enemies.add(new Stalker(random(0, width), random(0, height), player));
   }
   
   // lives
@@ -102,7 +102,7 @@ void draw() {
       
       // update + display enemies
       for (int i = 0; i < enemies.size(); i++) {
-        Enemy enemy = enemies.get(i);
+        Stalker enemy = enemies.get(i);
         enemy.update();
         enemy.display();
       }
@@ -190,7 +190,7 @@ void draw() {
       
       // Remove any enemies that were hit
       for (int i = enemies.size() - 1; i >= 0; i--) {
-        Enemy enemy = enemies.get(i);
+        Stalker enemy = enemies.get(i);
         if (enemy.isExploding) {
           enemies.remove(i);
           enemyRemovedTime.add(millis());
@@ -200,9 +200,9 @@ void draw() {
       // Respawn any enemies that were removed more than 30 seconds ago
        for (int i = enemyRemovedTime.size() - 1; i >= 0; i--) {
         int time = enemyRemovedTime.get(i);
-        if (millis() - time > 30000) {
+        if (millis() - time > 5000) {
           enemyRemovedTime.remove(i);
-          enemies.add(new Enemy(random(0, width), random(0, height), player));
+          enemies.add(new Stalker(random(0, width), random(0, height), player));
         }
       }
      
@@ -554,11 +554,11 @@ void checkCollisionsLaser(ArrayList<Laser> lasers, Player player) {
   }
 }
 
-void checkCollisionsEnemy(ArrayList<Bullet> bullets, ArrayList<Enemy> enemies) {
+void checkCollisionsEnemy(ArrayList<Bullet> bullets, ArrayList<Stalker> enemies) {
   for (int i = bullets.size() - 1; i >= 0; i--) {
     Bullet bullet = bullets.get(i);
     for (int j = enemies.size() - 1; j >= 0; j--) {
-      Enemy enemy = enemies.get(j);
+      Stalker enemy = enemies.get(j);
       if (bullet.hits(enemy)) {
         enemy.getHit();
         bullets.remove(i);
