@@ -300,9 +300,11 @@ void draw() {
     text("Shoot", width/4, 400);
     text("Move", 3*width/4, 400);
     
+    //PLACEHOLDER TEXT - needs images from art team
     textSize(15);
     text("Spacebar placeholder\n insert image here", width/4, 250);
     text("Direction key placeholder\n insert image here", 3*width/4, 250);
+    text("ESC key placeholder\n insert image here", width/8, 620);
     
     Player examplePlayer = new Player(width/2, 380);
     examplePlayer.display();
@@ -321,6 +323,8 @@ void draw() {
     
     image(lives, width/10 + 40, 560);
     text("Collect falling hearts to heal yourself by 1 point", width/10+3*40, 570);
+    
+    text("Press ESC to pause game", width/10+3*40, 630);
     
     textAlign(CENTER);
 
@@ -356,7 +360,8 @@ void draw() {
     
     TargetTwo spaceshipEnemy = new TargetTwo(width/6, 450);
     spaceshipEnemy.display();
-           
+    
+    //PLACEHOLDER TEXT - needs images from art team
     textSize(15);
     text("Stalker placeholder\n insert image here", width/6, 650);
     
@@ -389,13 +394,23 @@ void draw() {
     Laser exampleEnemyLaser = new Laser(35, -75, false);
     exampleEnemyLaser.display();    
   } 
-  //mode select screen
+//mode select screen
   else if(currentScreen == Screen.MODESELECT){
     cursor(planecursor);
     background(51);
     
     textSize(50);
-    text("DIFFICULTY:", width/2, 150);
+    text("Current Difficulty:", width/2, 150);
+    
+    createButton(width/3, 300,250,100, Button.EASYB);
+    fill(255);
+    textSize(40);
+    text("EASY", width/3, 315); 
+    
+    createButton(2*width/3, 300,250,100, Button.HARDB);
+    fill(255);
+    textSize(40);
+    text("HARD", 2*width/3, 315); 
     
     createButton(width/2, 900,250,100, Button.STARTB);
     fill(255);
@@ -433,11 +448,19 @@ void mousePressed(){
     currentScreen = Screen.INSTRUCTIONS;
   }
   else if (currentButton == Button.ENEMYB){
-  currentScreen = Screen.ENEMYINFO;
+    currentScreen = Screen.ENEMYINFO;
   }
   else if (currentButton == Button.MODEB){
-  currentScreen = Screen.MODESELECT;
+    currentScreen = Screen.MODESELECT;
   }
+  /* code below for difficulty level change, can be used after Antai part is done (implement code for gameplay difficulty changes) 
+  else if (currentButton == Button.EASYB){
+    change difficulty mode to easy;
+  }
+  else if (currentButton == Button.HARDB){
+    change difficulty mode to hard;
+  }
+  */
 }
 
 //Gameplay related functions below:
