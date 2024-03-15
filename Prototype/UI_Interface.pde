@@ -7,7 +7,7 @@ enum Button {
   EXITB,
   STARTB,
   INSTRUCTIONB,
-  INSENEMY
+  INSENEMYB
 }
 
 enum Screen {
@@ -26,7 +26,7 @@ color rectColor = color(0,0,102);
 color currentColor = rectColor;
 color rectHighlight = color(0,0,50);
 Button currentButton = Button.NONE;
-Screen currentScreen = Screen.INSTRUCTIONS;
+Screen currentScreen = Screen.START;
 PImage planecursor;
 int buttonHeight = 100;
 int buttonWidth = 250;

@@ -281,32 +281,7 @@ void draw() {
   {
     cursor(planecursor);
     background(150);
-    
-    //textSize(50);
-    //text("CONTROLS", width/2, 80);
-    
-    /*
-    textSize(30);
-    text("Shoot", width/4, 300);
-    text("Move", 3*width/4, 300);
-    
-    strokeWeight(4);
-    line(20,330,width-20,330);
-    
-    
-    textSize(30);
-    text("Aliens are attacking!! \nShoot the enemies to defeat them and gain points \nAvoid enemy attacks and survive until the end!", width/2, 400);
-       
-    Target basicEnemy = new Target(width/6, 550);
-    basicEnemy.display();
-    
-    TargetTwo spaceshipEnemy = new TargetTwo(width/6, 650);
-    spaceshipEnemy.display();
-    
-    textSize(15);
-    text("Stalker placeholder\n insert image here", 3*width/4, 550);
-    
-    */
+            
     textSize(30);
     text("Aliens are attacking!! \nShoot the enemies to defeat them and gain points \nAvoid enemy attacks and survive until the end!", width/2, 50);
     
@@ -314,15 +289,67 @@ void draw() {
     line(20,150,width-20,150);
     
     textSize(30);
-    text("Shoot", width/4, 350);
-    text("Move", 3*width/4, 350);
+    text("Shoot", width/4, 400);
+    text("Move", 3*width/4, 400);
     
     textSize(15);
     text("Spacebar placeholder\n insert image here", width/4, 250);
     text("Direction key placeholder\n insert image here", 3*width/4, 250);
     
+    Player examplePlayer = new Player(width/2, 380);
+    examplePlayer.display();
     
+    for (int i = 0; i < 3; i++){
+    Bullet examplePlayerBullet = new Bullet(width/2, 230 +i*40, true);
+    examplePlayerBullet.display();
+    }
+    
+    for (int i = 0; i < 3; i++){
+      image(lives, width/10 + i*40, 500); 
+    }
+    textSize(30);
+    textAlign(LEFT);
+    text("Player life points count - keep these above 0 to stay alive! ", width/10+3*40, 510);
+    
+    image(lives, width/10 + 40, 560);
+    text("Collect falling hearts to heal yourself by 1 point", width/10+3*40, 570);
+    
+    textAlign(CENTER);
 
+    
+    line(20,830,width-20,830);
+    
+    createButton(900,250,100, Button.STARTB);
+    fill(255);
+    textSize(40);
+    text("MAIN MENU", width/2, 915);  
+  }
+  else if(currentScreen == Screen.INSENEMY){
+    cursor(planecursor);
+    background(150);
+    
+    textSize(30);
+    text("Aliens are attacking!! \nShoot the enemies to defeat them and gain points \nAvoid enemy attacks and survive until the end!", width/2, 50);
+    
+    stroke(100);
+    line(20,150,width-20,150);
+    
+    Target basicEnemy = new Target(width/6, 250);
+    basicEnemy.display();
+    
+    TargetTwo spaceshipEnemy = new TargetTwo(width/6, 450);
+    spaceshipEnemy.display();
+    
+    textSize(15);
+    text("Stalker placeholder\n insert image here", width/6, 650);
+    
+    textSize(20);
+    textAlign(LEFT);
+    text("Jellyjellies like to float through life like they do your computer screen.\nThey do not think much on account of having no brain and their philosophy to life\nand war is 'random bullets go!'\nBe careful not to touch them they sting!", width/3.5, 200);
+    
+    text("Collect falling hearts to heal yourself by 1 point", width/3.5, 450);
+    
+    textAlign(CENTER);
     
     
     line(20,830,width-20,830);
@@ -330,8 +357,7 @@ void draw() {
     createButton(900,250,100, Button.STARTB);
     fill(255);
     textSize(40);
-    text("MAIN MENU", width/2, 915);
-    
+    text("MAIN MENU", width/2, 915);  
   }  
   
 }
