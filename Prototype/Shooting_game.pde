@@ -63,11 +63,15 @@ void draw() {
     textSize(50);
     text("INSTRUCTIONS", width/2, 625); 
    
-    createButton(width/2, 720,250,100, Button.EXITB);
+    createButton(width/2, 720,250,100, Button.MODEB);
     fill(255);
     textSize(50);
-    text("EXIT", width/2, 735);
+    text("MODES", width/2, 735);
     
+    createButton(width/2, 830,250,100, Button.EXITB);
+    fill(255);
+    textSize(50);
+    text("EXIT", width/2, 845);
 
    
     text("Shooting Game Prototype Title", width/2, 150);
@@ -222,6 +226,7 @@ void draw() {
       }
     }
   }
+  //pause menu
   else if (currentScreen == Screen.PAUSE)
   {
     cursor(planecursor);
@@ -239,6 +244,7 @@ void draw() {
     textSize(40);
     text("GIVE UP", width/2, 375);
   }
+  //gameover screen
   else if (currentScreen == Screen.GAMEOVER)
   {
     cursor(planecursor);
@@ -258,6 +264,7 @@ void draw() {
     textSize(40);
     text("MAIN MENU", width/2, 715);
   }
+  //victory screen
   else if (currentScreen == Screen.VICTORY)
   {
     cursor(planecursor);
@@ -277,6 +284,7 @@ void draw() {
     textSize(40);
     text("MAIN MENU", width/2, 715);
   }
+  //instructions screen - player page
   else if (currentScreen == Screen.INSTRUCTIONS)
   {
     cursor(planecursor);
@@ -329,6 +337,7 @@ void draw() {
     textSize(40);
     text("ENEMY INFO", 3*width/4, 915);  
   }
+  //instructions screen - enemy info page
   else if(currentScreen == Screen.ENEMYINFO){
     cursor(planecursor);
     background(180);
@@ -374,14 +383,25 @@ void draw() {
     fill(255);
     textSize(40);
     text("MAIN MENU", width/2, 915);  
-    
-    
+        
     translate(width/2, 450);
     rotate(radians(90));
     Laser exampleEnemyLaser = new Laser(35, -75, false);
-    exampleEnemyLaser.display();
+    exampleEnemyLaser.display();    
+  } 
+  //mode select screen
+  else if(currentScreen == Screen.MODESELECT){
+    cursor(planecursor);
+    background(51);
     
-  }  
+    textSize(50);
+    text("DIFFICULTY:", width/2, 150);
+    
+    createButton(width/2, 900,250,100, Button.STARTB);
+    fill(255);
+    textSize(40);
+    text("MAIN MENU", width/2, 915);  
+  }
   
 }
 
@@ -414,6 +434,9 @@ void mousePressed(){
   }
   else if (currentButton == Button.ENEMYB){
   currentScreen = Screen.ENEMYINFO;
+  }
+  else if (currentButton == Button.MODEB){
+  currentScreen = Screen.MODESELECT;
   }
 }
 

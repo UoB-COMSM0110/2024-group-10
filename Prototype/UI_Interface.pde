@@ -7,7 +7,10 @@ enum Button {
   EXITB,
   STARTB,
   INSTRUCTIONB,
-  ENEMYB
+  ENEMYB,
+  MODEB,
+  EASYB,
+  HARDB
 }
 
 enum Screen {
@@ -17,7 +20,8 @@ enum Screen {
   VICTORY,
   GAMEOVER,
   INSTRUCTIONS,
-  ENEMYINFO
+  ENEMYINFO,
+  MODESELECT
 }
 
 //UI related vars
