@@ -324,7 +324,7 @@ void draw() {
     textSize(40);
     text("MAIN MENU", width/2, 915);  
   }
-  else if(currentScreen == Screen.INSENEMY){
+  else if(currentScreen == Screen.ENEMYINFO){
     cursor(planecursor);
     background(150);
     
@@ -345,9 +345,11 @@ void draw() {
     
     textSize(20);
     textAlign(LEFT);
-    text("Jellyjellies like to float through life like they do your computer screen.\nThey do not think much on account of having no brain and their philosophy to life\nand war is 'random bullets go!'\nBe careful not to touch them they sting!", width/3.5, 200);
+    text("Jellyjellies like to float through life like they do your computer screen.\nThey do not think much on account of having no brain and their philosophy to life\nand war is 'random bullets go!'\nBe careful not to touch them they sting!\nAttack type: Jelly Shots (Warning: do not consume. The developers of this game\nwill not be held liable)", width/3.5, 200);
     
-    text("Collect falling hearts to heal yourself by 1 point", width/3.5, 450);
+    text("Extra-purrestrials have long told legends of 'humans'. Beings who wielded a \ntechnology always just out of the grasp of cat-kind, tormenting their ancestors for \namusement and so called 'likes'. Well, now their descendents are here to return the \nfavour. \nAttack type: Pointier Lasers \nNote: Has developed advanced defensive technologies to protect their fluffy tummies", width/3.5, 400);
+    
+    text("Stalker text goes here", width/3.5, 650);
     
     textAlign(CENTER);
     

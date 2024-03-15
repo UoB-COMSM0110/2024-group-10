@@ -7,7 +7,7 @@ enum Button {
   EXITB,
   STARTB,
   INSTRUCTIONB,
-  INSENEMYB
+  ENEMYB
 }
 
 enum Screen {
@@ -17,7 +17,7 @@ enum Screen {
   VICTORY,
   GAMEOVER,
   INSTRUCTIONS,
-  INSENEMY
+  ENEMYINFO
 }
 
 //UI related vars
@@ -26,7 +26,7 @@ color rectColor = color(0,0,102);
 color currentColor = rectColor;
 color rectHighlight = color(0,0,50);
 Button currentButton = Button.NONE;
-Screen currentScreen = Screen.START;
+Screen currentScreen = Screen.ENEMYINFO;
 PImage planecursor;
 int buttonHeight = 100;
 int buttonWidth = 250;
