@@ -14,7 +14,7 @@ ArrayList<Stalker> enemies;
 ArrayList<Integer> enemyRemovedTime = new ArrayList<Integer>();
 
 void settings(){
-  size(1000, int(displayHeight*0.91));
+  size(1000, int(displayHeight*0.88));
 }
 
 void setup(){
@@ -46,6 +46,10 @@ void setup(){
   
   // lives
   lifes = new ArrayList<Life>();
+  
+  //bgm
+  minim = new Minim(this);
+  bgm = minim.loadFile("PrototypeBgm/bgm_game_test.mp3"); 
 }
 
 void draw() {
@@ -418,7 +422,20 @@ void draw() {
     text("MAIN MENU", width/2, 915);  
   }
   
+  //bgm realted
+  if (currentScreen == Screen.GAME) {
+    if (!bgm.isPlaying()) {
+      bgm.loop(); // 如果当前是游戏屏幕且音乐未播放，则开始循环播放音乐
+    }
+  } else {
+    if (bgm.isPlaying()) {
+      bgm.pause(); // 如果不在游戏屏幕且音乐正在播放，则暂停音乐
+    }
+  }
+
+
 }
+
 
 
 void keyPressed(){
