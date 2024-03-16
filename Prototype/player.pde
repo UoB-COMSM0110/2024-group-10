@@ -6,8 +6,11 @@ class Player {
   //render player
   PImage imgNormal;
   PImage imgHit;
+  boolean isInvincible = false; // 新增：标记玩家是否无敌
+  int invincibleDuration = 2000; // 新增：无敌持续时间，单位毫秒
   int hitTime = -2000; // 记录被击中的时间，初始化为一个足够小的值
   int score = 0;
+  int invincibleStartTime = -2000; // 新增：无敌开始的时间
   
   Player(float x, float y) {
     this.x = x;
@@ -25,6 +28,9 @@ class Player {
     }
     x = constrain(x, 0, width);
     y = constrain(y, 0, height);
+    if (isInvincible && millis() - invincibleStartTime > invincibleDuration) {
+      isInvincible = false; // 无敌时间结束
+    }
   }
   
     void display() {
@@ -37,8 +43,13 @@ class Player {
      }
        // 新增一个方法来处理被击中的状态
    void gotHit() {
-     hit = true; // 标记为被击中
-     hitTime = millis(); // 更新被击中的时间戳
+    if (!isInvincible) {
+      hit = true; // 标记为被击中
+      isInvincible = true; // 设置玩家为无敌状态
+      invincibleStartTime = millis(); // 记录无敌开始时间
+      hitTime = millis(); // 更新被击中的时间戳
+    }
+     
     }
      
 }

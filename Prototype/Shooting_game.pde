@@ -57,7 +57,8 @@ void setup(){
 }
 
 void draw() {
-  
+  System.out.println("Current Mode: " + currentMode);
+
   //main menu
   if (currentScreen == Screen.START){
     background(51);
@@ -469,6 +470,7 @@ void mousePressed(){
     currentScreen = Screen.GAME;
   }
   else if (currentButton == Button.STARTB){
+    resetGame(); 
     currentScreen = Screen.START;
   }
   else if (currentButton == Button.INSTRUCTIONB){
@@ -490,8 +492,31 @@ void mousePressed(){
     currentMode = "HARD"; 
     currentScreen = Screen.START;
   }
+
 }
 
+
+//game inside funcitons below:
+//reload game when retart game after gameover and pasu-giveup
+void resetGame() {
+    player = new Player(width / 2, height - 20); // 重新初始化玩家
+    playerBullets.clear(); // 清空玩家子弹列表
+    targetBullets.clear(); // 清空目标子弹列表
+    targets.clear(); // 清空目标列表
+    targetsTwo.clear(); // 清空第二类目标列表
+    lasers.clear(); // 清空激光列表
+    lifes.clear(); // 清空生命列表
+    enemies.clear(); // 清空敌人列表
+    enemyRemovedTime.clear(); // 清空敌人移除时间列表
+    gameOver = false; // 重置游戏结束标志
+    score = 0; // 重置得分
+
+    if (currentMode.equals("HARD")) {
+        for (int i = 0; i < 1; i++) {
+            enemies.add(new Stalker(random(0, width), random(0, height), player));
+        }
+    }
+}
 //Gameplay related functions below:
 void updateAndDisplayBullets(ArrayList<Bullet> bullets) {
   for (int i = bullets.size() - 1; i >= 0; i--) {
@@ -564,7 +589,7 @@ void checkCollisionsLaser(ArrayList<Bullet> bullets, ArrayList<TargetTwo> target
 void checkCollisions(ArrayList<Bullet> bullets, Player player) {
   for (int i = bullets.size() - 1; i >= 0; i--) {
     Bullet bullet = bullets.get(i);
-    if (bullet.hits(player)) {
+    if (bullet.hits(player) && !player.isInvincible) {// 无敌时间
       player.hit = true;
       player.gotHit() ;
       bullets.remove(i);
@@ -575,7 +600,7 @@ void checkCollisions(ArrayList<Bullet> bullets, Player player) {
 void checkCollisionsLaser(ArrayList<Laser> lasers, Player player) {
   for (int i = lasers.size() - 1; i >= 0; i--) {
     Laser laser = lasers.get(i);
-    if (laser.hits(player)) {
+    if (laser.hits(player) && !player.isInvincible) { //无敌时间
       player.hit = true;
       player.gotHit() ;
       lasers.remove(i);
