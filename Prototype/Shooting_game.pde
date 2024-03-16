@@ -1,4 +1,5 @@
 //Gameplay related vars
+String currentMode = "HARD";
 Player player;
 ArrayList<Bullet> playerBullets;
 ArrayList<Bullet> targetBullets;
@@ -40,9 +41,12 @@ void setup(){
   // enemies
   // come back to, might change the number of enemies
   enemies = new ArrayList<Stalker>();
-  for (int i = 0; i < 1; i++) {
-    enemies.add(new Stalker(random(0, width), random(0, height), player));
+  if (currentMode.equals("HARD")){
+    for (int i = 0; i < 1; i++) {
+      enemies.add(new Stalker(random(0, width), random(0, height), player));
+    }
   }
+  
   
   // lives
   lifes = new ArrayList<Life>();
@@ -80,6 +84,10 @@ void draw() {
    
     text("Shooting Game Prototype Title", width/2, 150);
     cursor(planecursor);
+    
+    //increase mode
+    textSize(30);
+    text("Current Mode: " + currentMode, width/2, 300 );
     
     //reinitialise game stats
     gameOver = false;
@@ -133,8 +141,8 @@ void draw() {
     textSize(20); 
     //text("Lives: " + player.lives, 30, 30); 
     for (int i = 0; i < player.lives; i++) {
-    image(lives, 30 + (i * 40), 20); 
-}
+      image(lives, 30 + (i * 40), 20); 
+    }
     text("hit time " + player.hitTime, 300, 30); 
     
     text("Score: " + score, 300, 50);
@@ -202,11 +210,13 @@ void draw() {
       }
       
       // Respawn any enemies that were removed more than 30 seconds ago
-       for (int i = enemyRemovedTime.size() - 1; i >= 0; i--) {
-        int time = enemyRemovedTime.get(i);
-        if (millis() - time > 5000) {
-          enemyRemovedTime.remove(i);
-          enemies.add(new Stalker(random(0, width), random(0, height), player));
+      if (currentMode.equals("HARD")) {
+        for (int i = enemyRemovedTime.size() - 1; i >= 0; i--) {
+          int time = enemyRemovedTime.get(i);
+          if (millis() - time > 5000) {
+            enemyRemovedTime.remove(i);
+            enemies.add(new Stalker(random(0, width), random(0, height), player));
+          }
         }
       }
      
@@ -471,13 +481,15 @@ void mousePressed(){
     currentScreen = Screen.MODESELECT;
   }
   /* code below for difficulty level change, can be used after Antai part is done (implement code for gameplay difficulty changes) 
-  else if (currentButton == Button.EASYB){
-    change difficulty mode to easy;
-  }
-  else if (currentButton == Button.HARDB){
-    change difficulty mode to hard;
   }
   */
+  else if (currentButton == Button.EASYB) {
+    currentMode = "EASY"; 
+    currentScreen = Screen.START; 
+  } else if (currentButton == Button.HARDB) {
+    currentMode = "HARD"; 
+    currentScreen = Screen.START;
+  }
 }
 
 //Gameplay related functions below:
