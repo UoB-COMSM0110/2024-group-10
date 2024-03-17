@@ -57,7 +57,6 @@ void setup(){
 }
 
 void draw() {
-  System.out.println("Current Mode: " + currentMode);
 
   //main menu
   if (currentScreen == Screen.START){
@@ -468,6 +467,7 @@ void mousePressed(){
   }
   else if (currentButton == Button.GAMEB){
     currentScreen = Screen.GAME;
+    resetGame();
   }
   else if (currentButton == Button.STARTB){
     resetGame(); 
