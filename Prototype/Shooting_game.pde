@@ -9,13 +9,21 @@ ArrayList<Laser> lasers;
 ArrayList<Life> lifes;
 boolean gameOver = false;
 PImage lives;
+PImage bgImage;
 int score = 0;
+boolean movingLeft = false;
+boolean movingRight = false;
+boolean movingUp = false;
+boolean movingDown = false;
+boolean isShooting = false;
 
 ArrayList<Stalker> enemies;
 ArrayList<Integer> enemyRemovedTime = new ArrayList<Integer>();
 
 void settings(){
   size(1000, int(displayHeight*0.88));
+  bgImage = loadImage("PrototypeImages/bgImage.png"); 
+  bgImage.resize(width, height); 
 }
 
 void setup(){
@@ -56,8 +64,7 @@ void setup(){
   bgm = minim.loadFile("PrototypeBgm/bgm_game_test.mp3"); 
 }
 
-void draw() {
-
+void draw() { 
   //main menu
   if (currentScreen == Screen.START){
     background(51);
@@ -101,13 +108,21 @@ void draw() {
     currentButton = Button.NONE;
     noCursor();
     background(255);
-    
+    image(bgImage, width/2, height/2);
     //Main gameplay code start here:
   
     if (!gameOver) {
       // Update and display player
       player.update();
       player.display(); 
+      
+      if (isShooting) {
+      long currentTime = millis();
+      if (currentTime - player.lastShootTime > player.shootInterval) {
+        playerBullets.add(new Bullet(player.x, player.y - 15, true));
+        player.lastShootTime = currentTime;
+      }
+    }
       for (int i = 0; i < player.lives; i++) {
            image(lives, 30 + (i * 40), 20); 
             }
@@ -136,15 +151,16 @@ void draw() {
             lifes.remove(i);
           }
        }
-      
+    
     fill(0); 
     textSize(20); 
     //text("Lives: " + player.lives, 30, 30); 
     for (int i = 0; i < player.lives; i++) {
       image(lives, 30 + (i * 40), 20); 
     }
+    fill(255, 255, 255);
     text("hit time " + player.hitTime, 300, 30); 
-    
+    fill(255, 255, 255);
     text("Score: " + score, 300, 50);
     
       // Update and display player bullets
@@ -448,16 +464,33 @@ void draw() {
 
 
 
-void keyPressed(){
-  //default ESC in processing will close the window. This overrides that.
+/*void keyPressed(){
+  default ESC in processing will close the window. This overrides that.
  if (key == ESC){
    key = 0;
  }
  if (!gameOver && currentScreen == Screen.GAME) {
     if (key == ' ') {
-      playerBullets.add(new Bullet(player.x, player.y - 15, true));
-    }
+      //playerBullets.add(new Bullet(player.x, player.y - 15, true));
+   }
  }
+}*/
+
+void keyPressed() {
+  if (key == ESC) key = 0; 
+  if (keyCode == LEFT) movingLeft = true;
+  if (keyCode == RIGHT) movingRight = true;
+  if (keyCode == UP) movingUp = true;
+  if (keyCode == DOWN) movingDown = true;
+  if (key == ' ') isShooting = true;
+}
+
+void keyReleased() {
+  if (keyCode == LEFT) movingLeft = false;
+  if (keyCode == RIGHT) movingRight = false;
+  if (keyCode == UP) movingUp = false;
+  if (keyCode == DOWN) movingDown = false;
+  if (key == ' ') isShooting = false;
 }
 
 void mousePressed(){

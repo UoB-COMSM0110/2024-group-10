@@ -11,6 +11,8 @@ class Player {
   int hitTime = -2000; // 记录被击中的时间，初始化为一个足够小的值
   int score = 0;
   int invincibleStartTime = -2000; // 新增：无敌开始的时间
+  long lastShootTime = 0; 
+  int shootInterval = 50; 
   
   Player(float x, float y) {
     this.x = x;
@@ -20,14 +22,21 @@ class Player {
   }
   
     void update() {
-    if (keyPressed) {
+      if (movingLeft) this.x -= this.speed;
+      if (movingRight) this.x += this.speed;
+      if (movingUp) this.y -= this.speed;
+      if (movingDown) this.y += this.speed;
+
+     this.x = constrain(this.x, 0, width);
+     this.y = constrain(this.y, 0, height);
+    /*if (keyPressed) {
        if (keyCode == LEFT) x -= speed;
       else if (keyCode == RIGHT) x += speed;
       else if (keyCode == UP) y -= speed;
       else if (keyCode == DOWN) y += speed;
     }
     x = constrain(x, 0, width);
-    y = constrain(y, 0, height);
+    y = constrain(y, 0, height);*/
     if (isInvincible && millis() - invincibleStartTime > invincibleDuration) {
       isInvincible = false; // 无敌时间结束
     }
