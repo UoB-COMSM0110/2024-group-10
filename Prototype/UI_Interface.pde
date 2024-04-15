@@ -10,7 +10,8 @@ enum Button {
   ENEMYB,
   MODEB,
   EASYB,
-  HARDB
+  HARDB,
+  NAMEB
 }
 
 enum Screen {
@@ -22,7 +23,7 @@ enum Screen {
   INSTRUCTIONS,
   ENEMYINFO,
   MODESELECT,
-  NAMEENTRY
+  NAMEENTRY,
 }
 
 //UI related vars
@@ -35,6 +36,7 @@ Screen currentScreen = Screen.START;
 PImage planecursor;
 int buttonHeight = 100;
 int buttonWidth = 250;
+
 
 
 //UI related functions below:

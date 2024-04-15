@@ -13,13 +13,15 @@ class Player {
   int invincibleStartTime = -2000; // 新增：无敌开始的时间
   long lastShootTime = 0; 
   int shootInterval = 50; 
-  String name;
+  String name = "";
+  int playerNumber;
   
-  Player(float x, float y) {
+  Player(float x, float y, int playerNumber) {
     this.x = x;
     this.y = y;
     imgNormal = loadImage("PrototypeImages/me.png");
     imgHit = loadImage("PrototypeImages/me_hit.png");
+    this.playerNumber = playerNumber;
   }
   
     void update() {
@@ -64,6 +66,15 @@ class Player {
       hitTime = millis(); // 更新被击中的时间戳
     }
      
+    }
+    
+    void alterName(){
+      if (key == BACKSPACE && name.length() > 0){
+        name = name.substring(0, name.length()-1);
+      }
+      else if (Character.isLetterOrDigit(key)){
+        name = name.concat(String.valueOf(key));
+      }
     }
      
 }

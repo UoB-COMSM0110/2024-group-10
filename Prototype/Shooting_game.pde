@@ -33,6 +33,9 @@ boolean p2isShooting = false;
 ArrayList<Stalker> enemies;
 ArrayList<Integer> enemyRemovedTime = new ArrayList<Integer>();
 
+Player playerToName;
+
+
 void settings() {
   size(1000, int(displayHeight*0.88));
   bgImage = loadImage("PrototypeImages/bgImage.png"); 
@@ -49,8 +52,8 @@ void setup() {
   strokeWeight(4);
 
   // Gameplay related
-  player = new Player(width / 4, height - 25);
-  player2 = new Player((width / 4) * 3, height - 25);
+  player = new Player(width / 4, height - 25, 1 );
+  player2 = new Player((width / 4) * 3, height - 25, 2);
 
   playerBullets = new ArrayList<Bullet>();
   player2Bullets = new ArrayList<Bullet>(); // Initialize player 2 bullets ArrayList
@@ -76,14 +79,18 @@ void setup() {
   // Initialize background music
   minim = new Minim(this);
   bgm = minim.loadFile("PrototypeBgm/bgm_game_test.mp3"); 
+  
+  //Set naming screen to name player 1 first
+  playerToName = player;
 }
 
 
 void draw() {
   // Main menu
   if (currentScreen == Screen.START) {
+    currentButton = Button.NONE;
     background(51);
-    createButton(width/2, 500, 250, 100, Button.GAMEB);
+    createButton(width/2, 500, 250, 100, Button.NAMEB);
     fill(255);
     textSize(50);
     text("START", width/2, 515);
@@ -318,6 +325,7 @@ void draw() {
   else if (currentScreen == Screen.GAMEOVER) {
     cursor(planecursor);
     background(51);
+    currentButton = Button.NONE;
 
     textSize(50);
     text("GAME OVER!", width/2, 200);
@@ -326,16 +334,15 @@ void draw() {
     text("Oh no! \n You died. The aliens have won. \nBetter luck next time :(", width/2, 300);
 
     textSize(50);
-    // adjust so it's the player's names
-    text("Player 1 Score: " + p1score, width/2, 500);
-    text("Player 2 Score: " + p2score, width/2 , 600);
+    text(player.name + "'s Score: " + p1score, width/2, 450);
+    text(player2.name + "'s Score : " + p2score, width/2 , 550);
 
     createButton(width/3, 700, 250, 100, Button.STARTB);
     fill(255);
     textSize(40);
     text("MAIN MENU", width/3, 715);
     
-    createButton(2*width/3, 700, 250, 100, Button.GAMEB);
+    createButton(2*width/3, 700, 250, 100, Button.NAMEB);
     fill(255);
     textSize(40);
     text("RETRY", 2*width/3, 715);
@@ -344,6 +351,7 @@ void draw() {
   else if (currentScreen == Screen.VICTORY) {
     cursor(planecursor);
     background(51);
+    currentButton = Button.NONE;
 
     textSize(50);
     text("CONGRATULATIONS!", width/2, 200);
@@ -363,6 +371,7 @@ void draw() {
   else if (currentScreen == Screen.INSTRUCTIONS) {
     cursor(planecursor);
     background(180);
+    currentButton = Button.NONE;
 
     textSize(30);
     text("Aliens are attacking!! \nShoot the enemies to defeat them and gain points \nAvoid enemy attacks and survive until the end!", width/2, 50);
@@ -380,7 +389,7 @@ void draw() {
     text("Direction key placeholder\n insert image here", 3*width/4, 250);
     text("ESC key placeholder\n insert image here", width/8, 620);
 
-    Player examplePlayer = new Player(width/2, 380);
+    Player examplePlayer = new Player(width/2, 380, 0);
     examplePlayer.display();
 
     for (int i = 0; i < 3; i++) {
@@ -418,6 +427,7 @@ void draw() {
   else if (currentScreen == Screen.ENEMYINFO) {
     cursor(planecursor);
     background(180);
+    currentButton = Button.NONE;
 
     textSize(30);
     text("Aliens are attacking!! \nShoot the enemies to defeat them and gain points \nAvoid enemy attacks and survive until the end!", width/2, 50);
@@ -470,6 +480,7 @@ void draw() {
   else if (currentScreen == Screen.MODESELECT) {
     cursor(planecursor);
     background(51);
+    currentButton = Button.NONE;
 
     textSize(50);
     text("Current Difficulty:", width/2, 150);
@@ -489,6 +500,33 @@ void draw() {
     textSize(40);
     text("MAIN MENU", width/2, 915);
   }
+  else if (currentScreen == Screen.NAMEENTRY) {
+    cursor(planecursor);
+    background(51);
+    currentButton = Button.NONE;
+
+    textSize(40);
+    text("Type to input name. Press TAB to switch player", width/2, 150);
+    text("Currently naming:", width/3, 200);
+
+    fill(255);
+    textSize(50);
+    text("Player 1 name:", width/2, 300);
+    text("Player 2 name:", width/2, 500);
+    textSize(40);
+    
+    fill(255,0,255);
+    text("Player " + playerToName.playerNumber , width*.57, 200);
+    text(player.name, width/2, 400);
+    text(player2.name, width/2, 600);
+    
+    
+    createButton(width/2, 800, 250, 100, Button.GAMEB);
+    fill(255);
+    textSize(40);
+    text("CONFIRM", width/2, 815);
+    
+  }
 
   // BGM related
   if (currentScreen == Screen.GAME) {
@@ -504,6 +542,18 @@ void draw() {
 
 
 void keyPressed() {
+  if (currentScreen == Screen.NAMEENTRY){
+     if(key== TAB){
+       if (playerToName == player){
+         playerToName = player2;
+       }
+       else if (playerToName == player2){
+         playerToName = player;
+       }
+     }
+     playerToName.alterName();
+  }
+
   if (key == ESC) 
     key = 0; 
   if (keyCode == LEFT) 
@@ -577,6 +627,9 @@ void mousePressed(){
   else if (currentButton == Button.MODEB){
     currentScreen = Screen.MODESELECT;
   }
+  else if (currentButton == Button.NAMEB) { 
+    currentScreen = Screen.NAMEENTRY;
+  }
   /* code below for difficulty level change, can be used after Antai part is done (implement code for gameplay difficulty changes) 
   }
   */
@@ -587,6 +640,7 @@ void mousePressed(){
     currentMode = "HARD"; 
     currentScreen = Screen.START;
   }
+
 
 }
 
