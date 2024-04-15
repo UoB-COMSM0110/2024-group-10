@@ -13,6 +13,7 @@ class Player {
   int invincibleStartTime = -2000; // 新增：无敌开始的时间
   long lastShootTime = 0; 
   int shootInterval = 50; 
+  String name;
   
   Player(float x, float y) {
     this.x = x;

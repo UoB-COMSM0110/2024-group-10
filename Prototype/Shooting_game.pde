@@ -330,10 +330,15 @@ void draw() {
     text("Player 1 Score: " + p1score, width/2, 500);
     text("Player 2 Score: " + p2score, width/2 , 600);
 
-    createButton(width/2, 700, 250, 100, Button.STARTB);
+    createButton(width/3, 700, 250, 100, Button.STARTB);
     fill(255);
     textSize(40);
-    text("MAIN MENU", width/2, 715);
+    text("MAIN MENU", width/3, 715);
+    
+    createButton(2*width/3, 700, 250, 100, Button.GAMEB);
+    fill(255);
+    textSize(40);
+    text("RETRY", 2*width/3, 715);
   }
   // Victory screen
   else if (currentScreen == Screen.VICTORY) {

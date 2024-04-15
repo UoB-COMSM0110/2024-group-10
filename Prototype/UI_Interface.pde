@@ -21,7 +21,8 @@ enum Screen {
   GAMEOVER,
   INSTRUCTIONS,
   ENEMYINFO,
-  MODESELECT
+  MODESELECT,
+  NAMEENTRY
 }
 
 //UI related vars
