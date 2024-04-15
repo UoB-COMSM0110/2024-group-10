@@ -382,11 +382,17 @@ void draw() {
     textSize(30);
     text("Shoot", width/4, 400);
     text("Move", 3*width/4, 400);
+    
+    text("Player 1", width/10, 250);
+    text("Player 2", width/10, 350);
 
     // PLACEHOLDER TEXT - needs images from art team
     textSize(15);
-    text("Spacebar placeholder\n insert image here", width/4, 250);
-    text("Direction key placeholder\n insert image here", 3*width/4, 250);
+    text("Spacebar placeholder\n insert image here", width/4, 220);
+    text("Direction key placeholder\n insert image here", 3*width/4, 220);
+    
+    text("F key placeholder\n insert image here", width/4, 320);
+    text("WASD keys placeholder\n insert image here", 3*width/4, 320);
     text("ESC key placeholder\n insert image here", width/8, 620);
 
     Player examplePlayer = new Player(width/2, 380, 0);
