@@ -22,34 +22,38 @@ class Player {
   }
   
     void update() {
-      if (movingLeft) this.x -= this.speed;
-      if (movingRight) this.x += this.speed;
-      if (movingUp) this.y -= this.speed;
-      if (movingDown) this.y += this.speed;
+      if (this == player) {
+        if (p1movingLeft) this.x -= this.speed;
+        if (p1movingRight) this.x += this.speed;
+        if (p1movingUp) this.y -= this.speed;
+        if (p1movingDown) this.y += this.speed;
+      } else if (this == player2) {
+        if (p2movingLeft) this.x -= this.speed;
+        if (p2movingRight) this.x += this.speed;
+        if (p2movingUp) this.y -= this.speed;
+        if (p2movingDown) this.y += this.speed;
+      }
+      
 
      this.x = constrain(this.x, 0, width);
      this.y = constrain(this.y, 0, height);
-    /*if (keyPressed) {
-       if (keyCode == LEFT) x -= speed;
-      else if (keyCode == RIGHT) x += speed;
-      else if (keyCode == UP) y -= speed;
-      else if (keyCode == DOWN) y += speed;
-    }
-    x = constrain(x, 0, width);
-    y = constrain(y, 0, height);*/
+
+
     if (isInvincible && millis() - invincibleStartTime > invincibleDuration) {
       isInvincible = false; // 无敌时间结束
     }
   }
   
     void display() {
-      imageMode(CENTER);
-       if(millis() - hitTime <= 500) {
-         image(imgHit, x, y);
-       }else {
-         image(imgNormal, x, y);
+      if (lives > 0) {
+        imageMode(CENTER);
+         if(millis() - hitTime <= 500) {
+           image(imgHit, x, y);
+         }else {
+           image(imgNormal, x, y);
+         }
        }
-     }
+    }
        // 新增一个方法来处理被击中的状态
    void gotHit() {
     if (!isInvincible) {

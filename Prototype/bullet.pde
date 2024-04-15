@@ -5,11 +5,13 @@ class Bullet {
   float angle = random(0, TWO_PI);
   PImage imgEnemyBullet;
   PImage imgMeBullet;
+  Player shooter;
   
-  Bullet(float x, float y, boolean isPlayer) {
+  Bullet(float x, float y, boolean isPlayer, Player shooter) {
     this.x = x;
     this.y = y;
     this.isPlayer = isPlayer;
+    this.shooter = shooter;
     imgEnemyBullet = loadImage("PrototypeImages/enemy_bullet.png");
     imgMeBullet = loadImage("PrototypeImages/me_bullet.png");
   }
@@ -45,8 +47,13 @@ class Bullet {
   }
   
   boolean hits(Player player) {
+    float collisionRadius = isPlayer ? 15 : 51;
     float d = dist(x, y, player.x, player.y);
-    return d < 15; 
+    return d < collisionRadius;
+  }
+  
+    Player getShooter() {
+    return shooter;
   }
 }
 
@@ -54,7 +61,9 @@ class Laser extends Bullet {
   PImage imgLaser;
   
   Laser (float x, float y, boolean isPlayer) {
-    super(x, y, isPlayer);
+    
+    // change this
+    super(x, y, isPlayer, player);
      imgLaser = loadImage("PrototypeImages/laser.png");
   }
   
@@ -72,4 +81,9 @@ class Laser extends Bullet {
       y < player.y + 50 &&
       y + 50 > player.y;
   }
+  
+  Player getShooter() {
+    return shooter;
+  }
+  
 }

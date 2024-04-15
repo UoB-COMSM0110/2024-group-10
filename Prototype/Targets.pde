@@ -6,6 +6,7 @@ class Target {
   int explosionStartTime; 
   int explosionDuration = 250; 
   boolean shouldBeRemoved = false;
+  Player target;
   PImage enemy1;
   PImage enemy2;
   PImage enemy1_damaged;
@@ -15,6 +16,7 @@ class Target {
   Target(float x, float y) {
     this.x = x;
     this.y = y;
+    this.target = target;
     this.angle = random(0, TWO_PI);
     enemy1 = loadImage("PrototypeImages/enemy1.png");
     enemy1.resize(42,35 );
@@ -38,7 +40,7 @@ class Target {
     
     // Shoot bullet
     if (frameCount % 60 == 0) {
-      targetBullets.add(new Bullet(x, y, false));
+      targetBullets.add(new Bullet(x, y, false, target));
     }
   }
   }

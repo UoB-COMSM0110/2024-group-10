@@ -1,7 +1,12 @@
-//Gameplay related vars
+// Gameplay related vars
 String currentMode = "HARD";
+
 Player player;
+Player player2;
+
 ArrayList<Bullet> playerBullets;
+ArrayList<Bullet> player2Bullets;
+
 ArrayList<Bullet> targetBullets;
 ArrayList<Target> targets;
 ArrayList<TargetTwo> targetsTwo;
@@ -10,35 +15,46 @@ ArrayList<Life> lifes;
 boolean gameOver = false;
 PImage lives;
 PImage bgImage;
-int score = 0;
-boolean movingLeft = false;
-boolean movingRight = false;
-boolean movingUp = false;
-boolean movingDown = false;
-boolean isShooting = false;
+int p1score = 0;
+int p2score = 0;
+
+boolean p1movingLeft = false;
+boolean p1movingRight = false;
+boolean p1movingUp = false;
+boolean p1movingDown = false;
+boolean p1isShooting = false;
+
+boolean p2movingLeft = false;
+boolean p2movingRight = false;
+boolean p2movingUp = false;
+boolean p2movingDown = false;
+boolean p2isShooting = false;
 
 ArrayList<Stalker> enemies;
 ArrayList<Integer> enemyRemovedTime = new ArrayList<Integer>();
 
-void settings(){
+void settings() {
   size(1000, int(displayHeight*0.88));
   bgImage = loadImage("PrototypeImages/bgImage.png"); 
   bgImage.resize(width, height); 
 }
 
-void setup(){
-  //UI related
+void setup() {
+  // UI related
   planecursor = loadImage("PrototypeImages/planecursor.gif");
   background(51);
   textAlign(CENTER);
   rectMode(CENTER);
   imageMode(CENTER);
   strokeWeight(4);
-  
 
-  //Gameplay related
-  player = new Player(width / 2, height - 20);
+  // Gameplay related
+  player = new Player(width / 4, height - 25);
+  player2 = new Player((width / 4) * 3, height - 25);
+
   playerBullets = new ArrayList<Bullet>();
+  player2Bullets = new ArrayList<Bullet>(); // Initialize player 2 bullets ArrayList
+
   targetBullets = new ArrayList<Bullet>();
   targets = new ArrayList<Target>();
   targetsTwo = new ArrayList<TargetTwo>();
@@ -46,132 +62,155 @@ void setup(){
   lives = loadImage("PrototypeImages/lives.png"); 
   lives.resize(36, 29); 
   
-  // enemies
-  // come back to, might change the number of enemies
+  // Initialize enemies
   enemies = new ArrayList<Stalker>();
-  if (currentMode.equals("HARD")){
+  if (currentMode.equals("HARD")) {
     for (int i = 0; i < 1; i++) {
-      enemies.add(new Stalker(random(0, width), random(0, height), player));
+      enemies.add(new Stalker(random(0, width), random(0, height), player, player2));
     }
   }
   
-  
-  // lives
+  // Initialize lifes
   lifes = new ArrayList<Life>();
   
-  //bgm
+  // Initialize background music
   minim = new Minim(this);
   bgm = minim.loadFile("PrototypeBgm/bgm_game_test.mp3"); 
 }
 
-void draw() { 
-  //main menu
-  if (currentScreen == Screen.START){
+
+void draw() {
+  // Main menu
+  if (currentScreen == Screen.START) {
     background(51);
-    createButton(width/2,500,250,100, Button.GAMEB);
+    createButton(width/2, 500, 250, 100, Button.GAMEB);
     fill(255);
     textSize(50);
     text("START", width/2, 515);
-   
-    createButton(width/2, 610,350,100, Button.INSTRUCTIONB);
+
+    createButton(width/2, 610, 350, 100, Button.INSTRUCTIONB);
     fill(255);
     textSize(50);
-    text("INSTRUCTIONS", width/2, 625); 
-   
-    createButton(width/2, 720,250,100, Button.MODEB);
+    text("INSTRUCTIONS", width/2, 625);
+
+    createButton(width/2, 720, 250, 100, Button.MODEB);
     fill(255);
     textSize(50);
     text("MODES", width/2, 735);
-    
-    createButton(width/2, 830,250,100, Button.EXITB);
+
+    createButton(width/2, 830, 250, 100, Button.EXITB);
     fill(255);
     textSize(50);
     text("EXIT", width/2, 845);
 
-   
     text("Shooting Game Prototype Title", width/2, 150);
     cursor(planecursor);
-    
-    //increase mode
+
+    // Increase mode
     textSize(30);
-    text("Current Mode: " + currentMode, width/2, 300 );
-    
-    //reinitialise game stats
+    text("Current Mode: " + currentMode, width/2, 300);
+
+    // Reinitialize game stats
     gameOver = false;
     player.lives = 3;
     player.hitTime = 0; // added this to reset hitTime
-    score = 0;
+    p1score = 0;
     player.x = width/2;
     player.y = height-20;
-  }
-  else if (currentScreen == Screen.GAME){
+  } else if (currentScreen == Screen.GAME) {
     currentButton = Button.NONE;
     noCursor();
     background(255);
     image(bgImage, width/2, height/2);
-    //Main gameplay code start here:
-  
+    // Main gameplay code starts here:
+
     if (!gameOver) {
-      // Update and display player
+      // Update and display players
       player.update();
-      player.display(); 
-      
-      if (isShooting) {
-      long currentTime = millis();
-      if (currentTime - player.lastShootTime > player.shootInterval) {
-        playerBullets.add(new Bullet(player.x, player.y - 15, true));
-        player.lastShootTime = currentTime;
+      player.display();
+
+      player2.update();
+      player2.display();
+
+      if (p1isShooting) {
+        long currentTimeP1 = millis();
+        if (currentTimeP1 - player.lastShootTime > player.shootInterval) {
+          playerBullets.add(new Bullet(player.x, player.y - 15, true, player)); // Pass player object
+          player.lastShootTime = currentTimeP1;
+        }
       }
-    }
+
+      if (p2isShooting) {
+        long currentTimeP2 = millis();
+        if (currentTimeP2 - player2.lastShootTime > player2.shootInterval) {
+          player2Bullets.add(new Bullet(player2.x, player2.y - 15, true, player2)); // Pass player2 object
+          player2.lastShootTime = currentTimeP2;
+        }
+      }
+
+      // Display lives for players
       for (int i = 0; i < player.lives; i++) {
-           image(lives, 30 + (i * 40), 20); 
-            }
-      
-      // update + display enemies
+        image(lives, 30 + (i * 40), 40);
+      }
+      for (int i = 0; i < player2.lives; i++) {
+        image(lives, 800 + (i * 40), 40);
+      }
+
+      textSize(20);
+      fill(255, 255, 255);
+      text("Player 1 Lives", 69, 20);
+      text("Player 2 Lives", 837, 20);
+
+      // Update and display enemies
       for (int i = 0; i < enemies.size(); i++) {
         Stalker enemy = enemies.get(i);
         enemy.update();
         enemy.display();
       }
-      
-      // display lives
+
+      // Display lives
       for (int i = lifes.size() - 1; i >= 0; i--) {
         Life life = lifes.get(i);
         life.update();
         life.display();
 
-        // Check whether the life hit the player
+        // Check whether the life hit the players
         if (life.hits(player)) {
           player.lives++;
           lifes.remove(i);
         }
 
+        if (life.hits(player2)) {
+          player2.lives++;
+          lifes.remove(i);
+        }
+
         // Remove Life if it's off the screen
-          if (life.offscreen()) {
-            lifes.remove(i);
-          }
-       }
-    
-    fill(0); 
-    textSize(20); 
-    //text("Lives: " + player.lives, 30, 30); 
-    for (int i = 0; i < player.lives; i++) {
-      image(lives, 30 + (i * 40), 20); 
-    }
-    fill(255, 255, 255);
-    text("hit time " + player.hitTime, 300, 30); 
-    fill(255, 255, 255);
-    text("Score: " + score, 300, 50);
-    
+        if (life.offscreen()) {
+          lifes.remove(i);
+        }
+      }
+
+      fill(0);
+      textSize(20);
+
+      fill(255, 255, 255);
+      text("Player 1 Score: " + p1score, 80, 70);
+      text("Player 2 Score: " + p2score, 850, 70);
+
       // Update and display player bullets
       updateAndDisplayBullets(playerBullets);
-      
+
       // Update and display target bullets
       updateAndDisplayBullets(targetBullets);
       
+      updateAndDisplayBullets(player2Bullets);
+      checkCollisionsEnemy(player2Bullets, enemies);
+      checkCollisionsWithTarget(player2Bullets, targets, player, player2);
+
       // Update and display lasers
       updateAndDisplayLasers(lasers);
-      
+
       // Update and display targets
       for (int i = targets.size() - 1; i >= 0; i--) {
         Target target = targets.get(i);
@@ -181,7 +220,7 @@ void draw() {
           targets.remove(i);
         }
       }
-      
+
       for (int i = targetsTwo.size() - 1; i >= 0; i--) {
         TargetTwo targetTwo = targetsTwo.get(i);
         targetTwo.update();
@@ -190,32 +229,32 @@ void draw() {
           targetsTwo.remove(i);
         }
       }
-      
+
       // Add new targets randomly
       if (frameCount % 60 == 0) {
         targets.add(new Target(random(width), random(height) / 2));
       }
-      
+
       // Add big target randomly
       if (frameCount % 300 == 0) {
         targetsTwo.add(new TargetTwo(50, 50));
       }
-      
-      // for new lives every 30 seconds
+
+      // For new lives every 30 seconds
       if (frameCount % (30 * 60) == 0) {
         lifes.add(new Life(random(width), 0, 3));
       }
-      
+
       // Check for collisions between bullets and targets
-      checkCollisions(playerBullets, targets);
-      checkCollisions(targetBullets, player);
-      checkCollisionsLaser(lasers, player);
+      checkCollisionsWithTarget(playerBullets, targets, player, player2);
+      checkCollisions(targetBullets, player, player2);
+      checkCollisionsLaser(lasers, player, player2);
       checkCollisionsLaser(playerBullets, targetsTwo);
-      removeExplodedTargets(); 
-      
-      // check for collisions between bullets and enemies
+      removeExplodedTargets();
+
+      // Check for collisions between bullets and enemies
       checkCollisionsEnemy(playerBullets, enemies);
-      
+
       // Remove any enemies that were hit
       for (int i = enemies.size() - 1; i >= 0; i--) {
         Stalker enemy = enemies.get(i);
@@ -224,274 +263,292 @@ void draw() {
           enemyRemovedTime.add(millis());
         }
       }
-      
+
       // Respawn any enemies that were removed more than 30 seconds ago
       if (currentMode.equals("HARD")) {
         for (int i = enemyRemovedTime.size() - 1; i >= 0; i--) {
           int time = enemyRemovedTime.get(i);
           if (millis() - time > 5000) {
             enemyRemovedTime.remove(i);
-            enemies.add(new Stalker(random(0, width), random(0, height), player));
+            enemies.add(new Stalker(random(0, width), random(0, height), player, player2));
           }
         }
       }
-     
+
       // Game over condition
       if (player.hit) {
         player.lives -= 1;
         player.hit = false;
-        if (player.lives <= 0) {
-          gameOver = true; // 当生命值为0时游戏结束
-        }
+      }
+      if (player2.hit) {
+        player2.lives -= 1;
+        player2.hit = false;
+      }
+      if (player.lives <= 0 && player2.lives <= 0) {
+        gameOver = true; // When both player's lives are 0, game over
       }
     } else {
       // Display game over message
       currentScreen = Screen.GAMEOVER;
     }
-    
-    //pause trigger
-    if(keyPressed) {
-      if(key == ESC){
+
+    // Pause trigger
+    if (keyPressed) {
+      if (key == ESC) {
         currentScreen = Screen.PAUSE;
       }
     }
-  }
-  //pause menu
-  else if (currentScreen == Screen.PAUSE)
-  {
+  } else if (currentScreen == Screen.PAUSE) {
     cursor(planecursor);
     background(51);
     textSize(50);
     text("GAME PAUSED", width/2, 150);
-    
-    createButton(width/2, 250,250,100, Button.GAMEB);
+
+    createButton(width/2, 250, 250, 100, Button.GAMEB);
     fill(255);
     textSize(40);
     text("RESUME", width/2, 265);
-    
-    createButton(width/2, 360,250,100, Button.STARTB);
+
+    createButton(width/2, 360, 250, 100, Button.STARTB);
     fill(255);
     textSize(40);
     text("GIVE UP", width/2, 375);
   }
-  //gameover screen
-  else if (currentScreen == Screen.GAMEOVER)
-  {
+  // Game over screen
+  else if (currentScreen == Screen.GAMEOVER) {
     cursor(planecursor);
     background(51);
-    
+
     textSize(50);
     text("GAME OVER!", width/2, 200);
-    
+
     textSize(30);
     text("Oh no! \n You died. The aliens have won. \nBetter luck next time :(", width/2, 300);
-    
+
     textSize(50);
-    text("FINAL SCORE: " + score, width/2, 500);
-    
-    createButton(width/2, 700,250,100, Button.STARTB);
+    // adjust so it's the player's names
+    text("Player 1 Score: " + p1score, width/2, 500);
+    text("Player 2 Score: " + p2score, width/2 , 600);
+
+    createButton(width/2, 700, 250, 100, Button.STARTB);
     fill(255);
     textSize(40);
     text("MAIN MENU", width/2, 715);
   }
-  //victory screen
-  else if (currentScreen == Screen.VICTORY)
-  {
+  // Victory screen
+  else if (currentScreen == Screen.VICTORY) {
     cursor(planecursor);
     background(51);
-    
+
     textSize(50);
     text("CONGRATULATIONS!", width/2, 200);
-    
+
     textSize(30);
     text("A winner is you! \n The aliens have been defeated and the world is saved!", width/2, 300);
-    
+
     textSize(50);
-    text("FINAL SCORE: " + score, width/2, 500);
-    
-    createButton(width/2, 700,250,100, Button.STARTB);
+    text("FINAL SCORE: " + p1score, width/2, 500);
+
+    createButton(width/2, 700, 250, 100, Button.STARTB);
     fill(255);
     textSize(40);
     text("MAIN MENU", width/2, 715);
   }
-  //instructions screen - player page
-  else if (currentScreen == Screen.INSTRUCTIONS)
-  {
+  // Instructions screen - player page
+  else if (currentScreen == Screen.INSTRUCTIONS) {
     cursor(planecursor);
     background(180);
-            
+
     textSize(30);
     text("Aliens are attacking!! \nShoot the enemies to defeat them and gain points \nAvoid enemy attacks and survive until the end!", width/2, 50);
-    
+
     stroke(100);
-    line(20,150,width-20,150);
-    
+    line(20, 150, width-20, 150);
+
     textSize(30);
     text("Shoot", width/4, 400);
     text("Move", 3*width/4, 400);
-    
-    //PLACEHOLDER TEXT - needs images from art team
+
+    // PLACEHOLDER TEXT - needs images from art team
     textSize(15);
     text("Spacebar placeholder\n insert image here", width/4, 250);
     text("Direction key placeholder\n insert image here", 3*width/4, 250);
     text("ESC key placeholder\n insert image here", width/8, 620);
-    
+
     Player examplePlayer = new Player(width/2, 380);
     examplePlayer.display();
-    
-    for (int i = 0; i < 3; i++){
-    Bullet examplePlayerBullet = new Bullet(width/2, 230 +i*40, true);
-    examplePlayerBullet.display();
+
+    for (int i = 0; i < 3; i++) {
+      Bullet examplePlayerBullet = new Bullet(width/2, 230 + i*40, true, player);
+      examplePlayerBullet.display();
     }
-    
-    for (int i = 0; i < 3; i++){
-      image(lives, width/10 + i*40, 500); 
+
+    for (int i = 0; i < 3; i++) {
+      image(lives, width/10 + i*40, 500);
     }
     textSize(30);
     textAlign(LEFT);
     text("Player life points count - keep these above 0 to stay alive! ", width/10+3*40, 510);
-    
+
     image(lives, width/10 + 40, 560);
     text("Collect falling hearts to heal yourself by 1 point", width/10+3*40, 570);
-    
+
     text("Press ESC to pause game", width/10+3*40, 630);
-    
+
     textAlign(CENTER);
 
-    
-    line(20,830,width-20,830);
-    
-    createButton(width/2, 900,250,100, Button.STARTB);
+    line(20, 830, width-20, 830);
+
+    createButton(width/2, 900, 250, 100, Button.STARTB);
     fill(255);
     textSize(40);
-    text("MAIN MENU", width/2, 915);  
-    
-    createButton(3*width/4, 900,250,100, Button.ENEMYB);
+    text("MAIN MENU", width/2, 915);
+
+    createButton(3*width/4, 900, 250, 100, Button.ENEMYB);
     fill(255);
     textSize(40);
-    text("ENEMY INFO", 3*width/4, 915);  
+    text("ENEMY INFO", 3*width/4, 915);
   }
-  //instructions screen - enemy info page
-  else if(currentScreen == Screen.ENEMYINFO){
+  // Instructions screen - enemy info page
+  else if (currentScreen == Screen.ENEMYINFO) {
     cursor(planecursor);
     background(180);
-    
+
     textSize(30);
     text("Aliens are attacking!! \nShoot the enemies to defeat them and gain points \nAvoid enemy attacks and survive until the end!", width/2, 50);
-    
+
     stroke(100);
-    line(20,150,width-20,150);
-    
+    line(20, 150, width-20, 150);
+
     Target basicEnemy = new Target(width/6, 250);
     basicEnemy.display();
-    
-    Bullet exampleEnemyBullet = new Bullet(width/2, 287, false);
+
+    Bullet exampleEnemyBullet = new Bullet(width/2, 287, false, player);
     exampleEnemyBullet.display();
-    
+
     TargetTwo spaceshipEnemy = new TargetTwo(width/6, 450);
     spaceshipEnemy.display();
-    
-    //PLACEHOLDER TEXT - needs images from art team
+
+    // PLACEHOLDER TEXT - needs images from art team
     textSize(15);
     text("Stalker placeholder\n insert image here", width/6, 650);
-    
+
     textSize(20);
     textAlign(LEFT);
-    fill(0,139,208,255);
+    fill(0, 139, 208, 255);
     text("Jellyjellies like to float through life like they will your computer screen.\nThey do not think much on account of having no brain and their philosophy to life\nand war is 'random bullets go!'\nBe careful not to touch them they sting!\nAttack type: Jelly Shots          (Warning: do not consume. The developers of this game\nwill not be held liable)", width/3.5, 200);
-    fill(81,75,116,255);
+    fill(81, 75, 116, 255);
     text("Extra-purrestrials have long told legends of 'humans'. Beings who wielded a \ntechnology always just out of the grasp of cat-kind, tormenting their ancestors for \namusement and so called 'likes'. Well, now their descendents are here to return the \nfavour. \nAttack type: Pointier Lasers \nNote: Has developed advanced defensive technologies to protect their fluffy tummies", width/3.5, 400);
-    fill(255,0,0);
+    fill(255, 0, 0);
     text("Huggoctopuses love to chase all the shiny things and hold them close to their heart. \nIncluding your ship. \nAttack type: Don't hug me I'm scared", width/3.5, 650);
-    
+
     textAlign(CENTER);
-    
-    
-    line(20,830,width-20,830);
-    
-    createButton(width/4, 900,250,100, Button.INSTRUCTIONB);
+
+    line(20, 830, width-20, 830);
+
+    createButton(width/4, 900, 250, 100, Button.INSTRUCTIONB);
     fill(255);
     textSize(40);
-    text("PLAYER INFO", width/4, 915);  
-    
-    createButton(width/2, 900,250,100, Button.STARTB);
+    text("PLAYER INFO", width/4, 915);
+
+    createButton(width/2, 900, 250, 100, Button.STARTB);
     fill(255);
     textSize(40);
-    text("MAIN MENU", width/2, 915);  
-        
+    text("MAIN MENU", width/2, 915);
+
     translate(width/2, 450);
     rotate(radians(90));
     Laser exampleEnemyLaser = new Laser(35, -75, false);
-    exampleEnemyLaser.display();    
-  } 
-//mode select screen
-  else if(currentScreen == Screen.MODESELECT){
+    exampleEnemyLaser.display();
+  }
+  // Mode select screen
+  else if (currentScreen == Screen.MODESELECT) {
     cursor(planecursor);
     background(51);
-    
+
     textSize(50);
     text("Current Difficulty:", width/2, 150);
-    
-    createButton(width/3, 300,250,100, Button.EASYB);
+
+    createButton(width/3, 300, 250, 100, Button.EASYB);
     fill(255);
     textSize(40);
-    text("EASY", width/3, 315); 
-    
-    createButton(2*width/3, 300,250,100, Button.HARDB);
+    text("EASY", width/3, 315);
+
+    createButton(2*width/3, 300, 250, 100, Button.HARDB);
     fill(255);
     textSize(40);
-    text("HARD", 2*width/3, 315); 
-    
-    createButton(width/2, 900,250,100, Button.STARTB);
+    text("HARD", 2*width/3, 315);
+
+    createButton(width/2, 900, 250, 100, Button.STARTB);
     fill(255);
     textSize(40);
-    text("MAIN MENU", width/2, 915);  
+    text("MAIN MENU", width/2, 915);
   }
-  
-  //bgm realted
+
+  // BGM related
   if (currentScreen == Screen.GAME) {
     if (!bgm.isPlaying()) {
-      bgm.loop(); // 如果当前是游戏屏幕且音乐未播放，则开始循环播放音乐
+      bgm.loop(); // If the current screen is the game screen and music is not playing, start looping music
     }
   } else {
     if (bgm.isPlaying()) {
-      bgm.pause(); // 如果不在游戏屏幕且音乐正在播放，则暂停音乐
+      bgm.pause(); // If not in the game screen and music is playing, pause music
     }
   }
-
-
 }
 
 
-
-/*void keyPressed(){
-  default ESC in processing will close the window. This overrides that.
- if (key == ESC){
-   key = 0;
- }
- if (!gameOver && currentScreen == Screen.GAME) {
-    if (key == ' ') {
-      //playerBullets.add(new Bullet(player.x, player.y - 15, true));
-   }
- }
-}*/
-
 void keyPressed() {
-  if (key == ESC) key = 0; 
-  if (keyCode == LEFT) movingLeft = true;
-  if (keyCode == RIGHT) movingRight = true;
-  if (keyCode == UP) movingUp = true;
-  if (keyCode == DOWN) movingDown = true;
-  if (key == ' ') isShooting = true;
+  if (key == ESC) 
+    key = 0; 
+  if (keyCode == LEFT) 
+    p1movingLeft = true;
+  if (keyCode == RIGHT) 
+    p1movingRight = true;
+  if (keyCode == UP) 
+    p1movingUp = true;
+  if (keyCode == DOWN) 
+    p1movingDown = true;
+  if (key == ' ') 
+    p1isShooting = true;
+  
+  if (key == 'a' || key == 'A') 
+    p2movingLeft = true;
+  if (key == 'd' || key == 'D') 
+    p2movingRight = true;
+  if (key == 'w' || key == 'W') 
+    p2movingUp = true;
+  if (key == 's' || key == 'S') 
+    p2movingDown = true;
+  if (key == 'f' || key == 'F') 
+    p2isShooting = true;
+  
 }
 
 void keyReleased() {
-  if (keyCode == LEFT) movingLeft = false;
-  if (keyCode == RIGHT) movingRight = false;
-  if (keyCode == UP) movingUp = false;
-  if (keyCode == DOWN) movingDown = false;
-  if (key == ' ') isShooting = false;
+  if (keyCode == LEFT) 
+    p1movingLeft = false;
+  if (keyCode == RIGHT) 
+    p1movingRight = false;
+  if (keyCode == UP) 
+    p1movingUp = false;
+  if (keyCode == DOWN) 
+    p1movingDown = false;
+  if (key == ' ') 
+    p1isShooting = false;
+  
+  if (key == 'a' || key == 'A') 
+    p2movingLeft = false;
+  if (key == 'd' || key == 'D') 
+    p2movingRight = false;
+  if (key == 'w' || key == 'W') 
+    p2movingUp = false;
+  if (key == 's' || key == 'S') 
+    p2movingDown = false;
+  if (key == 'f' || key == 'F') 
+    p2isShooting = false;
 }
+
 
 void mousePressed(){
   if (currentButton == Button.EXITB)
@@ -532,7 +589,27 @@ void mousePressed(){
 //game inside funcitons below:
 //reload game when retart game after gameover and pasu-giveup
 void resetGame() {
-    player = new Player(width / 2, height - 20); // 重新初始化玩家
+    //player = new Player(width / 4, height - 25); // 重新初始化玩家
+    //player2 = new Player(width / 4 * 3, height - 25); // 
+
+    // reset player 1
+    player.lives = 3;
+    player.score = 0;
+    player.isInvincible = false;
+    player.invincibleStartTime = -2000;
+    player.hitTime = -2000;
+    player.x = width / 4; 
+    player.y = height - 25;    
+
+    // reset player 2
+    player2.lives = 3;
+    player2.score = 0;
+    player2.isInvincible = false;
+    player2.invincibleStartTime = -2000;
+    player2.hitTime = -2000;
+    player2.x = width / 4 * 3; 
+    player2.y = height - 25;
+
     playerBullets.clear(); // 清空玩家子弹列表
     targetBullets.clear(); // 清空目标子弹列表
     targets.clear(); // 清空目标列表
@@ -542,14 +619,15 @@ void resetGame() {
     enemies.clear(); // 清空敌人列表
     enemyRemovedTime.clear(); // 清空敌人移除时间列表
     gameOver = false; // 重置游戏结束标志
-    score = 0; // 重置得分
+    p1score = 0; // 重置得分
 
     if (currentMode.equals("HARD")) {
         for (int i = 0; i < 1; i++) {
-            enemies.add(new Stalker(random(0, width), random(0, height), player));
+            enemies.add(new Stalker(random(0, width), random(0, height), player, player2));
         }
     }
 }
+
 //Gameplay related functions below:
 void updateAndDisplayBullets(ArrayList<Bullet> bullets) {
   for (int i = bullets.size() - 1; i >= 0; i--) {
@@ -587,7 +665,7 @@ void removeExplodedTargets() {
 }
 
 
-void checkCollisions(ArrayList<Bullet> bullets, ArrayList<Target> targets) {
+void checkCollisionsWithTarget(ArrayList<Bullet> bullets, ArrayList<Target> targets, Player player, Player player2) {
   for (int i = bullets.size() - 1; i >= 0; i--) {
     Bullet bullet = bullets.get(i);
     for (int j = targets.size() - 1; j >= 0; j--) {
@@ -595,13 +673,17 @@ void checkCollisions(ArrayList<Bullet> bullets, ArrayList<Target> targets) {
       if (bullet.hits(target)) {
         target.getHit();
         bullets.remove(i);
-        //targets.remove(j);
-        score += 5;
+        if (bullet.getShooter() == player) {
+          p1score += 5;
+        } else if (bullet.getShooter() == player2) {
+          p2score += 5; // Adjust as needed
+        }
         break;
       }
     }
   }
 }
+
 
 void checkCollisionsLaser(ArrayList<Bullet> bullets, ArrayList<TargetTwo> targetsTwo) {
   for (int i = bullets.size() - 1; i >= 0; i--) {
@@ -612,30 +694,43 @@ void checkCollisionsLaser(ArrayList<Bullet> bullets, ArrayList<TargetTwo> target
         targetTwo.getHit();
         bullets.remove(i);
         //targetsTwo.remove(j);
-        score += 10;
+        if (bullet.getShooter() == player) {
+          p1score += 10;
+        } else if (bullet.getShooter() == player2) {
+          p2score += 10; // Adjust as needed
+        }
+        //p1score += 10;
         break;
       }
     }
   }
 }
 
-void checkCollisions(ArrayList<Bullet> bullets, Player player) {
+void checkCollisions(ArrayList<Bullet> bullets, Player player, Player player2) {
   for (int i = bullets.size() - 1; i >= 0; i--) {
     Bullet bullet = bullets.get(i);
-    if (bullet.hits(player) && !player.isInvincible) {// 无敌时间
+    if (bullet.hits(player) && !player.isInvincible) { 
       player.hit = true;
-      player.gotHit() ;
+      player.gotHit();
+      bullets.remove(i);
+    } else if (bullet.hits(player2) && !player2.isInvincible) { 
+      player2.hit = true;
+      player2.gotHit();
       bullets.remove(i);
     }
   }
 }
 
-void checkCollisionsLaser(ArrayList<Laser> lasers, Player player) {
+void checkCollisionsLaser(ArrayList<Laser> lasers, Player player, Player player2) {
   for (int i = lasers.size() - 1; i >= 0; i--) {
     Laser laser = lasers.get(i);
-    if (laser.hits(player) && !player.isInvincible) { //无敌时间
+    if (laser.hits(player) && !player.isInvincible) { 
       player.hit = true;
-      player.gotHit() ;
+      player.gotHit();
+      lasers.remove(i);
+    } else if (laser.hits(player2) && !player2.isInvincible) {
+      player2.hit = true;
+      player2.gotHit();
       lasers.remove(i);
     }
   }
@@ -649,7 +744,12 @@ void checkCollisionsEnemy(ArrayList<Bullet> bullets, ArrayList<Stalker> enemies)
       if (bullet.hits(enemy)) {
         enemy.getHit();
         bullets.remove(i);
-        score += 20; 
+        if (bullet.getShooter() == player) {
+          p1score += 20;
+        } else if (bullet.getShooter() == player2) {
+          p2score += 20;
+        }
+        //score += 20; 
         break;
       }
     }
