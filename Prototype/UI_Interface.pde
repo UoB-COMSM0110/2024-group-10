@@ -11,7 +11,9 @@ enum Button {
   MODEB,
   EASYB,
   HARDB,
-  NAMEB
+  NAMEB,
+  ONEPLAYERB,
+  TWOPLAYERB,
 }
 
 enum Screen {

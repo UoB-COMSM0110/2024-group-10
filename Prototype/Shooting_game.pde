@@ -1,5 +1,7 @@
 // Gameplay related vars
 String currentMode = "HARD";
+boolean is2Player = true;
+int playerCount;
 
 Player player;
 Player player2;
@@ -86,6 +88,13 @@ void setup() {
 
 
 void draw() {
+    if(is2Player){
+      playerCount = 2;
+    }
+    else{
+      playerCount=1;
+    }
+    
   // Main menu
   if (currentScreen == Screen.START) {
     currentButton = Button.NONE;
@@ -115,7 +124,8 @@ void draw() {
 
     // Increase mode
     textSize(30);
-    text("Current Mode: " + currentMode, width/2, 300);
+    text("Current Players: " + playerCount, width/2, 250);
+    text("Current Difficulty: " + currentMode, width/2, 300);
 
     // Reinitialize game stats
     gameOver = false;
@@ -489,7 +499,8 @@ void draw() {
     currentButton = Button.NONE;
 
     textSize(50);
-    text("Current Difficulty:", width/2, 150);
+    text("Current Difficulty: " + currentMode, width/2, 150);
+    text("Player Number: " + playerCount, width/2, 450);
 
     createButton(width/3, 300, 250, 100, Button.EASYB);
     fill(255);
@@ -500,6 +511,18 @@ void draw() {
     fill(255);
     textSize(40);
     text("HARD", 2*width/3, 315);
+    
+    
+    createButton(width/3, 550, 250, 100, Button.ONEPLAYERB);
+    fill(255);
+    textSize(40);
+    text("1 Player", width/3, 565);
+
+    createButton(2*width/3, 550, 250, 100, Button.TWOPLAYERB);
+    fill(255);
+    textSize(40);
+    text("2 Player", 2*width/3, 565);
+    
 
     createButton(width/2, 900, 250, 100, Button.STARTB);
     fill(255);
@@ -512,19 +535,31 @@ void draw() {
     currentButton = Button.NONE;
 
     textSize(40);
-    text("Type to input name. Press TAB to switch player", width/2, 150);
-    text("Currently naming:", width/3, 200);
+    text("Type to input name", width/2, 100);
+    
 
     fill(255);
     textSize(50);
-    text("Player 1 name:", width/2, 300);
-    text("Player 2 name:", width/2, 500);
+    text("Player 1 name:", width/2, 350);
+    //text("Player 2 name:", width/2, 500);
     textSize(40);
     
     fill(255,0,255);
-    text("Player " + playerToName.playerNumber , width*.57, 200);
-    text(player.name, width/2, 400);
-    text(player2.name, width/2, 600);
+    text(player.name, width/2, 450);
+    //text(player2.name, width/2, 600);
+    
+    if (is2Player){
+      fill(255);
+      textSize(50);
+      text("Player 2 name:", width/2, 550);
+      textSize(30);
+      text("(Press TAB to switch player)", width/2, 150);
+      textSize(40);
+      text("Currently naming:", width/3, 250);
+      fill(255,0,255);
+      text("Player " + playerToName.playerNumber , width*.57, 250);
+      text(player2.name, width/2, 650);
+    }
     
     
     createButton(width/2, 800, 250, 100, Button.GAMEB);
@@ -549,7 +584,7 @@ void draw() {
 
 void keyPressed() {
   if (currentScreen == Screen.NAMEENTRY){
-     if(key== TAB){
+     if(key== TAB && is2Player){
        if (playerToName == player){
          playerToName = player2;
        }
@@ -641,12 +676,19 @@ void mousePressed(){
   */
   else if (currentButton == Button.EASYB) {
     currentMode = "EASY"; 
-    currentScreen = Screen.START; 
+    //currentScreen = Screen.START; 
   } else if (currentButton == Button.HARDB) {
     currentMode = "HARD"; 
-    currentScreen = Screen.START;
+    //currentScreen = Screen.START;
   }
-
+  else if (currentButton == Button.ONEPLAYERB) {
+    is2Player = false; 
+    //currentScreen = Screen.START;
+  }
+  else if (currentButton == Button.TWOPLAYERB) {
+    is2Player = true; 
+    //currentScreen = Screen.START;
+  }
 
 }
 
