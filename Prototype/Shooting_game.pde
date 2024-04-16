@@ -100,8 +100,11 @@ void draw() {
     
   // Main menu
   if (currentScreen == Screen.START) {
+    cursor(planecursor);
     currentButton = Button.NONE;
     background(51);
+    
+    //navigation buttons
     createButton(width/2, 500, 250, 100, Button.NAMEB);
     fill(255);
     textSize(50);
@@ -121,9 +124,10 @@ void draw() {
     fill(255);
     textSize(50);
     text("EXIT", width/2, 845);
-
+    
+    //game title
     text("Shooting Game Prototype Title", width/2, 150);
-    cursor(planecursor);
+    
 
     // Increase mode
     textSize(30);
@@ -318,12 +322,15 @@ void draw() {
         currentScreen = Screen.PAUSE;
       }
     }
-  } else if (currentScreen == Screen.PAUSE) {
+  } 
+  // Pause screen menu
+  else if (currentScreen == Screen.PAUSE) {
     cursor(planecursor);
     background(51);
     textSize(50);
     text("GAME PAUSED", width/2, 150);
 
+    // navigation buttons
     createButton(width/2, 250, 250, 100, Button.GAMEB);
     fill(255);
     textSize(40);
@@ -342,14 +349,15 @@ void draw() {
 
     textSize(50);
     text("GAME OVER!", width/2, 200);
-
     textSize(30);
     text("Oh no! \n You died. The aliens have won. \nBetter luck next time :(", width/2, 300);
 
+    //display player name and score
     textSize(50);
     text(player.name + "'s Score: " + p1score, width/2, 450);
     text(player2.name + "'s Score : " + p2score, width/2 , 550);
 
+    //navigation buttons
     createButton(width/3, 700, 250, 100, Button.STARTB);
     fill(255);
     textSize(40);
@@ -368,13 +376,14 @@ void draw() {
 
     textSize(50);
     text("CONGRATULATIONS!", width/2, 200);
-
     textSize(30);
     text("A winner is you! \n The aliens have been defeated and the world is saved!", width/2, 300);
-
+    
+    //display player final score
     textSize(50);
     text("FINAL SCORE: " + p1score, width/2, 500);
 
+    //navigation buttons
     createButton(width/2, 700, 250, 100, Button.STARTB);
     fill(255);
     textSize(40);
@@ -391,7 +400,8 @@ void draw() {
 
     stroke(100);
     line(20, 150, width-20, 150);
-
+    
+    //player controls visualisation
     textSize(30);
     fill (255, 195, 0) ;
     text("Shoot", width/4, 400);
@@ -410,6 +420,7 @@ void draw() {
     text("WASD keys placeholder\n insert image here", 3*width/4, 320);
     text("ESC key placeholder\n insert image here", width/8, 620);
 
+    //player spaceship and bullets visualisation
     Player examplePlayer = new Player(width/2, 380, 0);
     examplePlayer.display();
 
@@ -418,6 +429,7 @@ void draw() {
       examplePlayerBullet.display();
     }
 
+    // details on lives and pausing game text
     for (int i = 0; i < 3; i++) {
       image(lives, width/10 + i*40, 500);
     }
@@ -438,6 +450,7 @@ void draw() {
 
     line(20, 830, width-20, 830);
 
+    //navigation buttons
     createButton(width/2, 900, 250, 100, Button.STARTB);
     fill(255);
     textSize(40);
@@ -488,6 +501,7 @@ void draw() {
 
     line(20, 830, width-20, 830);
 
+    // navigation buttons
     createButton(width/4, 900, 250, 100, Button.INSTRUCTIONB);
     fill(255);
     textSize(40);
@@ -514,6 +528,7 @@ void draw() {
     text("Current Difficulty: " + currentMode, width/2, 150);
     text("Player Number: " + playerCount, width/2, 450);
 
+    //button selection for difficulty level
     createButton(width/3, 300, 250, 100, Button.EASYB);
     fill(255);
     textSize(40);
@@ -524,7 +539,7 @@ void draw() {
     textSize(40);
     text("HARD", 2*width/3, 315);
     
-    
+    // button selection for number of players
     createButton(width/3, 550, 250, 100, Button.ONEPLAYERB);
     fill(255);
     textSize(40);
@@ -535,7 +550,7 @@ void draw() {
     textSize(40);
     text("2 Player", 2*width/3, 565);
     
-
+    //navigation buttons
     createButton(width/2, 900, 250, 100, Button.STARTB);
     fill(255);
     textSize(40);
@@ -546,20 +561,19 @@ void draw() {
     background(51);
     currentButton = Button.NONE;
 
+    //header
     textSize(40);
     text("Type to input name", width/2, 100);
     
-
+    //player 1 input
     fill(255);
     textSize(50);
     text("Player 1 name:", width/2, 350);
-    //text("Player 2 name:", width/2, 500);
-    textSize(40);
-    
+    textSize(40);   
     fill(255,0,255);
     text(player.name, width/2, 450);
-    //text(player2.name, width/2, 600);
     
+    // adds player 2 part if in 2 player mode
     if (is2Player){
       fill(255);
       textSize(50);
@@ -573,7 +587,7 @@ void draw() {
       text(player2.name, width/2, 650);
     }
     
-    
+    //buttons
     createButton(2*width/3, 800, 250, 100, Button.GAMEB);
     fill(255);
     textSize(40);
@@ -600,6 +614,7 @@ void draw() {
 
 
 void keyPressed() {
+  //name input screen keypresses
   if (currentScreen == Screen.NAMEENTRY){
      if(key== TAB && is2Player){
        if (playerToName == player){
@@ -614,7 +629,8 @@ void keyPressed() {
      }
      playerToName.alterName();
   }
-
+  
+  //player 1 movement keypress
   if (key == ESC) 
     key = 0; 
   if (keyCode == LEFT) 
@@ -628,6 +644,7 @@ void keyPressed() {
   if (key == ' ') 
     p1isShooting = true;
   
+  //player 2 movement keypress
   if (key == 'a' || key == 'A') 
     p2movingLeft = true;
   if (key == 'd' || key == 'D') 
@@ -667,6 +684,7 @@ void keyReleased() {
 
 
 void mousePressed(){
+  // menu navigation button clicks:
   if (currentButton == Button.EXITB)
   {
     exit();
@@ -691,23 +709,17 @@ void mousePressed(){
   else if (currentButton == Button.NAMEB) { 
     currentScreen = Screen.NAMEENTRY;
   }
-  /* code below for difficulty level change, can be used after Antai part is done (implement code for gameplay difficulty changes) 
-  }
-  */
+  // mode select button clicks:
   else if (currentButton == Button.EASYB) {
-    currentMode = "EASY"; 
-    //currentScreen = Screen.START; 
+    currentMode = "EASY";  
   } else if (currentButton == Button.HARDB) {
     currentMode = "HARD"; 
-    //currentScreen = Screen.START;
   }
   else if (currentButton == Button.ONEPLAYERB) {
     is2Player = false; 
-    //currentScreen = Screen.START;
   }
   else if (currentButton == Button.TWOPLAYERB) {
     is2Player = true; 
-    //currentScreen = Screen.START;
   }
 
 }
