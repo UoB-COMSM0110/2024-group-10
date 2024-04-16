@@ -98,32 +98,37 @@ void draw() {
       playerCount=1;
     }
     
-  // Main menu
+// Main menu
   if (currentScreen == Screen.START) {
     cursor(planecursor);
     currentButton = Button.NONE;
     background(51);
     
     //navigation buttons
-    createButton(width/2, 500, 250, 100, Button.NAMEB);
+    createButton(width/2, 400, 350, 100, Button.NAMEB);
     fill(255);
     textSize(50);
-    text("START", width/2, 515);
+    text("-START-", width/2, 415);
 
-    createButton(width/2, 610, 350, 100, Button.INSTRUCTIONB);
+    createButton(width/2, 500, 350, 100, Button.INSTRUCTIONB);
     fill(255);
     textSize(50);
-    text("INSTRUCTIONS", width/2, 625);
+    text("-INSTRUCTIONS-", width/2, 515);
 
-    createButton(width/2, 720, 250, 100, Button.MODEB);
+    createButton(width/2, 600, 350, 100, Button.MODEB);
     fill(255);
     textSize(50);
-    text("MODES", width/2, 735);
+    text("-SETTINGS-", width/2, 615);
+    
+    createButton(width/2, 700, 350, 100, Button.HIGHSCOREB);
+    fill(255);
+    textSize(50);
+    text("-LEADERBOARD-", width/2, 715);
 
-    createButton(width/2, 830, 250, 100, Button.EXITB);
+    createButton(width/2, 800, 350, 100, Button.EXITB);
     fill(255);
     textSize(50);
-    text("EXIT", width/2, 845);
+    text("-EXIT-", width/2, 815);
     
     //game title
     text("Shooting Game Prototype Title", width/2, 150);
@@ -141,12 +146,14 @@ void draw() {
     p1score = 0;
     player.x = width/2;
     player.y = height-20;
+
+// Gameplay Screen
   } else if (currentScreen == Screen.GAME) {
     currentButton = Button.NONE;
     noCursor();
     background(255);
     image(bgImage, width/2, height/2);
-    // Main gameplay code starts here:
+// Main gameplay code starts here:
 
     if (!gameOver) {
       // Update and display players
@@ -323,7 +330,7 @@ void draw() {
       }
     }
   } 
-  // Pause screen menu
+// Pause screen menu
   else if (currentScreen == Screen.PAUSE) {
     cursor(planecursor);
     background(51);
@@ -341,7 +348,7 @@ void draw() {
     textSize(40);
     text("GIVE UP", width/2, 375);
   }
-  // Game over screen
+// Game over screen
   else if (currentScreen == Screen.GAMEOVER) {
     cursor(planecursor);
     background(51);
@@ -368,7 +375,7 @@ void draw() {
     textSize(40);
     text("RETRY", 2*width/3, 715);
   }
-  // Victory screen
+// Victory screen
   else if (currentScreen == Screen.VICTORY) {
     cursor(planecursor);
     background(51);
@@ -389,7 +396,7 @@ void draw() {
     textSize(40);
     text("MAIN MENU", width/2, 715);
   }
-  // Instructions screen - player page
+// Instructions screen - player page
   else if (currentScreen == Screen.INSTRUCTIONS) {
     cursor(planecursor);
     background(180);
@@ -461,7 +468,7 @@ void draw() {
     textSize(40);
     text("ENEMY INFO", 3*width/4, 915);
   }
-  // Instructions screen - enemy info page
+// Instructions screen - enemy info page
   else if (currentScreen == Screen.ENEMYINFO) {
     cursor(planecursor);
     background(180);
@@ -518,7 +525,7 @@ void draw() {
     Laser exampleEnemyLaser = new Laser(35, -75, false);
     exampleEnemyLaser.display();
   }
-  // Mode select screen
+// Mode select screen
   else if (currentScreen == Screen.MODESELECT) {
     cursor(planecursor);
     background(51);
@@ -556,6 +563,7 @@ void draw() {
     textSize(40);
     text("MAIN MENU", width/2, 915);
   }
+//Name entry screen
   else if (currentScreen == Screen.NAMEENTRY) {
     cursor(planecursor);
     background(51);
@@ -599,6 +607,25 @@ void draw() {
     text("BACK", width/3, 815);
     
   }
+//Leaderboard Screen
+  else if (currentScreen == Screen.HIGHSCORE){
+    cursor(planecursor);
+    background(51);
+    currentButton = Button.NONE;
+    
+    textSize(50);
+    text("HIGH SCORES", width/2, 100);
+    
+    textSize(30);
+    text("If art team has prettier high score title in assets \ncan use that instead of plaintext \n\nDisplay high scores table here \ndepending on how backend \ncode is implemented", width/2, 200);
+    
+    
+    //navigation buttons
+    createButton(width/2, 800, 250, 100, Button.STARTB);
+    fill(255);
+    textSize(40);
+    text("MAIN MENU", width/2, 815);
+  }
 
   // BGM related
   if (currentScreen == Screen.GAME) {
@@ -616,6 +643,7 @@ void draw() {
 void keyPressed() {
   //name input screen keypresses
   if (currentScreen == Screen.NAMEENTRY){
+    //use TAB to swap which player name is changed
      if(key== TAB && is2Player){
        if (playerToName == player){
          playerToName = player2;
@@ -624,9 +652,12 @@ void keyPressed() {
          playerToName = player;
        }
      }
+     //defaults to player 1 name input if not 2 player mode
      if(!is2Player){
        playerToName = player;
      }
+     
+     //add or delete char depending on input key
      playerToName.alterName();
   }
   
@@ -709,6 +740,9 @@ void mousePressed(){
   else if (currentButton == Button.NAMEB) { 
     currentScreen = Screen.NAMEENTRY;
   }
+  else if (currentButton == Button.HIGHSCOREB) {
+    currentScreen = Screen.HIGHSCORE;
+  }
   // mode select button clicks:
   else if (currentButton == Button.EASYB) {
     currentMode = "EASY";  
@@ -721,6 +755,7 @@ void mousePressed(){
   else if (currentButton == Button.TWOPLAYERB) {
     is2Player = true; 
   }
+  
 
 }
 
