@@ -1,5 +1,0 @@
-class Bullet {
-  void display() {
-    
-  }
-}
