@@ -562,10 +562,15 @@ void draw() {
     }
     
     
-    createButton(width/2, 800, 250, 100, Button.GAMEB);
+    createButton(2*width/3, 800, 250, 100, Button.GAMEB);
     fill(255);
     textSize(40);
-    text("CONFIRM", width/2, 815);
+    text("CONFIRM", 2*width/3, 815);
+    
+    createButton(width/3, 800, 250, 100, Button.STARTB);
+    fill(255);
+    textSize(40);
+    text("BACK", width/3, 815);
     
   }
 
@@ -591,6 +596,9 @@ void keyPressed() {
        else if (playerToName == player2){
          playerToName = player;
        }
+     }
+     if(!is2Player){
+       playerToName = player;
      }
      playerToName.alterName();
   }
