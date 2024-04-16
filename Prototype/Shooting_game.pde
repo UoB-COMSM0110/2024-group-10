@@ -1,6 +1,6 @@
 // Gameplay related vars
 String currentMode = "HARD";
-boolean is2Player = true;
+boolean is2Player = false;
 int playerCount;
 
 Player player;
@@ -52,6 +52,9 @@ void setup() {
   rectMode(CENTER);
   imageMode(CENTER);
   strokeWeight(4);
+  mainFont = createFont("Techno.otf", 80);
+  infoFont = createFont("PlainRegular.ttf", 80);
+  textFont(mainFont);
 
   // Gameplay related
   player = new Player(width / 4, height - 25, 1 );
@@ -390,7 +393,9 @@ void draw() {
     line(20, 150, width-20, 150);
 
     textSize(30);
+    fill (255, 195, 0) ;
     text("Shoot", width/4, 400);
+    fill(255);
     text("Move", 3*width/4, 400);
     
     text("Player 1", width/10, 250);
@@ -416,14 +421,18 @@ void draw() {
     for (int i = 0; i < 3; i++) {
       image(lives, width/10 + i*40, 500);
     }
-    textSize(30);
+    
     textAlign(LEFT);
+    textSize(30);
+    fill(255,0,0);
     text("Player life points count - keep these above 0 to stay alive! ", width/10+3*40, 510);
 
     image(lives, width/10 + 40, 560);
     text("Collect falling hearts to heal yourself by 1 point", width/10+3*40, 570);
-
+    
+    fill(255);
     text("Press ESC to pause game", width/10+3*40, 630);
+    textFont(mainFont);
 
     textAlign(CENTER);
 
@@ -451,10 +460,11 @@ void draw() {
     stroke(100);
     line(20, 150, width-20, 150);
 
+    //display enemy images
     Target basicEnemy = new Target(width/6, 250);
     basicEnemy.display();
 
-    Bullet exampleEnemyBullet = new Bullet(width/2, 287, false, player);
+    Bullet exampleEnemyBullet = new Bullet(width*.51, 295, false, player);
     exampleEnemyBullet.display();
 
     TargetTwo spaceshipEnemy = new TargetTwo(width/6, 450);
@@ -464,15 +474,17 @@ void draw() {
     textSize(15);
     text("Stalker placeholder\n insert image here", width/6, 650);
 
+    //display enemy description text
+    textFont(infoFont);
     textSize(20);
     textAlign(LEFT);
     fill(0, 139, 208, 255);
-    text("Jellyjellies like to float through life like they will your computer screen.\nThey do not think much on account of having no brain and their philosophy to life\nand war is 'random bullets go!'\nBe careful not to touch them they sting!\nAttack type: Jelly Shots          (Warning: do not consume. The developers of this game\nwill not be held liable)", width/3.5, 200);
+    text("Jellyjellies like to float through life like they will your computer screen.\nThey do not think much on account of having no brain and their philosophy\nto life and war is 'random bullets go!'\nBe careful not to touch them they sting!\n\nAttack type: Jelly Shots            \n(Warning: do not consume. The developers of this game will not be held liable)", width/3.5, 200);
     fill(81, 75, 116, 255);
-    text("Extra-purrestrials have long told legends of 'humans'. Beings who wielded a \ntechnology always just out of the grasp of cat-kind, tormenting their ancestors for \namusement and so called 'likes'. Well, now their descendents are here to return the \nfavour. \nAttack type: Pointier Lasers \nNote: Has developed advanced defensive technologies to protect their fluffy tummies", width/3.5, 400);
+    text("Extra-purrestrials have long told legends of 'humans'. Beings who wielded a \ntechnology always just out of the grasp of cat-kind, tormenting their \nancestors for amusement and so called 'likes'. Well, now their descendants\nare here to return the favour. \n\nAttack type: Pointier Lasers \n\nNote: Has developed advanced defensive technologies to protect their \nfluffy tummies", width/3.5, 400);
     fill(255, 0, 0);
-    text("Huggoctopuses love to chase all the shiny things and hold them close to their heart. \nIncluding your ship. \nAttack type: Don't hug me I'm scared", width/3.5, 650);
-
+    text("Huggoctopuses love to chase all the shiny things and hold them close\nto their heart. \nIncluding your ship. \n\nAttack type: Free hugs :)", width/3.5, 650);
+    textFont(mainFont);
     textAlign(CENTER);
 
     line(20, 830, width-20, 830);
@@ -486,8 +498,9 @@ void draw() {
     fill(255);
     textSize(40);
     text("MAIN MENU", width/2, 915);
-
-    translate(width/2, 450);
+    
+    //display laser attack image
+    translate(width/2+50, 462);
     rotate(radians(90));
     Laser exampleEnemyLaser = new Laser(35, -75, false);
     exampleEnemyLaser.display();

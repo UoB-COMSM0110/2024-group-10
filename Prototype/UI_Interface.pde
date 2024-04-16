@@ -38,6 +38,9 @@ Screen currentScreen = Screen.START;
 PImage planecursor;
 int buttonHeight = 100;
 int buttonWidth = 250;
+PFont mainFont;
+PFont infoFont;
+  
 
 
 
