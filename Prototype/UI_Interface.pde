@@ -14,6 +14,7 @@ enum Button {
   NAMEB,
   ONEPLAYERB,
   TWOPLAYERB,
+  HIGHSCOREB
 }
 
 enum Screen {
@@ -26,6 +27,7 @@ enum Screen {
   ENEMYINFO,
   MODESELECT,
   NAMEENTRY,
+  HIGHSCORE
 }
 
 //UI related vars
