@@ -401,7 +401,7 @@ void draw() {
     text("Player 1", width/10, 250);
     text("Player 2", width/10, 350);
 
-    // PLACEHOLDER TEXT - needs images from art team
+    // TODO PLACEHOLDER TEXT - needs images from art team
     textSize(15);
     text("Spacebar placeholder\n insert image here", width/4, 220);
     text("Direction key placeholder\n insert image here", 3*width/4, 220);
@@ -470,9 +470,8 @@ void draw() {
     TargetTwo spaceshipEnemy = new TargetTwo(width/6, 450);
     spaceshipEnemy.display();
 
-    // PLACEHOLDER TEXT - needs images from art team
-    textSize(15);
-    text("Stalker placeholder\n insert image here", width/6, 650);
+    Stalker exampleStalker = new Stalker(width/6,675,null,null);
+    exampleStalker.display();
 
     //display enemy description text
     textFont(infoFont);
