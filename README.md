@@ -92,3 +92,88 @@ Creating several use case specifications allowed the group to break down the gam
 
 **Heuristic Evaluation: 11/03/24**
 
+| Interface               | Issue                                                                                                                                     | Heuristic             | Frequency | Impact | Persistence | Severity |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|-----------|--------|-------------|----------|
+| Player-Enemy Interaction | Inconsistent consequence of player-enemy contact. This meant that even though the player hit an enemy, the player would not always lose a life. This meant that the player was unsure if the enemy itself was deadly or just the bullets. | Error Prevention     | 4         | 4      | 3           | 3.7      |
+| Movement Controls       | Lack of labels for shooting, which meant players would often die quickly when they first played the game as they were unsure which key controlled shooting to kill the enemies.                           | Help and Documentation | 3         | 4      | 2           | 3.0        |
+| Visual Feedback         | Absence of visual cues to indicate successful hits on enemies. This meant that players were unsure if they successfully hit the enemies and impacted playing morale.                                   | Visibility of system status | 4         | 1      | 3           | 2.7     |
+| Game Progression        | Unclear progression indicators, such as levels completed or any score milestones.                                                        | Visibility of System Status | 2         | 2      | 3           | 2.3      |
+| Level Design            | Lack of environmental variety, making the game feel repetitive over time.                                                                | Consistency and Standards | 3         | 2      | 3           | 2.7     |
+
+**Quantitative Evaluation: System Usability Scale (SUS) Analysis: 16/4/24**
+We conducted a focus group test with 10 participants to assess the System Usability Scale (SUS) of the game. Our findings from this numerical test demonstrated that users found the game easy to play, with minimal need for prior knowledge or technical support. A majority strongly agreed that they would use the product frequently and felt confident to use it effectively. The scores from all participants were generally consistent, indicating a cohesive response across the group. While there were no outliers, participants expressed slightly less confidence in the game’s consistency. This feedback informed our decision to refactor the code and refine gameplay to enhance consistency. Despite this point of improvement, the overall positive feedback encouraged our approach.
+
+
+### Easy Mode
+
+| Question                                                                   | P1 | P2 | P3 | P4 | P5 | P6 | P7 | P8 | P9 | P10 | Mean |
+|----------------------------------------------------------------------------|----|----|----|----|----|----|----|----|----|-----|------|
+| I think that I would like to use this system frequently                  | 5  | 4  | 5  | 3  | 5  | 4  | 4  | 3  | 4  | 4    | 4.2  |
+| I found the system unnecessarily complex                                  | 1  | 2  | 2  | 4  | 1  | 1  | 2  | 2  | 1  | 1    | 1.7  |
+| I thought the system was easy to use                                       | 5  | 4  | 4  | 4  | 5  | 4  | 4  | 5  | 3  | 3    | 4.1  |
+| I think that I would need the support of a technical person to be able to use this system | 1            | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1.0  |
+| I found the various functions in this system were well-integrated         | 4  | 4  | 3  | 2  | 4  | 4  | 3  | 5  | 4  | 4    | 3.7  |
+| I thought there was too much inconsistency in this system                  | 1  | 3  | 2  | 3  | 1  | 2  | 1  | 2  | 1  | 2    | 1.8  |
+| I would imagine that most people would learn to use this system very quickly | 5  | 5  | 5  | 5  | 1  | 5  | 5  | 4  | 3  | 5    | 4.3  |
+| I found the system very cumbersome to use                                  | 1  | 1  | 2  | 1  | 1  | 2  | 2  | 2  | 3  | 1    | 1.6  |
+| I felt very confident using the system.                                    | 5  | 3  | 3  | 2  | 5  | 5  | 3  | 5  | 3  | 4    | 3.8  |
+| I needed to learn things before I could get going with this system.        | 1  | 1  | 1  | 2  | 1  | 1  | 1  | 1  | 2  | 2    | 1.3  |
+
+
+### Hard Mode
+| Question                                                                   | P1 | P2 | P3 | P4 | P5 | P6 | P7 | P8 | P9 | P10 | Mean |
+|----------------------------------------------------------------------------|----|----|----|----|----|----|----|----|----|-----|------|
+| I think that I would like to use this system frequently                    | 4  | 4  | 4  | 4  | 4  | 5  | 4  | 5  | 3  | 4   | 4.1  |
+| I found the system unnecessarily complex                                  | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1   | 1.0  |
+| I thought the system was easy to use                                      | 2  | 3  | 3  | 3  | 4  | 4  | 4  | 3  | 5  | 4   | 3.5  |
+| I think that I would need the support of a technical person to be able to use this system | 2            | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1.1  |
+| I found the various functions in this system were well-integrated         | 4  | 3  | 4  | 2  | 5  | 4  | 4  | 4  | 5  | 5   | 4.0  |
+| I thought there was too much inconsistency in this system                 | 1  | 2  | 3  | 3  | 1  | 1  | 2  | 1  | 2  | 1   | 1.7  |
+| I would imagine that most people would learn to use this system very quickly | 3  | 4  | 3  | 4  | 4  | 5  | 5  | 5  | 4  | 4   | 4.1  |
+| I found the system very cumbersome to use                                 | 3  | 2  | 3  | 2  | 2  | 2  | 2  | 2  | 2  | 2   | 2.2  |
+| I felt very confident using the system.                                   | 3  | 4  | 5  | 5  | 5  | 5  | 5  | 5  | 5  | 4   | 4.6  |
+| I needed to learn things before I could get going with this system.        | 2  | 2  | 3  | 2  | 2  | 2  | 1  | 2  | 1  | 1   | 1.8  |
+
+### Wilcoxen Signed Rank Test
+1. Replace the data pairs with their difference
+
+| Participant | Easy Mode (EM) | Hard Mode (HM) | Difference (EM - HM) |
+|-------------|----------------|----------------|----------------------|
+| P1          | 4.2            | 4.1            | 0.1                  |
+| P2          | 1.7            | 1.0            | 0.7                  |
+| P3          | 4.1            | 3.5            | 0.6                  |
+| P4          | 1.0            | 1.1            | -0.1                 |
+| P5          | 3.7            | 4.0            | -0.3                 |
+| P6          | 1.8            | 1.7            | 0.1                  |
+| P7          | 4.3            | 4.1            | 0.2                  |
+| P8          | 1.6            | 2.2            | -0.6                 |
+| P9          | 3.8            | 4.6            | -0.8                 |
+| P10         | 1.3            | 1.8            | -0.5                 |
+
+
+2. Rank the differences
+
+| Difference | Rank | Signed Rank |
+|------------|------|-------------|
+| 0.1        | 1    | 1           |
+| 0.1        | 2    | 2           |
+| -0.1       | 3    | -3          |
+| 0.2        | 4    | 4           |
+| -0.3       | 5    | -5          |
+| -0.5       | 6    | -6          |
+| -0.6       | 7    | -7          |
+| 0.6        | 8    | 8           |
+| -0.7       | 9    | -9          |
+| -0.8       | 10   | -10         |
+
+Positive rank sum = 25
+
+Negative rank sum = 30
+
+W test Statistic = 25
+- 25 is greater than 8 
+- This means there is a statistical significance when using a p value of 0.05
+- This shows that the rise in difficulty between the ‘hard’ mode and the ‘easy’ mode in our game is statistically significant
+
+
+
