@@ -67,3 +67,28 @@ Creating several use case specifications allowed the group to break down the gam
 
 **Class diagram**
 ![class diagram.jpg](images/class%20diagram.jpg)
+
+## Evaluation
+**Think Aloud Evaluation: 11/03/2024**
+
+### Feedback 1
+#### Positives:
+1. The game design is engaging.
+2. Background music adds suspense.
+
+#### Improvements:
+1. Can’t shoot and move the player at the same time.
+2. The controls for the player and shooting are unclear.
+3. The default game mode was too challenging with too many enemies appearing at once.
+
+### Feedback 2:
+#### Positives:
+1. The objective of the game is clear.
+2. The different types of enemies make the game more interesting to play, especially the enemy that follows you.
+
+#### Improvements:
+1. Multiplayer would make the game more enjoyable.
+2. You don’t always lose a life when the enemy hits the player.
+
+**Heuristic Evaluation: 11/03/24**
+
