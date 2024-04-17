@@ -1,13 +1,12 @@
 class EnemyBullet{
-  float x, y, speed, angle, rotationSpeed;
+  float x, y,  angle, speed, rotationSpeed = 0.5;
   boolean toBeRemove = false;
   
-  EnemyBullet(float x, float y, float speed, float angle) {
+  EnemyBullet(float x, float y, float angle) {
     this.x = x;
     this.y = y;
-    this.speed = speed;
     this.angle = angle;
-    this.rotationSpeed = 0.5;
+    this.speed = 5;
   }
   
   boolean hitPlayer(Player player) {

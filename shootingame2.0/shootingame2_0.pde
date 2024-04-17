@@ -8,7 +8,6 @@ ArrayList<EnemyBullet> enemyBulletsToRemove;
 ArrayList<PlayerBullet> playerBulletsToRemove;
 ArrayList<Enemy> enemiesToRemove;
 
-
 void settings() {
   size(750, 1000);
 }
@@ -23,12 +22,13 @@ void setup() {
   enemyBulletsToRemove = new ArrayList<EnemyBullet>();
   playerBulletsToRemove = new ArrayList<PlayerBullet>();
   enemiesToRemove = new ArrayList<Enemy>();
+  EnemyThree enemy = new EnemyThree();
+      enemies.add(enemy);
 }
 
 void draw() {
-  if(state == GameState.PLAYING) {
-    controller.campaignMode();
-  }
+  if(state == GameState.PLAYING) controller.campaignMode();
+  
 }
 
 void keyPressed() {

@@ -24,7 +24,7 @@ class Enemy {
   }
   
   void checkBoundary() {
-    if (y <= 0 || y >= height || x <= 0 || x >= width) toBeRemove = true;
+    if (y < 0 || y > height || x < 0 || x >= width) toBeRemove = true;
   }
   
   void shootBullets() {
@@ -32,7 +32,7 @@ class Enemy {
       int currentFrame = frameCount;
       if(currentFrame - lastFrame >= 20) {
         for (int i = 0; i < 6; i++) {
-          EnemyBullet bullet = new EnemyBullet(x, y, 5, i * 60);
+          EnemyBullet bullet = new EnemyBullet(x, y, i * 60);
           enemyBullets.add(bullet);
         }
         lastFrame = currentFrame;
