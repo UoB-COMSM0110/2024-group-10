@@ -32,7 +32,7 @@ class Controller {
       EnemyFour enemyOne = new EnemyFour(350, 150, true );
       EnemyFour enemyTwo = new EnemyFour(300, 150, true );
       EnemyFour enemyThree = new EnemyFour(400, 150, false );
-      EnemyFour enemyFour = new EnemyFour(400, 150, false );
+      EnemyFour enemyFour = new EnemyFour(450, 150, false );
       
       enemies.add(enemyOne);
       enemies.add(enemyTwo);
