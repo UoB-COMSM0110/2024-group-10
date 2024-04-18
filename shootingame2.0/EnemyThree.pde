@@ -47,7 +47,7 @@ class EnemyThree extends Enemy {
   
     // Draw the rectangle (barrel)
     fill(0, 150, 0);
-    rect(0, -rectHeight / 2, rectWidth, rectHeight);  // Starts from center, extends right
+    rect(rectWidth / 2, -rectHeight / 2, rectWidth, rectHeight);  // Starts from center, extends right
   
     popMatrix(); // Restore the original transformation state
   }

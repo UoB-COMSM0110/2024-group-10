@@ -57,9 +57,6 @@ void draw() {
   if(state == GameState.ENEMYINFO) controller.displayEnemyScreen();
   if(state == GameState.HIGHSCORE) controller.displayScoreScreen();
   if(state == GameState.FINISHED) controller.displayGameOverScreen();
-  
-  
-  
 }
 
 void keyPressed() {

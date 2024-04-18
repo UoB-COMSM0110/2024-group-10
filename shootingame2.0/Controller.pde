@@ -27,7 +27,7 @@ class Controller {
     /*if(frameCount % 600 ==0) {
       EnemyThree enemy = new EnemyThree();
       enemies.add(enemy);
-    }*/
+    } */
     
     //Generate EnemyFour
     if(frameCount % 300 ==0) {
@@ -40,15 +40,16 @@ class Controller {
       enemies.add(enemyTwo);
       enemies.add(enemyThree);
       enemies.add(enemyFour);
-      
-    }
+    } 
    
     //Update status for each enemy
     for(Enemy enemy : enemies) {
-      enemy.update();
-      enemy.display();
-      if(enemy.toBeRemove) enemiesToRemove.add(enemy); 
-    }
+      if(!enemy.toBeRemove) {
+        enemy.update();
+        enemy.display();
+      }
+      else enemiesToRemove.add(enemy); 
+    } 
     
     //Update the status for each player's bullet
     for(PlayerBullet bullet : playerBullets) {
@@ -77,8 +78,6 @@ class Controller {
     }
     
     for(EnemyBullet bulletToRemove : enemyBulletsToRemove) {
-      System.out.println(enemyBulletsToRemove.size());
-      sleep(10);
       enemyBullets.remove(bulletToRemove);
     }
     
