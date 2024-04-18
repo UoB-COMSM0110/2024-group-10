@@ -11,6 +11,12 @@ class Player {
   boolean movingDown = false;
   boolean isShooting = false;
   boolean isFirstBullet = true;
+  String name ="";
+  int playerNumber;
+  
+  Player (int playerNumber){
+    this.playerNumber = playerNumber;
+  }
    
   void display() {
     fill(256);
@@ -55,7 +61,7 @@ class Player {
   }
   
   void keyPressed() {
-    if (key == ESC) key = 0; 
+    if (key == ESC) {key = 0; state = GameState.PAUSE;};
     if (keyCode == LEFT) movingLeft = true;
     if (keyCode == RIGHT) movingRight = true;
     if (keyCode == UP) movingUp = true;
@@ -73,4 +79,13 @@ class Player {
       isFirstBullet = true;
     }
   }
+  
+    void alterName(){
+      if (key == BACKSPACE && name.length() > 0){
+        name = name.substring(0, name.length()-1);
+      }
+      else if (Character.isLetterOrDigit(key)){
+        name = name.concat(String.valueOf(key));
+      }
+    }
 }
