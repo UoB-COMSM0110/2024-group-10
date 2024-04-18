@@ -22,8 +22,6 @@ void setup() {
   enemyBulletsToRemove = new ArrayList<EnemyBullet>();
   playerBulletsToRemove = new ArrayList<PlayerBullet>();
   enemiesToRemove = new ArrayList<Enemy>();
-  EnemyThree enemy = new EnemyThree();
-      enemies.add(enemy);
 }
 
 void draw() {

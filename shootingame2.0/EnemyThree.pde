@@ -1,5 +1,6 @@
 class EnemyThree extends Enemy {
   float shootingX, shootingY;
+  int shotTime = 0;
   
   EnemyThree() {
     super(100, 25);  
@@ -17,6 +18,15 @@ class EnemyThree extends Enemy {
   void shootBullets() {
     EnemyBulletThree bullet = new EnemyBulletThree(shootingX, shootingY);
     enemyBullets.add(bullet);
+  }
+  
+  boolean isHit(PlayerBullet bullet) {
+    if(dist(x, y, bullet.x, bullet.y) <= 60) {
+      shotTime++;
+      if(shotTime > 5) toBeRemove = true;
+      return true;
+    }
+    return false;
   }
 
   void display() {
