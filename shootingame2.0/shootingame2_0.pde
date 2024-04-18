@@ -36,6 +36,3 @@ void keyPressed() {
 void keyReleased() {
   player.keyReleased();
 }
-
-void test(){
-}
