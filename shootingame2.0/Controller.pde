@@ -75,6 +75,8 @@ class Controller {
     }
     
     for(EnemyBullet bulletToRemove : enemyBulletsToRemove) {
+      System.out.println(enemyBulletsToRemove.size());
+      sleep(10);
       enemyBullets.remove(bulletToRemove);
     }
     
