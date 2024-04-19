@@ -17,6 +17,9 @@ class Missle extends PlayerBullet {
     for(Enemy enemy : enemies) {
       enemy.toBeRemove = true;
     }
+    for(EnemyBullet bullet : enemyBullets) {
+      bullet.toBeRemove = true;
+    }
   }
   
   void display() {
