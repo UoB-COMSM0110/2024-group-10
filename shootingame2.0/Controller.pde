@@ -11,17 +11,17 @@ class Controller {
     stroke(0);
     
     //Generate basic enemies
-    /*if(frameCount % 300 ==0) {
+    if(frameCount % 300 ==0) {
       Enemy enemy = new Enemy(random(25,725), 25);
       enemies.add(enemy);
-    }*/
+    }
     
-    /*//Generate EnemyTwo
+    //Generate EnemyTwo
     if(frameCount % 600 == 0) {
       left = random(1) > 0.5 ? true : false;
       generateFirstEnemyTwo(left);
     }
-    if(enemyTwoNumber < 5) generateEnemyTwo(left); */
+    if(enemyTwoNumber < 5) generateEnemyTwo(left); 
     
     //Generate EnemyThree
     if(frameCount % 600 ==0) {
@@ -30,7 +30,7 @@ class Controller {
     } 
     
     //Generate EnemyFour
-    /*if(frameCount % 300 ==0) {
+      if(frameCount % 300 ==0) {
       EnemyFour enemyOne = new EnemyFour(350, 150, true );
       EnemyFour enemyTwo = new EnemyFour(300, 150, true );
       EnemyFour enemyThree = new EnemyFour(400, 150, false );
@@ -40,7 +40,7 @@ class Controller {
       enemies.add(enemyTwo);
       enemies.add(enemyThree);
       enemies.add(enemyFour);
-    } */
+    } 
    
     //Update status for each enemy
     for(Enemy enemy : enemies) {

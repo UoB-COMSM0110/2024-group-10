@@ -1,9 +1,14 @@
 class EnemyThree extends Enemy {
   float shootingX, shootingY;
   int shotTime = 0;
+  PImage enemy3;
+  PImage enemy3re;
   
   EnemyThree() {
     super(100, 25);  
+    enemy3 = loadImage("PrototypeImages/enemy3.png");
+    enemy3re = loadImage("PrototypeImages/enemy3re.png");
+
   }
 
   void update() {

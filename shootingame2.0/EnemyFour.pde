@@ -4,12 +4,15 @@ class EnemyFour extends Enemy {
   int shootingCount = 0;
   float startX, startY;
   ArrayList<EnemyBulletFour> bulletsToBeCollected = new ArrayList<EnemyBulletFour>();
+  PImage enemy4;
+  
   
   EnemyFour(float x, float y, boolean left) {
     super(x, y);
     this.left =left;
     this.startX = x;
     this.startY = y;
+    enemy4 = loadImage("PrototypeImages/enemy4.png");
   }
   
   void update() {

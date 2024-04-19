@@ -3,16 +3,18 @@ class EnemyTwo extends Enemy {
   float angle = 0;
   float circleRadius = 500;
   float shootingAngle;
+  PImage enemy2;
   
   EnemyTwo(boolean left, float shootingAngle) {
     super(0, 0);  
     this.left = left;
     this.shootingAngle = shootingAngle;
+    enemy2 = loadImage("PrototypeImages/enemy2.png");
   }
   
   void display() {
-    fill(175,125,150);
-    ellipse(x, y, 50, 50);
+   imageMode(CENTER); 
+   image(enemy2, x, y, 50, 50);
   }
   
   void update() {

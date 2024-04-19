@@ -4,16 +4,18 @@ class Enemy {
   boolean isShooting = false;
   int lastFrame;
   int shootingTime = 0;
+  PImage enemy1;
   
   Enemy(float x, float y) {
     this.x = x;
     this.y = y;
     this.lastFrame = frameCount;
+    enemy1 = loadImage("PrototypeImages/enemy1.png");
   }
   
   void display() {
-    fill(150,150,150);
-    ellipse(x, y, 50, 50);
+   imageMode(CENTER); 
+   image(enemy1, x, y, 50, 50);
   }
   
   void update() {
