@@ -24,13 +24,13 @@ class Controller {
     if(enemyTwoNumber < 5) generateEnemyTwo(left); */
     
     //Generate EnemyThree
-    /*if(frameCount % 600 ==0) {
+    if(frameCount % 600 ==0) {
       EnemyThree enemy = new EnemyThree();
       enemies.add(enemy);
-    } */
+    } 
     
     //Generate EnemyFour
-    if(frameCount % 300 ==0) {
+    /*if(frameCount % 300 ==0) {
       EnemyFour enemyOne = new EnemyFour(350, 150, true );
       EnemyFour enemyTwo = new EnemyFour(300, 150, true );
       EnemyFour enemyThree = new EnemyFour(400, 150, false );
@@ -40,7 +40,7 @@ class Controller {
       enemies.add(enemyTwo);
       enemies.add(enemyThree);
       enemies.add(enemyFour);
-    } 
+    } */
    
     //Update status for each enemy
     for(Enemy enemy : enemies) {

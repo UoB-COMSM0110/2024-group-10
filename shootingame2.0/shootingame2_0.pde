@@ -13,6 +13,10 @@ String currentMode = "HARD";
 boolean is2Player = false;
 int playerCount;
 
+PImage enemy3;
+PImage enemy3re;
+PImage enemy4;
+
 Player playerToName;
 
 void settings() {
@@ -43,6 +47,11 @@ void setup() {
   textFont(mainFont);
   //Set naming screen to name player 1 first
   playerToName = player;
+  
+  //enemy render
+  enemy3 = loadImage("PrototypeImages/enemy3.png");
+  enemy3re = loadImage("PrototypeImages/enemy3re.png");
+  enemy4 = loadImage("PrototypeImages/enemy4.png");
 }
 
 void draw() {

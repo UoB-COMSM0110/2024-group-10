@@ -34,8 +34,8 @@ class EnemyThree extends Enemy {
     float rectHeight = 5;
     
     //Draw the bunker
-    fill(25,30,40);
-    ellipse(x, y, 100, 100);
+    imageMode(CENTER); 
+    image(enemy3, x, y, 107, 100);
       
     // Calculate the angle from the bunker to the player
     float angle = atan2(player.y - y, player.x - x);
@@ -46,8 +46,10 @@ class EnemyThree extends Enemy {
     rotate(angle); // Rotate canvas to align with the player
   
     // Draw the rectangle (barrel)
-    fill(0, 150, 0);
-    rect(rectWidth / 2, -rectHeight / 2, rectWidth, rectHeight);  // Starts from center, extends right
+    /*fill(0, 150, 0);
+    rect(rectWidth / 2, -rectHeight / 2, rectWidth, rectHeight);*/  // Starts from center, extends right
+    imageMode(CENTER);
+    image(enemy3re, rectWidth / 2, -rectHeight / 2, enemy3re.width, enemy3re.height);
   
     popMatrix(); // Restore the original transformation state
   }

@@ -53,7 +53,7 @@ class EnemyFour extends Enemy {
   }
   
   void display() {
-    fill(10, 175, 211);
-    ellipse(x, y, 50, 50);
+   imageMode(CENTER); 
+   image(enemy4, x, y, 50, 50);
   }
 }
