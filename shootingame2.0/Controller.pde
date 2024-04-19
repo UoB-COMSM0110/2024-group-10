@@ -58,6 +58,7 @@ class Controller {
       for(Enemy enemy : enemies) {
         if(enemy.isHit(bullet)) {
           bullet.toBeRemove = true;
+          player.energy += 50;
           break;
         }
       }

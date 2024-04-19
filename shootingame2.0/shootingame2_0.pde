@@ -19,7 +19,7 @@ int playerCount;
 Player playerToName;
 
 void settings() {
-  size(1000, int(displayHeight*0.88));
+  size(750, 1000);
 }
 
 void setup() {

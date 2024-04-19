@@ -11,8 +11,12 @@ class Player {
   boolean movingDown = false;
   boolean isShooting = false;
   boolean isFirstBullet = true;
+  boolean isMissileReady = false;
+  boolean shootingMissle = false;
+  int energyBarLength = 0;
   String name ="";
   int playerNumber;
+  int energy = 0;
   
   Player (int playerNumber){
     this.playerNumber = playerNumber;
@@ -21,9 +25,17 @@ class Player {
   void display() {
     fill(256);
     ellipse(x, y, 50, 50);
+    rectMode(CORNER);
+    if(!isMissileReady) energyBarLength = energy;
+    else energyBarLength = 100;
+    rect(25, height - 50 ,energyBarLength, 25);
+    rectMode(CENTER);
   }
   
-  void update() {
+  void update(){
+    isMissileReady = (energy >= 100);
+    
+    //Shoot Bullet
     if(isShooting) {
       if(isFirstBullet) {
         //shoot the first bullet first
@@ -33,11 +45,10 @@ class Player {
         isFirstBullet = false;
       }
       int currentFrame = frameCount;
-      if(currentFrame - lastFrame >= 60) {
+      if(currentFrame - lastFrame >= 30) {
         shootBullet();
         lastFrame = currentFrame;
       }
-      
     }
     
     // Update position based on key flags
@@ -45,10 +56,21 @@ class Player {
     if (movingDown) y += 5;
     if (movingLeft) x -= 5;
     if (movingRight) x += 5;
+    
+    //Shooting Missle
+    if (shootingMissle) shootMissle();
   
     // Prevent the square from moving out of bounds
     x = constrain(x, 25, width - 25 );
     y = constrain(y, 25, height - 25 );
+  }
+  
+  void shootMissle() {
+    if(!isMissileReady) return;
+    Missle missle = new Missle (x, y - 25, 10);
+    playerBullets.add(missle);
+    energy = 0;
+    isMissileReady = false;
   }
   
   void shootBullet() {
@@ -66,6 +88,7 @@ class Player {
     if (keyCode == RIGHT) movingRight = true;
     if (keyCode == UP) movingUp = true;
     if (keyCode == DOWN) movingDown = true;
+    if (key == 'M' || key == 'm') shootingMissle = true;
     if (key == ' ') isShooting = true;
   }
   
@@ -74,6 +97,7 @@ class Player {
     if (keyCode == RIGHT) movingRight = false;
     if (keyCode == UP) movingUp = false;
     if (keyCode == DOWN) movingDown = false;
+    if (key == 'M' || key == 'm') shootingMissle = false;
     if (key == ' ') {
       isShooting = false;
       isFirstBullet = true;
