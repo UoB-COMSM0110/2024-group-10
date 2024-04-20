@@ -24,7 +24,7 @@ class Player {
     this.playerNumber = playerNumber;
     me = loadImage("PrototypeImages/me.png");
     for (int i = 0; i <= 10; i++) {
-        energyImages[i] = loadImage("PrototypeImages/enegrybar/" +(i * 10) + ".png");
+        energyImages[i] = loadImage("PrototypeImages/energybar/" +(i * 10) + ".png");
     }
   }
    
