@@ -20,13 +20,13 @@ int playerCount;
 Player playerToName;
 
 void settings() {
-  size(750, 1000);
+  size(1000, 1000);
 }
 
 void setup() {
-  background_start = loadImage("PrototypeImages/background_start750.png");
+  background_start = loadImage("PrototypeImages/background_start.png");
   state = GameState.START;
-  background = loadImage("PrototypeImages/background750.png");
+  background = loadImage("PrototypeImages/background1.png");
   controller = new Controller();
   player = new Player(1);
   player2 = new Player(2);

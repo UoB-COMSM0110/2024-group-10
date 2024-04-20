@@ -18,20 +18,23 @@ class Player {
   int playerNumber;
   int energy = 0;
   PImage me;
+  PImage[] energyImages = new PImage[11];
   
   Player (int playerNumber){
     this.playerNumber = playerNumber;
     me = loadImage("PrototypeImages/me.png");
+    for (int i = 0; i <= 10; i++) {
+        energyImages[i] = loadImage("PrototypeImages/enegrybar/" +(i * 10) + ".png");
+    }
   }
    
   void display() {
     imageMode(CENTER); 
     image(me, x, y, 50, 50);
-    rectMode(CORNER);
-    if(!isMissileReady) energyBarLength = energy;
-    else energyBarLength = 100;
-    rect(25, height - 50 ,energyBarLength, 25);
-    rectMode(CENTER);
+    imageMode(CORNER); 
+    int energyIndex = energy / 10;  
+    if (energyIndex > 10) energyIndex = 10;  
+    image(energyImages[energyIndex], 20, height - 18 -20, 150, 18);
   }
   
   void update(){
