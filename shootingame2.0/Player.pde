@@ -17,7 +17,6 @@ class Player {
   String name ="";
   int playerNumber;
   int energy = 0;
-  int lives = 3;
   int score = 0;  
   PImage me;
   PImage[] energyImages = new PImage[11];
@@ -34,25 +33,11 @@ class Player {
     imageMode(CENTER); 
     image(me, x, y, 50, 50);
     imageMode(CORNER); 
-    displayLives(); 
-    displayScore();
     int energyIndex = energy / 10;  
     if (energyIndex > 10) energyIndex = 10;  
     image(energyImages[energyIndex], 20, height - 18 -20, 150, 18);
   }
   
-  void displayLives() {
-    fill(255, 0, 0); // 设置文本颜色为红色
-    textSize(20); // 设置文本大小
-    text("Lives: " + lives, 50, 30); // 在屏幕左上角显示生命值
-  }
-
-  void displayScore() {
-    fill(255); // 白色字体
-    textSize(20);
-    text("Score: " + score, 50, 60); // 在屏幕右上角显示得分
-}
-
   void update(){
     isMissileReady = (energy >= 100);
     
@@ -140,8 +125,7 @@ class Player {
     y = 900;  // 初始Y位置
 
     // 重置玩家的能量和得分
-    energy = 100;  // 假设起始能量为100
-    lives = 3;
+    energy = 0;  // 假设起始能量为100
     score = 0;     // 分数重置为0
 
     // 重置移动和射击相关的状态
@@ -161,5 +145,3 @@ class Player {
   }
 
 }
-
-
