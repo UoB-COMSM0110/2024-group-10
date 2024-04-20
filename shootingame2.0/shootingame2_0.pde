@@ -13,7 +13,7 @@ PImage background_start;
 String currentMode = "HARD";
 boolean is2Player = false;
 int playerCount;
-
+PImage enemy1_bullet;
 
 
 
@@ -49,6 +49,8 @@ void setup() {
   textFont(mainFont);
   //Set naming screen to name player 1 first
   playerToName = player;
+  
+  enemy1_bullet = loadImage("PrototypeImages/enemy1_bullet.png");
   
 
 }
