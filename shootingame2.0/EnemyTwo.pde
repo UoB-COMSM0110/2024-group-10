@@ -9,7 +9,7 @@ class EnemyTwo extends Enemy {
     super(0, 0);  
     this.left = left;
     this.shootingAngle = shootingAngle;
-    enemy2 = loadImage("PrototypeImages/enemies/enemy2.png");
+    enemy2 = loadImage("PrototypeImages/enemy2.png");
   }
   
   void display() {

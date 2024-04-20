@@ -10,7 +10,7 @@ class Enemy {
     this.x = x;
     this.y = y;
     this.lastFrame = frameCount;
-    enemy1 = loadImage("PrototypeImages/enemies/enemy1.png");
+    enemy1 = loadImage("PrototypeImages/enemy1.png");
   }
   
   void display() {

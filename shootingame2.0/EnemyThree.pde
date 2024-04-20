@@ -6,8 +6,8 @@ class EnemyThree extends Enemy {
   
   EnemyThree() {
     super(100, 25);  
-    enemy3 = loadImage("PrototypeImages/enemies/enemy3.png");
-    enemy3re = loadImage("PrototypeImages/enemies/enemy3re.png");
+    enemy3 = loadImage("PrototypeImages/enemy3.png");
+    enemy3re = loadImage("PrototypeImages/enemy3re.png");
 
   }
 

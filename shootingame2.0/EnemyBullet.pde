@@ -27,7 +27,22 @@ class EnemyBullet {
     blink(); // 更新透明度
   }
 
+  void blink() {
+    if (fading) {
+      alpha -= 15; // 减少透明度以实现淡出
+    } else {
+      alpha += 15; // 增加透明度以实现淡入
+    }
 
+    // 透明度边界检查
+    if (alpha <= 0) {
+      alpha = 0;
+      fading = false;
+    } else if (alpha >= 255) {
+      alpha = 255;
+      fading = true;
+    }
+  }
 
   void display() {
     imageMode(CENTER);
@@ -39,20 +54,4 @@ class EnemyBullet {
   void checkBoundary() {
     if (y <= 0 || y >= height || x <= 0 || x >= width) toBeRemove = true;
   }
-  
-  void blink() {
-    if (fading) { alpha -= 15; } ///减少透明度以实现淡出
-    else {alpha += 15;}// 增加透明度以实现淡入
-
-
-    // 透明度边界检查
-    if (alpha <= 0) {
-      alpha = 0;
-      fading = false;
-    } else if (alpha >= 255) {
-      alpha = 255;
-      fading = true;
-    }
-  }
-  
 }

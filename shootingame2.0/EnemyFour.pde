@@ -12,7 +12,7 @@ class EnemyFour extends Enemy {
     this.left =left;
     this.startX = x;
     this.startY = y;
-    enemy4 = loadImage("PrototypeImages/enemies/enemy4.png");
+    enemy4 = loadImage("PrototypeImages/enemy4.png");
   }
   
   void update() {

@@ -3,8 +3,5 @@ class EnemyBulletFour extends EnemyBullet {
     super(x, y, 0);
   }
   
-    @Override
-    void update() {
-        super.blink();
-    }
+  void update() {}
 }
