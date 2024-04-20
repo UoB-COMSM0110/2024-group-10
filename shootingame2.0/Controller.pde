@@ -58,10 +58,8 @@ class Controller {
       bullet.display();
       for(Enemy enemy : enemies) {
         if(enemy.isHit(bullet)) {
-          player.score += 1;
-          player.energy += 50;
           bullet.toBeRemove = true;
-
+          player.energy += 10;
           break;
         }
       }
@@ -72,16 +70,7 @@ class Controller {
     for(EnemyBullet bullet : enemyBullets) {
       bullet.update();
       bullet.display();
-      if (bullet.hitPlayer(player)) {
-        player.lives -= 1;  // Decrement player's lives
-        bullet.toBeRemove = true;  // Mark bullet for removal
-        
-        if (player.lives <= 0) {
-            state = GameState.FINISHED;  // End game if player is out of lives
-        } else {
-            // Optional: Trigger some effect or sound to indicate hit but not dead
-        }
-      }
+      if(bullet.hitPlayer(player)) state = GameState.FINISHED;
       if(bullet.toBeRemove) enemyBulletsToRemove.add(bullet);
     }
     
@@ -137,7 +126,7 @@ class Controller {
     playerCount = getPlayerCount();  // 根据是否为双人模式重新计算玩家数
 
     // 重新加载背景或其他资源如果需要
-    //background = loadImage("PrototypeImages/background1.png");
+    background = loadImage("PrototypeImages/background1.png");
     
     // 重置游戏状态到开始或其他适当的状态
     state = GameState.START;
@@ -432,7 +421,9 @@ class Controller {
     textSize(50);
     text("HIGH SCORES", width/2, 100);
     
-    leaderboard.display();
+    textSize(30);
+    text("If art team has prettier high score title in assets \ncan use that instead of plaintext \n\nDisplay high scores table here \ndepending on how backend \ncode is implemented", width/2, 200);
+    
     
     //navigation buttons
     createButton(width/2, 800, 250, 100, Button.STARTB);

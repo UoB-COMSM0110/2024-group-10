@@ -7,8 +7,10 @@ class EnemyBulletThree extends EnemyBullet {
     targetY = player.y;
     angle = atan2(targetY - y, targetX - x);
   }
-  
+
+  @Override
   void update(){
+    super.blink();
     x += cos(angle) * 10;
     y += sin(angle) * 10;
   }
