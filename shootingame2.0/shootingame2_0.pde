@@ -1,6 +1,7 @@
 Player player;
 Player player2;
 Controller controller;
+Leaderboard leaderboard;
 GameState state;
 ArrayList<EnemyBullet> enemyBullets;
 ArrayList<PlayerBullet> playerBullets;
@@ -11,6 +12,8 @@ ArrayList<Enemy> enemiesToRemove;
 PImage background;
 PImage background_start;
 String currentMode = "HARD";
+GameState lastState = GameState.START;
+boolean scoreAdded = false;
 boolean is2Player = false;
 int playerCount;
 PImage enemy1_bullet;
@@ -29,6 +32,7 @@ void setup() {
   state = GameState.START;
   background = loadImage("PrototypeImages/background1.png");
   controller = new Controller();
+  leaderboard = new Leaderboard(); 
   player = new Player(1);
   player2 = new Player(2);
   enemyBullets = new ArrayList<EnemyBullet>();
@@ -67,7 +71,21 @@ void draw() {
   if(state == GameState.INSTRUCTIONS) controller.displayInfoScreen();
   if(state == GameState.ENEMYINFO) controller.displayEnemyScreen();
   if(state == GameState.HIGHSCORE) controller.displayScoreScreen();
-  if(state == GameState.FINISHED) controller.displayGameOverScreen();
+  
+  if (state != lastState && state == GameState.FINISHED) {
+      scoreAdded = false;  // 状态变为FINISHED时重置
+  }
+  lastState = state;  // 更新上一个状态
+
+  if(state == GameState.FINISHED) {
+    if (!scoreAdded) {  // 假设scoreAdded是一个防止多次添加的标志
+        if (leaderboard.isHighScore(player.score)) { // 检查是否为高分
+          leaderboard.addScore(player.name, player.score);
+          scoreAdded = true; // 设置标志
+        }
+    }
+    controller.displayGameOverScreen();
+  }
 }
 
 void keyPressed() {
