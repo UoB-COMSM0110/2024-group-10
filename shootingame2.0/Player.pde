@@ -17,6 +17,7 @@ class Player {
   String name ="";
   int playerNumber;
   int energy = 0;
+  int score = 0;  
   PImage me;
   PImage[] energyImages = new PImage[11];
   
@@ -117,4 +118,32 @@ class Player {
         name = name.concat(String.valueOf(key));
       }
     }
+
+  void reset() {
+    // 重置玩家的位置
+    x = 350;  // 初始X位置
+    y = 900;  // 初始Y位置
+
+    // 重置玩家的能量和得分
+    energy = 100;  // 假设起始能量为100
+    score = 0;     // 分数重置为0
+
+    // 重置移动和射击相关的状态
+    movingLeft = false;
+    movingRight = false;
+    movingUp = false;
+    movingDown = false;
+    isShooting = false;
+    isFirstBullet = true;
+    isMissileReady = false;
+    shootingMissle = false;
+
+    // 重置能量条长度（如果有需要）
+    energyBarLength = 0;  // 假设的能量条长度属性
+
+    // 可能还需要重置其他游戏相关的状态
+  }
+
 }
+
+

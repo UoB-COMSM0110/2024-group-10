@@ -59,7 +59,7 @@ class Controller {
       for(Enemy enemy : enemies) {
         if(enemy.isHit(bullet)) {
           bullet.toBeRemove = true;
-          player.energy += 10;
+          player.energy += 50;
           break;
         }
       }
@@ -107,6 +107,31 @@ class Controller {
     }
   }
   
+  //Reset game
+  void resetGame() {
+    // 重置玩家状态
+    player.reset();
+    player2.reset();
+
+    // 清空所有列表
+    enemies.clear();
+    enemyBullets.clear();
+    playerBullets.clear();
+    enemyBulletsToRemove.clear();
+    playerBulletsToRemove.clear();
+    enemiesToRemove.clear();
+
+    // 重置游戏状态变量
+    currentMode = currentMode;  // 或根据需要重置为默认设置
+    playerCount = getPlayerCount();  // 根据是否为双人模式重新计算玩家数
+
+    // 重新加载背景或其他资源如果需要
+    background = loadImage("PrototypeImages/background1.png");
+    
+    // 重置游戏状态到开始或其他适当的状态
+    state = GameState.START;
+  }
+
   //Start screen display
   void displayStartScreen(){
       cursor(planecursor);
@@ -377,7 +402,7 @@ class Controller {
     
 
     //navigation buttons
-    createButton(width/3, 700, 250, 100, Button.STARTB);
+    createButton(width/3, 700, 250, 100, Button.STARTB);  
     fill(255);
     textSize(40);
     text("MAIN MENU", width/3, 715);

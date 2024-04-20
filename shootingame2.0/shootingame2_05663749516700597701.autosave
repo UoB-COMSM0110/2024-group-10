@@ -108,9 +108,10 @@ void mousePressed(){
   }
   else if (currentButton == Button.GAMEB){
     state = GameState.PLAYING;
+    //resetGame();
   }
   else if (currentButton == Button.STARTB){
-    controller.resetGame(); 
+    //resetGame(); 
     state = GameState.START;
   }
   else if (currentButton == Button.INSTRUCTIONB){
@@ -123,7 +124,6 @@ void mousePressed(){
     state = GameState.MODESELECT;
   }
   else if (currentButton == Button.NAMEB) { 
-    controller.resetGame();
     state = GameState.NAMEENTRY;
   }
   else if (currentButton == Button.HIGHSCOREB) {
