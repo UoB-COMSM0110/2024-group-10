@@ -32,7 +32,7 @@ enum Screen {
 
 //UI related vars
 boolean rectOver = false;
-color rectColor = color(0,0,102);
+color rectColor = color(6,49,53);
 color currentColor = rectColor;
 color rectHighlight = color(0,0,50);
 Button currentButton = Button.NONE;

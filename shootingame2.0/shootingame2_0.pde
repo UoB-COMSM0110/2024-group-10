@@ -8,7 +8,8 @@ ArrayList<Enemy> enemies;
 ArrayList<EnemyBullet> enemyBulletsToRemove;
 ArrayList<PlayerBullet> playerBulletsToRemove;
 ArrayList<Enemy> enemiesToRemove;
-
+PImage background;
+PImage background_start;
 String currentMode = "HARD";
 boolean is2Player = false;
 int playerCount;
@@ -23,7 +24,9 @@ void settings() {
 }
 
 void setup() {
+  background_start = loadImage("PrototypeImages/background_start750.png");
   state = GameState.START;
+  background = loadImage("PrototypeImages/background750.png");
   controller = new Controller();
   player = new Player(1);
   player2 = new Player(2);

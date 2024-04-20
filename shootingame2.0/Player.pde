@@ -17,14 +17,16 @@ class Player {
   String name ="";
   int playerNumber;
   int energy = 0;
+  PImage me;
   
   Player (int playerNumber){
     this.playerNumber = playerNumber;
+    me = loadImage("PrototypeImages/me.png");
   }
    
   void display() {
-    fill(256);
-    ellipse(x, y, 50, 50);
+    imageMode(CENTER); 
+    image(me, x, y, 50, 50);
     rectMode(CORNER);
     if(!isMissileReady) energyBarLength = energy;
     else energyBarLength = 100;

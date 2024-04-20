@@ -2,10 +2,11 @@ class Controller {
   int lastFrame = frameCount;
   int enemyTwoNumber = 0;
   boolean left;
+  
  
   void campaignMode() {
     noCursor();
-    background(255);
+    background(background);
     player.update();
     player.display();
     stroke(0);
@@ -110,7 +111,7 @@ class Controller {
   void displayStartScreen(){
       cursor(planecursor);
       currentButton = Button.NONE;
-      background(51);
+      background(background_start);
       
       textSize(30);
       text("Current Players: " + playerCount, width/2, 250);
@@ -149,7 +150,7 @@ class Controller {
   //Name Entry Screen display
   void displayNamingScreen(){
     cursor(planecursor);
-    background(51);
+    background(background_start);
     currentButton = Button.NONE;
 
     //header
@@ -192,7 +193,7 @@ class Controller {
   
   void displayInfoScreen(){
     cursor(planecursor);
-    background(180);
+    background(background_start);
     currentButton = Button.NONE;
 
     textSize(30);
@@ -264,7 +265,7 @@ class Controller {
   
   void displayEnemyScreen(){
         cursor(planecursor);
-    background(180);
+    background(background_start);
     currentButton = Button.NONE;
 
     textSize(30);
@@ -321,7 +322,7 @@ class Controller {
   
   void displaySettingsScreen(){
     cursor(planecursor);
-    background(51);
+    background(background_start);
     currentButton = Button.NONE;
 
     textSize(50);
@@ -359,7 +360,7 @@ class Controller {
   
   void displayGameOverScreen(){
     cursor(planecursor);
-    background(51);
+    background(background_start);
     currentButton = Button.NONE;
 
     textSize(50);
@@ -389,7 +390,7 @@ class Controller {
   
   void displayScoreScreen(){
     cursor(planecursor);
-    background(51);
+    background(background_start);
     currentButton = Button.NONE;
     
     textSize(50);
@@ -408,7 +409,7 @@ class Controller {
   
   void displayPauseScreen(){
     cursor(planecursor);
-    background(51);
+    background(background_start);
     textSize(50);
     text("GAME PAUSED", width/2, 150);
 
