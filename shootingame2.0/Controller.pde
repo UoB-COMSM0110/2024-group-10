@@ -59,7 +59,7 @@ class Controller {
       for(Enemy enemy : enemies) {
         if(enemy.isHit(bullet)) {
           player.score += 1;
-          player.energy += 50;
+          player.energy += 10;
           bullet.toBeRemove = true;
 
           break;
@@ -142,6 +142,17 @@ class Controller {
     // 重置游戏状态到开始或其他适当的状态
     state = GameState.START;
   }
+  
+  void dispalyIntroduction(){
+  if(state == GameState.INTRO) {
+    image(introVideo, width / 2, height / 2, width, height); 
+    if (introVideo.time() == introVideo.duration()) { 
+      introVideo.stop(); 
+      state = GameState.START;  
+      controller.displayStartScreen();
+    }
+  }
+}
 
   //Start screen display
   void displayStartScreen(){

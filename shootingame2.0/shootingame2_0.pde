@@ -1,8 +1,10 @@
+import processing.video.*;
 Player player;
 Player player2;
 Controller controller;
 Leaderboard leaderboard;
 GameState state;
+Movie introVideo;
 ArrayList<EnemyBullet> enemyBullets;
 ArrayList<PlayerBullet> playerBullets;
 ArrayList<Enemy> enemies;
@@ -24,12 +26,14 @@ PImage enemy1_bullet;
 Player playerToName;
 
 void settings() {
-  size(1000, 1000);
+  size(1000, 1000, P2D);
 }
 
 void setup() {
+  introVideo = new Movie(this, "intro1.mp4");
+  introVideo.loop();
   background_start = loadImage("PrototypeImages/background_start.png");
-  state = GameState.START;
+  state = GameState.INTRO;
   background = loadImage("PrototypeImages/background1.png");
   controller = new Controller();
   leaderboard = new Leaderboard(); 
@@ -62,7 +66,7 @@ void setup() {
 
 void draw() {
   playerCount = getPlayerCount();
-  
+  if(state == GameState.INTRO) controller.dispalyIntroduction();
   if(state == GameState.START) controller.displayStartScreen();
   if(state == GameState.NAMEENTRY) controller.displayNamingScreen();
   if(state == GameState.PLAYING) controller.campaignMode();
@@ -159,6 +163,10 @@ void mousePressed(){
   else if (currentButton == Button.TWOPLAYERB) {
     is2Player = true; 
   }
+}
+
+void movieEvent(Movie m) {
+  m.read();
 }
 
 int getPlayerCount(){
