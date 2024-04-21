@@ -23,7 +23,7 @@ class Controller {
       generateFirstEnemyTwo(left);
     }
     if(enemyTwoNumber < 5) generateEnemyTwo(left); 
-    
+    /*
     //Generate EnemyThree
     if(frameCount % 600 ==0) {
       EnemyThree enemy = new EnemyThree();
@@ -42,7 +42,7 @@ class Controller {
       enemies.add(enemyThree);
       enemies.add(enemyFour);
     } 
-   
+   */
     //Update status for each enemy
     for(Enemy enemy : enemies) {
       if(!enemy.toBeRemove) {

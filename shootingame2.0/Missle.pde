@@ -1,9 +1,11 @@
-class Missle extends PlayerBullet {
+        class Missle extends PlayerBullet {
   int startFrame;
+  PImage missle;
   
   Missle(float x, float y, float speed) {
     super(x, y, speed);
     startFrame = frameCount;
+    missle = loadImage("PrototypeImages/missle.png");
   }
   
   void update() {
@@ -23,7 +25,8 @@ class Missle extends PlayerBullet {
   }
   
   void display() {
-    fill(0, 150, 50);
-    rect(x, y, 20, 100);
+    imageMode(CENTER); 
+    image(missle, x, y, 40, 250);
+
   }
 }
