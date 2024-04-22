@@ -304,7 +304,10 @@ class Controller {
     
     text("F key placeholder\n insert image here", width/4, 320);
     text("WASD keys placeholder\n insert image here", 3*width/4, 320);
-    text("ESC key placeholder\n insert image here", width/8, 620);
+    //text("ESC key placeholder\n insert image here", width/8, 620);
+        
+    PImage esc = loadImage("PrototypeImages/keys/esc.gif");
+    image(esc,width/8, 620, 70, 50); 
 
     //player spaceship and bullets visualisation
     Player examplePlayer = new Player(0);
@@ -333,6 +336,7 @@ class Controller {
     text("Energy bar. Charge up to full and \nPress -M- \nto launch a special move!", width/10+3*40, 690);
     
     image(examplePlayer.energyImages[10], 120, 680, 150, 18);
+
     
     textFont(mainFont);
 
