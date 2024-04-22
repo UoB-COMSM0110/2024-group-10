@@ -173,6 +173,19 @@ class Controller {
         image(ExamplePlayer.me, width*.63 + 60, 230, 50, 50);
       }
       
+      PImage exampleStalker = loadImage("PrototypeImages/stalker.png");
+      if(currentMode == "HARD"){ 
+        image(exampleStalker, width*.7 , 290, 50, 50);
+      }
+      
+      PImage jellyEnemy = loadImage("PrototypeImages/enemies/enemy1.png");
+      image(jellyEnemy, width*.17 , 120, 50, 50);
+      image(jellyEnemy, width*.11 , 150, 50, 50);
+      image(jellyEnemy, width*.83 , 120, 50, 50);
+      image(jellyEnemy, width*.89 , 150, 50, 50);
+      //image(jellyEnemy, width*.5 , 50);
+      //image(jellyEnemy, width*.5 , 920);
+      
       //navigation buttons
       createButton(width/2, 400, 350, 100, Button.NAMEB);
       fill(255);
@@ -201,7 +214,10 @@ class Controller {
       
       //game title
       fill (255, 195, 0) ;
+      //fill(255);
       text("SPACE SWARM SHOOTERS!", width/2, 150);
+      fill (255,50) ;
+      text("SPACE SWARM SHOOTERS!", width/2, 153);
   }
   
   //Name Entry Screen display
