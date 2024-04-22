@@ -30,10 +30,11 @@ void settings() {
 }
 
 void setup() {
-  introVideo = new Movie(this, "intro1.mp4");
-  introVideo.loop();
+  //introVideo = new Movie(this, "intro1.mp4");
+  //introVideo.loop();
   background_start = loadImage("PrototypeImages/background_start.png");
-  state = GameState.INTRO;
+  //state = GameState.INTRO;
+  state = GameState.START;
   background = loadImage("PrototypeImages/background1.png");
   controller = new Controller();
   leaderboard = new Leaderboard(); 
