@@ -237,7 +237,7 @@ class Controller {
     textSize(40);
     text("BACK", width/3, 815);
   }
-  
+ //Player instructions display screen 
   void displayInfoScreen(){
     cursor(planecursor);
     background(background_start);
@@ -315,7 +315,7 @@ class Controller {
     textSize(40);
     text("ENEMY INFO", 3*width/4, 915);
   }
-  
+//Enemy info display  
   void displayEnemyScreen(){
         cursor(planecursor);
     background(background_start);
@@ -372,7 +372,7 @@ class Controller {
     //Laser exampleEnemyLaser = new Laser(35, -75, false);
     //exampleEnemyLaser.display();
   }
-  
+//Settings display  
   void displaySettingsScreen(){
     cursor(planecursor);
     background(background_start);
@@ -410,7 +410,7 @@ class Controller {
     textSize(40);
     text("MAIN MENU", width/2, 915);
   }
-  
+//Game over display  
   void displayGameOverScreen(){
     cursor(planecursor);
     background(background_start);
@@ -423,8 +423,7 @@ class Controller {
 
     //display player name and score
     textSize(50);
-    //text(player.name + "'s Score: " + p1score, width/2, 450);
-    text(player.name + "'s Score: " + "placeholder score", width/2, 450);
+    text(player.name + "'s Score: " + player.score, width/2, 450);
     //text(player2.name + "'s Score : " + p2score, width/2 , 550);
     text(player2.name + "'s Score: " + "placeholder p2 score", width/2, 550);
     
@@ -440,7 +439,7 @@ class Controller {
     textSize(40);
     text("RETRY", 2*width/3, 715);
   }
-  
+//High score display  
   void displayScoreScreen(){
     cursor(planecursor);
     background(background_start);
@@ -457,7 +456,7 @@ class Controller {
     textSize(40);
     text("MAIN MENU", width/2, 815);
   }
-  
+// Pause screen display  
   void displayPauseScreen(){
     cursor(planecursor);
     background(background_start);
@@ -474,5 +473,26 @@ class Controller {
     fill(255);
     textSize(40);
     text("GIVE UP", width/2, 375);
+  }
+//Victory screen display
+  void displayVictoryScreen(){
+    cursor(planecursor);
+    background(background_start);
+    currentButton = Button.NONE;
+
+    textSize(50);
+    text("CONGRATULATIONS!", width/2, 200);
+    textSize(30);
+    text("A winner is you! \n The aliens have been defeated and the world is saved!", width/2, 300);
+    
+    //display player final score
+    textSize(50);
+    text("FINAL SCORE: " + player.score, width/2, 500);
+
+    //navigation buttons
+    createButton(width/2, 700, 250, 100, Button.STARTB);
+    fill(255);
+    textSize(40);
+    text("MAIN MENU", width/2, 715);
   }
 }
