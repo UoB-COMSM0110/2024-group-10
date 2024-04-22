@@ -191,7 +191,7 @@ class Controller {
       text("-EXIT-", width/2, 815);
       
       //game title
-      text("Shooting Game Prototype Title", width/2, 150);
+      text("SPACE SWARM SHOOTERS!", width/2, 150);
   }
   
   //Name Entry Screen display
