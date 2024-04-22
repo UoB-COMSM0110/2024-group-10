@@ -290,7 +290,7 @@ class Controller {
     fill (255, 195, 0) ;
     text("Shoot", width/3, 400);
     fill(255);
-    text("Move", 3*width/4, 400);
+    text("Move", 2*width/3, 400);
     fill(255);
     text("You", width/2, 420);
     
@@ -301,8 +301,12 @@ class Controller {
     textSize(15);
     //text("Spacebar placeholder\n insert image here", width/4, 220);
     PImage spacebar = loadImage("PrototypeImages/keys/space.gif");
-    image(spacebar,width/3, 230, 150, 50); 
-    text("Direction key placeholder\n insert image here", 3*width/4, 220);
+    image(spacebar,width/3, 250, 150, 50); 
+    //text("Direction key placeholder\n insert image here", 3*width/4, 220);
+    
+    PImage dir = loadImage("PrototypeImages/keys/dirkeys.png");
+    image(dir,2*width/3, 230, 150, 100); 
+    //text("Direction key placeholder\n insert image here", 3*width/4, 220);
     
     text("F key placeholder\n insert image here", width/4, 320);
     text("WASD keys placeholder\n insert image here", 3*width/4, 320);
@@ -310,6 +314,13 @@ class Controller {
         
     PImage esc = loadImage("PrototypeImages/keys/esc.gif");
     image(esc,width/8, 620, 70, 50); 
+    
+    PImage mkey = loadImage("PrototypeImages/keys/m.png");
+    textSize(50);
+    //text("+",width/8,720);
+    //image(mkey,width/8+40, 750, 50, 50); 
+    text("+",240,720);
+    image(mkey,300, 710, 50, 50); 
 
     //player spaceship and bullets visualisation
     Player examplePlayer = new Player(0);
@@ -335,9 +346,10 @@ class Controller {
     
     fill(255);
     text("Press ESC to pause game", width/10+3*40, 630);
-    text("Energy bar. Charge up to full and \nPress -M- \nto launch a special move!", width/10+3*40, 690);
+    text("Energy bar. Charge up to full and \nPress -M- \nto launch a special move!", width/3+50, 700);
     
-    image(examplePlayer.energyImages[10], 120, 680, 150, 18);
+    //image(examplePlayer.energyImages[10], 120 -20, 680, 150, 18);
+    image(examplePlayer.energyImages[10], 120, 710, 150, 18);
 
     
     textFont(mainFont);
