@@ -255,6 +255,8 @@ class Controller {
     text("Shoot", width/4, 400);
     fill(255);
     text("Move", 3*width/4, 400);
+    fill(255);
+    text("You", width/2, 420);
     
     text("Player 1", width/10, 250);
     text("Player 2", width/10, 350);
@@ -270,7 +272,7 @@ class Controller {
 
     //player spaceship and bullets visualisation
     Player examplePlayer = new Player(0);
-    examplePlayer.display();
+    image(examplePlayer.me, width/2, 360, 50, 50);
 
     for (int i = 0; i < 3; i++) {
       PlayerBullet examplePlayerBullet = new PlayerBullet(width/2, 230 + i*40, 0);
