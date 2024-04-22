@@ -95,10 +95,12 @@ void draw() {
 }
 
 void keyPressed() {
+  
   if(state == GameState.PLAYING){
-    //if (key == ESC) {key = 0; state = GameState.PAUSE;}
     player.keyPressed();
   }
+  
+  if (key == ESC) key = 0;
   
   if (state == GameState.NAMEENTRY){
   //use TAB to swap which player name is changed
