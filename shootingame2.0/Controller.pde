@@ -299,26 +299,25 @@ class Controller {
 
     // TODO PLACEHOLDER TEXT - needs images from art team
     textSize(15);
-    //text("Spacebar placeholder\n insert image here", width/4, 220);
+    
+    //spacebar img for p1 shoot controls
     PImage spacebar = loadImage("PrototypeImages/keys/space.gif");
     image(spacebar,width/3, 250, 150, 50); 
-    //text("Direction key placeholder\n insert image here", 3*width/4, 220);
     
+    //up left down right keys imgs for p1 move controls
     PImage dir = loadImage("PrototypeImages/keys/dirkeys.png");
     image(dir,2*width/3, 230, 150, 100); 
-    //text("Direction key placeholder\n insert image here", 3*width/4, 220);
     
     text("F key placeholder\n insert image here", width/4, 320);
     text("WASD keys placeholder\n insert image here", 3*width/4, 320);
-    //text("ESC key placeholder\n insert image here", width/8, 620);
-        
+    
+    //esc button img for pause instructions
     PImage esc = loadImage("PrototypeImages/keys/esc.gif");
     image(esc,width/8, 620, 70, 50); 
     
+    //missile img for missile controls instruction
     PImage mkey = loadImage("PrototypeImages/keys/m.png");
     textSize(50);
-    //text("+",width/8,720);
-    //image(mkey,width/8+40, 750, 50, 50); 
     text("+",240,720);
     image(mkey,300, 710, 50, 50); 
 
@@ -332,16 +331,17 @@ class Controller {
     }
 
     // details on lives and pausing game text
-    //for (int i = 0; i < 3; i++) {
-    //  image(lives, width/10 + i*40, 500);
-    //}
+    PImage lives = loadImage("PrototypeImages/lives.png");
+    for (int i = 0; i < 3; i++) {
+      image(lives, width/12 + i*40, 500, 40, 30);
+    }
     
     textAlign(LEFT);
     textSize(30);
     fill(255,0,0);
     text("Player life points count - keep these above 0 to stay alive! ", width/10+3*40, 510);
 
-    //image(lives, width/10 + 40, 560);
+    image(lives, width/12 + 40, 560, 40, 30);
     text("Collect falling hearts to heal yourself by 1 point", width/10+3*40, 570);
     
     fill(255);
