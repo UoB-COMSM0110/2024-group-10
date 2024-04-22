@@ -242,12 +242,22 @@ class Controller {
     cursor(planecursor);
     background(background_start);
     currentButton = Button.NONE;
-
+    
+    //create backdrop for text readability
+    stroke(50,255);
+    strokeWeight(4);
+    fill(2, 30, 54, 120);
+    rect(width/2, height/2, width*9, 660);
+    
+    stroke(50,255);
+    strokeWeight(4);
+    
+    fill(255);
     textSize(30);
     text("Aliens are attacking!! \nShoot the enemies to defeat them and gain points \nAvoid enemy attacks and survive until the end!", width/2, 50);
 
-    stroke(100);
-    line(20, 150, width-20, 150);
+    //stroke(100);
+    //line(20, 150, width-20, 150);
     
     //player controls visualisation
     textSize(30);
@@ -294,7 +304,7 @@ class Controller {
     
     fill(255);
     text("Press ESC to pause game", width/10+3*40, 630);
-    text("Energy bar. Charge up to full and \n-Press M- \nto launch a special move!", width/10+3*40, 690);
+    text("Energy bar. Charge up to full and \nPress -M- \nto launch a special move!", width/10+3*40, 690);
     
     image(examplePlayer.energyImages[10], 120, 680, 150, 18);
     
@@ -302,7 +312,7 @@ class Controller {
 
     textAlign(CENTER);
 
-    line(20, 830, width-20, 830);
+//line(20, 830, width-20, 830);
 
     //navigation buttons
     createButton(width/2, 900, 250, 100, Button.STARTB);
@@ -314,6 +324,10 @@ class Controller {
     fill(255);
     textSize(40);
     text("ENEMY INFO", 3*width/4, 915);
+    
+
+    
+    
   }
 //Enemy info display  
   void displayEnemyScreen(){
