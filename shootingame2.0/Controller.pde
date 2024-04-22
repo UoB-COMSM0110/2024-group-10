@@ -288,7 +288,7 @@ class Controller {
     //player controls visualisation
     textSize(30);
     fill (255, 195, 0) ;
-    text("Shoot", width/4, 400);
+    text("Shoot", width/3, 400);
     fill(255);
     text("Move", 3*width/4, 400);
     fill(255);
@@ -299,7 +299,9 @@ class Controller {
 
     // TODO PLACEHOLDER TEXT - needs images from art team
     textSize(15);
-    text("Spacebar placeholder\n insert image here", width/4, 220);
+    //text("Spacebar placeholder\n insert image here", width/4, 220);
+    PImage spacebar = loadImage("PrototypeImages/keys/space.gif");
+    image(spacebar,width/3, 230, 150, 50); 
     text("Direction key placeholder\n insert image here", 3*width/4, 220);
     
     text("F key placeholder\n insert image here", width/4, 320);
