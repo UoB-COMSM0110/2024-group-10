@@ -1,6 +1,6 @@
 # Our Team
 
-## Team member
+## Team members
 
 |         Name         |           Email            | Git Hub Username |
 | :------------------: | :------------------------: | :--------------: |
@@ -14,6 +14,17 @@
 ## Team Photo
 
 ![team photo](images/team%20photo.jpg)
+
+### Team Roles
+
+| Name    | Role                                                                                                                                                                    |
+|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Hannah  | Developer: Tasked with the strategic planning and coding of the game's special features. Implemented spawning mechanism for enemies, distinguishing between simple and complex modes. Enabled multiplayer functionality. |
+| Jennifer| UI/UX Designer: Focused on designing the user interface and experience. Responsible for the layout and implementation of the main menu. Wrote help documentation for new players. |
+| Mengmeng and Sudan | Artists: Responsible for artistic rendering of characters, enemies, and game backgrounds. Managed integration of background music and sound effects. |
+| Shunyi  | Lead Developer: Led the development of the game's main logic and wrote core code for gameplay. Conducted code reviews to maintain quality and consistency. |
+| Antai   | Developer: Implemented the leaderboard feature, allowing players to track scores and compete against others. |
+
 
 
 # Final game idea: Vertical-Scrolling Shooter Game
@@ -55,8 +66,13 @@ Space = Shoot
 - Resurrection / Extra lives system; carrying on with previous fire system
 
 ## Requirements
+Requirements help to clearly define software projects and meet the expectations of the end-users and stakeholders. 
 
 **Stakeholders**
+We used the onion model to systematically identify our stakeholders across the different group layers. Our game is the core of the onion model, as the product that we are developing. Moving outwards to the system layer, we recognised ourselves as the normal operators developing the game’s core functionality. We also recognised students and university lecturers as stakeholders acting as game-testers and sources of feedback. Expanding further to the containing system, we acknowledged the users of our game, including students, friends and family and social gamers. The UI art team are also key stakeholders in this system, involved in maintaining the interface of the game. Finally, in the wider environment, we considered the influence our game could have on existing shoot ‘em games, recognising our effect as a negative stakeholder by creating a competitor-game. In contrast, we also included those who may play and enjoy the game, as well as those who could provide networking opportunities the expand the game further, for example a university gaming society. 
+
+![Onion Model](images/Onion%20model.png)
+
 
 **Use case diagram**
 ![user case diagram.png](images/user%20case%20diagram.png)
