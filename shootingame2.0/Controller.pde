@@ -294,6 +294,10 @@ class Controller {
     
     fill(255);
     text("Press ESC to pause game", width/10+3*40, 630);
+    text("Energy bar. Charge up to full and \n-Press M- \nto launch a special move!", width/10+3*40, 690);
+    
+    image(examplePlayer.energyImages[10], 120, 680, 150, 18);
+    
     textFont(mainFont);
 
     textAlign(CENTER);
