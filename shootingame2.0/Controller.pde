@@ -161,8 +161,17 @@ class Controller {
       background(background_start);
       
       textSize(30);
-      text("Current Players: " + playerCount, width/2, 250);
+      fill(127,198,199);
+      fill(255);
+      //text("Current Players: " + playerCount, width/2, 250);
+      text("Current Players: ", width/2, 250);
       text("Current Difficulty: " + currentMode, width/2, 300);
+      
+      Player ExamplePlayer = new Player(0);
+      image(ExamplePlayer.me, width*.63, 230, 50, 50);
+      if (is2Player){
+        image(ExamplePlayer.me, width*.63 + 60, 230, 50, 50);
+      }
       
       //navigation buttons
       createButton(width/2, 400, 350, 100, Button.NAMEB);
@@ -191,6 +200,7 @@ class Controller {
       text("-EXIT-", width/2, 815);
       
       //game title
+      fill (255, 195, 0) ;
       text("SPACE SWARM SHOOTERS!", width/2, 150);
   }
   
