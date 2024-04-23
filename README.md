@@ -29,8 +29,7 @@
 
 # Final game idea: Vertical-Scrolling Shooter Game
 
-Name: TBC
-
+Name: Space Swarm Shooters
 
 Paper prototype video:
 
@@ -69,6 +68,7 @@ Space = Shoot
 Requirements help to clearly define software projects and meet the expectations of the end-users and stakeholders. 
 
 **Stakeholders**
+
 We used the onion model to systematically identify our stakeholders across the different group layers. Our game is the core of the onion model, as the product that we are developing. Moving outwards to the system layer, we recognised ourselves as the normal operators developing the game’s core functionality. We also recognised students and university lecturers as stakeholders acting as game-testers and sources of feedback. Expanding further to the containing system, we acknowledged the users of our game, including students, friends and family and social gamers. The UI art team are also key stakeholders in this system, involved in maintaining the interface of the game. Finally, in the wider environment, we considered the influence our game could have on existing shoot ‘em games, recognising our effect as a negative stakeholder by creating a competitor-game. In contrast, we also included those who may play and enjoy the game, as well as those who could provide networking opportunities the expand the game further, for example a university gaming society. 
 
 ![Onion Model](images/Onion%20model.png)
@@ -77,9 +77,45 @@ We used the onion model to systematically identify our stakeholders across the d
 **Use case diagram**
 ![user case diagram.png](images/user%20case%20diagram.png)
 
+**User Stories**
+### Player roles:
+
+#### Scenario 1: Navigate with Ease
+---
+>"As a player, I want a straightforward and easy-to-understand interface so that I can quickly get started without spending time learning complex operations. This will allow me to focus more on enjoying the game and its challenges."
+---
+
+#### Scenario 2: Master of Modes
+>"As a player, I want to be able to choose between different game modes such as campaign, endless, and speed modes. This flexibility allows me to tailor the game experience to my preferences and skill level, enhancing engagement and satisfaction."
+---
+
+#### Scenario 3: Embrace the Challenge
+>"As a player, I expect the game to offer a variety of challenges, including dynamic environments and unpredictable enemy behaviors, which increase the game's depth and replay value."
+---
+
+
+
+### Developer Roles:
+---
+
+#### Scenario 1: Interface Optimisation
+> "As a Frontend Developer, I aim to create a user-friendly interface, ensuring players can dive into the game without any hassle."
+---
+
+#### Scenario 2: Mode Implementation
+> "As a Backend Developer, my goal is to implement various game modes, providing players with diverse gameplay options tailored to their preferences."
+---
+
+#### Scenario 3: Challenge Design
+> "As a Game Designer, I'm focused on crafting engaging challenges, from dynamic environments to cunning enemy behaviors, enhancing the game's depth and replayability."
+---
+
+
 **Use case reflection**
+
 Creating several use case specifications allowed the group to break down the game into its different components, enabling us to explore key detaisl of the game. The key use case specifications for our game include: level design, optimisation, unique features and user interface. Each specification focused on specific elements of the game and helped us refine each part. For example, in the level design we decided on 2 main levels that the player can choose from - endless mode and speed mode. Furthermore, it allowed us to think about how each element of the game will integrate with each other. For example, a unique feature is enemy-spawning aliens, which needed to be adapted to fit each game mode. This process gave us a high level understanding of the game, which will aid us when planning the game.
 (Finish by adding a reflection about the use case diagram)
+
 
 **Class diagram**
 ![class diagram.jpg](images/class%20diagram.jpg)
