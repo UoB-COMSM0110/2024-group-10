@@ -371,10 +371,7 @@ class Controller {
 
     
     textFont(mainFont);
-
     textAlign(CENTER);
-
-//line(20, 830, width-20, 830);
 
     //navigation buttons
     createButton(width/2, 900, 250, 100, Button.STARTB);
@@ -536,8 +533,18 @@ class Controller {
   void displayPauseScreen(){
     cursor(planecursor);
     background(background_start);
-    textSize(50);
-    text("GAME PAUSED", width/2, 150);
+    currentButton = Button.NONE;
+    imageMode(CENTER);
+    
+    //backdrop for controls visualisation
+    //stroke(6,49,53);
+    stroke(50, 100);
+    strokeWeight(4);
+    fill(2, 30, 54, 120);
+    rect(width/2, height, width+100, 1100);
+    
+    
+
 
     // navigation buttons
     createButton(width/2, 250, 250, 100, Button.GAMEB);
@@ -549,6 +556,46 @@ class Controller {
     fill(255);
     textSize(40);
     text("GIVE UP", width/2, 375);
+    
+    //player controls visualisation
+    textSize(30);
+    fill (255, 195, 0) ;
+    text("Shoot", width/3, 510);
+    fill(255);
+    text("Move", 2*width/3, 510);
+    
+    text("Player 1", width/10, 600);
+    text("Player 2", width/10, 720);
+    
+
+    //spacebar img for p1 shoot controls
+    PImage spacebar = loadImage("PrototypeImages/keys/space.gif");
+    image(spacebar,width/3, 600, 150, 50); 
+    
+    //up left down right keys imgs for p1 move controls
+    PImage dir = loadImage("PrototypeImages/keys/dirkeys.png");
+    image(dir,2*width/3, 580, 150, 100); 
+    
+    //2nd player control images
+    PImage fkey = loadImage("PrototypeImages/keys/f.png");
+    image(fkey,width/3, 710, 50, 50); 
+    PImage wasd = loadImage("PrototypeImages/keys/wasd.png");
+    image(wasd,2*width/3, 700, 150, 100); 
+    
+    //missile img for missile controls instruction
+    PImage mkey = loadImage("PrototypeImages/keys/m.png");
+    textSize(50);
+    text("+",240,820);
+    image(mkey,300, 810, 50, 50); 
+    
+    textSize(30);
+    text("Energy bar. Charge up to full and \nPress -M- \nto launch a special move!", width/2+60, 800);
+    Player examplePlayer = new Player(0);
+    image(examplePlayer.energyImages[10], 120, 810, 150, 18);
+    
+    textSize(60);
+    text("GAME PAUSED", width/2, 150);
+    
   }
 //Victory screen display
   void displayVictoryScreen(){
