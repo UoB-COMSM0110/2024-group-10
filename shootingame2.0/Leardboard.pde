@@ -48,7 +48,7 @@ class Leaderboard {
         textSize(40);
         fill(255);
         for (int i = 0; i < entries.size(); i++) {
-            text((i + 1) + ". " + entries.get(i).name + " ---- " + entries.get(i).score, 500, 200 + i * 50);
+            text((i + 1) + ". " + entries.get(i).name + " ---- " + entries.get(i).score, 500, 300 + i * 50);
         }
     }
 

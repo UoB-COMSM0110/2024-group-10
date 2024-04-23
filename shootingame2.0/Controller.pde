@@ -518,8 +518,11 @@ class Controller {
     background(background_start);
     currentButton = Button.NONE;
     
-    textSize(50);
-    text("HIGH SCORES", width/2, 100);
+    textSize(60);
+    text("HIGH SCORES", width/2, 150);
+    
+    PImage crown = loadImage("PrototypeImages/goldcrown.png");
+    image(crown,width/2, 240, 50, 50); 
     
     leaderboard.display();
     
@@ -542,9 +545,6 @@ class Controller {
     strokeWeight(4);
     fill(2, 30, 54, 120);
     rect(width/2, height, width+100, 1100);
-    
-    
-
 
     // navigation buttons
     createButton(width/2, 250, 250, 100, Button.GAMEB);
