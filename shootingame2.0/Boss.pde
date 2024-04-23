@@ -1,4 +1,5 @@
 class Boss extends Enemy {
+  int shotTime = 0;
   
   Boss(float x, float y) {
     super(x,y);
@@ -22,5 +23,19 @@ class Boss extends Enemy {
     rect(x,y,750,300);
   }
   
-  boolean isHit(PlayerBullet bullet) {return false;}
+  boolean isHit(PlayerBullet bullet) {
+    if(isStageTwo) {
+      if(bullet.y <= 400) {
+        shotTime++;
+        if(shotTime > 20) {
+          toBeRemove = true;
+          state = GameState.FINISHED;
+        }
+        return true;
+      }
+      return false;
+    }
+    return false;
+  }
+  
 }

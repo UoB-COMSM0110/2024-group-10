@@ -132,6 +132,7 @@ void mousePressed(){
   else if (currentButton == Button.GAMEB){
     state = GameState.PLAYING;
     controller.startFrame = frameCount;
+    controller.hasBoss = false;
   }
   else if (currentButton == Button.STARTB){
     controller.resetGame(); 

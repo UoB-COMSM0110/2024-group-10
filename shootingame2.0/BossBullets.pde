@@ -1,7 +1,7 @@
 class BossBullet extends EnemyBullet {
   BossBullet(float x, float y, float angle) {
     super(x, y, angle);
-    this.speed = 5;
+    this.speed = 1;
   }
   
   void update() {

@@ -588,17 +588,17 @@ class Controller {
       enemies.add(enemyOne);
       enemyOne = new EnemyOneBoss(800, 125);
       enemies.add(enemyOne);
-      /*for(int i = 0; i < 3; i++) {
+      for(int i = 0; i < 3; i++) {
         if(i == 1) enemyThree = new EnemyThreeBoss(500, 100);
         else enemyThree = new EnemyThreeBoss(250 + i * 250, 300);
         enemies.add(enemyThree);
-      }*/
-      /*for(int i = 0; i < 9; i++) {
+      }
+      for(int i = 0; i < 9; i++) {
         if(i % 2 == 0) {
           enemyOne = new EnemyOneBoss(300 + i*50, 250);
           enemies.add(enemyOne);
         }
-      }*/
+      }
       hasBoss = true;
     }
     
