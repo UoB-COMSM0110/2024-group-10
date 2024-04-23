@@ -497,10 +497,13 @@ class Controller {
     //display player name and score
     textSize(50);
     text(player.name + "'s Score: " + player.score, width/2, 450);
-    //text(player2.name + "'s Score : " + p2score, width/2 , 550);
-    text(player2.name + "'s Score: " + "placeholder p2 score", width/2, 550);
     
+    // adds player 2 part if in 2 player mode
+    if (is2Player){
+        text(player2.name + "'s Score : " + player2.score, width/2 , 550);
+    }
 
+   
     //navigation buttons
     createButton(width/3, 700, 250, 100, Button.STARTB);  
     fill(255);
@@ -603,20 +606,29 @@ class Controller {
     background(background_start);
     currentButton = Button.NONE;
 
-    textSize(50);
+    textSize(60);
     text("CONGRATULATIONS!!!", width/2, 200);
     textSize(30);
     text("A winner is you! \n The aliens have been defeated and the world is saved!", width/2, 300);
     
     //display player final score
     textSize(50);
-    text("FINAL SCORE: " + player.score, width/2, 500);
+    // adds player 2 part if in 2 player mode
+    if (is2Player){
+        text("FINAL SCORE: ", width/2, 500);
+        text(player2.name +  "'s Score : " + player.score, width/2 , 600);
+        text(player2.name + "'s Score : " + player2.score, width/2 , 700);
+    }
+    else text("FINAL SCORE: " + player.score, width/2, 500);
 
     //navigation buttons
-    createButton(width/2, 700, 250, 100, Button.STARTB);
+    createButton(width/2, 800, 250, 100, Button.STARTB);
     fill(255);
     textSize(40);
-    text("MAIN MENU", width/2, 715);
+    text("MAIN MENU", width/2, 815);
+    
+    PImage crown = loadImage("PrototypeImages/goldcrown.png");
+    image(crown,width/2, 240, 50, 50); 
   }
   
   void bossFight() {

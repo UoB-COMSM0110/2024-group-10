@@ -74,22 +74,22 @@ void draw() {
   if(state == GameState.ENEMYINFO) controller.displayEnemyScreen();
   if(state == GameState.HIGHSCORE) controller.displayScoreScreen();
   if(state == GameState.BOSS) controller.bossFight();
-  if(state == GameState.VICTORY) controller.displayVictoryScreen();
   
-  if (state != lastState && state == GameState.FINISHED) {
+  
+  if (state != lastState && (state == GameState.FINISHED || state == GameState.VICTORY)) {
       scoreAdded = false;  // 状态变为FINISHED时重置
+      if (!scoreAdded) {  // 假设scoreAdded是一个防止多次添加的标志
+      if (leaderboard.isHighScore(player.score)) { // 检查是否为高分
+          leaderboard.addScore(player.name, player.score);
+          scoreAdded = true; // 设置标志
+      }
+    }
   }
   lastState = state;  // 更新上一个状态
 
-  if(state == GameState.FINISHED) {
-    if (!scoreAdded) {  // 假设scoreAdded是一个防止多次添加的标志
-        if (leaderboard.isHighScore(player.score)) { // 检查是否为高分
-          leaderboard.addScore(player.name, player.score);
-          scoreAdded = true; // 设置标志
-        }
-    }
-    controller.displayGameOverScreen();
-  }
+  if(state == GameState.FINISHED) controller.displayGameOverScreen();
+  
+  if(state == GameState.VICTORY) controller.displayVictoryScreen();
 }
 
 void keyPressed() {
