@@ -2,6 +2,7 @@ class Enemy {
   float x, y;
   boolean toBeRemove = false;
   boolean isShooting = false;
+  boolean isStageTwo = false;
   int lastFrame;
   int shootingTime = 0;
   PImage enemy1;

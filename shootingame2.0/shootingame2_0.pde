@@ -73,7 +73,7 @@ void draw() {
   if(state == GameState.INSTRUCTIONS) controller.displayInfoScreen();
   if(state == GameState.ENEMYINFO) controller.displayEnemyScreen();
   if(state == GameState.HIGHSCORE) controller.displayScoreScreen();
-  
+  if(state == GameState.BOSS) controller.bossFight();
   
   if (state != lastState && state == GameState.FINISHED) {
       scoreAdded = false;  // 状态变为FINISHED时重置
@@ -93,7 +93,7 @@ void draw() {
 
 void keyPressed() {
   
-  if(state == GameState.PLAYING){
+  if(state == GameState.PLAYING || state == GameState.BOSS){
     player.keyPressed();
   }
   
@@ -120,7 +120,7 @@ void keyPressed() {
 }
 
 void keyReleased() {
-  if(state == GameState.PLAYING) player.keyReleased();
+  if(state == GameState.PLAYING || state == GameState.BOSS) player.keyReleased();
 }
 
 void mousePressed(){
@@ -131,6 +131,7 @@ void mousePressed(){
   }
   else if (currentButton == Button.GAMEB){
     state = GameState.PLAYING;
+    controller.startFrame = frameCount;
   }
   else if (currentButton == Button.STARTB){
     controller.resetGame(); 
