@@ -74,6 +74,7 @@ void draw() {
   if(state == GameState.ENEMYINFO) controller.displayEnemyScreen();
   if(state == GameState.HIGHSCORE) controller.displayScoreScreen();
   if(state == GameState.BOSS) controller.bossFight();
+  if(state == GameState.VICTORY) controller.displayVictoryScreen();
   
   if (state != lastState && state == GameState.FINISHED) {
       scoreAdded = false;  // 状态变为FINISHED时重置

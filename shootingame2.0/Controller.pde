@@ -304,9 +304,9 @@ class Controller {
     //player controls visualisation
     textSize(30);
     fill (255, 195, 0) ;
-    text("Shoot", width/3, 400);
+    text("Shoot", width/3, 410);
     fill(255);
-    text("Move", 2*width/3, 400);
+    text("Move", 2*width/3, 410);
     fill(255);
     text("You", width/2, 420);
     
@@ -324,8 +324,11 @@ class Controller {
     PImage dir = loadImage("PrototypeImages/keys/dirkeys.png");
     image(dir,2*width/3, 230, 150, 100); 
     
-    text("F key placeholder\n insert image here", width/4, 320);
-    text("WASD keys placeholder\n insert image here", 3*width/4, 320);
+    //2nd player control images
+    PImage fkey = loadImage("PrototypeImages/keys/f.png");
+    image(fkey,width/3, 340, 50, 50); 
+    PImage wasd = loadImage("PrototypeImages/keys/wasd.png");
+    image(wasd,2*width/3, 330, 150, 100); 
     
     //esc button img for pause instructions
     PImage esc = loadImage("PrototypeImages/keys/esc.gif");
@@ -364,7 +367,6 @@ class Controller {
     text("Press ESC to pause game", width/10+3*40, 630);
     text("Energy bar. Charge up to full and \nPress -M- \nto launch a special move!", width/3+50, 700);
     
-    //image(examplePlayer.energyImages[10], 120 -20, 680, 150, 18);
     image(examplePlayer.energyImages[10], 120, 710, 150, 18);
 
     
@@ -555,7 +557,7 @@ class Controller {
     currentButton = Button.NONE;
 
     textSize(50);
-    text("CONGRATULATIONS!", width/2, 200);
+    text("CONGRATULATIONS!!!", width/2, 200);
     textSize(30);
     text("A winner is you! \n The aliens have been defeated and the world is saved!", width/2, 300);
     

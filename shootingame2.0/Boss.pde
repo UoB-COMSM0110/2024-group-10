@@ -29,7 +29,7 @@ class Boss extends Enemy {
         shotTime++;
         if(shotTime > 20) {
           toBeRemove = true;
-          state = GameState.FINISHED;
+          state = GameState.VICTORY;
         }
         return true;
       }
