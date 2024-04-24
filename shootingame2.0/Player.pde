@@ -26,10 +26,12 @@ class Player {
   boolean isPlayer2=false;
 
   boolean isDied=false;
+  
+  float imageSize = 50;
 
   Player (int playerNumber) {
     this.playerNumber = playerNumber;
-    me = loadImage("PrototypeImages/me.png");
+    me = loadImage("PrototypeImages/player/me_level1.png");
     for (int i = 0; i <= 10; i++) {
       energyImages[i] = loadImage("PrototypeImages/energybar/" +(i * 10) + ".png");
     }
@@ -41,7 +43,7 @@ class Player {
       return;
     }
     imageMode(CENTER);
-    image(me, x, y, 50, 50);
+    image(me, x, y, imageSize, imageSize);
     imageMode(CORNER);
     displayLives();
     displayScore();
@@ -228,11 +230,17 @@ class Player {
     isFirstBullet = true;
     isMissileReady = false;
     shootingMissle = false;
-
+    // 重置射击等级并更新图像
+    shootingLevel = 0;
+    updatePlayerImage();
+    
     // 重置能量条长度（如果有需要）
     energyBarLength = 0;  // 假设的能量条长度属性
 
     // 可能还需要重置其他游戏相关的状态
+    
+    
+    
   }
   
   void hitObject(Object object) {
@@ -243,5 +251,39 @@ class Player {
   
   void increaseShootingLevel() {
     if(shootingLevel < 3) shootingLevel++;
+    updatePlayerImage(); 
   }
+  
+  void updatePlayerImage() {
+    float imageSize;  // 定义一个用于存储图像尺寸的变量
+
+    // 根据射击等级更新角色图像和尺寸
+    switch (shootingLevel) {
+        case 0:
+            me = loadImage("PrototypeImages/player/me_level1.png");
+            imageSize = 50;  // 默认尺寸
+            break;
+        case 1:
+            me = loadImage("PrototypeImages/player/me_level2.png");
+            imageSize = 60;  // 稍大的尺寸
+            break;
+        case 2:
+            me = loadImage("PrototypeImages/player/me_level3.png");
+            imageSize = 70;  // 更大的尺寸
+            break;
+        case 3:
+            me = loadImage("PrototypeImages/player/me_level4.png");
+            imageSize = 80;  // 最大尺寸
+            break;
+        default:
+            me = loadImage("PrototypeImages/player/me_level1.png");
+            imageSize = 50;  // 默认尺寸
+    }
+
+    // 将尺寸设置为类的成员变量，以便在display()方法中使用
+    this.imageSize = imageSize;
+}
+
+  
+  
 }
