@@ -40,7 +40,7 @@
 | Shunyi  | Lead Developer: Led the development of the game's main logic and wrote core code for gameplay. Conducted code reviews to maintain quality and consistency. |
 | Antai   | Developer: Implemented the leaderboard feature, allowing players to track scores and compete against others. |
 
-## 2.Introduction:
+## 2. Introduction:
 
 Our game is a single or multiplayer shoot-‘em-up game inspired by Space Invader. However, we’ve added our own twists to elevate the game. We have introduced different enemies, each with their unique behaviours and attack patterns. Specifically, the stalking enemy follows the player, adding an extra challenge to gameplay. To survive, players must employ strategic manoeuvres, precision aiming and quick reflexes to destroy enemies before they unleash their attacks. Each successful takedown earns points, contributing to the player’s overall score. As the battle between the enemies and player(s) continues, the intensity escalates, with faster enemy ships. Only if you reach the end of the game will you win against the enemies.
 
@@ -71,7 +71,10 @@ We used the onion model to systematically identify our stakeholders across the d
 
 
 **Use case diagram**
-![user case diagram.png](images/user%20case%20diagram.png)
+
+<img src="images/user%20case%20diagram.png" alt="user case diagram.png" width="400">
+
+
 
 **User Stories**
 ### Player roles:
@@ -141,7 +144,7 @@ To ensure optimal performance, we utilise efficient data structures for storing 
 
 **Class diagram**
 
-(insert new class diagram)
+![new class diagram.png](images/new%20class%20diagram.png)
 
 
 As our game development progressed, we refined and expanded our class diagram to reflect the evolving structure and the functionality of the game. The updated class diagram shows the inheritance hierarchy among the different game entities, such as the players and enemies, and their associated bullets. The updated class diagram brings a new level of structure to our design plan, providing a more cohesive architecture. While still aligning with our initial concept, the revised diagram has a more intuitive way for the enemies and players to interact. This helped with planning and implementing the collision-detection mechanism. 
