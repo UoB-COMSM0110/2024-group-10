@@ -109,18 +109,10 @@ class Player {
     }
 
     // Update position based on key flags
-    if(controller.isHard)
     if (movingUp) y -= 5;
     if (movingDown) y += 5;
     if (movingLeft) x -= 5;
     if (movingRight) x += 5;
-    else
-    {
-      if (movingUp) y -= 10;
-    if (movingDown) y += 5;
-    if (movingLeft) x -= 5;
-    if (movingRight) x += 5;
-    }
 
     //Shooting Missle
     if (shootingMissle) shootMissle();

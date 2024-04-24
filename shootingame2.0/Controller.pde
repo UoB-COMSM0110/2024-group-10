@@ -5,8 +5,6 @@ class Controller {
   boolean left;
   boolean hasBoss = false;
   boolean isHard;
-  controller.isHard
-
 
   void campaignMode() {
     int currentFrame = frameCount;
