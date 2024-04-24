@@ -7,6 +7,10 @@ class Boss extends Enemy {
   
   void update() {
     if(isStageTwo) {
+      if(shotTime > 20) {
+          toBeRemove = true;
+          state = GameState.VICTORY;
+        }
       if(frameCount % 300 == 0) shootBullets();
     }
   }
@@ -38,4 +42,5 @@ class Boss extends Enemy {
     return false;
   }
   
+  void increaseShotTime() {shotTime += 3;}
 }

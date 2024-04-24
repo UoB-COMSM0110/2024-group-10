@@ -55,4 +55,6 @@ class Enemy {
     }
     return false;
   }
+  
+  void increaseShotTime() {}
 }

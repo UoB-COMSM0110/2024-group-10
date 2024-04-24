@@ -6,8 +6,7 @@ class EnemyThreeBoss extends EnemyThree {
   }
 
   void update() {
-
-
+    if (shotTime > 5) toBeRemove = true;
 
     if (is2Player) {
       if ((!player.isDied)&&(!player2.isDied)) {
@@ -52,4 +51,6 @@ class EnemyThreeBoss extends EnemyThree {
       if (frameCount % 60 == 0) shootBullets();
     }
   }
+  
+  void increaseShotTime() {shotTime += 3;}
 }

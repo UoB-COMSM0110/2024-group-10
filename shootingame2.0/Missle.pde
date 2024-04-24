@@ -1,4 +1,4 @@
-        class Missle extends PlayerBullet {
+class Missle extends PlayerBullet {
   int startFrame;
   PImage missle;
   
@@ -16,8 +16,15 @@
   
   void explode() {
     toBeRemove =true;
-    for(Enemy enemy : enemies) {
-      enemy.toBeRemove = true;
+    if(state == GameState.PLAYING) {
+      for(Enemy enemy : enemies) {
+        enemy.toBeRemove = true;
+      }
+    }
+    if(state == GameState.BOSS) {
+      for(Enemy enemy : enemies) {
+        enemy.increaseShotTime();
+      }
     }
     for(EnemyBullet bullet : enemyBullets) {
       bullet.toBeRemove = true;
