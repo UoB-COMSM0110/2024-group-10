@@ -1,4 +1,4 @@
-import processing.video.*;
+import processing.video.*; //<>//
 Player player;
 Player player2;
 Controller controller;
@@ -7,9 +7,11 @@ GameState state;
 Movie introVideo;
 ArrayList<EnemyBullet> enemyBullets;
 ArrayList<PlayerBullet> playerBullets;
+ArrayList<PlayerBullet> playerBullets2;
 ArrayList<Enemy> enemies;
 ArrayList<EnemyBullet> enemyBulletsToRemove;
 ArrayList<PlayerBullet> playerBulletsToRemove;
+ArrayList<PlayerBullet> playerBulletsToRemove2;
 ArrayList<Enemy> enemiesToRemove;
 PImage background;
 PImage background_start;
@@ -22,11 +24,14 @@ PImage enemy1_bullet;
 
 Player playerToName;
 
+
 void settings() {
   size(1000, 1000, P2D);
 }
 
 void setup() {
+
+
   //introVideo = new Movie(this, "intro1.mp4");
   //introVideo.loop();
   background_start = loadImage("PrototypeImages/background_start.png");
@@ -34,16 +39,18 @@ void setup() {
   state = GameState.START;
   background = loadImage("PrototypeImages/background1.png");
   controller = new Controller();
-  leaderboard = new Leaderboard(); 
+  leaderboard = new Leaderboard();
   player = new Player(1);
   player2 = new Player(2);
   enemyBullets = new ArrayList<EnemyBullet>();
   playerBullets = new ArrayList<PlayerBullet>();
+  playerBullets2 = new ArrayList<PlayerBullet>();
   enemies = new ArrayList<Enemy>();
   enemyBulletsToRemove = new ArrayList<EnemyBullet>();
   playerBulletsToRemove = new ArrayList<PlayerBullet>();
+  playerBulletsToRemove2 = new ArrayList<PlayerBullet>();
   enemiesToRemove = new ArrayList<Enemy>();
-  
+
   // UI related
   planecursor = loadImage("PrototypeImages/planecursor.gif");
   background(51);
@@ -56,116 +63,160 @@ void setup() {
   textFont(mainFont);
   //Set naming screen to name player 1 first
   playerToName = player;
-  
-  enemy1_bullet = loadImage("PrototypeImages/enemy1_bullet.png");
-  
 
+  enemy1_bullet = loadImage("PrototypeImages/enemy1_bullet.png");
 }
 
 void draw() {
+  //println(playerCount+"------"+is2Player);
   playerCount = getPlayerCount();
-  if(state == GameState.INTRO) controller.dispalyIntroduction();
-  if(state == GameState.START) controller.displayStartScreen();
-  if(state == GameState.NAMEENTRY) controller.displayNamingScreen();
-  if(state == GameState.PLAYING) controller.campaignMode();
-  if(state == GameState.PAUSE) controller.displayPauseScreen();
-  if(state == GameState.MODESELECT) controller.displaySettingsScreen();
-  if(state == GameState.INSTRUCTIONS) controller.displayInfoScreen();
-  if(state == GameState.ENEMYINFO) controller.displayEnemyScreen();
-  if(state == GameState.HIGHSCORE) controller.displayScoreScreen();
-  if(state == GameState.BOSS) controller.bossFight();
-  
-  
+  if (state == GameState.INTRO) controller.dispalyIntroduction();
+  if (state == GameState.START) controller.displayStartScreen();
+  if (state == GameState.NAMEENTRY) controller.displayNamingScreen();
+  if (state == GameState.PLAYING) controller.campaignMode();
+  if (state == GameState.PAUSE) controller.displayPauseScreen();
+  if (state == GameState.MODESELECT) controller.displaySettingsScreen();
+  if (state == GameState.INSTRUCTIONS) controller.displayInfoScreen();
+  if (state == GameState.ENEMYINFO) controller.displayEnemyScreen();
+  if (state == GameState.HIGHSCORE) controller.displayScoreScreen();
+  if (state == GameState.BOSS) controller.bossFight();
+
+
   if (state != lastState && (state == GameState.FINISHED || state == GameState.VICTORY)) {
-      scoreAdded = false;  // 状态变为FINISHED时重置
-      if (!scoreAdded) {  // 假设scoreAdded是一个防止多次添加的标志
+    scoreAdded = false;  // 状态变为FINISHED时重置
+    if (!scoreAdded) {  // 假设scoreAdded是一个防止多次添加的标志
       if (leaderboard.isHighScore(player.score)) { // 检查是否为高分
-          leaderboard.addScore(player.name, player.score);
+        leaderboard.addScore(player.name, player.score);
+        scoreAdded = true; // 设置标志
+      }
+    }
+
+    scoreAdded = false;  // 状态变为FINISHED时重置
+    if (!scoreAdded) {  // 假设scoreAdded是一个防止多次添加的标志
+      if (is2Player) {
+        if (leaderboard.isHighScore(player2.score)) { // 检查是否为高分
+          leaderboard.addScore(player2.name, player2.score);
           scoreAdded = true; // 设置标志
+        }
       }
     }
   }
   lastState = state;  // 更新上一个状态
 
-  if(state == GameState.FINISHED) controller.displayGameOverScreen();
-  
-  if(state == GameState.VICTORY) controller.displayVictoryScreen();
+  if (state == GameState.FINISHED) controller.displayGameOverScreen();
+
+  if (state == GameState.VICTORY) controller.displayVictoryScreen();
 }
 
 void keyPressed() {
-  
-  if(state == GameState.PLAYING || state == GameState.BOSS){
-    player.keyPressed();
+
+  if (state == GameState.PLAYING || state == GameState.BOSS) {
+    if (key == ESC) {
+      key = 0;
+      state = GameState.PAUSE;
+    };
+    if (keyCode == LEFT) player. movingLeft = true;
+    if (keyCode == RIGHT) player.movingRight = true;
+    if (keyCode == UP) player.movingUp = true;
+    if (keyCode == DOWN) player.movingDown = true;
+    if (key == 'M' || key == 'm') player.shootingMissle = true;
+    if (key == ' ') player.isShooting = true;
+
+
+    if (is2Player) {
+
+      if (key == 'a' || key == 'A') {
+        player2.movingLeft = true;
+      }
+      if (key == 'd' || key == 'D') player2.movingRight = true;
+      if (key == 'w' || key == 'W') player2.movingUp = true;
+      if (key == 's' || key == 'S')player2. movingDown = true;
+      if (key == 'F' || key == 'f') player2.isShooting = true;
+      if (key == 'G' || key == 'g') player2.shootingMissle = true;
+    }
   }
-  
+
   if (key == ESC) key = 0;
-  
-  if (state == GameState.NAMEENTRY){
-  //use TAB to swap which player name is changed
-     if(key== TAB && is2Player){
-       if (playerToName == player){
-         playerToName = player2;
-       }
-       else if (playerToName == player2){
-         playerToName = player;
-       }
-     }
-     //defaults to player 1 name input if not 2 player mode
-     if(!is2Player){
-       playerToName = player;
-     }
-     
-     //add or delete char depending on input key
-     playerToName.alterName();
+
+  if (state == GameState.NAMEENTRY) {
+    //use TAB to swap which player name is changed
+    if (key== TAB && is2Player) {
+      if (playerToName == player) {
+        playerToName = player2;
+      } else if (playerToName == player2) {
+        playerToName = player;
+      }
+    }
+    //defaults to player 1 name input if not 2 player mode
+    if (!is2Player) {
+      playerToName = player;
+    }
+
+    //add or delete char depending on input key
+    playerToName.alterName();
   }
 }
 
 void keyReleased() {
-  if(state == GameState.PLAYING || state == GameState.BOSS) player.keyReleased();
+  if (state == GameState.PLAYING || state == GameState.BOSS) {
+    if (keyCode == LEFT) player.movingLeft = false;
+    if (keyCode == RIGHT) player.movingRight = false;
+    if (keyCode == UP) player.movingUp = false;
+    if (keyCode == DOWN) player.movingDown = false;
+    if (key == 'M' || key == 'm')player. shootingMissle = false;
+    if (key == ' ') {
+      player.isShooting = false;
+      player. isFirstBullet = true;
+    }
+    if (is2Player) {
+      if (key == 'a' || key == 'A') player2.movingLeft = false;
+      if (key == 'd' || key == 'D') player2.movingRight = false;
+      if (key == 'w' || key == 'W') player2.movingUp = false;
+      if (key == 's' || key == 'S') player2.movingDown =false;
+
+      if (key == 'G' || key == 'g')player. shootingMissle = false;
+      if (key == 'F' || key == 'f') {
+        player2. isShooting = false;
+        player2.isFirstBullet = true;
+      }
+    }
+  }
 }
 
-void mousePressed(){
+void mousePressed() {
   // menu navigation button clicks:
   if (currentButton == Button.EXITB)
   {
     exit();
-  }
-  else if (currentButton == Button.GAMEB){
+  } else if (currentButton == Button.GAMEB) {
     state = GameState.PLAYING;
     controller.startFrame = frameCount;
     controller.hasBoss = false;
-  }
-  else if (currentButton == Button.STARTB){
-    controller.resetGame(); 
+  } else if (currentButton == Button.STARTB) {
+    controller.resetGame();
     state = GameState.START;
-  }
-  else if (currentButton == Button.INSTRUCTIONB){
+  } else if (currentButton == Button.INSTRUCTIONB) {
     state = GameState.INSTRUCTIONS;
-  }
-  else if (currentButton == Button.ENEMYB){
+  } else if (currentButton == Button.ENEMYB) {
     state = GameState.ENEMYINFO;
-  }
-  else if (currentButton == Button.MODEB){
+  } else if (currentButton == Button.MODEB) {
     state = GameState.MODESELECT;
-  }
-  else if (currentButton == Button.NAMEB) { 
+  } else if (currentButton == Button.NAMEB) {
     controller.resetGame();
     state = GameState.NAMEENTRY;
-  }
-  else if (currentButton == Button.HIGHSCOREB) {
+  } else if (currentButton == Button.HIGHSCOREB) {
     state = GameState.HIGHSCORE;
   }
   // mode select button clicks:
   else if (currentButton == Button.EASYB) {
-    currentMode = "EASY";  
+    currentMode = "EASY";
   } else if (currentButton == Button.HARDB) {
-    currentMode = "HARD"; 
-  }
-  else if (currentButton == Button.ONEPLAYERB) {
-    is2Player = false; 
-  }
-  else if (currentButton == Button.TWOPLAYERB) {
-    is2Player = true; 
+    currentMode = "HARD";
+  } else if (currentButton == Button.ONEPLAYERB) {
+    is2Player = false;
+  } else if (currentButton == Button.TWOPLAYERB) {
+    player2.isPlayer2=true;
+    is2Player = true;
   }
 }
 
@@ -173,11 +224,10 @@ void movieEvent(Movie m) {
   m.read();
 }
 
-int getPlayerCount(){
-    if(is2Player){
-      return 2;
-    }
-    else{
-      return 1;
-    }
+int getPlayerCount() {
+  if (is2Player) {
+    return 2;
+  } else {
+    return 1;
+  }
 }
