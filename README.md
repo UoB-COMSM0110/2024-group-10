@@ -1,4 +1,19 @@
-# Our Team
+# Space Swarm Shooters
+
+## Our video
+
+## Table of Contents
+
+1. [Our Team](#our-team)
+2. [Introduction](#introduction)
+3. [Design](#design)
+4. [Implementation](#implementation)
+5. [Evaluation](#evaluation)
+6. [Process](#process)
+7. [Conclusion](#conclusion)
+
+
+# 1. Our Team
 
 ## Team members
 
@@ -25,53 +40,34 @@
 | Shunyi  | Lead Developer: Led the development of the game's main logic and wrote core code for gameplay. Conducted code reviews to maintain quality and consistency. |
 | Antai   | Developer: Implemented the leaderboard feature, allowing players to track scores and compete against others. |
 
+## 2.Introduction:
+
+Our game is a single or multiplayer shoot-‘em-up game inspired by Space Invader. However, we’ve added our own twists to elevate the game. We have introduced different enemies, each with their unique behaviours and attack patterns. Specifically, the stalking enemy follows the player, adding an extra challenge to gameplay. To survive, players must employ strategic manoeuvres, precision aiming and quick reflexes to destroy enemies before they unleash their attacks. Each successful takedown earns points, contributing to the player’s overall score. As the battle between the enemies and player(s) continues, the intensity escalates, with faster enemy ships. Only if you reach the end of the game will you win against the enemies.
+
+## How to play!
+**Controls**
+Single player:
+Arrows to move, space to shoot
+(insert picture)
+
+Multiplayer:
+Player 1: arrows to move, space to shoot
+Player 2: WASD to move, f to shoot
+(insert picture)
+
+Enemies: (insert pictures)
+
+How to win: beat the enemies to land a victory
 
 
-# Final game idea: Vertical-Scrolling Shooter Game
-
-Name: Space Swarm Shooters
-
-Paper prototype video:
-
-https://github.com/UoB-COMSM0110/2024-group-10/assets/148199198/728b9f47-211e-4607-9fb6-e255dce2f6ae
-
-## 1.Description:
-
-A 2D game where the user will pilot a spaceship on the screen controlled using 
-the keyboard. Enemies will appear dynamically along with others set up statically 
-on the map. The goal is to earn points by defeating enemies and to evade attacks
-from the enemies to survive. As points increase, the difficulty level increases
-and the map landscape and enemies may change and become more difficult.
-
-## 2.Controls:
-
-W = Up
-A = Left
-S = Down
-D = Right
-Space = Shoot
-
-## 3.Features discussed:
-
-- Fire system upgrading
-- Bonus points earned by coins from destroyed enemies
-- Ability to select between different spaceship designs
-
-## 4.Potential challenges:
-
-- Accurate collision detection range for objects; distinguishing different
-  interactions for different game object types (eg. bullets, coins, enemies)
-- 2-player mode implementation
-- Resurrection / Extra lives system; carrying on with previous fire system
-
-## Requirements
+## 3. Requirements
 Requirements help to clearly define software projects and meet the expectations of the end-users and stakeholders. 
 
 **Stakeholders**
 
 We used the onion model to systematically identify our stakeholders across the different group layers. Our game is the core of the onion model, as the product that we are developing. Moving outwards to the system layer, we recognised ourselves as the normal operators developing the game’s core functionality. We also recognised students and university lecturers as stakeholders acting as game-testers and sources of feedback. Expanding further to the containing system, we acknowledged the users of our game, including students, friends and family and social gamers. The UI art team are also key stakeholders in this system, involved in maintaining the interface of the game. Finally, in the wider environment, we considered the influence our game could have on existing shoot ‘em games, recognising our effect as a negative stakeholder by creating a competitor-game. In contrast, we also included those who may play and enjoy the game, as well as those who could provide networking opportunities the expand the game further, for example a university gaming society. 
 
-![Onion Model](images/Onion%20model.png)
+<img src="images/Onion%20model.png" alt="Onion Model" width="550">
 
 
 **Use case diagram**
@@ -81,34 +77,33 @@ We used the onion model to systematically identify our stakeholders across the d
 ### Player roles:
 
 #### Scenario 1: Navigate with Ease
----
->"As a player, I want a straightforward and easy-to-understand interface so that I can quickly get started without spending time learning complex operations. This will allow me to focus more on enjoying the game and its challenges."
----
+
+>*As a player, I want a straightforward and easy-to-understand interface so that I can quickly get started without spending time learning complex operations. This will allow me to focus*
 
 #### Scenario 2: Master of Modes
->"As a player, I want to be able to choose between different game modes such as campaign, endless, and speed modes. This flexibility allows me to tailor the game experience to my preferences and skill level, enhancing engagement and satisfaction."
----
+
+>*As a player, I want to be able to choose between different game modes such as campaign, endless, and speed modes. This flexibility allows me to tailor the game experience to my preferences and skill level, enhancing engagement and satisfaction.*
+
 
 #### Scenario 3: Embrace the Challenge
->"As a player, I expect the game to offer a variety of challenges, including dynamic environments and unpredictable enemy behaviors, which increase the game's depth and replay value."
----
+
+>*As a player, I expect the game to offer a variety of challenges, including dynamic environments and unpredictable enemy behaviors, which increase the game's depth and replay value.*
 
 
 
 ### Developer Roles:
----
+
 
 #### Scenario 1: Interface Optimisation
-> "As a Frontend Developer, I aim to create a user-friendly interface, ensuring players can dive into the game without any hassle."
----
+> *As a Frontend Developer, I aim to create a user-friendly interface, ensuring players can dive into the game without any hassle.*
+
 
 #### Scenario 2: Mode Implementation
-> "As a Backend Developer, my goal is to implement various game modes, providing players with diverse gameplay options tailored to their preferences."
----
+> *As a Backend Developer, my goal is to implement various game modes, providing players with diverse gameplay options tailored to their preferences.*
+
 
 #### Scenario 3: Challenge Design
-> "As a Game Designer, I'm focused on crafting engaging challenges, from dynamic environments to cunning enemy behaviors, enhancing the game's depth and replayability."
----
+> *As a Game Designer, I'm focused on crafting engaging challenges, from dynamic environments to cunning enemy behaviors, enhancing the game's depth and replayability.*
 
 
 **Use case reflection**
@@ -116,12 +111,60 @@ We used the onion model to systematically identify our stakeholders across the d
 Creating several use case specifications allowed the group to break down the game into its different components, enabling us to explore key detaisl of the game. The key use case specifications for our game include: level design, optimisation, unique features and user interface. Each specification focused on specific elements of the game and helped us refine each part. For example, in the level design we decided on 2 main levels that the player can choose from - endless mode and speed mode. Furthermore, it allowed us to think about how each element of the game will integrate with each other. For example, a unique feature is enemy-spawning aliens, which needed to be adapted to fit each game mode. This process gave us a high level understanding of the game, which will aid us when planning the game.
 (Finish by adding a reflection about the use case diagram)
 
+## 3. Design
+
+### System architecture
+The system architecture of our game comprises several parts, including game state management, user interface, enemy type and game elements. Each part contributes to the overall functionality and experience of the game.
+
+**Game State Management**
+
+The core design of the game architecture is the Game State Management system, encapsulated within the ‘GameState’ enum. 
+
+<img src="images/GameState.png" alt="GameState" width="300">
+
+This enum controls the gameplay flow by managing state transitions, responding to user input and coordinating interactions between various game elements. Event handler methods translate keyboard and mouse events into actions within the game. In single-player mode, players navigate using the arrow keys and utilise the spacebar for shooting actions, providing an intuitive and straightforward control scheme. For two-player mode, we opted for the 'WASD' keys for movement and the 'F' key for shooting, ensuring a comfortable and balanced gameplay experience for both players. By using the GameState enum and responsive event handling mechanisms, the game architecture maintains coherence, resulting in a fulfilling gaming experience.
+
+**User Interface (UI)**
+
+The User Interface (UI) component plays an important role in providing players with visual feedback and interactive elements for a user-friendly experience. Through start screens and menus, the UI offers players different options to either begin or resume gameplay, adjust settings, access instructions and view highscores via a leaderboard. We aimed for a clear but effective design to ensure ease of use. 
+
+**Enemy Diversity**
+
+The UI also highlights the diversity among each enemy, each having unique attacking behaviours, represented visually to the player. Alongside this, each enemy has a distinctive appearance and behaviour. The corresponding enemy bullets also have various shapes to indicate different attack players, allowing players to anticipate and respond strategically. This adds a level of originality, variability and interest to the game and helps maintain user engagement. 
+
+**Game elements**
+
+In our game, various elements contribute to gameplay, including players, enemies, and their respective bullet types. Each element is represented by a separate class, with distinct attributes that introduce challenge and strategy. This modular class design promotes a well-structured codebase, facilitating maintenance and enabling future expansion.
+
+To ensure optimal performance, we utilise efficient data structures for storing game entities. Additionally, we implement design patterns like object pooling to minimise memory allocation and enhance game efficiency, particularly in scenarios involving high volumes of bullets or enemies on the screen. These optimisations result in a smooth gameplay experience and contribute to an enjoyable game overall enriched by immersive sound effects. 
+
 
 **Class diagram**
+
+(insert new class diagram)
+
+
+As our game development progressed, we refined and expanded our class diagram to reflect the evolving structure and the functionality of the game. The updated class diagram shows the inheritance hierarchy among the different game entities, such as the players and enemies, and their associated bullets. The updated class diagram brings a new level of structure to our design plan, providing a more cohesive architecture. While still aligning with our initial concept, the revised diagram has a more intuitive way for the enemies and players to interact. This helped with planning and implementing the collision-detection mechanism. 
+
 ![class diagram.jpg](images/class%20diagram.jpg)
+
+**Communication Diagram**
+
+(insert communication diagram)
+
+We created a communication diagram for a clear visual representation of how the different classes interacted with each other. This diagram allowed us to understand the flow of communication between objects and classes in our game. This also helped to ensure that player’s interactions with enemies and the game environment were handled properly, by mapping out methods such as shootBullets() and isHit(). 
+
+The extensive planning and object–oriented design was a major factor in the smooth operation of the game, the interoperability and usability of code, and the ease with which each team member could contribute to development in an agile-way, able to implement features and classes that independently and cohesively interact with each other.
+
 
 ## Evaluation
 **Think Aloud Evaluation: 11/03/2024**
+
+In our evaluation, we utilised a think aloud approach, where participants vocalised their thoughts while engaging with the game. We generated a word cloud from the think aloud data. This visual representation highlights recurring themes and key phrases, providing a quick and accessible overview of the user experience.
+
+<img src="images/word%20cloud.png" alt="word cloud" width="400">
+
+
 
 ### Feedback 1
 #### Positives:
