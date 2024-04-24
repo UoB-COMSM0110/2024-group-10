@@ -75,7 +75,6 @@ class Controller {
           player.score += 1;
           player.energy += 10;
           bullet.toBeRemove = true;
-
           break;
         }
       }
@@ -125,6 +124,13 @@ class Controller {
         bullet.toBeRemove = true;
       }
       state = GameState.BOSS;
+    }
+    
+    for(Object object : objects) {
+      if (!object.toBeRemove) {
+        object.update();
+        object.display();
+      } else enemiesToRemove.add(object);
     }
 
     //Remove all the collected objects

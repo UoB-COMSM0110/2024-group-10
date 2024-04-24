@@ -13,6 +13,8 @@ ArrayList<EnemyBullet> enemyBulletsToRemove;
 ArrayList<PlayerBullet> playerBulletsToRemove;
 ArrayList<PlayerBullet> playerBulletsToRemove2;
 ArrayList<Enemy> enemiesToRemove;
+ArrayList<Object> objectsToReomve;
+ArrayList<Object> objects;
 PImage background;
 PImage background_start;
 String currentMode = "HARD";
@@ -50,6 +52,8 @@ void setup() {
   playerBulletsToRemove = new ArrayList<PlayerBullet>();
   playerBulletsToRemove2 = new ArrayList<PlayerBullet>();
   enemiesToRemove = new ArrayList<Enemy>();
+  objects = new ArrayList<Object>();
+  objectsToReomve = new ArrayList<Object>();
 
   // UI related
   planecursor = loadImage("PrototypeImages/planecursor.gif");
