@@ -46,14 +46,9 @@ Our game is a single or multiplayer shoot-‘em-up game inspired by Space Invade
 
 ## How to play!
 **Controls**
-Single player:
-Arrows to move, space to shoot
-(insert picture)
 
-Multiplayer:
-Player 1: arrows to move, space to shoot
-Player 2: WASD to move, f to shoot
-(insert picture)
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/c9b96cd2-517e-46f8-b4ca-94858e991afd" width="300">
+
 
 Enemies: (insert pictures)
 
@@ -73,6 +68,8 @@ We used the onion model to systematically identify our stakeholders across the d
 **Use case diagram**
 
 <img src="images/user%20case%20diagram.png" alt="user case diagram.png" width="400">
+
+The use case diagram was crucial in identifying interactions between actors and system components in our game. Visualising use cases helped us understand the game's functionality and flow, clarifying requirements and prioritising features. It also facilitated planning for multiplayer functionality by illustrating player interactions.
 
 
 
@@ -112,7 +109,6 @@ We used the onion model to systematically identify our stakeholders across the d
 **Use case reflection**
 
 Creating several use case specifications allowed the group to break down the game into its different components, enabling us to explore key detaisl of the game. The key use case specifications for our game include: level design, optimisation, unique features and user interface. Each specification focused on specific elements of the game and helped us refine each part. For example, in the level design we decided on 2 main levels that the player can choose from - endless mode and speed mode. Furthermore, it allowed us to think about how each element of the game will integrate with each other. For example, a unique feature is enemy-spawning aliens, which needed to be adapted to fit each game mode. This process gave us a high level understanding of the game, which will aid us when planning the game.
-(Finish by adding a reflection about the use case diagram)
 
 ## 3. Design
 
@@ -121,15 +117,18 @@ The system architecture of our game comprises several parts, including game stat
 
 **Game State Management**
 
-The core design of the game architecture is the Game State Management system, encapsulated within the ‘GameState’ enum. 
+The core design of the game architecture is the Game State Management system, encapsulated within the ``GameState`` enum. 
 
 <img src="images/GameState.png" alt="GameState" width="300">
 
-This enum controls the gameplay flow by managing state transitions, responding to user input and coordinating interactions between various game elements. Event handler methods translate keyboard and mouse events into actions within the game. In single-player mode, players navigate using the arrow keys and utilise the spacebar for shooting actions, providing an intuitive and straightforward control scheme. For two-player mode, we opted for the 'WASD' keys for movement and the 'F' key for shooting, ensuring a comfortable and balanced gameplay experience for both players. By using the GameState enum and responsive event handling mechanisms, the game architecture maintains coherence, resulting in a fulfilling gaming experience.
+This enum controls the gameplay flow by managing state transitions, responding to user input and coordinating interactions between various game elements. Event handler methods translate keyboard and mouse events into actions within the game. In single-player mode, players navigate using the arrow keys and utilise the spacebar for shooting actions, providing an intuitive and straightforward control scheme. For two-player mode, we opted for the ``WASD`` keys for movement and the ``F`` key for shooting, ensuring a comfortable and balanced gameplay experience for both players. By using the GameState enum and responsive event handling mechanisms, the game architecture maintains coherence, resulting in a fulfilling gaming experience.
 
 **User Interface (UI)**
 
 The User Interface (UI) component plays an important role in providing players with visual feedback and interactive elements for a user-friendly experience. Through start screens and menus, the UI offers players different options to either begin or resume gameplay, adjust settings, access instructions and view highscores via a leaderboard. We aimed for a clear but effective design to ensure ease of use. 
+
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/69e0c7a7-3ee1-417e-a064-1cd60aa2dbdb" width="300" height="310" alt="UI">
+
 
 **Enemy Diversity**
 
@@ -149,18 +148,32 @@ To ensure optimal performance, we utilise efficient data structures for storing 
 
 As our game development progressed, we refined and expanded our class diagram to reflect the evolving structure and the functionality of the game. The updated class diagram shows the inheritance hierarchy among the different game entities, such as the players and enemies, and their associated bullets. The updated class diagram brings a new level of structure to our design plan, providing a more cohesive architecture. While still aligning with our initial concept, the revised diagram has a more intuitive way for the enemies and players to interact. This helped with planning and implementing the collision-detection mechanism. 
 
-![class diagram.jpg](images/class%20diagram.jpg)
+<img src="images/class%20diagram.jpg" alt="Class Diagram" width="500"/>
+
 
 **Communication Diagram**
 
-(insert communication diagram)
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/47fac732-8959-4e68-b58d-42df0a6e1226" alt="Communication Diagram" width="600"/>
 
-We created a communication diagram for a clear visual representation of how the different classes interacted with each other. This diagram allowed us to understand the flow of communication between objects and classes in our game. This also helped to ensure that player’s interactions with enemies and the game environment were handled properly, by mapping out methods such as shootBullets() and isHit(). 
+We created a communication diagram for a clear visual representation of how the different classes interacted with each other. This diagram allowed us to understand the flow of communication between objects and classes in our game. This also helped to ensure that player’s interactions with enemies and the game environment were handled properly, by mapping out methods such as ``shootBullets()`` and ``isHit()``. 
 
 The extensive planning and object–oriented design was a major factor in the smooth operation of the game, the interoperability and usability of code, and the ease with which each team member could contribute to development in an agile-way, able to implement features and classes that independently and cohesively interact with each other.
 
+## 4. Implementation
 
-## Evaluation
+Areas of challenge:
+1. Multiplayer mode
+2. Leaderboard functionality
+3. Level Design
+
+**Multiplayer mode**
+
+**Leaderboard functionality** 
+
+**Level design**
+
+
+## 5. Evaluation
 **Think Aloud Evaluation: 11/03/2024**
 
 In our evaluation, we utilised a think aloud approach, where participants vocalised their thoughts while engaging with the game. We generated a word cloud from the think aloud data. This visual representation highlights recurring themes and key phrases, providing a quick and accessible overview of the user experience.
@@ -199,6 +212,7 @@ In our evaluation, we utilised a think aloud approach, where participants vocali
 | Level Design            | Lack of environmental variety, making the game feel repetitive over time.                                                                | Consistency and Standards | 3         | 2      | 3           | 2.7     |
 
 **Quantitative Evaluation: System Usability Scale (SUS) Analysis: 16/4/24**
+
 We conducted a focus group test with 10 participants to assess the System Usability Scale (SUS) of the game. Our findings from this numerical test demonstrated that users found the game easy to play, with minimal need for prior knowledge or technical support. A majority strongly agreed that they would use the product frequently and felt confident to use it effectively. The scores from all participants were generally consistent, indicating a cohesive response across the group. While there were no outliers, participants expressed slightly less confidence in the game’s consistency. This feedback informed our decision to refactor the code and refine gameplay to enhance consistency. Despite this point of improvement, the overall positive feedback encouraged our approach.
 
 
@@ -231,6 +245,8 @@ We conducted a focus group test with 10 participants to assess the System Usabil
 | I found the system very cumbersome to use                                 | 3  | 2  | 3  | 2  | 2  | 2  | 2  | 2  | 2  | 2   | 2.2  |
 | I felt very confident using the system.                                   | 3  | 4  | 5  | 5  | 5  | 5  | 5  | 5  | 5  | 4   | 4.6  |
 | I needed to learn things before I could get going with this system.        | 2  | 2  | 3  | 2  | 2  | 2  | 1  | 2  | 1  | 1   | 1.8  |
+
+![SUS graph](https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/287847fb-2d52-423c-99b4-7512b45ee42a)
 
 ### Wilcoxen Signed Rank Test
 1. Replace the data pairs with their difference
@@ -273,5 +289,33 @@ W test Statistic = 25
 - This means there is a statistical significance when using a p value of 0.05
 - This shows that the rise in difficulty between the ‘hard’ mode and the ‘easy’ mode in our game is statistically significant
 
+<img width="429" alt="Wilcoxen signed rank graph" src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/9c7381ca-37aa-487e-8294-e405cf749fda">
+
+In our analysis of the System Usability Scale (SUS) scores for both the Easy Mode (EM) and Hard Mode (HM) of the game, we observed a notable difference between the two difficulty levels. Conducting a Wilcoxon signed-rank test revealed a significant distinction in participants' responses.
+
+Specifically, when comparing the mean scores for the statement "I thought the system was easy to use," we observed a clear contrast between the Easy and Hard modes. In the Easy Mode, participants rated the system's ease of use with a mean score of 4.1, indicating a generally favourable perception of usability. However, in the Hard Mode, this score decreased to 3.5, suggesting that participants found the system comparatively less user-friendly when faced with increased complexity or difficulty.
+
+This discrepancy showed the impact of system complexity on users' perceptions of ease of use. It indicates that as the difficulty level of the game increased, participants were more likely to perceive the system as less intuitive or straightforward to navigate.
+This finding has significant implications for the design and development of the game, highlighting the importance of balancing complexity with user-friendliness to ensure optimal usability across different skill levels. By refining the gameplay and addressing areas of complexity identified in the Hard Mode, we can strive to enhance overall user experience and satisfaction.
+
+
+
+## 7. Conclusion
+
+Hannah: 1.00
+
+Jennifer: 1.00
+
+Mengmeng: 1.00
+
+Sudan: 1.00
+
+Shunyi: 1.00
+
+Antai: 1.00
+
+Reflecting on our project journey, we’ve encountered and overcome many challenges, such as refining collision detection, implementing multiplayer functionality and coordinating remote work during the Easter holidays. These hurdles reinforced the importance of effective communication and teamwork. The technical challenges also required collaborative debugging sessions. Understanding each other’s coding styles also proved challenging at times, however this process resulted in a deeper understanding of a code and the sharing of knowledge within the team. Moving forward, this experience will serve as a founding for future coding group projects.
+
+Looking ahead, we plan further refining gameplay mechanisms, and integrating new features such as power-ups and level generation. Optimising performance is still a priority to ensure the game remains robust. In conclusion, our project journey has not only strengthened our technical skills, but it has also provided valuable insights into the software engineering process, including agile methods, requirements planning and evaluation techniques, which will undoubtedly be beneficial in future projects. 
 
 
