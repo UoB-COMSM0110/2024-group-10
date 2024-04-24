@@ -4,6 +4,8 @@ class Controller {
   int enemyTwoNumber = 0;
   boolean left;
   boolean hasBoss = false;
+  boolean isHard;
+  controller.isHard
 
 
   void campaignMode() {
@@ -116,7 +118,7 @@ class Controller {
     }
 
 
-    if (currentFrame - startFrame >= 60) {
+    if (currentFrame - startFrame >= 6000) {
       for (Enemy enemy : enemies) {
         enemy.toBeRemove = true;
       }
@@ -130,7 +132,11 @@ class Controller {
       if (!object.toBeRemove) {
         object.update();
         object.display();
-      } else enemiesToRemove.add(object);
+        if(object.isHit(player)) {
+          object.toBeRemove = true;
+          player.hitObject(object);
+        }
+      } else objectsToReomve.add(object);
     }
 
     //Remove all the collected objects
@@ -147,8 +153,24 @@ class Controller {
     }
 
     for (Enemy enemyToRemove : enemiesToRemove) {
+      if(random(0,1) > 0.5) {
+        Object object = new Object(enemyToRemove.x, enemyToRemove.y, true, false);
+        objects.add(object);
+      }
+      else{
+        Object object = new Object(enemyToRemove.x, enemyToRemove.y, false, true);
+        objects.add(object);
+      }
       enemies.remove(enemyToRemove);
     }
+    
+    for (Object objectToRemove : objectsToReomve) {
+      objects.remove(objectToRemove);
+    }
+    
+    enemyBulletsToRemove.clear();
+    playerBulletsToRemove.clear();
+    enemiesToRemove.clear();
 
     if (is2Player) {
       if (!player2.isDied) {
@@ -388,7 +410,7 @@ class Controller {
     image(examplePlayer.me, width/2, 360, 50, 50);
 
     for (int i = 0; i < 3; i++) {
-      PlayerBullet examplePlayerBullet = new PlayerBullet(width/2, 230 + i*40, 0);
+      PlayerBullet examplePlayerBullet = new PlayerBullet(width/2, 230 + i*40, 0, 0);
       examplePlayerBullet.display();
     }
 

@@ -3,7 +3,7 @@ class Missle extends PlayerBullet {
   PImage missle;
   
   Missle(float x, float y, float speed) {
-    super(x, y, speed);
+    super(x, y, speed, 0);
     startFrame = frameCount;
     missle = loadImage("PrototypeImages/missle.png");
   }

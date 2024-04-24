@@ -1,15 +1,17 @@
 class PlayerBullet{
-  float x, y, speed;
+  float x, y, speed, angle;
   boolean toBeRemove = false;
   
-  PlayerBullet (float x, float y, float speed) {
+  PlayerBullet (float x, float y, float speed, float angle) {
     this.x = x;
     this.y = y;
     this.speed =speed;
+    this.angle = angle;
   }
   
   void update() {
-    y -= speed;
+    x += speed * sin(radians(angle));
+    y -= speed * cos(radians(angle));
     checkBoundary();
   }
   

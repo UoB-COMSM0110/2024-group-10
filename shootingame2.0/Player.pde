@@ -19,6 +19,7 @@ class Player {
   int energy = 0;
   int lives = 3;
   int score = 0;
+  int shootingLevel = 0;
   PImage me;
   PImage[] energyImages = new PImage[11];
 
@@ -108,10 +109,18 @@ class Player {
     }
 
     // Update position based on key flags
+    if(controller.isHard)
     if (movingUp) y -= 5;
     if (movingDown) y += 5;
     if (movingLeft) x -= 5;
     if (movingRight) x += 5;
+    else
+    {
+      if (movingUp) y -= 10;
+    if (movingDown) y += 5;
+    if (movingLeft) x -= 5;
+    if (movingRight) x += 5;
+    }
 
     //Shooting Missle
     if (shootingMissle) shootMissle();
@@ -133,12 +142,49 @@ class Player {
   }
 
   void shootBullet() {
-    if (isPlayer2) {
-      PlayerBullet bullet = new PlayerBullet(x, y - 25, bulletSpeed);
-      playerBullets2.add(bullet);
-    } else {
-      PlayerBullet bullet = new PlayerBullet(x, y - 25, bulletSpeed);
-      playerBullets.add(bullet);
+    if(shootingLevel == 0) {
+      if (isPlayer2) {
+        PlayerBullet bullet = new PlayerBullet(x, y - 25, bulletSpeed, 0);
+        playerBullets2.add(bullet);
+      } else {
+        PlayerBullet bullet = new PlayerBullet(x, y - 25, bulletSpeed, 0);
+        playerBullets.add(bullet);
+      }
+    }
+    if(shootingLevel == 1) {
+      if (isPlayer2) {
+        PlayerBullet bullet = new PlayerBullet(x, y - 25, bulletSpeed * 2, 0);
+        playerBullets2.add(bullet);
+      } else {
+        PlayerBullet bullet = new PlayerBullet(x, y - 25, bulletSpeed * 2, 0);
+        playerBullets.add(bullet);
+      }
+    }
+    if(shootingLevel == 2) {
+      if (isPlayer2) {
+        for(int i = -1; i < 2; i++) {
+          PlayerBullet bullet = new PlayerBullet(x, y - 25, bulletSpeed * 2, 30 * i);
+          playerBullets2.add(bullet);
+        }
+      } else {
+        for(int i = -1; i < 2; i++) {
+          PlayerBullet bullet = new PlayerBullet(x, y - 25, bulletSpeed * 2, 30 * i);
+          playerBullets.add(bullet);
+        }
+      }
+    }
+    if(shootingLevel >= 3) {
+      if (isPlayer2) {
+        for(int i = -2; i < 3; i++) {
+          PlayerBullet bullet = new PlayerBullet(x, y - 25, bulletSpeed * 2, 20 * i);
+          playerBullets2.add(bullet);
+        }
+      } else {
+        for(int i = -2; i < 3; i++) {
+          PlayerBullet bullet = new PlayerBullet(x, y - 25, bulletSpeed * 2, 20 * i);
+          playerBullets.add(bullet);
+        }
+      }
     }
   }
 
@@ -195,5 +241,15 @@ class Player {
     energyBarLength = 0;  // 假设的能量条长度属性
 
     // 可能还需要重置其他游戏相关的状态
+  }
+  
+  void hitObject(Object object) {
+    if(object.isPower == true) {
+      increaseShootingLevel();
+    }
+  }
+  
+  void increaseShootingLevel() {
+    if(shootingLevel < 3) shootingLevel++;
   }
 }
