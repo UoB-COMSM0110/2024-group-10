@@ -16,8 +16,8 @@ class PlayerBullet{
   }
   
   void display() {
-    fill(200, 150, 50);
-    ellipse(x, y, 10, 10);
+    imageMode(CENTER); 
+    image(me_bullet, x, y, 30, 30);
   }
   
   void checkBoundary() {

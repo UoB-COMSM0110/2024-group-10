@@ -23,7 +23,7 @@ boolean scoreAdded = false;
 boolean is2Player = false;
 int playerCount;
 PImage enemy1_bullet;
-
+PImage me_bullet;
 
 Player playerToName;
 
@@ -70,6 +70,7 @@ void setup() {
   playerToName = player;
 
   enemy1_bullet = loadImage("PrototypeImages/enemy1_bullet.png");
+  me_bullet = loadImage("PrototypeImages/me_bullet.png");
 }
 
 void draw() {
