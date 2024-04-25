@@ -366,9 +366,6 @@ class Controller {
     fill(2, 30, 54, 120);
     rect(width/2, height/2, width*9, 660);
 
-    stroke(50, 255);
-    strokeWeight(4);
-
     fill(255);
     textSize(30);
     text("Aliens are attacking!! \nShoot the enemies to defeat them and gain points \nAvoid enemy attacks and survive until the end!", width/2, 50);
@@ -378,7 +375,8 @@ class Controller {
 
     //player controls visualisation
     textSize(30);
-    fill (255, 195, 0) ;
+    //fill (255, 195, 0) ;
+    fill(70,240,161);
     text("Shoot", width/3, 410);
     fill(255);
     text("Move", 2*width/3, 410);
@@ -475,12 +473,19 @@ class Controller {
     cursor(planecursor);
     background(background_start);
     currentButton = Button.NONE;
+    
+    stroke(50, 255);
+    strokeWeight(4);
+    fill(2, 30, 54, 200);
+    rect(width/2, height/2, width*9, 660);
+
+    fill(255);
 
     textSize(30);
     text("Aliens are attacking!! \nShoot the enemies to defeat them and gain points \nAvoid enemy attacks and survive until the end!", width/2, 50);
 
-    stroke(100);
-    line(20, 150, width-20, 150);
+    //stroke(100);
+    //line(20, 150, width-20, 150);
 
     //display enemy images
     Enemy basicEnemy = new Enemy(width/6, 250);
@@ -489,14 +494,14 @@ class Controller {
     //EnemyBullet exampleEnemyBullet = new EnemyBullet(width*.51, 295, 0);
     //exampleEnemyBullet.display();
 
-    //EnemyTwo spaceshipEnemy = new EnemyTwo(width/6, 450);
+    PImage purpleEnemy = loadImage("PrototypeImages/enemies/enemy2.png"); 
+    image(purpleEnemy, width/6, 450);
+    
+    //EnemyThreeBoss spaceshipEnemy = new EnemyThreeBoss(width/6, 450);
     //spaceshipEnemy.display();
 
-    //Stalker exampleStalker = new Stalker(width/6,675,null,null);
-    //exampleStalker.display();
-    PImage exampleStalker = loadImage("PrototypeImages/stalker.png");
-    
-    image(exampleStalker, width/6, 675);
+    PImage exampleStalker = loadImage("PrototypeImages/stalker.png");    
+    image(exampleStalker, width/6, 700);
     
 
     //display enemy description text
@@ -505,14 +510,16 @@ class Controller {
     textAlign(LEFT);
     fill(0, 139, 208, 255);
     text("Jellyjellies like to float through life like they will your computer screen.\nThey do not think much on account of having no brain and their philosophy\nto life and war is 'random bullets go!'\nBe careful not to touch them they sting!\n\nAttack type: Jelly Shots            \n(Warning: do not consume. The developers of this game will not be held liable)", width/3.5, 200);
-    fill(81, 75, 116, 255);
-    text("Extra-purrestrials have long told legends of 'humans'. Beings who wielded a \ntechnology always just out of the grasp of cat-kind, tormenting their \nancestors for amusement and so called 'likes'. Well, now their descendants\nare here to return the favour. \n\nAttack type: Pointier Lasers \n\nNote: Has developed advanced defensive technologies to protect their \nfluffy tummies", width/3.5, 400);
+    //fill(81, 75, 116, 255);
+    //text("Extra-purrestrials have long told legends of 'humans'. Beings who wielded a \ntechnology always just out of the grasp of cat-kind, tormenting their \nancestors for amusement and so called 'likes'. Well, now their descendants\nare here to return the favour. \n\nAttack type: Pointier Lasers \n\nNote: Has developed advanced defensive technologies to protect their \nfluffy tummies", width/3.5, 400);
+    fill(181,47,205);
+    text("\nOctotos love line dancing. When performing they throw out \nglitter in a beautiful fan shape to their adoring audiences. \nUnfortunately that glitter is rather lethal to humans. \nIt's okay though they never appreciated the Octoto Tango anyway. \n\nAttack type: Glitter Bomb-ardment", width/3.5, 400);
     fill(255, 0, 0);
     text("Huggoctopuses love to chase all the shiny things and hold them close\nto their heart. \nIncluding your ship. \n\nAttack type: Free hugs :)", width/3.5, 650);
     textFont(mainFont);
     textAlign(CENTER);
 
-    line(20, 830, width-20, 830);
+    //line(20, 830, width-20, 830);
 
     // navigation buttons
     createButton(width/4, 900, 250, 100, Button.INSTRUCTIONB);
@@ -525,11 +532,6 @@ class Controller {
     textSize(40);
     text("MAIN MENU", width/2, 915);
 
-    //display laser attack image
-    translate(width/2+50, 462);
-    rotate(radians(90));
-    //Laser exampleEnemyLaser = new Laser(35, -75, false);
-    //exampleEnemyLaser.display();
   }
   //Settings display
   void displaySettingsScreen() {
@@ -648,7 +650,7 @@ class Controller {
 
     //player controls visualisation
     textSize(30);
-    fill (255, 195, 0) ;
+    fill(70,240,161);
     text("Shoot", width/3, 510);
     fill(255);
     text("Move", 2*width/3, 510);
