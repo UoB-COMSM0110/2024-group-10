@@ -12,6 +12,7 @@
 6. [Process](#process)
 7. [Conclusion](#conclusion)
 
+(add sub contents)
 
 # 1. Our Team
 
@@ -20,7 +21,7 @@
 |         Name         |           Email            | Git Hub Username |
 | :------------------: | :------------------------: | :--------------: |
 |    Hannah Abedin     |   go20247@bristol.ac.uk    |   hannahabedin   |
-| Sudan TangSudan0905  |   yn23171@bristol.ac.uk    |    Sudan0905     |
+|      Sudan Tang      |   yn23171@bristol.ac.uk    |    Sudan0905     |
 |      Shunyi Huo      |   fv23962@bristol.ac.uk    | TheWalkingNerd1  |
 |   Ouyang Mengmeng    |   ii23098@bristol.ac.uk    |   mimiko134340   |
 |      Antai Sun       |   mo23147@bristol.ac.uk    |    sat2357817    |
@@ -47,7 +48,7 @@ Our game is a single or multiplayer shoot-‘em-up game inspired by Space Invade
 ## How to play!
 **Controls**
 
-<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/c9b96cd2-517e-46f8-b4ca-94858e991afd" width="300">
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/c9b96cd2-517e-46f8-b4ca-94858e991afd" width="400">
 
 
 Enemies: (insert pictures)
@@ -127,7 +128,7 @@ This enum controls the gameplay flow by managing state transitions, responding t
 
 The User Interface (UI) component plays an important role in providing players with visual feedback and interactive elements for a user-friendly experience. Through start screens and menus, the UI offers players different options to either begin or resume gameplay, adjust settings, access instructions and view highscores via a leaderboard. We aimed for a clear but effective design to ensure ease of use. 
 
-<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/69e0c7a7-3ee1-417e-a064-1cd60aa2dbdb" width="300" height="310" alt="UI">
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/69e0c7a7-3ee1-417e-a064-1cd60aa2dbdb" width="400" height="410" alt="UI">
 
 
 **Enemy Diversity**
@@ -298,7 +299,25 @@ Specifically, when comparing the mean scores for the statement "I thought the sy
 This discrepancy showed the impact of system complexity on users' perceptions of ease of use. It indicates that as the difficulty level of the game increased, participants were more likely to perceive the system as less intuitive or straightforward to navigate.
 This finding has significant implications for the design and development of the game, highlighting the importance of balancing complexity with user-friendliness to ensure optimal usability across different skill levels. By refining the gameplay and addressing areas of complexity identified in the Hard Mode, we can strive to enhance overall user experience and satisfaction.
 
+## 4. Process
 
+### Collaboration
+
+Throughout this project, we applied various methods to ensure smooth teamwork. We used Teams as our main communication platform, which allowed us to maintain real-time communication in remote or hybrid setup. The features in Microsoft Teams, like video calls, team chat, and file sharing, really stepped up our teamwork. This made it easier to collaborate efficiently, ensuring that information flowed smoothly without any interruptions.
+
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/9e63b1da-2bfd-43a6-8e53-44a8373c9d34" alt="Teams" width="600">
+
+At the start of the project, we made sure that every team member was clear about their role and specific responsibilities. This measure reduced redundant work and misunderstandings, with each role being assigned clear expectations, from project managers to technical experts, each person held accountable for the project's success.
+
+## Tools and techniques
+
+We chose Jira as our project management tool to create a Kanban board, which supports agile development workflows, allowing us to effectively plan, track, and release software development projects. A successful Kanban board focuses on continuous improvements (referred to as kaizen) [1]. 
+
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/cdf1402a-b4d3-422c-b0dd-c38745101e0e" alt="Kanban Board" width="600">
+
+We recognised the limitations of using a Kanban board to track progress, for example the length of a task is not always estimated appropriately [2]. To overcome this, we set up regular team meetings, including weekly progress updates and strategy discussions as needed. These meetings not only allowed us to monitor project progress in real time but also provided a platform for everyone to express opinions and raise issues, ensuring transparency in decision-making and synchronisation within the team.
+
+(add meeting images)
 
 ## 7. Conclusion
 
