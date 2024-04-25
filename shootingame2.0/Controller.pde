@@ -116,7 +116,7 @@ class Controller {
     }
 
 
-    if (currentFrame - startFrame >= 6000) {
+    if (currentFrame - startFrame >= 60) {
       for (Enemy enemy : enemies) {
         enemy.toBeRemove = true;
       }

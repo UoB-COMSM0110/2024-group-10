@@ -47,8 +47,8 @@ class EnemyBullet {
 
 
     // 透明度边界检查
-    if (alpha <= 0) {
-      alpha = 0;
+    if (alpha <= 100) {
+      alpha = 100;
       fading = false;
     } else if (alpha >= 255) {
       alpha = 255;
@@ -58,7 +58,7 @@ class EnemyBullet {
   
     void adjustSpeed() {
       if (currentMode.equals("EASY")) {
-      this.speed = 1.5;
+      this.speed = 2;
       } else if (currentMode.equals("HARD")) {
       this.speed = 5;
     }
