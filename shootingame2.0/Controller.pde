@@ -15,6 +15,17 @@ class Controller {
     if (!player.isDied) {
       player.update();
       player.display();
+      
+        //bgm realted
+        
+    if (!bgm.isPlaying()) {
+      bgm.loop(); // 如果当前是游戏屏幕且音乐未播放，则开始循环播放音乐
+    }else  if (bgm.isPlaying()) {
+      bgm.pause(); // 如果不在游戏屏幕且音乐正在播放，则暂停音乐
+    }
+  
+      
+      
     }
 
 

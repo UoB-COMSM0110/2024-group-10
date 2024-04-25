@@ -55,6 +55,10 @@ void setup() {
   enemiesToRemove = new ArrayList<Enemy>();
   objects = new ArrayList<Object>();
   objectsToReomve = new ArrayList<Object>();
+  
+   //bgm
+  minim = new Minim(this);
+  bgm = minim.loadFile("PrototypeBgm/bgm_game_test.mp3"); 
 
   // UI related
   planecursor = loadImage("PrototypeImages/planecursor.gif");
