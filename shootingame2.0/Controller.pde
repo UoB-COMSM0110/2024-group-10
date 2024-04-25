@@ -57,12 +57,23 @@ class Controller {
         enemies.add(enemyFour);
       }
     }
+    
+    /*if (frameCount % 60 ==0) {
+        Stalker stalker;
+        if(random(0,1) > 0.5) stalker = new Stalker(20,20);
+        else stalker = new Stalker(980,100);
+        enemies.add(stalker);
+     }*/
 
     //Update status for each enemy
     for (Enemy enemy : enemies) {
       if (!enemy.toBeRemove) {
         enemy.update();
         enemy.display();
+        if(enemy.hitPlayer(player)) {
+          state = GameState.FINISHED;
+          enemy.toBeRemove = true;
+        }
       } else enemiesToRemove.add(enemy);
     }
 
@@ -169,6 +180,7 @@ class Controller {
     enemyBulletsToRemove.clear();
     playerBulletsToRemove.clear();
     enemiesToRemove.clear();
+    objectsToReomve.clear();
 
     if (is2Player) {
       if (!player2.isDied) {
@@ -210,6 +222,8 @@ class Controller {
     enemyBulletsToRemove.clear();
     playerBulletsToRemove.clear();
     enemiesToRemove.clear();
+    objects.clear();
+    objectsToReomve.clear();
 
     // 重置游戏状态变量
     currentMode = currentMode;  // 或根据需要重置为默认设置

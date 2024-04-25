@@ -56,5 +56,13 @@ class Enemy {
     return false;
   }
   
+  boolean hitPlayer(Player player) {
+    if(dist(x, y, player.x, player.y) <= 50) {
+      toBeRemove = true;
+      return true;
+    }
+    return false;
+  }
+  
   void increaseShotTime() {}
 }
