@@ -21,7 +21,7 @@ class Controller {
     stroke(0);
 
     //Generate basic enemies
-    if (frameCount % 300 ==0) {
+    /*if (frameCount % 300 ==0) {
       Enemy enemy = new Enemy(random(25, 725), 25);
       enemies.add(enemy);
     }
@@ -41,7 +41,7 @@ class Controller {
         EnemyThree enemy = new EnemyThree();
         enemies.add(enemy);
       }
-    }
+    }*/
 
     //Generate EnemyFour
     if (currentFrame - startFrame >= 1800) {
