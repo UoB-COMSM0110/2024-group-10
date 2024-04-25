@@ -58,12 +58,12 @@ class Controller {
       }
     }
     
-    /*if (frameCount % 60 ==0) {
+    if (frameCount % 60 ==0) {
         Stalker stalker;
         if(random(0,1) > 0.5) stalker = new Stalker(20,20);
         else stalker = new Stalker(980,100);
         enemies.add(stalker);
-     }*/
+     }
 
     //Update status for each enemy
     for (Enemy enemy : enemies) {
@@ -127,7 +127,7 @@ class Controller {
     }
 
 
-    if (currentFrame - startFrame >= 60) {
+    if (currentFrame - startFrame >= 6000) {
       for (Enemy enemy : enemies) {
         enemy.toBeRemove = true;
       }
