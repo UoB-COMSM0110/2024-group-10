@@ -424,8 +424,13 @@ class Controller {
     fill(255, 0, 0);
     text("Player life points count - keep these above 0 to stay alive! ", width/10+3*40, 510);
 
-    image(lives, width/12 + 40, 560, 40, 30);
-    text("Collect falling hearts to heal yourself by 1 point", width/10+3*40, 570);
+    PImage star = loadImage("PrototypeImages/power.png");
+    image(star, width/6-20, 555, 30, 30);
+    image(lives, width/12+20, 560, 40, 30);
+    text("Collect falling hearts to heal", width/10+3*40, 570);
+    fill(253,198,91);
+    text("/ stars to power up!", 580, 570);
+
 
     fill(255);
     text("Press ESC to pause game", width/10+3*40, 630);
