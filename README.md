@@ -1,4 +1,4 @@
-![SPACE SWARM SHOOTERS!.png](images/SPACE%20SWARM%20SHOOTERS!.png)
+![Space Swarm Shooters](https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/f97b3ee0-a710-4996-9065-0be3745a10ca)
 
 ## Our video
 
