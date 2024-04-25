@@ -134,7 +134,7 @@ class Controller {
       for (EnemyBullet bullet : enemyBullets) {
         bullet.toBeRemove = true;
       }
-      state = GameState.BOSS;
+      //state = GameState.BOSS;
     }
     
     for(Object object : objects) {
@@ -414,8 +414,14 @@ class Controller {
     //missile img for missile controls instruction
     PImage mkey = loadImage("PrototypeImages/keys/m.png");
     textSize(50);
-    text("+", 240, 720);
-    image(mkey, 300, 710, 50, 50);
+    text("+", 240, 750);
+    textSize(30);
+    text("p1:", 300, 720);
+    image(mkey, 350, 710, 50, 50);
+    
+    PImage gkey = loadImage("PrototypeImages/keys/g.png");
+    text("p2:", 300, 770);
+    image(gkey, 350, 760, 50, 50);
 
     //player spaceship and bullets visualisation
     Player examplePlayer = new Player(0);
@@ -442,9 +448,9 @@ class Controller {
 
     fill(255);
     text("Press ESC to pause game", width/10+3*40, 630);
-    text("Energy bar. Charge up to full and \nPress -M- \nto launch a special move!", width/3+50, 700);
+    text("Energy bar. Charge up to full and \nPress -M- (player 1)\n        or -G- (player 2) \nto launch a special move!", 450, 700);
 
-    image(examplePlayer.energyImages[10], 120, 710, 150, 18);
+    image(examplePlayer.energyImages[10], 120, 740, 150, 18);
 
 
     textFont(mainFont);
@@ -661,13 +667,19 @@ class Controller {
     //missile img for missile controls instruction
     PImage mkey = loadImage("PrototypeImages/keys/m.png");
     textSize(50);
-    text("+", 240, 820);
-    image(mkey, 300, 810, 50, 50);
+    text("+", 240, 850);
+    image(mkey, 360, 810, 50, 50);
+    textSize(30);
+    text("p1:", 300, 820);
+    
+    PImage gkey = loadImage("PrototypeImages/keys/g.png");
+    text("p2:", 300, 880);
+    image(gkey, 360, 880, 50, 50);
 
     textSize(30);
-    text("Energy bar. Charge up to full and \nPress -M- \nto launch a special move!", width/2+60, 800);
+    text("Energy bar. Charge up to full and \nPress -M- (player 1) or -G- (player 2) \nto launch a special move!", width/2+150, 810);
     Player examplePlayer = new Player(0);
-    image(examplePlayer.energyImages[10], 120, 810, 150, 18);
+    image(examplePlayer.energyImages[10], 120, 840, 150, 18);
 
     textSize(60);
     text("GAME PAUSED", width/2, 150);
