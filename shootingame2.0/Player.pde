@@ -22,6 +22,7 @@ class Player {
   int shootingLevel = 0;
   PImage me;
   PImage[] energyImages = new PImage[11];
+  PImage livesimg = loadImage ("PrototypeImages/lives.png");
 
   boolean isPlayer2=false;
 
@@ -66,11 +67,19 @@ class Player {
     if (isPlayer2) {
       fill(255, 0, 0); // 设置文本颜色为红色
       textSize(20); // 设置文本大小
-      text("Lives: " + lives, width-100, 30); // 在屏幕左上角显示生命值
+      //text("Lives: " + player2.lives, width-100, 30); // 在屏幕左上角显示生命值
+      
+      for (int i = 0; i < lives; i++) {
+        image(livesimg, 1000 - (i * 40), 10, 36, 29);
+      }
     } else {
       fill(255, 0, 0); // 设置文本颜色为红色
       textSize(20); // 设置文本大小
-      text("Lives: " + lives, 50, 30); // 在屏幕左上角显示生命值
+      //text("Lives: " + lives, 40, 30); // 在屏幕左上角显示生命值    
+    
+      for (int i = 0; i < lives; i++) {
+          image(livesimg, 10 + (i * 40), 10, 36, 29);
+      }
     }
   }
 
