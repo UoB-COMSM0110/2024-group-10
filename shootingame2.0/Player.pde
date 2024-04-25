@@ -18,6 +18,7 @@ class Player {
   int playerNumber;
   int energy = 0;
   int lives = 3;
+  int maxLives = 8;
   int score = 0;
   int shootingLevel = 0;
   PImage me;
@@ -255,6 +256,9 @@ class Player {
   void hitObject(Object object) {
     if(object.isPower == true) {
       increaseShootingLevel();
+    }
+    if (object.isLife == true && lives < maxLives){
+      lives++;
     }
   }
   

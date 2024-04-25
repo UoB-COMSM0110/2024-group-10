@@ -20,9 +20,9 @@ class Controller {
         
     if (!bgm.isPlaying()) {
       bgm.loop(); // 如果当前是游戏屏幕且音乐未播放，则开始循环播放音乐
-    }else  if (bgm.isPlaying()) {
-      bgm.pause(); // 如果不在游戏屏幕且音乐正在播放，则暂停音乐
-    }
+    }//else  if (bgm.isPlaying()) {
+      //bgm.pause(); // 如果不在游戏屏幕且音乐正在播放，则暂停音乐
+    //}
   
       
       
@@ -33,7 +33,7 @@ class Controller {
     stroke(0);
 
     //Generate basic enemies
-    /*if (frameCount % 300 ==0) {
+    if (frameCount % 300 ==0) {
       Enemy enemy = new Enemy(random(25, 725), 25);
       enemies.add(enemy);
     }
@@ -53,7 +53,7 @@ class Controller {
         EnemyThree enemy = new EnemyThree();
         enemies.add(enemy);
       }
-    }*/
+    }
 
     //Generate EnemyFour
     if (currentFrame - startFrame >= 1800) {
@@ -135,7 +135,7 @@ class Controller {
       for (EnemyBullet bullet : enemyBullets) {
         bullet.toBeRemove = true;
       }
-      state = GameState.BOSS;
+      //state = GameState.BOSS;
     }
     
     for(Object object : objects) {
