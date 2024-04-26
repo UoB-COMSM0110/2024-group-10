@@ -58,8 +58,6 @@ void setup() {
   enemyBulletsToRemove = new ArrayList<EnemyBullet>();
   playerBulletsToRemove = new ArrayList<PlayerBullet>();
   playerBulletsToRemove2 = new ArrayList<PlayerBullet>();
-  player.setMode(currentMode);
-  player2.setMode(currentMode);
   enemiesToRemove = new ArrayList<Enemy>();
   objects = new ArrayList<Object>();
   objectsToReomve = new ArrayList<Object>();
