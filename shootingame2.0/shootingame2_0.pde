@@ -70,6 +70,8 @@ void setup() {
   alarm = minim.loadFile("PrototypeBgm/alarm.mp3"); 
   glass = minim.loadFile("PrototypeBgm/glasscrack.mp3"); 
   shatter = minim.loadFile("PrototypeBgm/glassbreak.mp3");
+  gameoverbgm = minim.loadFile("PrototypeBgm/gameover.mp3");
+  winbgm = minim.loadFile("PrototypeBgm/victorysfx.mp3");
 
   // UI related
   planecursor = loadImage("PrototypeImages/planecursor.gif");
@@ -143,9 +145,20 @@ void draw() {
         bossbgm.pause(); 
         if (state != GameState.PAUSE) bossbgm.rewind(); 
   }
-  
 
+  if (state == GameState.VICTORY){
+        winbgm.play();
+  } else{
+        winbgm.pause(); 
+        winbgm.rewind();
+  }
   
+  if (state == GameState.FINISHED){
+        gameoverbgm.play();
+  } else{
+        gameoverbgm.pause(); 
+        gameoverbgm.rewind();
+  }
   
 }
 

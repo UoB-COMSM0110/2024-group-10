@@ -1,7 +1,7 @@
 class Controller {
   int lastFrame = frameCount;
   int startFrame = frameCount;
-  int bossAppearanceFrame = 60;
+  int bossAppearanceFrame = 6000;
   int enemyTwoNumber = 0;
   boolean left;
   boolean hasBoss = false;
