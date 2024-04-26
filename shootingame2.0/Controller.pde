@@ -73,10 +73,17 @@ class Controller {
         enemy.display();
         if(enemy.hitPlayer(player)) {
           player.lives -= 1;
+          if(player.shootingLevel > 0){
+            player.shootingLevel -= 1;
+          }
+          
           enemy.toBeRemove = true;
         }
         if(enemy.hitPlayer(player2)) {
           player2.lives -= 1;
+          if(player2.shootingLevel > 0){
+            player2.shootingLevel -= 1;
+          }
           enemy.toBeRemove = true;
         }
       } else enemiesToRemove.add(enemy);

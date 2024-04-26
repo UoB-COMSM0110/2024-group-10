@@ -225,9 +225,9 @@ class Player {
     // 重置玩家的能量和得分
     energy = 0;  // 假设起始能量为100
     if (isPlayer2) {
-      lives = 10;
+      lives = 100;
     } else {
-      lives = 10;
+      lives = 100;
     }
 
     score = 0;     // 分数重置为0
