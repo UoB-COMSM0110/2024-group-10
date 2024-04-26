@@ -8,6 +8,7 @@ enum Button {
   STARTB,
   INSTRUCTIONB,
   ENEMYB,
+  ENEMY2B,
   MODEB,
   EASYB,
   HARDB,

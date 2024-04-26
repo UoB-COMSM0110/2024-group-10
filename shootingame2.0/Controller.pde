@@ -410,7 +410,7 @@ class Controller {
     text("BACK", width/3, 815);
   }
   //Player instructions display screen
-  void displayInfoScreen() {
+    void displayInfoScreen() {
     cursor(planecursor);
     background(background_start);
     currentButton = Button.NONE;
@@ -511,6 +511,11 @@ class Controller {
 
     textFont(mainFont);
     textAlign(CENTER);
+    
+    createButton(width/4, 900, 250, 100, Button.ENEMY2B);
+    fill(255);
+    textSize(40);
+    text("ENEMY INFO 2", width/4, 915);
 
     //navigation buttons
     createButton(width/2, 900, 250, 100, Button.STARTB);
@@ -539,22 +544,13 @@ class Controller {
     textSize(30);
     text("Aliens are attacking!! \nShoot the enemies to defeat them and gain points \nAvoid enemy attacks and survive until the end!", width/2, 50);
 
-    //stroke(100);
-    //line(20, 150, width-20, 150);
-
     //display enemy images
     Enemy basicEnemy = new Enemy(width/6, 250);
     basicEnemy.display();
 
-    //EnemyBullet exampleEnemyBullet = new EnemyBullet(width*.51, 295, 0);
-    //exampleEnemyBullet.display();
-
     PImage purpleEnemy = loadImage("PrototypeImages/enemies/enemy2.png"); 
-    image(purpleEnemy, width/6, 450);
+    image(purpleEnemy, width/6, 480);
     
-    //EnemyThreeBoss spaceshipEnemy = new EnemyThreeBoss(width/6, 450);
-    //spaceshipEnemy.display();
-
     PImage exampleStalker = loadImage("PrototypeImages/stalker.png");    
     image(exampleStalker, width/6, 700);
     
@@ -574,8 +570,6 @@ class Controller {
     textFont(mainFont);
     textAlign(CENTER);
 
-    //line(20, 830, width-20, 830);
-
     // navigation buttons
     createButton(width/4, 900, 250, 100, Button.INSTRUCTIONB);
     fill(255);
@@ -586,6 +580,65 @@ class Controller {
     fill(255);
     textSize(40);
     text("MAIN MENU", width/2, 915);
+    
+    createButton(3*width/4, 900, 250, 100, Button.ENEMY2B);
+    fill(255);
+    textSize(40);
+    text("ENEMY INFO 2", 3*width/4, 915);
+
+  }
+    void displayEnemy2ndScreen() {
+    cursor(planecursor);
+    background(background_start);
+    currentButton = Button.NONE;
+    
+    stroke(50, 255);
+    strokeWeight(4);
+    fill(2, 30, 54, 200);
+    rect(width/2, height/2, width*9, 660);
+
+    fill(255);
+
+    textSize(30);
+    text("Aliens are attacking!! \nShoot the enemies to defeat them and gain points \nAvoid enemy attacks and survive until the end!", width/2, 50);
+
+
+    //display enemy images
+
+    PImage crabEnemy = loadImage("PrototypeImages/enemies/enemy4.png"); 
+    image(crabEnemy, width/6, 250);
+    
+    PImage spiderEnemy = loadImage("PrototypeImages/enemies/enemy3static.png");
+    image(spiderEnemy, width/6, 520);
+
+
+    //display enemy description text
+    textFont(infoFont);
+    textSize(20);
+    textAlign(LEFT);
+    fill(241, 93, 82, 255);
+    text("Lasercrabs are a romantic lot and are always seen holding hands \nwith their partners. If they sense anyone interrupting their date they \nwill fire massive laser beams. No peeping!\nHave shared generational trauma of being unable to turn left. \nOr right for that matter\n\nAttack type: The PDA it burns", width/3.5, 200);
+    fill(140,51,142);
+    text("\nAstarachniss were once a peaceful race content to sit and make \nbeautiful silken artwork. \nWork heartlessly torn apart by so-called 'humans'. \nHeartbroken, their descendant's talents have turned to precision \nwarcraft with sniper-like aim and relentless pilots. \nHow does it feel to have your own home destroyed? \n\nAttack type: Sniper no sniping", width/3.5, 400);
+    textFont(mainFont);
+    textAlign(CENTER);
+
+
+    // navigation buttons
+    createButton(width/4, 900, 250, 100, Button.ENEMYB);
+    fill(255);
+    textSize(40);
+    text("ENEMY INFO", width/4, 915);
+
+    createButton(width/2, 900, 250, 100, Button.STARTB);
+    fill(255);
+    textSize(40);
+    text("MAIN MENU", width/2, 915);
+    
+    createButton(3*width/4, 900, 250, 100, Button.INSTRUCTIONB);
+    fill(255);
+    textSize(40);
+    text("PLAYER INFO", 3*width/4, 915);
 
   }
   //Settings display

@@ -1,4 +1,4 @@
-//import processing.video.*; //<>// //<>// //<>// //<>//
+//import processing.video.*; //<>// //<>// //<>// //<>// //<>//
 Player player;
 Player player2;
 Controller controller;
@@ -105,6 +105,7 @@ void draw() {
   if (state == GameState.MODESELECT) controller.displaySettingsScreen();
   if (state == GameState.INSTRUCTIONS) controller.displayInfoScreen();
   if (state == GameState.ENEMYINFO) controller.displayEnemyScreen();
+  if (state == GameState.ENEMYINFO2) controller.displayEnemy2ndScreen();
   if (state == GameState.HIGHSCORE) controller.displayScoreScreen();
   if (state == GameState.TRANSITION) controller.bossTransition();
   if (state == GameState.BOSS) controller.bossFight();
@@ -259,7 +260,10 @@ void mousePressed() {
     state = GameState.INSTRUCTIONS;
   } else if (currentButton == Button.ENEMYB) {
     state = GameState.ENEMYINFO;
-  } else if (currentButton == Button.MODEB) {
+  }else if (currentButton == Button.ENEMY2B) {
+    state = GameState.ENEMYINFO2;
+  }
+  else if (currentButton == Button.MODEB) {
     state = GameState.MODESELECT;
   } else if (currentButton == Button.NAMEB) {
     controller.resetGame();
