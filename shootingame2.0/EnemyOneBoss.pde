@@ -15,6 +15,7 @@ class EnemyOneBoss extends Enemy {
   
     boolean isHit(PlayerBullet bullet) {
     if(dist(x, y, bullet.x, bullet.y) <= 30) {
+      shotTime++;
       if (shotTime > 10) toBeRemove = true;
       return true;
     }

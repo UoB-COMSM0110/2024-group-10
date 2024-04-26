@@ -1,4 +1,4 @@
-//import processing.video.*; //<>// //<>//
+//import processing.video.*; //<>// //<>// //<>// //<>//
 Player player;
 Player player2;
 Controller controller;
@@ -17,8 +17,9 @@ ArrayList<Object> objectsToReomve;
 ArrayList<Object> objects;
 PImage background;
 PImage background_start;
-String currentMode = "HARD";
+String currentMode = "EASY";
 GameState lastState = GameState.START;
+GameState previousState;
 boolean scoreAdded = false;
 public static boolean is2Player = false;
 int playerCount;
@@ -55,8 +56,6 @@ void setup() {
   enemyBulletsToRemove = new ArrayList<EnemyBullet>();
   playerBulletsToRemove = new ArrayList<PlayerBullet>();
   playerBulletsToRemove2 = new ArrayList<PlayerBullet>();
-  player.setMode(currentMode);
-  player2.setMode(currentMode);
   enemiesToRemove = new ArrayList<Enemy>();
   objects = new ArrayList<Object>();
   objectsToReomve = new ArrayList<Object>();
@@ -64,6 +63,12 @@ void setup() {
    //bgm
   minim = new Minim(this);
   bgm = minim.loadFile("PrototypeBgm/bgm_game_test.mp3"); 
+  bossbgm = minim.loadFile("PrototypeBgm/bossbgm.mp3"); 
+  alarm = minim.loadFile("PrototypeBgm/alarm.mp3"); 
+  glass = minim.loadFile("PrototypeBgm/glasscrack.mp3"); 
+  shatter = minim.loadFile("PrototypeBgm/glassbreak.mp3");
+  gameoverbgm = minim.loadFile("PrototypeBgm/gameover.mp3");
+  winbgm = minim.loadFile("PrototypeBgm/victorysfx.mp3");
 
   // UI related
   planecursor = loadImage("PrototypeImages/planecursor.gif");
@@ -89,8 +94,6 @@ void loadResources() {
   }
 }
 
-
-
 void draw() {
   //println(playerCount+"------"+is2Player);
   playerCount = getPlayerCount();
@@ -103,6 +106,7 @@ void draw() {
   if (state == GameState.INSTRUCTIONS) controller.displayInfoScreen();
   if (state == GameState.ENEMYINFO) controller.displayEnemyScreen();
   if (state == GameState.HIGHSCORE) controller.displayScoreScreen();
+  if (state == GameState.TRANSITION) controller.bossTransition();
   if (state == GameState.BOSS) controller.bossFight();
 
 
@@ -130,15 +134,35 @@ void draw() {
   if (state == GameState.FINISHED) controller.displayGameOverScreen();
   if (state == GameState.VICTORY) controller.displayVictoryScreen();
   
+  
   if (!bgm.isPlaying() && state == (GameState.PLAYING)) {
-      bgm.loop(); 
-  }else if (!bgm.isPlaying() && state == (GameState.BOSS)){
-      bgm.loop(); 
-  }else  if (bgm.isPlaying() && state != GameState.PLAYING && state != GameState.BOSS) {
+      bgm.loop();       
+  }  else  if (bgm.isPlaying() && state != GameState.PLAYING) {
       bgm.pause(); 
+      if (state != GameState.PAUSE) bgm.rewind(); 
+  }
+  
+  if (!bossbgm.isPlaying() && (state == GameState.TRANSITION || state == GameState.BOSS)){
+        bossbgm.setGain(-5);
+        bossbgm.loop();
+  } else if (state != GameState.TRANSITION && state != GameState.BOSS){
+        bossbgm.pause(); 
+        if (state != GameState.PAUSE) bossbgm.rewind(); 
   }
 
+  if (state == GameState.VICTORY){
+        winbgm.play();
+  } else{
+        winbgm.pause(); 
+        winbgm.rewind();
+  }
   
+  if (state == GameState.FINISHED){
+        gameoverbgm.play();
+  } else{
+        gameoverbgm.pause(); 
+        gameoverbgm.rewind();
+  }
   
 }
 
@@ -148,7 +172,9 @@ void keyPressed() {
     if (key == ESC) {
       key = 0;
       state = GameState.PAUSE;
-    };
+      player.stopMotion();
+      player2.stopMotion();
+    }
     if (keyCode == LEFT) player. movingLeft = true;
     if (keyCode == RIGHT) player.movingRight = true;
     if (keyCode == UP) player.movingUp = true;
@@ -240,6 +266,8 @@ void mousePressed() {
     state = GameState.NAMEENTRY;
   } else if (currentButton == Button.HIGHSCOREB) {
     state = GameState.HIGHSCORE;
+  }else if (currentButton == Button.RETURNB) {
+    state = previousState;
   }
   // mode select button clicks:
   else if (currentButton == Button.EASYB) {
@@ -260,6 +288,7 @@ void mousePressed() {
 /*void movieEvent(Movie m) {
   m.read();
 }*/
+
 
 int getPlayerCount() {
   if (is2Player) {

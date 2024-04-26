@@ -29,7 +29,6 @@ class Player {
   boolean isDied=false;
   
   float imageSize = 50;
-  String mode;
   float baseSpeed = 5;  
 
   Player (int playerNumber) {
@@ -298,15 +297,12 @@ class Player {
     this.imageSize = imageSize;
 }
 
-  void setMode(String mode) {
-        this.mode = currentMode;
-    }
 
     // 计算速度的方法
     float calculateSpeed() {
-        if (mode.equals("EASY")) {
+         if (currentMode.equals("EASY")) {
             return baseSpeed;  // 简单模式下，速度恒定为5
-        } else if (mode.equals("HARD")) {
+         } else if (currentMode.equals("HARD")) {
             // 困难模式下，能量越低，速度越慢
             float energyFactor = 0.3f + ((energy - 10) / 90.0f) * 0.7f;  // 根据能量调整速度因子
             return baseSpeed * energyFactor; 
@@ -315,7 +311,23 @@ class Player {
         }
     }
   
-
+  void increaseEnergy() {
+    if(energy <= 100){
+      if (currentMode.equals("EASY")) energy  += 5;
+      else if (currentMode.equals("HARD")) energy += 2;
+    }
+  }
+   
+   void stopMotion(){
+      player.movingLeft = false;
+      player.movingRight = false;
+      player.movingUp = false;
+      player.movingDown = false;
+      player2.movingLeft = false;
+      player2.movingRight = false;
+      player2.movingUp = false;
+      player2.movingDown = false;
+    }
 
 
   

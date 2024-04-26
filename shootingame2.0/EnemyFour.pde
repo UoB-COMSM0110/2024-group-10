@@ -46,7 +46,14 @@ class EnemyFour extends Enemy {
   boolean isHit(PlayerBullet bullet) {
     if(dist(x, y, bullet.x, bullet.y) <= 30) {
       toBeRemove = true;
-      System.out.println(bulletsToBeCollected.size());
+      if(random(0,1) > 0.5) {
+        Object object = new Object(x, y, true, false);
+        objects.add(object);
+      }
+      else{
+        Object object = new Object(x, y, false, true);
+        objects.add(object);
+      }
       for(EnemyBulletFour bulletToBeRemove : bulletsToBeCollected) {
         bulletToBeRemove.toBeRemove = true;
       }

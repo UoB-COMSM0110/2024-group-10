@@ -1,16 +1,19 @@
 class Controller {
   int lastFrame = frameCount;
   int startFrame = frameCount;
+  int bossAppearanceFrame = 6000;
   int enemyTwoNumber = 0;
   boolean left;
   boolean hasBoss = false;
   boolean isHard;
 
   void campaignMode() {
+    currentButton = Button.NONE;
     int currentFrame = frameCount;
 
     noCursor();
     background(background);
+    previousState=GameState.PLAYING;
     if (!player.isDied) {
       player.update();
       player.display();
@@ -73,10 +76,17 @@ class Controller {
         enemy.display();
         if(enemy.hitPlayer(player)) {
           player.lives -= 1;
+          if(player.shootingLevel > 0){
+            player.shootingLevel -= 1;
+          }
+          
           enemy.toBeRemove = true;
         }
         if(enemy.hitPlayer(player2)) {
           player2.lives -= 1;
+          if(player2.shootingLevel > 0){
+            player2.shootingLevel -= 1;
+          }
           enemy.toBeRemove = true;
         }
       } else enemiesToRemove.add(enemy);
@@ -89,7 +99,7 @@ class Controller {
       for (Enemy enemy : enemies) {
         if (enemy.isHit(bullet)) {
           player.score += 1;
-          player.energy += 10;
+          player.increaseEnergy();
           bullet.toBeRemove = true;
           break;
         }
@@ -103,7 +113,7 @@ class Controller {
       for (Enemy enemy : enemies) {
         if (enemy.isHit(bullet)) {
           player2.score += 1;
-          player2.energy += 10;
+          player2.increaseEnergy();
           bullet.toBeRemove = true;
 
           break;
@@ -169,14 +179,14 @@ class Controller {
     }
 
 
-    if (currentFrame - startFrame >= 6000) {
+    if (currentFrame - startFrame >= bossAppearanceFrame) {
       for (Enemy enemy : enemies) {
         enemy.toBeRemove = true;
       }
       for (EnemyBullet bullet : enemyBullets) {
         bullet.toBeRemove = true;
       }
-      state = GameState.BOSS;
+      state = GameState.TRANSITION;
     }
     
     for(Object object : objects) {
@@ -208,14 +218,6 @@ class Controller {
     }
 
     for (Enemy enemyToRemove : enemiesToRemove) {
-      if(random(0,1) > 0.5) {
-        Object object = new Object(enemyToRemove.x, enemyToRemove.y, true, false);
-        objects.add(object);
-      }
-      else{
-        Object object = new Object(enemyToRemove.x, enemyToRemove.y, false, true);
-        objects.add(object);
-      }
       enemies.remove(enemyToRemove);
     }
     
@@ -272,7 +274,7 @@ class Controller {
     objectsToReomve.clear();
 
     // 重置游戏状态变量
-    currentMode = currentMode;  // 或根据需要重置为默认设置
+    currentMode = "EASY";  // 或根据需要重置为默认设置
     playerCount = getPlayerCount();  // 根据是否为双人模式重新计算玩家数
 
     // 重新加载背景或其他资源如果需要
@@ -691,7 +693,7 @@ class Controller {
     rect(width/2, height, width+100, 1100);
 
     // navigation buttons
-    createButton(width/2, 250, 250, 100, Button.GAMEB);
+    createButton(width/2, 250, 250, 100, Button.RETURNB);
     fill(255);
     textSize(40);
     text("RESUME", width/2, 265);
@@ -761,7 +763,7 @@ class Controller {
     // adds player 2 part if in 2 player mode
     if (is2Player) {
       text("FINAL SCORE: ", width/2, 500);
-      text(player2.name +  "'s Score : " + player.score, width/2, 600);
+      text(player.name +  "'s Score : " + player.score, width/2, 600);
       text(player2.name + "'s Score : " + player2.score, width/2, 700);
     } else text("FINAL SCORE: " + player.score, width/2, 500);
 
@@ -784,6 +786,8 @@ class Controller {
 
     noCursor();
     background(background);
+    shatter.pause();
+    shatter.rewind();
     if (!player.isDied) {
       player.update();
       player.display();
@@ -931,5 +935,79 @@ class Controller {
         player2.display();
       }
     }
+    
+    previousState = GameState.BOSS;
+    
+  }
+void bossTransition(){
+    PImage largeCrack = loadImage("PrototypeImages/largecrack.png");
+    PImage smallCrack = loadImage("PrototypeImages/smallcrack.png");
+    background(background);
+    fill(255, 0, 0, 150);
+    rect(width/2, height/2, width, height);
+    int currentFrame = frameCount;
+    int frame = currentFrame-startFrame;   
+    int blinkTime = 40;
+    currentButton = Button.NONE;  
+    player.stopMotion();
+    player2.stopMotion();
+    
+    if(frame == bossAppearanceFrame){
+      alarm.play();        
+    }
+    
+    //flashing text
+    if (frame <= (bossAppearanceFrame+blinkTime) || 
+       (bossAppearanceFrame + blinkTime*2  <= frame && frame <= bossAppearanceFrame+blinkTime*3) || 
+       (bossAppearanceFrame+blinkTime*4 <= frame && frame <= bossAppearanceFrame+blinkTime*5) || 
+       (bossAppearanceFrame+blinkTime*6 <= frame))
+    {
+      textSize(140);
+      text("WARNING!!!", width/2, 300);
+    }
+    else{
+      background(background);
+      fill(255, 0, 0, 150);
+      rect(width/2, height/2, width, height);
+    }
+    
+    if(frame > bossAppearanceFrame+blinkTime*4){
+      image(smallCrack, 750 ,750);
+    }
+    
+    if(frame == bossAppearanceFrame+blinkTime*4 ||
+       frame == bossAppearanceFrame+blinkTime*6){
+      glass.play();    
+    }
+    
+    if(frame == bossAppearanceFrame+blinkTime*5||
+       frame == bossAppearanceFrame+blinkTime*7){
+      glass.rewind();    
+      glass.pause();
+    }
+        
+    if(frame > bossAppearanceFrame+blinkTime*6){
+      image(smallCrack, 250 ,250);     
+    }
+    
+    if ((bossAppearanceFrame+blinkTime*4 <= frame && frame <= bossAppearanceFrame+blinkTime*5) || 
+       (bossAppearanceFrame+blinkTime*6 <= frame)){
+      textSize(50);
+      text("EXTREMELY POWERFUL ENEMY APPROACHING", width/2, 400);
+    }
+    
+    if(frame > bossAppearanceFrame+blinkTime*7){
+      image(largeCrack, 500,500, 1000, 1000);
+      shatter.setGain(10);
+      shatter.play();
+    }
+    
+    if(frame == bossAppearanceFrame+blinkTime*7){
+      alarm.pause();
+      alarm.rewind();    
+      
+    }
+    
+    if (frame >= bossAppearanceFrame+blinkTime*7+30) state = GameState.BOSS;
   }
 }
