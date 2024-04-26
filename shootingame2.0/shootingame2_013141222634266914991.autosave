@@ -1,4 +1,4 @@
-//import processing.video.*; //<>// //<>//
+//import processing.video.*;
 Player player;
 Player player2;
 Controller controller;
@@ -37,7 +37,10 @@ void settings() {
 }
 
 void setup() {
-  thread("loadResources");
+  introFrames = new PImage[209]; 
+  for (int i = 0; i < introFrames.length; i++) {
+    introFrames[i] = loadImage("PrototypeImages/frame/" + (i + 1) + ".png");
+  }
   //introVideo = new Movie(this, "intro1.mp4");
   //introVideo.loop();
   background_start = loadImage("PrototypeImages/background_start.png");
@@ -55,8 +58,6 @@ void setup() {
   enemyBulletsToRemove = new ArrayList<EnemyBullet>();
   playerBulletsToRemove = new ArrayList<PlayerBullet>();
   playerBulletsToRemove2 = new ArrayList<PlayerBullet>();
-  player.setMode(currentMode);
-  player2.setMode(currentMode);
   enemiesToRemove = new ArrayList<Enemy>();
   objects = new ArrayList<Object>();
   objectsToReomve = new ArrayList<Object>();
@@ -81,15 +82,6 @@ void setup() {
   enemy1_bullet = loadImage("PrototypeImages/enemy1_bullet.png");
   me_bullet = loadImage("PrototypeImages/me_bullet.png");
 }
-
-void loadResources() {
-   introFrames = new PImage[209]; 
-  for (int i = 0; i < introFrames.length; i++) {
-    introFrames[i] = loadImage("PrototypeImages/frame/" + (i + 1) + ".png");
-  }
-}
-
-
 
 void draw() {
   //println(playerCount+"------"+is2Player);

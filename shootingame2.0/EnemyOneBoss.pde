@@ -4,7 +4,7 @@ class EnemyOneBoss extends Enemy {
   
   EnemyOneBoss(float x, float y) {
     super(x, y);
-    boss_enemy = loadImage("PrototypeImages/boss_enemy.png");
+    boss_enemy = loadImage("PrototypeImages/boss_enemy1.png");
   }
   
   void update() {
@@ -23,7 +23,7 @@ class EnemyOneBoss extends Enemy {
   
   void increaseShotTime() {shotTime += 3;}
   void display(){
-    imageMode(CENTER); 
-   image(boss_enemy, x, y, 50, 50);
+   imageMode(CENTER); 
+   image(boss_enemy, x, y, 82, 95);
   }
 }

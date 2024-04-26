@@ -1,8 +1,12 @@
 class EnemyThreeBoss extends EnemyThree {
+  PImage boss_enemy3;   
+  PImage boss_enemy3re;  
   EnemyThreeBoss(float x, float y) {
     super();
     this.x = x;
     this.y = y;
+    boss_enemy3 = loadImage ("PrototypeImages/boss_enemy3.png");
+    boss_enemy3re = loadImage ("PrototypeImages/boss_enemy3re.png");
   }
 
   void update() {
@@ -53,4 +57,25 @@ class EnemyThreeBoss extends EnemyThree {
   }
   
   void increaseShotTime() {shotTime += 3;}
+  void display() {
+        imageMode(CENTER);
+        pushMatrix(); 
+        translate(x, y); 
+        float angle = atan2(player.y - y, player.x - x);
+        rotate(angle); 
+        imageMode(CENTER);
+        image(boss_enemy3re, 50, 0, boss_enemy3re.width*0.8, boss_enemy3re.height*0.8); 
+        
+        popMatrix(); 
+        image(boss_enemy3, x, y, 150, 107); 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
 }

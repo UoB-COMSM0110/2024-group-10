@@ -32,13 +32,11 @@ class Boss extends Enemy {
     //fill(200,200,200);
     //rect(x,y,750,300);
     imageMode(CENTER);
-    if(shotTime >10 ) {
-      image(boss_damage2, x, y, 750, 400);
-    }else if (shotTime >5){
-      image(boss_damage1, x, y, 750, 400);
+    if(isStageTwo) {
+      image(boss_damage2, x, y+30, 850, 450);
     }
     else{
-    image (boss, x, y, 750, 380);
+    image (boss, x, y+30, 850, 450);
     }
   }
   
