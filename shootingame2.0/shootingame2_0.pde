@@ -140,6 +140,14 @@ void keyPressed() {
     if (key == ESC) {
       key = 0;
       state = GameState.PAUSE;
+      player.movingLeft = false;
+      player.movingRight = false;
+      player.movingUp = false;
+      player.movingDown = false;
+      player2.movingLeft = false;
+      player2.movingRight = false;
+      player2.movingUp = false;
+      player2.movingDown = false;
     };
     if (keyCode == LEFT) player. movingLeft = true;
     if (keyCode == RIGHT) player.movingRight = true;
