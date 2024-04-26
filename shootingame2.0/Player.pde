@@ -319,14 +319,11 @@ class Player {
   }
    
    void stopMotion(){
-      player.movingLeft = false;
-      player.movingRight = false;
-      player.movingUp = false;
-      player.movingDown = false;
-      player2.movingLeft = false;
-      player2.movingRight = false;
-      player2.movingUp = false;
-      player2.movingDown = false;
+      movingLeft = false;
+      movingRight = false;
+      movingUp = false;
+      movingDown = false;
+      isShooting = false;
     }
 
 
