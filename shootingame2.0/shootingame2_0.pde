@@ -65,6 +65,10 @@ void setup() {
    //bgm
   minim = new Minim(this);
   bgm = minim.loadFile("PrototypeBgm/bgm_game_test.mp3"); 
+  bossbgm = minim.loadFile("PrototypeBgm/bossbgm.mp3"); 
+  alarm = minim.loadFile("PrototypeBgm/alarm.mp3"); 
+  glass = minim.loadFile("PrototypeBgm/glasscrack.mp3"); 
+  shatter = minim.loadFile("PrototypeBgm/glassbreak.mp3");
 
   // UI related
   planecursor = loadImage("PrototypeImages/planecursor.gif");
@@ -123,13 +127,37 @@ void draw() {
   if (state == GameState.FINISHED) controller.displayGameOverScreen();
   if (state == GameState.VICTORY) controller.displayVictoryScreen();
   
+  /*
   if (!bgm.isPlaying() && state == (GameState.PLAYING)) {
-      bgm.loop(); 
-  }else if (!bgm.isPlaying() && state == (GameState.BOSS)){
-      bgm.loop(); 
-  }else  if (bgm.isPlaying() && state != GameState.PLAYING && state != GameState.BOSS) {
-      bgm.pause(); 
+      bgm.loop();       
+  }else if (state == (GameState.TRANSITION)){
+      bgm.pause();
+      bossbgm.play(); 
   }
+  //else if (!bossbgm.isPlaying() && state == (GameState.BOSS)){
+  //    bossbgm.loop(); 
+  //}
+  else  if (bgm.isPlaying() && state != GameState.PLAYING && state != GameState.BOSS) {
+      bgm.pause(); 
+  }*/
+  
+  if (!bgm.isPlaying() && state == (GameState.PLAYING)) {
+      bgm.loop();       
+  }  else  if (bgm.isPlaying() && state != GameState.PLAYING) {
+      bgm.pause(); 
+      if (state != GameState.PAUSE) bgm.rewind(); 
+  }
+  
+  if (state == GameState.TRANSITION){
+        //bossbgm.loop();
+        bossbgm.setGain(-5);
+        bossbgm.play();
+        alarm.play();
+  } else if (state != GameState.TRANSITION && state != GameState.BOSS){
+        bossbgm.pause(); 
+        if (state != GameState.PAUSE) bossbgm.rewind(); 
+  }
+  
 
   
   
