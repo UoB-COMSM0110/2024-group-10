@@ -286,8 +286,8 @@ class Controller {
   void dispalyIntroduction(){
    float x = width / 2;
    float y = height / 2;
-   float scaleFactor = max(width / 403.0, height / 403.0);
-    image(introFrames[currentFrameIndex], x, y, 403 * scaleFactor, 403 * scaleFactor);
+   float scaleFactor = max(width / 480.0, height / 480.0);
+    image(introFrames[currentFrameIndex], x, y, 480 * scaleFactor, 480 * scaleFactor);
     frameCounter++;
     if (frameCounter >= frameChangeInterval) {
       currentFrameIndex++;
