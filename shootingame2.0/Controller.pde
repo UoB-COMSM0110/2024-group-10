@@ -1,7 +1,7 @@
 class Controller {
   int lastFrame = frameCount;
   int startFrame = frameCount;
-  int bossAppearanceFrame = 2000;
+  int bossAppearanceFrame = 6000;
   int enemyTwoNumber = 0;
   boolean left;
   boolean hasBoss = false;
@@ -13,6 +13,7 @@ class Controller {
 
     noCursor();
     background(background);
+    previousState=GameState.PLAYING;
     if (!player.isDied) {
       player.update();
       player.display();
@@ -700,7 +701,7 @@ class Controller {
     rect(width/2, height, width+100, 1100);
 
     // navigation buttons
-    createButton(width/2, 250, 250, 100, Button.GAMEB);
+    createButton(width/2, 250, 250, 100, Button.RETURNB);
     fill(255);
     textSize(40);
     text("RESUME", width/2, 265);
@@ -942,6 +943,9 @@ class Controller {
         player2.display();
       }
     }
+    
+    previousState = GameState.BOSS;
+    
   }
 void bossTransition(){
     PImage largeCrack = loadImage("PrototypeImages/largecrack.png");
@@ -952,7 +956,11 @@ void bossTransition(){
     int currentFrame = frameCount;
     int frame = currentFrame-startFrame;   
     int blinkTime = 40;
-    currentButton = Button.NONE;    
+    currentButton = Button.NONE;  
+    
+    if(frame == bossAppearanceFrame){
+      alarm.play();        
+    }
     
     //flashing text
     if (frame <= (bossAppearanceFrame+blinkTime) || 
@@ -999,8 +1007,14 @@ void bossTransition(){
       image(largeCrack, 500,500, 1000, 1000);
       shatter.setGain(10);
       shatter.play();
+      //alarm.pause();
+      //alarm.rewind();
+    }
+    
+    if(frame == bossAppearanceFrame+blinkTime*7){
       alarm.pause();
-      alarm.rewind();
+      alarm.rewind();    
+      
     }
     
     if (frame >= bossAppearanceFrame+blinkTime*7+30) state = GameState.BOSS;

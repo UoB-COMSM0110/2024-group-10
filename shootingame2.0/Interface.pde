@@ -14,7 +14,8 @@ enum Button {
   NAMEB,
   ONEPLAYERB,
   TWOPLAYERB,
-  HIGHSCOREB
+  HIGHSCOREB,
+  RETURNB
 }
 
 enum Screen {

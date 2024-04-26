@@ -19,6 +19,7 @@ PImage background;
 PImage background_start;
 String currentMode = "HARD";
 GameState lastState = GameState.START;
+GameState previousState;
 boolean scoreAdded = false;
 public static boolean is2Player = false;
 int playerCount;
@@ -127,19 +128,6 @@ void draw() {
   if (state == GameState.FINISHED) controller.displayGameOverScreen();
   if (state == GameState.VICTORY) controller.displayVictoryScreen();
   
-  /*
-  if (!bgm.isPlaying() && state == (GameState.PLAYING)) {
-      bgm.loop();       
-  }else if (state == (GameState.TRANSITION)){
-      bgm.pause();
-      bossbgm.play(); 
-  }
-  //else if (!bossbgm.isPlaying() && state == (GameState.BOSS)){
-  //    bossbgm.loop(); 
-  //}
-  else  if (bgm.isPlaying() && state != GameState.PLAYING && state != GameState.BOSS) {
-      bgm.pause(); 
-  }*/
   
   if (!bgm.isPlaying() && state == (GameState.PLAYING)) {
       bgm.loop();       
@@ -148,11 +136,9 @@ void draw() {
       if (state != GameState.PAUSE) bgm.rewind(); 
   }
   
-  if (state == GameState.TRANSITION){
-        //bossbgm.loop();
+  if (!bossbgm.isPlaying() && (state == GameState.TRANSITION || state == GameState.BOSS)){
         bossbgm.setGain(-5);
-        bossbgm.play();
-        alarm.play();
+        bossbgm.loop();
   } else if (state != GameState.TRANSITION && state != GameState.BOSS){
         bossbgm.pause(); 
         if (state != GameState.PAUSE) bossbgm.rewind(); 
@@ -269,6 +255,8 @@ void mousePressed() {
     state = GameState.NAMEENTRY;
   } else if (currentButton == Button.HIGHSCOREB) {
     state = GameState.HIGHSCORE;
+  }else if (currentButton == Button.RETURNB) {
+    state = previousState;
   }
   // mode select button clicks:
   else if (currentButton == Button.EASYB) {
