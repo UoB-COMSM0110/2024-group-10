@@ -1,7 +1,7 @@
 class Controller {
   int lastFrame = frameCount;
   int startFrame = frameCount;
-  int bossAppearanceFrame = 6000;
+  int bossAppearanceFrame = 60;
   int enemyTwoNumber = 0;
   boolean left;
   boolean hasBoss = false;
@@ -771,7 +771,7 @@ class Controller {
     // adds player 2 part if in 2 player mode
     if (is2Player) {
       text("FINAL SCORE: ", width/2, 500);
-      text(player2.name +  "'s Score : " + player.score, width/2, 600);
+      text(player.name +  "'s Score : " + player.score, width/2, 600);
       text(player2.name + "'s Score : " + player2.score, width/2, 700);
     } else text("FINAL SCORE: " + player.score, width/2, 500);
 
@@ -957,6 +957,8 @@ void bossTransition(){
     int frame = currentFrame-startFrame;   
     int blinkTime = 40;
     currentButton = Button.NONE;  
+    player.stopMotion();
+    player2.stopMotion();
     
     if(frame == bossAppearanceFrame){
       alarm.play();        
@@ -993,8 +995,7 @@ void bossTransition(){
     }
         
     if(frame > bossAppearanceFrame+blinkTime*6){
-      image(smallCrack, 250 ,250);
-      //glass.play();      
+      image(smallCrack, 250 ,250);     
     }
     
     if ((bossAppearanceFrame+blinkTime*4 <= frame && frame <= bossAppearanceFrame+blinkTime*5) || 
@@ -1007,8 +1008,6 @@ void bossTransition(){
       image(largeCrack, 500,500, 1000, 1000);
       shatter.setGain(10);
       shatter.play();
-      //alarm.pause();
-      //alarm.rewind();
     }
     
     if(frame == bossAppearanceFrame+blinkTime*7){
