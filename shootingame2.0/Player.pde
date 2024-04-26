@@ -29,6 +29,8 @@ class Player {
   boolean isDied=false;
   
   float imageSize = 50;
+  String mode;
+  float baseSpeed = 5;  
 
   Player (int playerNumber) {
     this.playerNumber = playerNumber;
@@ -120,10 +122,11 @@ class Player {
     }
 
     // Update position based on key flags
-    if (movingUp) y -= 5;
-    if (movingDown) y += 5;
-    if (movingLeft) x -= 5;
-    if (movingRight) x += 5;
+    float currentSpeed = calculateSpeed();
+    if (movingUp) y -= currentSpeed;;
+    if (movingDown) y += currentSpeed;;
+    if (movingLeft) x -= currentSpeed;;
+    if (movingRight) x += currentSpeed;;
 
     //Shooting Missle
     if (shootingMissle) shootMissle();
@@ -294,6 +297,26 @@ class Player {
     // 将尺寸设置为类的成员变量，以便在display()方法中使用
     this.imageSize = imageSize;
 }
+
+  void setMode(String mode) {
+        this.mode = currentMode;
+    }
+
+    // 计算速度的方法
+    float calculateSpeed() {
+        if (mode.equals("EASY")) {
+            return baseSpeed;  // 简单模式下，速度恒定为5
+        } else if (mode.equals("HARD")) {
+            // 困难模式下，能量越低，速度越慢
+            float energyFactor = 0.3f + ((energy - 10) / 90.0f) * 0.7f;  // 根据能量调整速度因子
+            return baseSpeed * energyFactor; 
+        }else {
+          return baseSpeed; 
+        }
+    }
+  
+
+
 
   
   
