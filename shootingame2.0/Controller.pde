@@ -1,13 +1,14 @@
 class Controller {
   int lastFrame = frameCount;
   int startFrame = frameCount;
-  int bossAppearanceFrame = 6000;
+  int bossAppearanceFrame = 100;
   int enemyTwoNumber = 0;
   boolean left;
   boolean hasBoss = false;
   boolean isHard;
 
   void campaignMode() {
+    currentButton = Button.NONE;
     int currentFrame = frameCount;
 
     noCursor();
@@ -949,6 +950,7 @@ void bossTransition(){
     int currentFrame = frameCount;
     int frame = currentFrame-startFrame;   
     int blinkTime = 40;
+    currentButton = Button.NONE;
     
     
     //flashing text
