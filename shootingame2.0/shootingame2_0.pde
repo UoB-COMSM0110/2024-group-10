@@ -20,7 +20,7 @@ PImage background_start;
 String currentMode = "HARD";
 GameState lastState = GameState.START;
 boolean scoreAdded = false;
-boolean is2Player = false;
+public static boolean is2Player = false;
 int playerCount;
 PImage enemy1_bullet;
 PImage me_bullet;
@@ -231,6 +231,9 @@ void mousePressed() {
     is2Player = false;
   } else if (currentButton == Button.TWOPLAYERB) {
     player2.isPlayer2=true;
+    for (Enemy enemy : enemies) {
+        enemy.isPlayer2 = true;
+    }
     is2Player = true;
   }
 }

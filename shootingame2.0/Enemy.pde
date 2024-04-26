@@ -3,6 +3,7 @@ class Enemy {
   boolean toBeRemove = false;
   boolean isShooting = false;
   boolean isStageTwo = false;
+  boolean isPlayer2 = false;
   int lastFrame;
   int shootingTime = 0;
   PImage enemy1;
@@ -11,6 +12,7 @@ class Enemy {
     this.x = x;
     this.y = y;
     this.lastFrame = frameCount;
+    this.isPlayer2 = is2Player;
     enemy1 = loadImage("PrototypeImages/enemies/enemy1.png");
   }
   

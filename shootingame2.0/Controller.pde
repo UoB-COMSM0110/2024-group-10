@@ -1,4 +1,3 @@
-
 class Controller {
   int lastFrame = frameCount;
   int startFrame = frameCount;
@@ -59,12 +58,27 @@ class Controller {
         enemies.add(enemyFour);
       }
     }
+    
+    if (frameCount % 60 ==0) {
+        Stalker stalker;
+        if(random(0,1) > 0.5) stalker = new Stalker(20,20);
+        else stalker = new Stalker(980,100);
+        enemies.add(stalker);
+     }
 
     //Update status for each enemy
     for (Enemy enemy : enemies) {
       if (!enemy.toBeRemove) {
         enemy.update();
         enemy.display();
+        if(enemy.hitPlayer(player)) {
+          player.lives -= 1;
+          enemy.toBeRemove = true;
+        }
+        if(enemy.hitPlayer(player2)) {
+          player2.lives -= 1;
+          enemy.toBeRemove = true;
+        }
       } else enemiesToRemove.add(enemy);
     }
 
@@ -98,22 +112,59 @@ class Controller {
       if (bullet.toBeRemove) playerBulletsToRemove2.add(bullet);
     }
 
-    if (!player.isDied) {
-      //Update the status for the enem'ies bullet
-      for (EnemyBullet bullet : enemyBullets) {
-        bullet.update();
-        bullet.display();
-        if (bullet.hitPlayer(player)) {
-          player.lives -= 1;  // Decrement player's lives
-          bullet.toBeRemove = true;  // Mark bullet for removal
+    for (EnemyBullet bullet : enemyBullets) {
+      bullet.update();
+      bullet.display();
+      if (bullet.hitPlayer(player)) {
+        player.lives -= 1;  // Decrement player's lives
+        bullet.toBeRemove = true;  // Mark bullet for removal
 
+        if (is2Player) {
+          if (player.lives <= 0) {
+            player.isDied=true;
+          }
+          if ((player.lives <= 0) &&((player2.lives <= 0))) {
+            state = GameState.FINISHED;  // End game if player is out of lives
+          } else {
+            // Optional: Trigger some effect or sound to indicate hit but not dead
+          }
+        } else {
           if (player.lives <= 0) {
             state = GameState.FINISHED;  // End game if player is out of lives
           } else {
             // Optional: Trigger some effect or sound to indicate hit but not dead
           }
         }
-        if (bullet.toBeRemove) enemyBulletsToRemove.add(bullet);
+      }
+      if (bullet.toBeRemove) enemyBulletsToRemove.add(bullet);
+    }
+
+    if (!player2.isDied) {
+      for (EnemyBullet bullet : enemyBullets) {
+      bullet.update();
+      bullet.display();
+      if (bullet.hitPlayer(player2)) {
+        player2.lives -= 1;  // Decrement player's lives
+        bullet.toBeRemove = true;  // Mark bullet for removal
+
+        if (is2Player) {
+          if (player2.lives <= 0) {
+            player2.isDied=true;
+          }
+          if ((player.lives <= 0) &&((player2.lives <= 0))) {
+            state = GameState.FINISHED;  // End game if player is out of lives
+          } else {
+            // Optional: Trigger some effect or sound to indicate hit but not dead
+          }
+        } else {
+          if (player.lives <= 0) {
+            state = GameState.FINISHED;  // End game if player is out of lives
+          } else {
+            // Optional: Trigger some effect or sound to indicate hit but not dead
+          }
+        }
+      }
+      if (bullet.toBeRemove) enemyBulletsToRemove.add(bullet);
       }
     }
 
@@ -135,6 +186,10 @@ class Controller {
         if(object.isHit(player)) {
           object.toBeRemove = true;
           player.hitObject(object);
+        }
+        if(object.isHit(player2)) {
+          object.toBeRemove = true;
+          player2.hitObject(object);
         }
       } else objectsToReomve.add(object);
     }
@@ -171,6 +226,7 @@ class Controller {
     enemyBulletsToRemove.clear();
     playerBulletsToRemove.clear();
     enemiesToRemove.clear();
+    objectsToReomve.clear();
 
     if (is2Player) {
       if (!player2.isDied) {
@@ -212,6 +268,8 @@ class Controller {
     enemyBulletsToRemove.clear();
     playerBulletsToRemove.clear();
     enemiesToRemove.clear();
+    objects.clear();
+    objectsToReomve.clear();
 
     // 重置游戏状态变量
     currentMode = currentMode;  // 或根据需要重置为默认设置

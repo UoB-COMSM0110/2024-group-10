@@ -17,8 +17,7 @@ class Player {
   String name ="";
   int playerNumber;
   int energy = 0;
-  int lives = 3;
-  int maxLives = 8;
+  int lives = 10;
   int score = 0;
   int shootingLevel = 0;
   PImage me;
@@ -224,9 +223,9 @@ class Player {
     // 重置玩家的能量和得分
     energy = 0;  // 假设起始能量为100
     if (isPlayer2) {
-      lives = 30;
+      lives = 10;
     } else {
-      lives = 5;
+      lives = 10;
     }
 
     score = 0;     // 分数重置为0
@@ -256,9 +255,8 @@ class Player {
   void hitObject(Object object) {
     if(object.isPower == true) {
       increaseShootingLevel();
-    }
-    if (object.isLife == true && lives < maxLives){
-      lives++;
+    }else {
+      lives += 1;
     }
   }
   

@@ -1,13 +1,14 @@
 class Stalker extends Enemy {
-  
+  Player target;
   Stalker(float x, float y) {
     super(x, y);
+    chooseTarget();
   }
   
   void update() {
     // Calculate direction towards the target
-    float dx = player.x - x;
-    float dy = player.y - y;
+    float dx = target.x - x;
+    float dy = target.y - y;
     
     // Calculate distance to target
     float distance = sqrt(dx * dx + dy * dy);
@@ -23,8 +24,17 @@ class Stalker extends Enemy {
       x += dx * 2;
       y += dy * 2;
     } else {
-      x = player.x;
-      y = player.y;
+      x = target.x;
+      y = target.y;
     } 
+  }
+
+    void chooseTarget() {
+    if (player2 != null && isPlayer2) {  // 如果存在第二玩家且双人模式启用
+      // 随机选择追踪player1或player2
+      target = (random(0, 1) > 0.5) ? player : player2;
+    } else {
+      target = player; // 单人模式或者player2不存在时，默认追踪player
+    }
   }
 }
