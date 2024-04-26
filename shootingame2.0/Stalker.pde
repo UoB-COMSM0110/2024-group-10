@@ -1,8 +1,15 @@
 class Stalker extends Enemy {
   Player target;
+  PImage stalker;
   Stalker(float x, float y) {
     super(x, y);
     chooseTarget();
+    stalker = loadImage("PrototypeImages/stalker.png");
+  }
+  
+  void display(){
+    imageMode(CENTER);
+    image(stalker, x, y, 50, 50);
   }
   
   void update() {
