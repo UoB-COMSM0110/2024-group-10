@@ -69,6 +69,7 @@ void setup() {
   shatter = minim.loadFile("PrototypeBgm/glassbreak.mp3");
   gameoverbgm = minim.loadFile("PrototypeBgm/gameover.mp3");
   winbgm = minim.loadFile("PrototypeBgm/victorysfx.mp3");
+  introbgm = minim.loadFile("PrototypeBgm/introbgm.mp3");
 
   // UI related
   planecursor = loadImage("PrototypeImages/planecursor.gif");
@@ -135,35 +136,8 @@ void draw() {
   if (state == GameState.FINISHED) controller.displayGameOverScreen();
   if (state == GameState.VICTORY) controller.displayVictoryScreen();
   
-  
-  if (!bgm.isPlaying() && state == (GameState.PLAYING)) {
-      bgm.loop();       
-  }  else  if (bgm.isPlaying() && state != GameState.PLAYING) {
-      bgm.pause(); 
-      if (state != GameState.PAUSE) bgm.rewind(); 
-  }
-  
-  if (!bossbgm.isPlaying() && (state == GameState.TRANSITION || state == GameState.BOSS)){
-        bossbgm.setGain(-5);
-        bossbgm.loop();
-  } else if (state != GameState.TRANSITION && state != GameState.BOSS){
-        bossbgm.pause(); 
-        if (state != GameState.PAUSE) bossbgm.rewind(); 
-  }
+  setAudio();
 
-  if (state == GameState.VICTORY){
-        winbgm.play();
-  } else{
-        winbgm.pause(); 
-        winbgm.rewind();
-  }
-  
-  if (state == GameState.FINISHED){
-        gameoverbgm.play();
-  } else{
-        gameoverbgm.pause(); 
-        gameoverbgm.rewind();
-  }
   
 }
 
@@ -292,6 +266,38 @@ void mousePressed() {
 /*void movieEvent(Movie m) {
   m.read();
 }*/
+
+void setAudio(){
+  
+    if (!bgm.isPlaying() && state == (GameState.PLAYING)) {
+      bgm.loop();       
+  }  else  if (bgm.isPlaying() && state != GameState.PLAYING) {
+      bgm.pause(); 
+      if (state != GameState.PAUSE) bgm.rewind(); 
+  }
+  
+  if (!bossbgm.isPlaying() && (state == GameState.TRANSITION || state == GameState.BOSS)){
+        bossbgm.setGain(-5);
+        bossbgm.loop();
+  } else if (state != GameState.TRANSITION && state != GameState.BOSS){
+        bossbgm.pause(); 
+        if (state != GameState.PAUSE) bossbgm.rewind(); 
+  }
+
+  if (state == GameState.VICTORY){
+        winbgm.play();
+  } else{
+        winbgm.pause(); 
+        winbgm.rewind();
+  }
+  
+  if (state == GameState.FINISHED){
+        gameoverbgm.play();
+  } else{
+        gameoverbgm.pause(); 
+        gameoverbgm.rewind();
+  }
+}
 
 
 int getPlayerCount() {
