@@ -218,14 +218,6 @@ class Controller {
     }
 
     for (Enemy enemyToRemove : enemiesToRemove) {
-      if(random(0,1) > 0.5) {
-        Object object = new Object(enemyToRemove.x, enemyToRemove.y, true, false);
-        objects.add(object);
-      }
-      else{
-        Object object = new Object(enemyToRemove.x, enemyToRemove.y, false, true);
-        objects.add(object);
-      }
       enemies.remove(enemyToRemove);
     }
     
