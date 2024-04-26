@@ -1,4 +1,4 @@
-//import processing.video.*; //<>// //<>//
+//import processing.video.*; //<>// //<>// //<>//
 Player player;
 Player player2;
 Controller controller;
@@ -17,7 +17,7 @@ ArrayList<Object> objectsToReomve;
 ArrayList<Object> objects;
 PImage background;
 PImage background_start;
-String currentMode = "HARD";
+String currentMode = "EASY";
 GameState lastState = GameState.START;
 GameState previousState;
 boolean scoreAdded = false;

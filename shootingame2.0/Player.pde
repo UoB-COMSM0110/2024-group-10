@@ -311,6 +311,12 @@ class Player {
         }
     }
   
+  void increaseEnergy() {
+    if(energy <= 100){
+      if (currentMode.equals("EASY")) energy  += 5;
+      else if (currentMode.equals("HARD")) energy += 2;
+    }
+  }
    
    void stopMotion(){
       player.movingLeft = false;

@@ -99,7 +99,7 @@ class Controller {
       for (Enemy enemy : enemies) {
         if (enemy.isHit(bullet)) {
           player.score += 1;
-          player.energy += 10;
+          player.increaseEnergy();
           bullet.toBeRemove = true;
           break;
         }
@@ -113,7 +113,7 @@ class Controller {
       for (Enemy enemy : enemies) {
         if (enemy.isHit(bullet)) {
           player2.score += 1;
-          player2.energy += 10;
+          player2.increaseEnergy();
           bullet.toBeRemove = true;
 
           break;
@@ -274,7 +274,7 @@ class Controller {
     objectsToReomve.clear();
 
     // 重置游戏状态变量
-    currentMode = currentMode;  // 或根据需要重置为默认设置
+    currentMode = "EASY";  // 或根据需要重置为默认设置
     playerCount = getPlayerCount();  // 根据是否为双人模式重新计算玩家数
 
     // 重新加载背景或其他资源如果需要
