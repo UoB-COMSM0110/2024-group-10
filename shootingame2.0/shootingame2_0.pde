@@ -95,6 +95,7 @@ void draw() {
   if (state == GameState.INSTRUCTIONS) controller.displayInfoScreen();
   if (state == GameState.ENEMYINFO) controller.displayEnemyScreen();
   if (state == GameState.HIGHSCORE) controller.displayScoreScreen();
+  if (state == GameState.TRANSITION) controller.bossTransition();
   if (state == GameState.BOSS) controller.bossFight();
 
 

@@ -1,6 +1,7 @@
 class Controller {
   int lastFrame = frameCount;
   int startFrame = frameCount;
+  int bossAppearanceFrame = 6000;
   int enemyTwoNumber = 0;
   boolean left;
   boolean hasBoss = false;
@@ -176,14 +177,14 @@ class Controller {
     }
 
 
-    if (currentFrame - startFrame >= 6000) {
+    if (currentFrame - startFrame >= bossAppearanceFrame) {
       for (Enemy enemy : enemies) {
         enemy.toBeRemove = true;
       }
       for (EnemyBullet bullet : enemyBullets) {
         bullet.toBeRemove = true;
       }
-      state = GameState.BOSS;
+      state = GameState.TRANSITION;
     }
     
     for(Object object : objects) {
@@ -938,5 +939,51 @@ class Controller {
         player2.display();
       }
     }
+  }
+void bossTransition(){
+    PImage largeCrack = loadImage("PrototypeImages/largecrack.png");
+    PImage smallCrack = loadImage("PrototypeImages/smallcrack.png");
+    background(background);
+    fill(255, 0, 0, 150);
+    rect(width/2, height/2, width, height);
+    int currentFrame = frameCount;
+    int frame = currentFrame-startFrame;   
+    int blinkTime = 40;
+    
+    
+    //flashing text
+    if (frame <= (bossAppearanceFrame+blinkTime) || 
+       (bossAppearanceFrame + blinkTime*2  <= frame && frame <= bossAppearanceFrame+blinkTime*3) || 
+       (bossAppearanceFrame+blinkTime*4 <= frame && frame <= bossAppearanceFrame+blinkTime*5) || 
+       (bossAppearanceFrame+blinkTime*6 <= frame))
+    {
+      textSize(140);
+      text("WARNING!!!", width/2, 300);
+    }
+    else{
+      background(background);
+      fill(255, 0, 0, 150);
+      rect(width/2, height/2, width, height);
+    }
+    
+    if(frame > bossAppearanceFrame+blinkTime*4){
+      image(smallCrack, 750 ,750);
+    }
+    
+    if(frame > bossAppearanceFrame+blinkTime*6){
+      image(smallCrack, 250 ,250);
+    }
+    
+    if ((bossAppearanceFrame+blinkTime*4 <= frame && frame <= bossAppearanceFrame+blinkTime*5) || 
+       (bossAppearanceFrame+blinkTime*6 <= frame)){
+      textSize(50);
+      text("EXTREMELY POWERFUL ENEMY APPROACHING", width/2, 400);
+    }
+    
+    if(frame > bossAppearanceFrame+blinkTime*7){
+      image(largeCrack, 500,500, 1000, 1000);
+    }
+    
+    if (frame >= bossAppearanceFrame+blinkTime*8) state = GameState.BOSS;
   }
 }
