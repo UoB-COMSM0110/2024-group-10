@@ -1,8 +1,10 @@
 class EnemyOneBoss extends Enemy {
   int shotTime = 0;
+  PImage boss_enemy;
   
   EnemyOneBoss(float x, float y) {
     super(x, y);
+    boss_enemy = loadImage("PrototypeImages/boss_enemy.png");
   }
   
   void update() {
@@ -20,4 +22,8 @@ class EnemyOneBoss extends Enemy {
   }
   
   void increaseShotTime() {shotTime += 3;}
+  void display(){
+    imageMode(CENTER); 
+   image(boss_enemy, x, y, 50, 50);
+  }
 }
