@@ -6,6 +6,7 @@ class Controller {
   boolean left;
   boolean hasBoss = false;
   boolean isHard;
+  boolean isBossStageTwo;
 
   void campaignMode() {
     currentButton = Button.NONE;
@@ -59,15 +60,15 @@ class Controller {
         enemies.add(enemyTwo);
         enemies.add(enemyThree);
         enemies.add(enemyFour);
+        
+          if (frameCount % 60 ==0) {
+          Stalker stalker;
+          if(random(0,1) > 0.5) stalker = new Stalker(20,20);
+          else stalker = new Stalker(980,100);
+          enemies.add(stalker);
+         }
       }
     }
-    
-    if (frameCount % 60 ==0) {
-        Stalker stalker;
-        if(random(0,1) > 0.5) stalker = new Stalker(20,20);
-        else stalker = new Stalker(980,100);
-        enemies.add(stalker);
-     }
 
     //Update status for each enemy
     for (Enemy enemy : enemies) {
@@ -814,6 +815,13 @@ class Controller {
       }
       hasBoss = true;
     }
+    
+    if(isBossStageTwo) {
+      if(frameCount % 60 == 0){
+        Stalker stalker = new Stalker(random(250,750), 300);
+        enemies.add(stalker);
+      }
+    }
 
     //Update status for each enemy
     for (Enemy enemy : enemies) {
@@ -830,7 +838,7 @@ class Controller {
       for (Enemy enemy : enemies) {
         if (enemy.isHit(bullet)) {
           player.score += 1;
-          player.energy += 10;
+          player.increaseEnergy();
           bullet.toBeRemove = true;
 
           break;
@@ -845,7 +853,7 @@ class Controller {
       for (Enemy enemy : enemies) {
         if (enemy.isHit(bullet)) {
           player2.score += 1;
-          player2.energy += 10;
+          player2.increaseEnergy();
           bullet.toBeRemove = true;
 
           break;
