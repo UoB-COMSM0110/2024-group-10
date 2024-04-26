@@ -282,15 +282,20 @@ class Controller {
     state = GameState.START;
   }
 
-  void dispalyIntroduction() {
-    if (state == GameState.INTRO) {
-      image(introVideo, width / 2, height / 2, width, height);
-      if (introVideo.time() == introVideo.duration()) {
-        introVideo.stop();
+  void dispalyIntroduction(){
+   float x = width / 2;
+   float y = height / 2;
+   float scaleFactor = max(width / 403.0, height / 403.0);
+    image(introFrames[currentFrameIndex], x, y, 403 * scaleFactor, 403 * scaleFactor);
+    frameCounter++;
+    if (frameCounter >= frameChangeInterval) {
+      currentFrameIndex++;
+      if (currentFrameIndex >= introFrames.length) {
         state = GameState.START;
         controller.displayStartScreen();
       }
-    }
+      frameCounter = 0;
+    } 
   }
 
   //Start screen display

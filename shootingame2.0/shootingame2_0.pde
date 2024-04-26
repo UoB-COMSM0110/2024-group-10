@@ -1,10 +1,10 @@
-import processing.video.*; //<>//
+//import processing.video.*; //<>//
 Player player;
 Player player2;
 Controller controller;
 Leaderboard leaderboard;
 GameState state;
-Movie introVideo;
+//Movie introVideo;
 ArrayList<EnemyBullet> enemyBullets;
 ArrayList<PlayerBullet> playerBullets;
 ArrayList<PlayerBullet> playerBullets2;
@@ -24,6 +24,10 @@ public static boolean is2Player = false;
 int playerCount;
 PImage enemy1_bullet;
 PImage me_bullet;
+PImage[] introFrames;
+int currentFrameIndex = 0;
+int frameChangeInterval = 1; 
+int frameCounter = 0;
 
 Player playerToName;
 
@@ -33,13 +37,15 @@ void settings() {
 }
 
 void setup() {
-
-
+  introFrames = new PImage[163]; 
+  for (int i = 0; i < introFrames.length; i++) {
+    introFrames[i] = loadImage("PrototypeImages/frame/" + (i + 1) + ".png");
+  }
   //introVideo = new Movie(this, "intro1.mp4");
   //introVideo.loop();
   background_start = loadImage("PrototypeImages/background_start.png");
   //state = GameState.INTRO;
-  state = GameState.START;
+  state = GameState.INTRO;
   background = loadImage("PrototypeImages/background1.png");
   controller = new Controller();
   leaderboard = new Leaderboard();
@@ -116,11 +122,16 @@ void draw() {
   if (state == GameState.FINISHED) controller.displayGameOverScreen();
   if (state == GameState.VICTORY) controller.displayVictoryScreen();
   
-  if (!bgm.isPlaying() && state == GameState.PLAYING) {
-      bgm.loop(); // 如果当前是游戏屏幕且音乐未播放，则开始循环播放音乐
-  }else  if (bgm.isPlaying() && state != GameState.PLAYING) {
-      bgm.pause(); // 如果不在游戏屏幕且音乐正在播放，则暂停音乐
+  if (!bgm.isPlaying() && state == (GameState.PLAYING)) {
+      bgm.loop(); 
+  }else if (!bgm.isPlaying() && state == (GameState.BOSS)){
+      bgm.loop(); 
+  }else  if (bgm.isPlaying() && state != GameState.PLAYING && state != GameState.BOSS) {
+      bgm.pause(); 
   }
+
+  
+  
 }
 
 void keyPressed() {
@@ -238,9 +249,9 @@ void mousePressed() {
   }
 }
 
-void movieEvent(Movie m) {
+/*void movieEvent(Movie m) {
   m.read();
-}
+}*/
 
 int getPlayerCount() {
   if (is2Player) {
