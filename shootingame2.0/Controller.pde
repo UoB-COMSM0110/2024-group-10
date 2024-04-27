@@ -1,7 +1,7 @@
 class Controller {
   int lastFrame = frameCount;
   int startFrame = frameCount;
-  int bossAppearanceFrame = 100;
+  int bossAppearanceFrame;
   int enemyTwoNumber = 0;
   int enemyKilled = 0;
   boolean left;
@@ -15,22 +15,21 @@ class Controller {
   
   void campaignMode() {
     currentButton = Button.NONE;
-    int currentFrame = frameCount;
     
 
     noCursor();
+    if(currentMode == "EASY"){
+      if (enemyKilled < 10 ) background(enemy_background1);
+      if (enemyKilled >= 10 && enemyKilled < 30 ) background(enemy_background2);
+      if (enemyKilled >= 30 && enemyKilled < 60 ) background(enemy_background3);
+      if (enemyKilled >= 60) background(enemy_background4);
+    }
     
-    if (enemyKilled < 3 ) {
-    background(enemy_background1);
-    }
-    if (enemyKilled >= 3 && enemyKilled < 6 ) {
-    background(enemy_background2);
-    } 
-    if (enemyKilled >= 6 && enemyKilled < 9 ) {
-      background(enemy_background3);
-    }
-    if (enemyKilled >= 9) {
-      background(enemy_background4);
+    if(currentMode == "HARD"){
+      if (enemyKilled < 20 ) background(enemy_background1);
+      if (enemyKilled >= 20 && enemyKilled < 50 ) background(enemy_background2);
+      if (enemyKilled >= 50 && enemyKilled < 100 ) background(enemy_background3);
+      if (enemyKilled >= 100) background(enemy_background4);
     }
         
 
@@ -41,50 +40,97 @@ class Controller {
       player.display();
       
     }
-
     stroke(0);
-
-    //Generate basic enemies
-    if (frameCount % 300 ==0) {
-      Enemy enemy = new Enemy(random(25, 725), 25);
-      enemies.add(enemy);
-    }
-
-    if (enemyKilled >= 6) {
-      //Generate EnemyTwo
-      if (frameCount % 600 == 0) {
-        left = random(1) > 0.5 ? true : false;
-        generateFirstEnemyTwo(left);
-      }
-      if (enemyTwoNumber < 5) generateEnemyTwo(left);
-    }
-
-    if (enemyKilled >= 9) {
-      //Generate EnemyThree
-      if (frameCount % 600 ==0) {
-        EnemyThree enemy = new EnemyThree();
+    
+    if(currentMode == "EASY"){
+      //Generate basic enemies
+      if (frameCount % 300 ==0) {
+        Enemy enemy = new Enemy(random(25, 725), 25);
         enemies.add(enemy);
       }
+  
+      if (enemyKilled >= 10) {
+        //Generate EnemyTwo
+        if (frameCount % 600 == 0) {
+          left = random(1) > 0.5 ? true : false;
+          generateFirstEnemyTwo(left);
+        }
+        if (enemyTwoNumber < 5) generateEnemyTwo(left);
+      }
+  
+      if (enemyKilled >= 30) {
+        //Generate EnemyThree
+        if (frameCount % 600 ==0) {
+          EnemyThree enemy = new EnemyThree();
+          enemies.add(enemy);
+        }
+      }
+  
+      //Generate EnemyFour
+      if (enemyKilled >= 60) {
+        if (frameCount % 300 ==0) {
+          EnemyFour enemyOne = new EnemyFour(350, 150, true );
+          EnemyFour enemyTwo = new EnemyFour(300, 150, true );
+          EnemyFour enemyThree = new EnemyFour(400, 150, false );
+          EnemyFour enemyFour = new EnemyFour(450, 150, false );
+  
+          enemies.add(enemyOne);
+          enemies.add(enemyTwo);
+          enemies.add(enemyThree);
+          enemies.add(enemyFour);
+          if (frameCount % 180 ==0) {
+          Stalker stalker;
+          if(random(0,1) > 0.5) stalker = new Stalker(20,20);
+          else stalker = new Stalker(980,100);
+          enemies.add(stalker);
+         }
+        }
+      }
     }
-
-    //Generate EnemyFour
-    if (enemyKilled >= 12) {
-      if (frameCount % 300 ==0) {
-        EnemyFour enemyOne = new EnemyFour(350, 150, true );
-        EnemyFour enemyTwo = new EnemyFour(300, 150, true );
-        EnemyFour enemyThree = new EnemyFour(400, 150, false );
-        EnemyFour enemyFour = new EnemyFour(450, 150, false );
-
-        enemies.add(enemyOne);
-        enemies.add(enemyTwo);
-        enemies.add(enemyThree);
-        enemies.add(enemyFour);
+    
+    if(currentMode == "HARD"){
+      //Generate basic enemies
+      if (frameCount % 120 ==0) {
+        Enemy enemy = new Enemy(random(25, 725), 25);
+        enemies.add(enemy);
+      }
+  
+      if (enemyKilled >= 20) {
+        //Generate EnemyTwo
+        if (frameCount % 300 == 0) {
+          left = random(1) > 0.5 ? true : false;
+          generateFirstEnemyTwo(left);
+        }
+        if (enemyTwoNumber < 5) generateEnemyTwo(left);
+      }
+  
+      if (enemyKilled >= 50) {
+        //Generate EnemyThree
+        if (frameCount % 420 ==0) {
+          EnemyThree enemy = new EnemyThree();
+          enemies.add(enemy);
+        }
+      }
+  
+      //Generate EnemyFour
+      if (enemyKilled >= 100) {
+        if (frameCount % 300 ==0) {
+          EnemyFour enemyOne = new EnemyFour(350, 150, true );
+          EnemyFour enemyTwo = new EnemyFour(300, 150, true );
+          EnemyFour enemyThree = new EnemyFour(400, 150, false );
+          EnemyFour enemyFour = new EnemyFour(450, 150, false );
+  
+          enemies.add(enemyOne);
+          enemies.add(enemyTwo);
+          enemies.add(enemyThree);
+          enemies.add(enemyFour);
           if (frameCount % 60 ==0) {
           Stalker stalker;
           if(random(0,1) > 0.5) stalker = new Stalker(20,20);
           else stalker = new Stalker(980,100);
           enemies.add(stalker);
          }
+        }
       }
     }
 
@@ -196,17 +242,31 @@ class Controller {
       if (bullet.toBeRemove) enemyBulletsToRemove.add(bullet);
       }
     }
-
-
-    if (enemyKilled >= 15) {
-      for (Enemy enemy : enemies) {
-        enemy.toBeRemove = true;
-        enemyKilled++;
+    
+    if(currentMode == "EASY"){
+      if (enemyKilled >= 100) {
+        for (Enemy enemy : enemies) {
+          enemy.toBeRemove = true;
+        }
+        for (EnemyBullet bullet : enemyBullets) {
+          bullet.toBeRemove = true;
+        }
+        state = GameState.TRANSITION;
+        bossAppearanceFrame = frameCount;
       }
-      for (EnemyBullet bullet : enemyBullets) {
-        bullet.toBeRemove = true;
+    }
+
+    if(currentMode == "HARD"){
+      if (enemyKilled >= 200) {
+        for (Enemy enemy : enemies) {
+          enemy.toBeRemove = true;
+        }
+        for (EnemyBullet bullet : enemyBullets) {
+          bullet.toBeRemove = true;
+        }
+        state = GameState.TRANSITION;
+        bossAppearanceFrame = frameCount;
       }
-      state = GameState.TRANSITION;
     }
     
     for(Object object : objects) {
@@ -215,12 +275,10 @@ class Controller {
         object.display();
         if(object.isHit(player)) {
           object.toBeRemove = true;
-          enemyKilled++:
           player.hitObject(object);
         }
         if(object.isHit(player2)) {
           object.toBeRemove = true;
-          enemyKilled++;
           player2.hitObject(object);
         }
       } else objectsToReomve.add(object);
@@ -242,6 +300,7 @@ class Controller {
     for (Enemy enemyToRemove : enemiesToRemove) {
       enemies.remove(enemyToRemove);
     }
+    enemyKilled += enemiesToRemove.size();
     
     for (Object objectToRemove : objectsToReomve) {
       objects.remove(objectToRemove);
@@ -1041,7 +1100,7 @@ void bossTransition(){
     fill(255, 0, 0, 150);
     rect(width/2, height/2, width, height);
     int currentFrame = frameCount;
-    int frame = currentFrame-startFrame;   
+    int frame = currentFrame;   
     int blinkTime = 40;
     currentButton = Button.NONE;  
     player.stopMotion();
