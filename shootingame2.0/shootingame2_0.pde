@@ -36,8 +36,11 @@ EnemyTest enemyTest;
 
 
 
+
+
+
 void settings() {
-  size(1000, 1000, P2D);
+  size(1000, 1000,P2D);
 }
 
 void setup() {
@@ -106,6 +109,9 @@ void loadResources() {
 }
 
 void draw() {
+
+
+
   //println(playerCount+"------"+is2Player);
   playerCount = getPlayerCount();
   if (state == GameState.INTRO) controller.dispalyIntroduction();
