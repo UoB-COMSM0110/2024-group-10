@@ -18,7 +18,7 @@ ArrayList<Object> objects;
 PImage background;
 PImage background_start;
 PImage background_boss;
-String currentMode = "HARD";
+String currentMode = "EASY";
 GameState lastState = GameState.START;
 GameState previousState;
 boolean scoreAdded = false;

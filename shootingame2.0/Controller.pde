@@ -1,7 +1,7 @@
 class Controller {
   int lastFrame = frameCount;
   int startFrame = frameCount;
-  int bossAppearanceFrame = 6000;
+  int bossAppearanceFrame = 100;
   int enemyTwoNumber = 0;
   boolean left;
   boolean hasBoss = false;
@@ -324,6 +324,7 @@ class Controller {
 
   //Start screen display
   void displayStartScreen() {
+    imageMode(CENTER);
     cursor(planecursor);
     currentButton = Button.NONE;
     background(background_start);
@@ -351,8 +352,6 @@ class Controller {
     image(jellyEnemy, width*.11, 150, 50, 50);
     image(jellyEnemy, width*.83, 120, 50, 50);
     image(jellyEnemy, width*.89, 150, 50, 50);
-    //image(jellyEnemy, width*.5 , 50);
-    //image(jellyEnemy, width*.5 , 920);
 
     //navigation buttons
     createButton(width/2, 400, 350, 100, Button.NAMEB);
@@ -390,6 +389,7 @@ class Controller {
 
   //Name Entry Screen display
   void displayNamingScreen() {
+    imageMode(CENTER);
     cursor(planecursor);
     background(background_start);
     currentButton = Button.NONE;
@@ -433,6 +433,7 @@ class Controller {
   }
   //Player instructions display screen
     void displayInfoScreen() {
+    imageMode(CENTER);
     cursor(planecursor);
     background(background_start);
     currentButton = Button.NONE;
@@ -552,6 +553,7 @@ class Controller {
   }
   //Enemy info display
   void displayEnemyScreen() {
+    imageMode(CENTER);
     cursor(planecursor);
     background(background_start);
     currentButton = Button.NONE;
@@ -610,6 +612,7 @@ class Controller {
 
   }
     void displayEnemy2ndScreen() {
+    imageMode(CENTER);
     cursor(planecursor);
     background(background_start);
     currentButton = Button.NONE;
@@ -665,6 +668,7 @@ class Controller {
   }
   //Settings display
   void displaySettingsScreen() {
+    imageMode(CENTER);
     cursor(planecursor);
     background(background_start);
     currentButton = Button.NONE;
@@ -703,6 +707,7 @@ class Controller {
   }
   //Game over display
   void displayGameOverScreen() {
+    imageMode(CENTER);
     cursor(planecursor);
     background(background_start);
     currentButton = Button.NONE;
@@ -735,6 +740,7 @@ class Controller {
   }
   //High score display
   void displayScoreScreen() {
+    imageMode(CENTER);
     cursor(planecursor);
     background(background_start);
     currentButton = Button.NONE;
@@ -824,6 +830,7 @@ class Controller {
   }
   //Victory screen display
   void displayVictoryScreen() {
+    imageMode(CENTER);
     cursor(planecursor);
     background(background_start);
     currentButton = Button.NONE;
@@ -853,6 +860,7 @@ class Controller {
   }
 
   void bossFight() {
+    imageMode(CENTER);
     if (enemies.size() >0) {
       if (hasBoss && enemies.size() == 1) enemies.get(0).isStageTwo = true;
     }
@@ -1024,6 +1032,7 @@ class Controller {
 void bossTransition(){
     PImage largeCrack = loadImage("PrototypeImages/largecrack.png");
     PImage smallCrack = loadImage("PrototypeImages/smallcrack.png");
+    imageMode(CENTER);
     background(background);
     fill(255, 0, 0, 150);
     rect(width/2, height/2, width, height);

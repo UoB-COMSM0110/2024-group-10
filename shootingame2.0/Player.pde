@@ -52,7 +52,7 @@ class Player {
     displayLives();
     displayScore();
 
-    if (isPlayer2) {
+    if (playerNumber==2) {
 
       int energyIndex = energy / 10;
       if (energyIndex > 10) energyIndex = 10;
@@ -67,7 +67,7 @@ class Player {
   void displayLives() {
 
 
-    if (isPlayer2) {
+    if (playerNumber==2) {
       fill(255, 0, 0); // 设置文本颜色为红色
       textSize(20); // 设置文本大小
       
@@ -99,7 +99,7 @@ class Player {
   void displayScore() {
 
 
-    if (isPlayer2) {
+    if (playerNumber==2) {
       fill(255); // 白色字体
       textSize(20);
       text("Score: " + score, width-100, 60); // 在屏幕右上角显示得分
