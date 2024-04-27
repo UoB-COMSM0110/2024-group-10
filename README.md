@@ -374,7 +374,21 @@ We chose Jira as our project management tool to create a Kanban board, which sup
 
 We recognised the limitations of using a Kanban board to track progress, for example the length of a task is not always estimated appropriately [2]. To overcome this, we set up regular team meetings, including weekly progress updates and strategy discussions as needed. These meetings not only allowed us to monitor project progress in real time but also provided a platform for everyone to express opinions and raise issues, ensuring transparency in decision-making and synchronisation within the team.
 
-(add meeting images)
+In addition to the Kanban board, we used emails to share Meeting Minutes, helping document and monitor the work we had done each week. These included a helpful summary of the meetings to make sure that everyone understood the points discussed and clarified the future work we needed to complete. 
+
+**(add meeting images)**
+
+When it came to implementing game features, as Shunyi has experience working as a software engineer, he suggested we use pair programming. For example, during the implementation of multiplayer, Antai was the help whilst Shunyi was the tactician. Using this technique helped us all learn and benefit from Shuny’s prior knowledge whilst also helping to improve our code quality. 
+
+During the easter holidays, we divided up tasks ready to complete our sprints. However, a few team members were ill over the holidays, which delayed our progress. This led to some heroic efforts in the last week of break. To compensate we re-evaluated our tasks during a meeting and completed a second sprint where we managed to complete the implementation of all additional features.
+
+**(add burn charts)**
+
+By having additional meetings where necessary, it helped us to progress quickly as a team to complete all necessary tasks. This allowed clear communication and contributed to a well-understood workflow and minimised impact of individual disruptions to the team, as each member was familiar with the other’s work, reducing the impact of a developer being sick, on holiday, or facing unseen circumstances.  
+
+Another technique we used in line with the agile ethos was continuous integration. We ensured the game was built iteratively, with features built on top of one another, but simultaneously implemented a rule where code was automatically built and tested every time a change was made. Before merging, code pairs were required to show evidence of testing and building. This helped ensure new code integrated smoothly with the existing code base, reducing the likelihood of bugs and errors.
+
+Where a programming pair was struggling with ironing out bugs or fixing an integration problem, they could quickly flag using our messaging channels which allowed other developers to help, increasing the speed of developer feedback loops. By only committing and merging code that was operational, various teams could work simultaneously, and this ensured no single team was hindered by the short-term struggles of another team. Thus, continuous integration was a key asset of our agile and test-driven development approach. 
 
 ## 7. Conclusion
 
