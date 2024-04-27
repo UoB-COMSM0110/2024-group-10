@@ -8,7 +8,8 @@ class EnemyBullet {
     this.x = x;
     this.y = y;
     this.angle = angle;
-    adjustSpeed();
+    this.speed = 5;
+
   }
   
   boolean hitPlayer(Player player) {
@@ -20,7 +21,6 @@ class EnemyBullet {
   }
   
   void update() {
-    adjustSpeed(); 
     angle += rotationSpeed;
     x += speed * cos(radians(angle));
     y += speed * sin(radians(angle));
@@ -56,12 +56,6 @@ class EnemyBullet {
     }
   }
   
-    void adjustSpeed() {
-      if (currentMode.equals("EASY")) {
-      this.speed = 3.5;
-      } else if (currentMode.equals("HARD")) {
-      this.speed = 5;
-    }
-  }
+
   
 }
