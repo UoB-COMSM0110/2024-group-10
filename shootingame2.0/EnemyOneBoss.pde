@@ -9,14 +9,14 @@ class EnemyOneBoss extends Enemy {
   
   void update() {
     if(frameCount % 300 == 0) isShooting = true;
-    if (shotTime > 10) toBeRemove = true;
+    if (shotTime > 30) toBeRemove = true;
     shootBullets();
   }
   
     boolean isHit(PlayerBullet bullet) {
     if(dist(x, y, bullet.x, bullet.y) <= 30) {
       shotTime++;
-      if (shotTime > 10) toBeRemove = true;
+      if (shotTime > 30) toBeRemove = true;
       return true;
     }
     return false;

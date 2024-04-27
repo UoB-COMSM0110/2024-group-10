@@ -10,7 +10,7 @@ class EnemyThreeBoss extends EnemyThree {
   }
 
   void update() {
-    if (shotTime > 5) toBeRemove = true;
+    if (shotTime > 15) toBeRemove = true;
 
     if (is2Player) {
       if ((!player.isDied)&&(!player2.isDied)) {
@@ -54,6 +54,25 @@ class EnemyThreeBoss extends EnemyThree {
       shootingY = y + sin(angle) * 100;
       if (frameCount % 60 == 0) shootBullets();
     }
+  }
+  
+  boolean isHit(PlayerBullet bullet) {
+    if (dist(x, y, bullet.x, bullet.y) <= 60) {
+      shotTime++;
+      if (shotTime > 15) {
+        toBeRemove = true;
+        if(random(0,1) > 0.5) {
+        Object object = new Object(x, y, true, false);
+        objects.add(object);
+        }
+        else{
+          Object object = new Object(x, y, false, true);
+          objects.add(object);
+        }
+      }
+      return true;
+    }
+    return false;
   }
   
   void increaseShotTime() {shotTime += 3;}

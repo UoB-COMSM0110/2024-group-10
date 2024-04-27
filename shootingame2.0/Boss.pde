@@ -14,7 +14,7 @@ class Boss extends Enemy {
   void update() {
     if(isStageTwo) {
       controller.isBossStageTwo =true;
-      if(shotTime > 100) {
+      if(shotTime > 400) {
           toBeRemove = true;
           state = GameState.VICTORY;
         }
@@ -45,7 +45,7 @@ class Boss extends Enemy {
     if(isStageTwo) {
       if(bullet.y <= 300 && bullet.x > 100 && bullet.x < 900) {
         shotTime++;
-        if(shotTime > 50) {
+        if(shotTime > 400) {
           toBeRemove = true;
           state = GameState.VICTORY;
         }

@@ -17,7 +17,7 @@ ArrayList<Object> objectsToReomve;
 ArrayList<Object> objects;
 PImage background;
 PImage background_start;
-String currentMode = "EASY";
+String currentMode = "HARD";
 GameState lastState = GameState.START;
 GameState previousState;
 boolean scoreAdded = false;
@@ -71,7 +71,7 @@ void setup() {
   shatter = minim.loadFile("PrototypeBgm/glassbreak.mp3");
   gameoverbgm = minim.loadFile("PrototypeBgm/gameover.mp3");
   winbgm = minim.loadFile("PrototypeBgm/victorysfx.mp3");
-  introbgm = minim.loadFile("PrototypeBgm/introbgm.mp3");
+  introbgm = minim.loadFile("PrototypeBgm/intro.mp3");
 
   // UI related
   planecursor = loadImage("PrototypeImages/planecursor.gif");
