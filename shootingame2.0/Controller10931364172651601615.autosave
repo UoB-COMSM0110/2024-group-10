@@ -290,11 +290,9 @@ class Controller {
    float scaleFactor = max(width / 480.0, height / 480.0);
     image(introFrames[currentFrameIndex], x, y, 480 * scaleFactor, 480 * scaleFactor);
     frameCounter++;
-    introbgm.play();
     if (frameCounter >= frameChangeInterval) {
       currentFrameIndex++;
       if (currentFrameIndex >= introFrames.length) {
-        introbgm.pause();
         state = GameState.START;
         controller.displayStartScreen();
       }
@@ -833,6 +831,7 @@ class Controller {
   }
 
   void bossFight() {
+    
     if (enemies.size() >0) {
       if (hasBoss && enemies.size() == 1) enemies.get(0).isStageTwo = true;
     }
@@ -840,7 +839,7 @@ class Controller {
     EnemyOneBoss enemyOne;
 
     noCursor();
-    background(background_boss);
+    background(background);
     shatter.pause();
     shatter.rewind();
     if (!player.isDied) {

@@ -1,4 +1,4 @@
-//import processing.video.*; //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+//import processing.video.*; //<>// //<>// //<>// //<>// //<>//
 Player player;
 Player player2;
 Controller controller;
@@ -17,8 +17,7 @@ ArrayList<Object> objectsToReomve;
 ArrayList<Object> objects;
 PImage background;
 PImage background_start;
-PImage background_boss;
-String currentMode = "HARD";
+String currentMode = "EASY";
 GameState lastState = GameState.START;
 GameState previousState;
 boolean scoreAdded = false;
@@ -48,7 +47,6 @@ void setup() {
   //state = GameState.INTRO;
   state = GameState.INTRO;
   background = loadImage("PrototypeImages/background1.png");
-  background_boss = loadImage("PrototypeImages/background_boss.png");
   controller = new Controller();
   leaderboard = new Leaderboard();
   player = new Player(1);
