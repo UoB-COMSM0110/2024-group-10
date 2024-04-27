@@ -10,6 +10,9 @@ AudioPlayer gameoverbgm;
 AudioPlayer winbgm;
 AudioPlayer introbgm;
 AudioPlayer menubgm;
+AudioPlayer powerup;
+AudioPlayer powerdown;
+AudioPlayer bossExplosion;
 
   void stop() {
   bgm.close();
@@ -21,6 +24,9 @@ AudioPlayer menubgm;
   shatter.close();
   introbgm.close();
   menubgm.close();
+  powerup.close();
+  powerdown.close();
+  bossExplosion.close();
   minim.stop();
   super.stop();
 }

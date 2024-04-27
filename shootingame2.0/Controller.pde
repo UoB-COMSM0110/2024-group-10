@@ -141,17 +141,12 @@ class Controller {
         enemy.display();
         if(enemy.hitPlayer(player)) {
           player.lives -= 1;
-          if(player.shootingLevel > 0){
-            player.shootingLevel -= 1;
-          }
-          
+          player.decreaseShootingLevel();
           enemy.toBeRemove = true;
         }
         if(enemy.hitPlayer(player2)) {
           player2.lives -= 1;
-          if(player2.shootingLevel > 0){
-            player2.shootingLevel -= 1;
-          }
+          player2.decreaseShootingLevel();
           enemy.toBeRemove = true;
         }
       } else enemiesToRemove.add(enemy);
@@ -357,6 +352,7 @@ class Controller {
     objectsToReomve.clear();
     
     enemyKilled = 0;
+    isBossStageTwo = false;
 
     // 重置游戏状态变量
     playerCount = getPlayerCount();  // 根据是否为双人模式重新计算玩家数
@@ -367,6 +363,8 @@ class Controller {
 
     // 重置游戏状态到开始或其他适当的状态
     state = GameState.START;
+    bossExplosion.pause();
+    bossExplosion.rewind();
   }
 
   void dispalyIntroduction(){
