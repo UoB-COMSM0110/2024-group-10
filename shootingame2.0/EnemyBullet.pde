@@ -58,7 +58,7 @@ class EnemyBullet {
   
     void adjustSpeed() {
       if (currentMode.equals("EASY")) {
-      this.speed = 2;
+      this.speed = 3.5;
       } else if (currentMode.equals("HARD")) {
       this.speed = 5;
     }

@@ -8,6 +8,10 @@ class Controller {
   boolean isHard;
   boolean isBossStageTwo;
 
+  //backgrund1 "gradual change"
+  float alphaFactor; 
+  float initialAlphaFactor = 200; 
+  
   void campaignMode() {
     currentButton = Button.NONE;
     int currentFrame = frameCount;
@@ -25,14 +29,14 @@ class Controller {
       background(enemy_background4);
     }
         
+
+
     previousState=GameState.PLAYING;
     if (!player.isDied) {
       player.update();
       player.display();
       
     }
-
-
 
     stroke(0);
 
@@ -247,6 +251,8 @@ class Controller {
         player2.display();
       }
     }
+
+
   }
 
   void generateFirstEnemyTwo(boolean left) {
@@ -289,6 +295,7 @@ class Controller {
 
     // 重新加载背景或其他资源如果需要
     //background = loadImage("PrototypeImages/background1.png");
+    alphaFactor = initialAlphaFactor;
 
     // 重置游戏状态到开始或其他适当的状态
     state = GameState.START;

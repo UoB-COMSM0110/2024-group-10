@@ -16,13 +16,14 @@ class EnemyFour extends Enemy {
   }
   
   void update() {
+    int maxShootingCount = currentMode.equals("EASY") ? 400 : 800;
     float distance = abs(x - startX);
     if(distance % 150 == 0) isShooting = true;
     if(isShooting) {
       shootBullet();
       shootingCount += 5;
     }
-    if(shootingCount > 800) {
+    if(shootingCount > maxShootingCount) {
       isShooting = false;
       shootingCount = 0;
       for(EnemyBulletFour bullet : bulletsToBeCollected) {
