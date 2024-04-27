@@ -87,7 +87,7 @@ We used the onion model to systematically identify our stakeholders across the d
 
 **Use case diagram**
 
-<img src="images/user%20case%20diagram.png" alt="user case diagram.png" width="400">
+<img width="416" alt="Updated Use case diagram" src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/a2c18de7-8e9e-4071-aa96-717b3cd3ca9c">
 
 The use case diagram was crucial in identifying interactions between actors and system components in our game. Visualising use cases helped us understand the game's functionality and flow, clarifying requirements and prioritising features. It also facilitated planning for multiplayer functionality by illustrating player interactions.
 
@@ -159,7 +159,7 @@ This enum controls the gameplay flow by managing state transitions, responding t
 
 The User Interface (UI) component plays an important role in providing players with visual feedback and interactive elements for a user-friendly experience. Through start screens and menus, the UI offers players different options to either begin or resume gameplay, adjust settings, access instructions and view highscores via a leaderboard. We aimed for a clear but effective design to ensure ease of use. 
 
-<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/69e0c7a7-3ee1-417e-a064-1cd60aa2dbdb" width="400" height="410" alt="UI">
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/ecc053bd-50d9-4f84-904c-7efdfac16e6d" width="400" height="410" alt="UI implementation">
 
 
 **Enemy Diversity**
