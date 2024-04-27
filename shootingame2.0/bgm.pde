@@ -9,6 +9,7 @@ AudioPlayer shatter;
 AudioPlayer gameoverbgm;
 AudioPlayer winbgm;
 AudioPlayer introbgm;
+AudioPlayer menubgm;
 
   void stop() {
   bgm.close();
@@ -19,6 +20,7 @@ AudioPlayer introbgm;
   glass.close();
   shatter.close();
   introbgm.close();
+  menubgm.close();
   minim.stop();
   super.stop();
 }
