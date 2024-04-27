@@ -11,9 +11,20 @@ class Controller {
   void campaignMode() {
     currentButton = Button.NONE;
     int currentFrame = frameCount;
+    
 
     noCursor();
-    background(background);
+    background(enemy_background1);
+    if (currentFrame - startFrame >= 600) {
+    background(enemy_background2);
+    } 
+    if (currentFrame - startFrame >= 1200) {
+      background(enemy_background3);
+    }
+    if (currentFrame - startFrame >= 1800) {
+      background(enemy_background4);
+    }
+        
     previousState=GameState.PLAYING;
     if (!player.isDied) {
       player.update();
@@ -60,7 +71,6 @@ class Controller {
         enemies.add(enemyTwo);
         enemies.add(enemyThree);
         enemies.add(enemyFour);
-        
           if (frameCount % 60 ==0) {
           Stalker stalker;
           if(random(0,1) > 0.5) stalker = new Stalker(20,20);

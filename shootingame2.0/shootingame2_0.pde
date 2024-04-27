@@ -30,6 +30,10 @@ PImage[] introFrames;
 int currentFrameIndex = 0;
 int frameChangeInterval = 1; 
 int frameCounter = 0;
+PImage enemy_background1;
+PImage enemy_background2;
+PImage enemy_background3;
+PImage enemy_background4;
 
 Player playerToName;
 EnemyTest enemyTest;
@@ -63,6 +67,10 @@ void setup() {
   enemiesToRemove = new ArrayList<Enemy>();
   objects = new ArrayList<Object>();
   objectsToReomve = new ArrayList<Object>();
+  enemy_background1 = loadImage("PrototypeImages/enemy_bg1.png");
+  enemy_background2 = loadImage("PrototypeImages/enemy_bg2.png");
+  enemy_background3 = loadImage("PrototypeImages/enemy_bg3.png");
+  enemy_background4 = loadImage("PrototypeImages/enemy_bg4.png");
   
    //bgm
   minim = new Minim(this);
