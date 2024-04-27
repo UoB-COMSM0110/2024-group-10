@@ -18,11 +18,14 @@ class Controller {
     
 
     noCursor();
+    
+    if (currentFrame - startFrame < 600 ) {
     background(enemy_background1);
-    if (currentFrame - startFrame >= 600) {
+    }
+    if (currentFrame - startFrame >= 600 && currentFrame - startFrame < 1200 ) {
     background(enemy_background2);
     } 
-    if (currentFrame - startFrame >= 1200) {
+    if (currentFrame - startFrame >= 1200 && currentFrame - startFrame < 1800 ) {
       background(enemy_background3);
     }
     if (currentFrame - startFrame >= 1800) {
