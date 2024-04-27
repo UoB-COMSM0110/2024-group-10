@@ -3,6 +3,7 @@ class Controller {
   int startFrame = frameCount;
   int bossAppearanceFrame = 100;
   int enemyTwoNumber = 0;
+  int enemyKilled = 0;
   boolean left;
   boolean hasBoss = false;
   boolean isHard;
@@ -19,16 +20,16 @@ class Controller {
 
     noCursor();
     
-    if (currentFrame - startFrame < 600 ) {
+    if (enemyKilled < 3 ) {
     background(enemy_background1);
     }
-    if (currentFrame - startFrame >= 600 && currentFrame - startFrame < 1200 ) {
+    if (enemyKilled >= 3 && enemyKilled < 6 ) {
     background(enemy_background2);
     } 
-    if (currentFrame - startFrame >= 1200 && currentFrame - startFrame < 1800 ) {
+    if (enemyKilled >= 6 && enemyKilled < 9 ) {
       background(enemy_background3);
     }
-    if (currentFrame - startFrame >= 1800) {
+    if (enemyKilled >= 9) {
       background(enemy_background4);
     }
         
@@ -49,7 +50,7 @@ class Controller {
       enemies.add(enemy);
     }
 
-    if (currentFrame - startFrame >= 600) {
+    if (enemyKilled >= 6) {
       //Generate EnemyTwo
       if (frameCount % 600 == 0) {
         left = random(1) > 0.5 ? true : false;
@@ -58,7 +59,7 @@ class Controller {
       if (enemyTwoNumber < 5) generateEnemyTwo(left);
     }
 
-    if (currentFrame - startFrame >= 1200) {
+    if (enemyKilled >= 9) {
       //Generate EnemyThree
       if (frameCount % 600 ==0) {
         EnemyThree enemy = new EnemyThree();
@@ -67,7 +68,7 @@ class Controller {
     }
 
     //Generate EnemyFour
-    if (currentFrame - startFrame >= 1800) {
+    if (enemyKilled >= 12) {
       if (frameCount % 300 ==0) {
         EnemyFour enemyOne = new EnemyFour(350, 150, true );
         EnemyFour enemyTwo = new EnemyFour(300, 150, true );
@@ -197,9 +198,10 @@ class Controller {
     }
 
 
-    if (currentFrame - startFrame >= bossAppearanceFrame) {
+    if (enemyKilled >= 15) {
       for (Enemy enemy : enemies) {
         enemy.toBeRemove = true;
+        enemyKilled++;
       }
       for (EnemyBullet bullet : enemyBullets) {
         bullet.toBeRemove = true;
@@ -213,10 +215,12 @@ class Controller {
         object.display();
         if(object.isHit(player)) {
           object.toBeRemove = true;
+          enemyKilled++:
           player.hitObject(object);
         }
         if(object.isHit(player2)) {
           object.toBeRemove = true;
+          enemyKilled++;
           player2.hitObject(object);
         }
       } else objectsToReomve.add(object);
