@@ -355,6 +355,8 @@ class Controller {
     enemiesToRemove.clear();
     objects.clear();
     objectsToReomve.clear();
+    
+    enemyKilled = 0;
 
     // 重置游戏状态变量
     playerCount = getPlayerCount();  // 根据是否为双人模式重新计算玩家数
