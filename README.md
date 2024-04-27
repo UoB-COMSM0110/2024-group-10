@@ -29,7 +29,7 @@
 
 ## Team Photo
 
-![team photo](images/team%20photo.jpg)
+![Team photo](https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/76f7173e-118e-43ea-abea-212066ee45dc)
 
 ### Team Roles
 
@@ -43,15 +43,34 @@
 
 ## 2. Introduction:
 
-Our game is a single or multiplayer shoot-‘em-up game inspired by Space Invader. However, we’ve added our own twists to elevate the game. We have introduced different enemies, each with their unique behaviours and attack patterns. Specifically, the stalking enemy follows the player, adding an extra challenge to gameplay. To survive, players must employ strategic manoeuvres, precision aiming and quick reflexes to destroy enemies before they unleash their attacks. Each successful takedown earns points, contributing to the player’s overall score. As the battle between the enemies and player(s) continues, the intensity escalates, with faster enemy ships. Only if you reach the end of the game will you win against the enemies.
+Our game is a shoot-’em-up game inspired by Space Invaders, offering both single and multiplayer modes. Space Swarm Shooters is a modern day version, with unique features to diversify our game. We’ve introduced diverse enemy types, each with its own distinct behaviour and attack strategies. This adds an extra challenge to the game by adding a layer of unpredictability to our game. To survive, players need to move strategically, aim precisely and eliminate enemies before they launch their attacks. Each enemy takedown contributes to the players’ score, as well as the opportunity for power-ups including bullet upgrades. As the game continues, the game intensity increases with a climatic attack from the boss enemy. Only when the boss is destroyed will players win against the enemies. 
 
 ## How to play!
 **Controls**
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/c9b96cd2-517e-46f8-b4ca-94858e991afd" width="400">
 
+**Enemies (beware!)**
 
-Enemies: (insert pictures)
+(insert gifs!!)
+
+Jellyjellies
+>Attack type: Jelly shots
+
+Octotos
+>Attack type: Glitter Bomb-bardment
+
+Huggooctopuses
+>Attack type: Free hugs :)
+
+Laser crabs:
+>Attack type: PDA that burns
+
+Astrachniss
+>Attack type: Sniper no sniping
+
+The boss:
+>Attack type: Play to find out..
 
 How to win: beat the enemies to land a victory
 
@@ -111,6 +130,18 @@ The use case diagram was crucial in identifying interactions between actors and 
 
 Creating several use case specifications allowed the group to break down the game into its different components, enabling us to explore key detaisl of the game. The key use case specifications for our game include: level design, optimisation, unique features and user interface. Each specification focused on specific elements of the game and helped us refine each part. For example, in the level design we decided on 2 main levels that the player can choose from - endless mode and speed mode. Furthermore, it allowed us to think about how each element of the game will integrate with each other. For example, a unique feature is enemy-spawning aliens, which needed to be adapted to fit each game mode. This process gave us a high level understanding of the game, which will aid us when planning the game.
 
+### Early Design Stages and Ideation Process
+At the early stage of our game concept development, our team conducted thorough research and preliminary surveys to identify the target audience and their specific needs. These included a demand for games that are easy to learn, a fast-paced and an addictive game. To ensure our game design was appealing, we organised multiple brainstorming sessions. These meetings not only facilitated the exchange of creative ideas but also allowed us to draw from successful elements of similar games on the market. 
+
+**create a mindmap for the brainstorming**
+
+During this process, we emphasised the need for a user-friendly interface paired with a comprehensive and easy-to-understand game guide, enabling new players to quickly grasp and enjoy the game. We also decided to offer a variety of game modes and levels, such as the option to play in solo or duo modes, which enhances the game's social interactions and broadens its audience appeal. In terms of level design, players can choose between easy or difficult modes based on their gaming skills, ensuring the game remains engaging over time and continues to attract players. We placed particular importance on innovative game mechanics, such as a dynamic enemy generation system. This ensures each game session remains fresh and challenging. By addressing these needs, our goal is to create an enjoyable gaming experience that meets player expectations.
+
+### Decision-Making Process
+
+Our team made decisions through open discussions and voting until a general consensus was made among team members. Initially, when choosing the theme and style of the game, each member presented different views based on their interests—for example, some preferred casual game styles, while others favoured combat-oriented games. Through group discussions, we assessed the potential advantages and risks of each option and ultimately selected the theme that best matched our collective interests. This led to the development of our current aircraft battle game. During the game feature brainstorming stage, we also went through a decision-making discussion where each member listed potential game features they wanted to implement. Considering creativity and technical feasibility, we decided to focus on the dynamic enemy generation as our main features.
+
+
 ## 3. Design
 
 ### System architecture
@@ -169,9 +200,19 @@ Areas of challenge:
 
 **Multiplayer mode**
 
+We wanted to incorporate a co-operative 2 player mode into our game in addition to the single player version. There were 2 possible ways we explored to do this: online or local (offline on the same PC). During research, we discovered that working with networks needed to implement online multiplayer would be very difficult, especially considering our experience levels as it was our first time creating a game and we had no experience working with networks before. Our game relies heavily on the use of a large number of multiple entities on the screen and collision detection between them. Due to latency issues when using online multiplayer networks, it was likely our game would encounter bugs when trying to track all the object locations and interactions correctly in real-time for both players. Taking into account the development time allocated for the project, and our experience levels, we felt more confident going for the local multiplayer approach. 
+
+Having 2 people playing on the same computer meant a different set of challenges for us to solve, including accurate multiple keypress detection so inputs and interactions would be linked to the correct player and multiple inputs would not clash with each other and cancel each other out. 
+**(add more here)**
+
 **Leaderboard functionality** 
 
-**Level design**
+We wanted to have a high score board similar to old arcade games, which would record the name and score of players and rank them. To do this we would need to find a way to have a dynamic data structure to store the information which persists between games and also ideally when the game window is closed and opened too. There would also need to be multiple game screens designed and created to implement this: a name input screen to be linked to both victory and game-over screens and which could take input from 2 players; and also the high score screen itself (linked to the starting menu) which would retrieve the stored data and display it on the screen.
+
+**(add more here)**
+
+**UI Intergation**
+**(add more here)**
 
 
 ## 5. Evaluation
@@ -212,12 +253,12 @@ In our evaluation, we utilised a think aloud approach, where participants vocali
 | Game Progression        | Unclear progression indicators, such as levels completed or any score milestones.                                                        | Visibility of System Status | 2         | 2      | 3           | 2.3      |
 | Level Design            | Lack of environmental variety, making the game feel repetitive over time.                                                                | Consistency and Standards | 3         | 2      | 3           | 2.7     |
 
-**Quantitative Evaluation: System Usability Scale (SUS) Analysis: 16/4/24**
+### Quantitative Evaluation: System Usability Scale (SUS) Analysis: 16/4/24
 
 We conducted a focus group test with 10 participants to assess the System Usability Scale (SUS) of the game. Our findings from this numerical test demonstrated that users found the game easy to play, with minimal need for prior knowledge or technical support. A majority strongly agreed that they would use the product frequently and felt confident to use it effectively. The scores from all participants were generally consistent, indicating a cohesive response across the group. While there were no outliers, participants expressed slightly less confidence in the game’s consistency. This feedback informed our decision to refactor the code and refine gameplay to enhance consistency. Despite this point of improvement, the overall positive feedback encouraged our approach.
 
 
-### Easy Mode
+#### Easy Mode
 
 | Question                                                                   | P1 | P2 | P3 | P4 | P5 | P6 | P7 | P8 | P9 | P10 | Mean |
 |----------------------------------------------------------------------------|----|----|----|----|----|----|----|----|----|-----|------|
@@ -233,7 +274,7 @@ We conducted a focus group test with 10 participants to assess the System Usabil
 | I needed to learn things before I could get going with this system.        | 1  | 1  | 1  | 2  | 1  | 1  | 1  | 1  | 2  | 2    | 1.3  |
 
 
-### Hard Mode
+#### Hard Mode
 | Question                                                                   | P1 | P2 | P3 | P4 | P5 | P6 | P7 | P8 | P9 | P10 | Mean |
 |----------------------------------------------------------------------------|----|----|----|----|----|----|----|----|----|-----|------|
 | I think that I would like to use this system frequently                    | 4  | 4  | 4  | 4  | 4  | 5  | 4  | 5  | 3  | 4   | 4.1  |
@@ -299,6 +340,20 @@ Specifically, when comparing the mean scores for the statement "I thought the sy
 This discrepancy showed the impact of system complexity on users' perceptions of ease of use. It indicates that as the difficulty level of the game increased, participants were more likely to perceive the system as less intuitive or straightforward to navigate.
 This finding has significant implications for the design and development of the game, highlighting the importance of balancing complexity with user-friendliness to ensure optimal usability across different skill levels. By refining the gameplay and addressing areas of complexity identified in the Hard Mode, we can strive to enhance overall user experience and satisfaction.
 
+### Code Testing
+We used a combination of different testing methods to thoroughly test our code, including Unit testing, Integration testing and Manual testing. Unit testing focused on isolating individual code components to ensure that it produced the expected behaviour. For example, we tested the enemy behaviours and player interactions to ensure robustness and reliability. 
+
+This is shown in the ``EnemyTest`` class, which tests collision detection and interactions with player entities through the ``testIsHit()`` method. This validated critical functionalities in the code, including enemy detection of the player bullets and the subsequent damage to the enemy.
+
+
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/2aaa47f6-3540-48dd-81f9-a151bd656c39" alt="EnemyTest class" width="550">
+
+
+Integration testing focused on evaluating how the different game components interacted and functioned together as one system. This involved writing test cases for various scenarios to assess the integration of components.
+
+In addition to automated testing, manual testing played a role in validating the game functionality and user experience. This involved hand-on testing of the game across different operating systems, which helped to identify bugs or usability issues that automated tests may have missed. This helped to improve the overall performance and quality of our game. 
+
+
 ## 4. Process
 
 ### Collaboration
@@ -308,6 +363,8 @@ Throughout this project, we applied various methods to ensure smooth teamwork. W
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/9e63b1da-2bfd-43a6-8e53-44a8373c9d34" alt="Teams" width="600">
 
 At the start of the project, we made sure that every team member was clear about their role and specific responsibilities. This measure reduced redundant work and misunderstandings, with each role being assigned clear expectations, from project managers to technical experts, each person held accountable for the project's success.
+
+Together, these roles facilitated a well-rounded development process, each team member's expertise contributing uniquely to the project's success, resulting in a comprehensive and engaging game experience for users.
 
 ## Tools and techniques
 
