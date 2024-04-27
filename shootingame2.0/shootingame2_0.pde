@@ -1,4 +1,4 @@
-//import processing.video.*; //<>// //<>// //<>// //<>// //<>//
+//import processing.video.*; //<>// //<>// //<>// //<>// //<>// //<>//
 Player player;
 Player player2;
 Controller controller;
@@ -31,6 +31,8 @@ int frameChangeInterval = 1;
 int frameCounter = 0;
 
 Player playerToName;
+EnemyTest enemyTest;
+
 
 
 void settings() {
@@ -86,6 +88,11 @@ void setup() {
 
   enemy1_bullet = loadImage("PrototypeImages/enemy1_bullet.png");
   me_bullet = loadImage("PrototypeImages/me_bullet.png");
+  
+      //test
+    enemyTest = new EnemyTest(this); 
+    enemyTest.testIsHit();
+    enemyTest.testHitPlayer(); 
 }
 
 void loadResources() {
