@@ -72,6 +72,7 @@ void setup() {
   gameoverbgm = minim.loadFile("PrototypeBgm/gameover.mp3");
   winbgm = minim.loadFile("PrototypeBgm/victorysfx.mp3");
   introbgm = minim.loadFile("PrototypeBgm/intro.mp3");
+  menubgm = minim.loadFile("PrototypeBgm/menubgm.mp3");
 
   // UI related
   planecursor = loadImage("PrototypeImages/planecursor.gif");
@@ -278,7 +279,7 @@ void setAudio(){
   
     if (!bgm.isPlaying() && state == (GameState.PLAYING)) {
       bgm.loop();       
-  }  else  if (bgm.isPlaying() && state != GameState.PLAYING) {
+  }  else  if (state != GameState.PLAYING) {
       bgm.pause(); 
       if (state != GameState.PAUSE) bgm.rewind(); 
   }
@@ -303,6 +304,15 @@ void setAudio(){
   } else{
         gameoverbgm.pause(); 
         gameoverbgm.rewind();
+  }
+  
+  if (!menubgm.isPlaying() && state != GameState.FINISHED && state != GameState.VICTORY 
+      && state != GameState.PLAYING && state != GameState.TRANSITION && state != GameState.BOSS 
+      && state != GameState.INTRO && state != GameState.PAUSE ){
+        menubgm.loop();
+  } else if (state == GameState.PLAYING){
+        menubgm.pause();
+        menubgm.rewind();
   }
 }
 
