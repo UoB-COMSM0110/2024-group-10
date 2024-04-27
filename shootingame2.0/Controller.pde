@@ -290,9 +290,11 @@ class Controller {
    float scaleFactor = max(width / 480.0, height / 480.0);
     image(introFrames[currentFrameIndex], x, y, 480 * scaleFactor, 480 * scaleFactor);
     frameCounter++;
+    introbgm.play();
     if (frameCounter >= frameChangeInterval) {
       currentFrameIndex++;
       if (currentFrameIndex >= introFrames.length) {
+        introbgm.pause();
         state = GameState.START;
         controller.displayStartScreen();
       }

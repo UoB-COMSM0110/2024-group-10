@@ -18,11 +18,13 @@ class Player {
   int playerNumber;
   int energy = 0;
   int lives = 10;
+  int maxLives = 20;
   int score = 0;
   int shootingLevel = 0;
   PImage me;
   PImage[] energyImages = new PImage[11];
   PImage livesimg = loadImage ("PrototypeImages/lives.png");
+  PImage goldHeart = loadImage ("PrototypeImages/goldheart.png");
 
   boolean isPlayer2=false;
 
@@ -68,18 +70,28 @@ class Player {
     if (isPlayer2) {
       fill(255, 0, 0); // 设置文本颜色为红色
       textSize(20); // 设置文本大小
-      //text("Lives: " + player2.lives, width-100, 30); // 在屏幕左上角显示生命值
       
-      for (int i = 0; i < lives; i++) {
+      for (int i = 0; i < lives && i<10; i++) {
         image(livesimg, 1000 - (i * 40), 10, 36, 29);
+      }
+      //change heart colour to indicate additional lives over 10
+      if (lives>10){
+        for (int i = 0; i < lives-10 && i<10; i++) {
+        image(goldHeart, 1000 - (i * 40), 10, 36, 29);
+        }
       }
     } else {
       fill(255, 0, 0); // 设置文本颜色为红色
       textSize(20); // 设置文本大小
-      //text("Lives: " + lives, 40, 30); // 在屏幕左上角显示生命值    
     
-      for (int i = 0; i < lives; i++) {
+      for (int i = 0; i < lives && i <10; i++) {
           image(livesimg, 10 + (i * 40), 10, 36, 29);
+      }
+      //change heart colour to indicate additional lives over 10
+      if (lives>10){
+        for (int i = 0; i < lives-10 && i<10; i++) {
+          image(goldHeart, 10 + (i * 40), 10, 36, 29);
+        }
       }
     }
   }
@@ -258,7 +270,7 @@ class Player {
     if(object.isPower == true) {
       increaseShootingLevel();
     }else {
-      lives += 1;
+      if (lives<maxLives) lives += 1;
     }
   }
   
