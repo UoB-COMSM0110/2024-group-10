@@ -275,8 +275,21 @@ class Player {
   }
   
   void increaseShootingLevel() {
-    if(shootingLevel < 3) shootingLevel++;
-    updatePlayerImage(); 
+    if(shootingLevel < 3) {
+      shootingLevel++;
+      powerup.rewind();
+      powerup.play();
+      updatePlayerImage(); 
+    }
+  }
+  
+  void decreaseShootingLevel(){
+    if(shootingLevel > 0){
+       shootingLevel -= 1;
+       powerdown.rewind();
+       powerdown.play();
+       updatePlayerImage(); 
+     }
   }
   
   void updatePlayerImage() {

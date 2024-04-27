@@ -86,6 +86,9 @@ void setup() {
   winbgm = minim.loadFile("PrototypeBgm/victorysfx.mp3");
   introbgm = minim.loadFile("PrototypeBgm/intro.mp3");
   menubgm = minim.loadFile("PrototypeBgm/menubgm.mp3");
+  powerup = minim.loadFile("PrototypeBgm/powerup.mp3");
+  powerdown = minim.loadFile("PrototypeBgm/powerdown.mp3");
+  bossExplosion = minim.loadFile("PrototypeBgm/explosion.mp3");
 
   // UI related
   planecursor = loadImage("PrototypeImages/planecursor.gif");
