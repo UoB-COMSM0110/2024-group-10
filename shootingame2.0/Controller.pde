@@ -362,6 +362,8 @@ class Controller {
 
     // 重置游戏状态到开始或其他适当的状态
     state = GameState.START;
+    bossExplosion.pause();
+    bossExplosion.rewind();
   }
 
   void dispalyIntroduction(){

@@ -13,6 +13,7 @@ class Boss extends Enemy {
   
   void update() {
     if(isStageTwo) {
+      bossExplosion.play();
       controller.isBossStageTwo =true;
       if(shotTime > 400) {
           toBeRemove = true;
