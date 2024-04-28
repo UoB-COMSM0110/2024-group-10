@@ -140,12 +140,12 @@ class Controller {
         enemy.update();
         enemy.display();
         if(enemy.hitPlayer(player)) {
-          player.lives -= 1;
+          if (player.lives >0) player.lives -= 1;
           player.decreaseShootingLevel();
           enemy.toBeRemove = true;
         }
         if(enemy.hitPlayer(player2)) {
-          player2.lives -= 1;
+          if(player2.lives > 0) player2.lives -= 1;
           player2.decreaseShootingLevel();
           enemy.toBeRemove = true;
         }
@@ -186,7 +186,7 @@ class Controller {
       bullet.update();
       bullet.display();
       if (bullet.hitPlayer(player)) {
-        player.lives -= 1;  // Decrement player's lives
+        if (player.lives >0) player.lives -= 1;  // Decrement player's lives
         bullet.toBeRemove = true;  // Mark bullet for removal
 
         if (is2Player) {
@@ -214,7 +214,7 @@ class Controller {
       bullet.update();
       bullet.display();
       if (bullet.hitPlayer(player2)) {
-        player2.lives -= 1;  // Decrement player's lives
+        if (player2.lives >0) player2.lives -= 1;  // Decrement player's lives
         bullet.toBeRemove = true;  // Mark bullet for removal
 
         if (is2Player) {
@@ -775,18 +775,20 @@ class Controller {
     background(background_start);
     currentButton = Button.NONE;
 
-    textSize(50);
-    text("GAME OVER!", width/2, 200);
+    textSize(80);
+    text("GAME OVER!", width/2, 150);
     textSize(30);
-    text("Oh no! \n You died. The aliens have won. \nBetter luck next time :(", width/2, 300);
+    text("Oh no! \n You died. The aliens have won. \nBetter luck next time :(", width/2, 200);
+    
+    showBonusScore(width/2, 330);
 
     //display player name and score
     textSize(50);
-    text(player.name + "'s Score: " + player.score, width/2, 450);
+    text(player.name + "'s Score: " + player.score, width/2, 500);
 
     // adds player 2 part if in 2 player mode
     if (is2Player) {
-      text(player2.name + "'s Score : " + player2.score, width/2, 550);
+      text(player2.name + "'s Score : " + player2.score, width/2, 600);
     }
 
 
@@ -897,12 +899,41 @@ class Controller {
     cursor(planecursor);
     background(background_start);
     currentButton = Button.NONE;
+    //float modeMultiplier = 1;
+    
+    //if (currentMode == "HARD") modeMultiplier = 1.2;
 
     textSize(60);
-    text("CONGRATULATIONS!!!", width/2, 200);
+    text("CONGRATULATIONS!!!", width/2, 150);
     textSize(30);
-    text("A winner is you! \n The aliens have been defeated and the world is saved!", width/2, 300);
+    text("A winner is you! \n The aliens have been defeated and the world is saved!", width/2, 250);
 
+    //stroke(230,172,0, 200);
+    //line(150,300,850,300);
+
+    //bonus score visualisation
+    /*
+    textSize(20);
+    text("Score Bonuses:", width/2, 320);
+    PImage heart = loadImage("PrototypeImages/lives.png");
+    image(heart, 540, 335, 20, 20);
+    text("Remaining lives:           x  " + remainingLivesBonus + "  =  ", width/2, 340);
+    text("Victory:", 480, 360);
+    text("Difficulty:",470, 380);
+    
+    if (currentMode == "HARD") fill(200,0,0);
+    if (currentMode == "EASY") fill(0,153,51);
+    text("("+currentMode+") =",570, 380);
+    
+    fill(0,255,0);
+    text("+" + remainingLivesBonus * player.lives, 650, 340);
+    text("+" + winBonus,650, 360);
+    text(modeMultiplier + "x",670, 380);
+
+    fill(255);*/
+    
+    showBonusScore(width/2, 330);
+    
     //display player final score
     textSize(50);
     // adds player 2 part if in 2 player mode
@@ -919,7 +950,7 @@ class Controller {
     text("MAIN MENU", width/2, 815);
 
     PImage crown = loadImage("PrototypeImages/goldcrown.png");
-    image(crown, width/2, 240, 50, 50);
+    image(crown, width/2, 190, 50, 50);
   }
 
   void bossFight() {
@@ -1163,5 +1194,64 @@ void bossTransition(){
     }
     
     if (frame >= bossAppearanceFrame+blinkTime*7+30) state = GameState.BOSS;
+  }
+  
+  void showBonusScore(int x, int y){
+    PImage heart = loadImage("PrototypeImages/lives.png");
+    float modeMultiplier = 1;    
+    int victoryBonus = 0;
+    if (currentMode == "HARD") modeMultiplier = hardScoreMultiplier;
+    if (state == GameState.VICTORY)  victoryBonus = winBonus ;
+    stroke(230,172,0, 200);
+    line(150,y-30,850,y-30);
+    //line(150,y+80,850,y+80);
+    stroke(255);
+    
+    textSize(20);
+    text("Score Bonuses:", x, y);
+    
+    if (!is2Player){
+      image(heart, x+40, y+15, 20, 20);
+      text("Remaining lives:           x  " + player.lives + "  =  ", x, y+20);
+    }
+    else{
+      image(heart, width/3+20, y+15, 20, 20);
+      image(heart, 2*width/3+20, y+15, 20, 20);
+      //text("p1:           x  " + remainingLivesBonus + "  =  ", width/3, y+20);
+      //text("p2:           x  " + remainingLivesBonus + "  =  ", 2*width/3, y+20);
+      text("p1 lives left:           x  " + player.lives + "  =  ", width/3, y+20);
+      text("p2 lives left:           x  " + player2.lives + "  =  ", 2*width/3, y+20);
+      fill(0,255,0);
+      if (state == GameState.FINISHED) fill(255,0,0);
+      text("+" + remainingLivesBonus * player.lives, width/3+120, y+20); 
+      text("+" + remainingLivesBonus * player2.lives, 2*width/3+120, y+20);
+    }
+    fill(255);
+    text("Victory:", x-20, y+40);
+    text("Difficulty:",x-30, y+60);
+    
+    if (currentMode == "HARD") fill(200,0,0);
+    if (currentMode == "EASY") fill(0,153,51);
+    text("("+currentMode+") =",x+70, y+60);
+    
+    if (state == GameState.FINISHED) {
+        fill(200,0,0);
+        text("(FAILED) =",x+70, y+40);
+    }
+    else if (state == GameState.VICTORY) {
+      fill(0,153,51);
+      text("(SUCCESS) =",x+70, y+40);
+    }
+    
+    
+    fill(0,255,0);
+          
+    text(modeMultiplier + "x",x+170, y+60);
+    
+    if (state == GameState.FINISHED) fill(255,0,0);
+    if(!is2Player) text("+" + remainingLivesBonus * player.lives, x+150, y+20);  
+    text("+" + victoryBonus,x+150, y+40);
+
+    fill(255);
   }
 }

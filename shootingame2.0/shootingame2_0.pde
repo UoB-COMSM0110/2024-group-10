@@ -38,9 +38,9 @@ PImage enemy_background4;
 Player playerToName;
 EnemyTest enemyTest;
 
-
-
-
+int winBonus = 168;
+int remainingLivesBonus = 10;
+float hardScoreMultiplier = 1.5;
 
 
 void settings() {
@@ -140,6 +140,7 @@ void draw() {
 
 
   if (state != lastState && (state == GameState.FINISHED || state == GameState.VICTORY)) {
+    addBonusScore(player);
     scoreAdded = false;  // 状态变为FINISHED时重置
     if (!scoreAdded) {  // 假设scoreAdded是一个防止多次添加的标志
       if (leaderboard.isHighScore(player.score)) { // 检查是否为高分
@@ -151,6 +152,7 @@ void draw() {
     scoreAdded = false;  // 状态变为FINISHED时重置
     if (!scoreAdded) {  // 假设scoreAdded是一个防止多次添加的标志
       if (is2Player) {
+        addBonusScore(player2);
         if (leaderboard.isHighScore(player2.score)) { // 检查是否为高分
           leaderboard.addScore(player2.name, player2.score);
           scoreAdded = true; // 设置标志
@@ -335,6 +337,13 @@ void setAudio(){
   }
 }
 
+void addBonusScore(Player p){
+   p.score += p.lives * remainingLivesBonus;
+   
+   if(state == GameState.VICTORY) p.score += winBonus;
+   
+   if (currentMode == "HARD") p.score *= hardScoreMultiplier;
+}
 
 int getPlayerCount() {
   if (is2Player) {

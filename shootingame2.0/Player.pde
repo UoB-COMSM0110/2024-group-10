@@ -281,6 +281,7 @@ class Player {
       powerup.play();
       updatePlayerImage(); 
     }
+    else powerup.pause();
   }
   
   void decreaseShootingLevel(){
