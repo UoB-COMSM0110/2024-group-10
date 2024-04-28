@@ -5,12 +5,33 @@
 ## Table of Contents
 
 1. [Our Team](#1-our-team)
+    - [Team Members](#team-members)
+    - [Team Roles](#team-roles)
 2. [Introduction](#2-introduction)
-3. [Design](#3-design)
-4. [Implementation](#4-implementation)
-5. [Evaluation](#5-evaluation)
-6. [Process](#6-process)
-7. [Conclusion](#7-conclusion)
+   - [How to Play](#how-to-play)
+3. [Requirements](#3-requirements)
+   - [Stakeholders](#stakeholders)
+   - [Use Case diagram](#use-case-diagram)
+   - [User Stories](#user-stories)
+   - [Early Stages Design and Ideation process](#early-stages-design-and-ideation-process)
+   - [Decision-Making Process](#decision-making-process)
+4. [Design](#3-design)
+   - [System Architecture](#system architecture)
+   - [Class Diagram](#class-diagram)
+   - [Communication Diagram](#communication-diagram)
+5. [Implementation](#4-implementation)
+   - [Multiplayer Mode](#multiplayer-mode)
+   - [Leaderboard functionality](#leaderboard-functionality)
+   - [UI Integration](#ui-integration)
+6. [Evaluation](#5-evaluation)
+    - [Qualitative Evaluation](#qualitative-evaluation)
+    - [Quantitative Evaluation](#quantitative-evaluation)
+    - [Code Testing](#code-testing)
+7. [Process](#6-process)
+   - [Collaboration](#collaboration)
+   - [Tools and Techniques)(#tools-and-techniques)
+9. [Conclusion](#7-conclusion)
+   - [Individual Contributions](#individual-contributions) 
 
 (add sub contents)
 
@@ -46,6 +67,10 @@
 Our game is a shoot-’em-up game inspired by Space Invaders, offering both single and multiplayer modes. Space Swarm Shooters is a modern day version, with unique features to diversify our game. We’ve introduced diverse enemy types, each with its own distinct behaviour and attack strategies. This adds an extra challenge to the game by adding a layer of unpredictability to our game. To survive, players need to move strategically, aim precisely and eliminate enemies before they launch their attacks. Each enemy takedown contributes to the players’ score, as well as the opportunity for power-ups including bullet upgrades. As the game continues, the game intensity increases with a climatic attack from the boss enemy. Only when the boss is destroyed will players win against the enemies. 
 
 ## How to play!
+
+**Libraries**
+To play our game, you need to install the ddf/Minim library (an audio library)
+
 **Controls**
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/c9b96cd2-517e-46f8-b4ca-94858e991afd" width="400">
@@ -78,14 +103,14 @@ How to win: beat the enemies to land a victory
 ## 3. Requirements
 Requirements help to clearly define software projects and meet the expectations of the end-users and stakeholders. 
 
-**Stakeholders**
+### Stakeholders
 
 We used the onion model to systematically identify our stakeholders across the different group layers. Our game is the core of the onion model, as the product that we are developing. Moving outwards to the system layer, we recognised ourselves as the normal operators developing the game’s core functionality. We also recognised students and university lecturers as stakeholders acting as game-testers and sources of feedback. Expanding further to the containing system, we acknowledged the users of our game, including students, friends and family and social gamers. The UI art team are also key stakeholders in this system, involved in maintaining the interface of the game. Finally, in the wider environment, we considered the influence our game could have on existing shoot ‘em games, recognising our effect as a negative stakeholder by creating a competitor-game. In contrast, we also included those who may play and enjoy the game, as well as those who could provide networking opportunities the expand the game further, for example a university gaming society. 
 
 <img src="images/Onion%20model.png" alt="Onion Model" width="550">
 
 
-**Use case diagram**
+### Use case diagram
 
 <img width="416" alt="Updated Use case diagram" src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/a2c18de7-8e9e-4071-aa96-717b3cd3ca9c">
 
@@ -93,40 +118,40 @@ The use case diagram was crucial in identifying interactions between actors and 
 
 
 
-**User Stories**
-### Player roles:
+### User Stories
+#### Player roles:
 
-#### Scenario 1: Navigate with Ease
+##### Scenario 1: Navigate with Ease
 
 >*As a player, I want a straightforward and easy-to-understand interface so that I can quickly get started without spending time learning complex operations. This will allow me to focus*
 
-#### Scenario 2: Master of Modes
+##### Scenario 2: Master of Modes
 
 >*As a player, I want to be able to choose between different game modes such as campaign, endless, and speed modes. This flexibility allows me to tailor the game experience to my preferences and skill level, enhancing engagement and satisfaction.*
 
 
-#### Scenario 3: Embrace the Challenge
+##### Scenario 3: Embrace the Challenge
 
 >*As a player, I expect the game to offer a variety of challenges, including dynamic environments and unpredictable enemy behaviors, which increase the game's depth and replay value.*
 
 
 
-### Developer Roles:
+#### Developer Roles:
 
 
-#### Scenario 1: Interface Optimisation
+##### Scenario 1: Interface Optimisation
 > *As a Frontend Developer, I aim to create a user-friendly interface, ensuring players can dive into the game without any hassle.*
 
 
-#### Scenario 2: Mode Implementation
+##### Scenario 2: Mode Implementation
 > *As a Backend Developer, my goal is to implement various game modes, providing players with diverse gameplay options tailored to their preferences.*
 
 
-#### Scenario 3: Challenge Design
+##### Scenario 3: Challenge Design
 > *As a Game Designer, I'm focused on crafting engaging challenges, from dynamic environments to cunning enemy behaviors, enhancing the game's depth and replayability.*
 
 
-**Use case reflection**
+### Use case reflection
 
 Creating several use case specifications allowed the group to break down the game into its different components, enabling us to explore key detaisl of the game. The key use case specifications for our game include: level design, optimisation, unique features and user interface. Each specification focused on specific elements of the game and helped us refine each part. For example, in the level design we decided on 2 main levels that the player can choose from - endless mode and speed mode. Furthermore, it allowed us to think about how each element of the game will integrate with each other. For example, a unique feature is enemy-spawning aliens, which needed to be adapted to fit each game mode. This process gave us a high level understanding of the game, which will aid us when planning the game.
 
@@ -137,12 +162,16 @@ At the early stage of our game concept development, our team conducted thorough 
 
 During this process, we emphasised the need for a user-friendly interface paired with a comprehensive and easy-to-understand game guide, enabling new players to quickly grasp and enjoy the game. We also decided to offer a variety of game modes and levels, such as the option to play in solo or duo modes, which enhances the game's social interactions and broadens its audience appeal. In terms of level design, players can choose between easy or difficult modes based on their gaming skills, ensuring the game remains engaging over time and continues to attract players. We placed particular importance on innovative game mechanics, such as a dynamic enemy generation system. This ensures each game session remains fresh and challenging. By addressing these needs, our goal is to create an enjoyable gaming experience that meets player expectations.
 
+Paper prototyping also helped us create an initial design plan for our game. This was particularly helpful during discussions about the game’s architecture and class design, which helped us plan our class structure.
+
+**(add paper prototyping video)**
+
 ### Decision-Making Process
 
 Our team made decisions through open discussions and voting until a general consensus was made among team members. Initially, when choosing the theme and style of the game, each member presented different views based on their interests—for example, some preferred casual game styles, while others favoured combat-oriented games. Through group discussions, we assessed the potential advantages and risks of each option and ultimately selected the theme that best matched our collective interests. This led to the development of our current aircraft battle game. During the game feature brainstorming stage, we also went through a decision-making discussion where each member listed potential game features they wanted to implement. Considering creativity and technical feasibility, we decided to focus on the dynamic enemy generation as our main features.
 
 
-## 3. Design
+## 4. Design
 
 ### System architecture
 The system architecture of our game comprises several parts, including game state management, user interface, enemy type and game elements. Each part contributes to the overall functionality and experience of the game.
@@ -173,7 +202,7 @@ In our game, various elements contribute to gameplay, including players, enemies
 To ensure optimal performance, we utilise efficient data structures for storing game entities. Additionally, we implement design patterns like object pooling to minimise memory allocation and enhance game efficiency, particularly in scenarios involving high volumes of bullets or enemies on the screen. These optimisations result in a smooth gameplay experience and contribute to an enjoyable game overall enriched by immersive sound effects. 
 
 
-**Class diagram**
+#### Class diagram
 
 ![new class diagram.png](images/new%20class%20diagram.png)
 
@@ -183,7 +212,7 @@ As our game development progressed, we refined and expanded our class diagram to
 <img src="images/class%20diagram.jpg" alt="Class Diagram" width="500"/>
 
 
-**Communication Diagram**
+### Communication Diagram
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/47fac732-8959-4e68-b58d-42df0a6e1226" alt="Communication Diagram" width="600"/>
 
@@ -191,31 +220,59 @@ We created a communication diagram for a clear visual representation of how the 
 
 The extensive planning and object–oriented design was a major factor in the smooth operation of the game, the interoperability and usability of code, and the ease with which each team member could contribute to development in an agile-way, able to implement features and classes that independently and cohesively interact with each other.
 
-## 4. Implementation
+## 5. Implementation
 
 Areas of challenge:
 1. Multiplayer mode
 2. Leaderboard functionality
-3. Level Design
+3. UI Integration
 
-**Multiplayer mode**
+## Multiplayer mode
 
-We wanted to incorporate a co-operative 2 player mode into our game in addition to the single player version. There were 2 possible ways we explored to do this: online or local (offline on the same PC). During research, we discovered that working with networks needed to implement online multiplayer would be very difficult, especially considering our experience levels as it was our first time creating a game and we had no experience working with networks before. Our game relies heavily on the use of a large number of multiple entities on the screen and collision detection between them. Due to latency issues when using online multiplayer networks, it was likely our game would encounter bugs when trying to track all the object locations and interactions correctly in real-time for both players. Taking into account the development time allocated for the project, and our experience levels, we felt more confident going for the local multiplayer approach. 
+We wanted to incorporate a co-operative 2 player mode into our game in addition to the single player version. We explored two ways to do this: online or local (offline on the same PC). During research, we discovered that working with the networks needed to implement online multiplayer would be difficult, especially considering we have no prior experience working with networks. Our game relies heavily on the use of a large number of multiple entities on the screen and collision detection between them. Due to latency issues when using online multiplayer networks, it was likely our game would encounter bugs when trying to track all the object locations and interactions correctly in real-time for both players. Taking into account the development time allocated for the project, and our experience level, we felt more confident implementing the local multiplayer approach. 
 
-Having 2 people playing on the same computer meant a different set of challenges for us to solve, including accurate multiple keypress detection so inputs and interactions would be linked to the correct player and multiple inputs would not clash with each other and cancel each other out. 
-**(add more here)**
+Having 2 people playing on the same computer brought a different set of challenges, such as accurate multiple keypress detection, so inputs and interactions would be linked to the correct player and multiple inputs would not clash with each other and cancel each other out. 
 
-**Leaderboard functionality** 
+There were other challenges when implementing a multiplayer mode. Challenges included supporting name input for both players, simultaneous score tracking for two players, and then post-game display of the winner/loser, and if high scores were achieved. To achieve this, we needed to ensure careful tracking of various variables, flexible code and dynamic data structures. 
 
-We wanted to have a high score board similar to old arcade games, which would record the name and score of players and rank them. To do this we would need to find a way to have a dynamic data structure to store the information which persists between games and also ideally when the game window is closed and opened too. There would also need to be multiple game screens designed and created to implement this: a name input screen to be linked to both victory and game-over screens and which could take input from 2 players; and also the high score screen itself (linked to the starting menu) which would retrieve the stored data and display it on the screen.
-
-**(add more here)**
-
-**UI Intergation**
-**(add more here)**
+Through dynamic code design and a flexible, agile approach, we were able to add local multiplayer functionality to our game. 
 
 
-## 5. Evaluation
+**(add pictures of 1 player vs 2 player)**
+
+### Leaderboard functionality
+
+We wanted to implement a scoreboard similar to retro arcade games, which displays names and scores of top players. Thus we needed a dynamic data structure to store game information to ensure data persists between games. This required the design of various game pages:  name input, victory page and game-over pages alongside the scoreboard page, which would retrieve the stored data to display it to the user. 
+
+We used the “ArrayList” data structure to store scores because it supports dynamic data management. Each score is encapsulated within a “ScoreEntry” object, which includes the player’s name and score. When a new score is high enough to merit inclusion, it is added and the entire list is then sorted in descending order. To maintain the leaderboard’s size, we remove the lowest score.
+
+Given the need for data persistence, we use a text file named “highscores.txt” to store leaderboard data. This ensures scores are loaded each time the game starts and saved whenever the leaderboard updates. During implementation, we encountered several challenges. Firstly, there were performance concerns, especially with a large number of players, as sorting after each new score could impact performance. To address this, we only sort when necessary and reduce processing time by limiting the leaderboard's size. Another challenge was preventing data loss, particularly in cases where scores weren’t saved if the game unexpectedly closed. To tackle this issue, we implemented automatic saving, ensuring data is saved regularly.
+
+Through these measures, we successfully overcame the challenges of implementing the leaderboard functionality and significantly enhanced interactivity and player engagement. 
+
+
+**(add gif of leaderboard)**
+
+### UI Intergation
+
+**(add gif of instruction page)
+(gif of paused page)**
+
+We used UI storyboards to ensure development was guided with users in mind. Applying the agile ethos, we adapted our storyboards sprint by sprint and ensured each new feature was developed with UI in mind. For example, when implementing the leaderboard, we ensured scores were displayed in a large font - alongside the player’s name - in a visually appealing, recognizable way. 
+
+Through the design process, we studied Nielson’s 10 heuristic principles and sought to apply them. These principles enhance usability and create a user-friendly experience. For example, we used standardised controls to adhere to the principle of “Recognition not recall” and we created an instruction manual for “help and documentation”. 
+
+Through user-testing, users often couldn’t tell they’d received power ups. We wished to illustrate this but it was challenging to make this clear without having a distracting effect on gameplay or performance. To solve this we show shooting level upgrades by changing the aircraft's icon. This keeps players informed about their current shooting level status simply and effectively.
+
+When implementing a multiplayer mode, we found the UI could be unclear as to whose lives belong to which player as player hearts could overlap. To overcome this, we created a multilayer health visualisation, limiting the hearts display for each player to half the screen and changing the colour of the hearts to indicate more lives when each layer is “full”. 
+
+We were able to cleverly solve complex situations and adhere to industry-standard heuristic principles. This was consistently implemented and thoroughly tested through heuristic evaluation, contributing to user-driven development. 
+
+
+## 6. Evaluation
+
+### Qualitative Evaluations
+
 **Think Aloud Evaluation: 11/03/2024**
 
 In our evaluation, we utilised a think aloud approach, where participants vocalised their thoughts while engaging with the game. We generated a word cloud from the think aloud data. This visual representation highlights recurring themes and key phrases, providing a quick and accessible overview of the user experience.
@@ -253,7 +310,9 @@ In our evaluation, we utilised a think aloud approach, where participants vocali
 | Game Progression        | Unclear progression indicators, such as levels completed or any score milestones.                                                        | Visibility of System Status | 2         | 2      | 3           | 2.3      |
 | Level Design            | Lack of environmental variety, making the game feel repetitive over time.                                                                | Consistency and Standards | 3         | 2      | 3           | 2.7     |
 
-### Quantitative Evaluation: System Usability Scale (SUS) Analysis: 16/4/24
+### Quantitative Evaluation
+
+**System Usability Scale (SUS) Analysis: 16/4/24**
 
 We conducted a focus group test with 10 participants to assess the System Usability Scale (SUS) of the game. Our findings from this numerical test demonstrated that users found the game easy to play, with minimal need for prior knowledge or technical support. A majority strongly agreed that they would use the product frequently and felt confident to use it effectively. The scores from all participants were generally consistent, indicating a cohesive response across the group. While there were no outliers, participants expressed slightly less confidence in the game’s consistency. This feedback informed our decision to refactor the code and refine gameplay to enhance consistency. Despite this point of improvement, the overall positive feedback encouraged our approach.
 
@@ -354,11 +413,13 @@ Integration testing focused on evaluating how the different game components inte
 In addition to automated testing, manual testing played a role in validating the game functionality and user experience. This involved hand-on testing of the game across different operating systems, which helped to identify bugs or usability issues that automated tests may have missed. This helped to improve the overall performance and quality of our game. 
 
 
-## 4. Process
+## 7. Process
 
 ### Collaboration
 
-Throughout this project, we applied various methods to ensure smooth teamwork. We used Teams as our main communication platform, which allowed us to maintain real-time communication in remote or hybrid setup. The features in Microsoft Teams, like video calls, team chat, and file sharing, really stepped up our teamwork. This made it easier to collaborate efficiently, ensuring that information flowed smoothly without any interruptions.
+Throughout this project, we applied various methods to ensure smooth teamwork. After each Monday lab, we had a meeting to discuss the tasks given for that week and divided them equally based on their estimated story points. This approach ensured that each person had a fair and balanced workload, as well as checking that each task was achievable within the week. To check our progress, we had a follow-up meeting towards the end of the week. This involved each team member discussing their work and was an opportunity to ask any questions to the group. At the end of each major phase of the project, we organised review meetings, which not only helped us summarise experiences but also identified areas for improvement.
+
+We used Teams as our main communication platform, which allowed us to maintain real-time communication in remote or hybrid setup. The features in Microsoft Teams, like video calls, team chat, and file sharing, really stepped up our teamwork. This made it easier to collaborate efficiently, ensuring that information flowed smoothly without any interruptions.
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/9e63b1da-2bfd-43a6-8e53-44a8373c9d34" alt="Teams" width="600">
 
@@ -373,6 +434,16 @@ We chose Jira as our project management tool to create a Kanban board, which sup
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/cdf1402a-b4d3-422c-b0dd-c38745101e0e" alt="Kanban Board" width="600">
 
 We recognised the limitations of using a Kanban board to track progress, for example the length of a task is not always estimated appropriately [2]. To overcome this, we set up regular team meetings, including weekly progress updates and strategy discussions as needed. These meetings not only allowed us to monitor project progress in real time but also provided a platform for everyone to express opinions and raise issues, ensuring transparency in decision-making and synchronisation within the team.
+
+Together, these roles facilitated a well-rounded development process, each team member's expertise contributing uniquely to the project's success, resulting in a comprehensive and engaging game experience for users.
+
+### Tools and Techniques
+
+We chose Jira as our project management tool to create a Kanban board, which supports agile development workflows, allowing us to effectively plan, track, and release software development projects. A successful Kanban board focuses on continuous improvements (referred to as kaizen) [1]. 
+
+We recognised the limitations of using a Kanban board to track progress, for example the length of a task is not always estimated appropriately [2]. To overcome this, we set up regular team meetings, including weekly progress updates and strategy discussions as needed. These meetings not only allowed us to monitor project progress in real time but also provided a platform for everyone to express opinions and raise issues, ensuring transparency in decision-making and synchronisation within the team.
+
+**(add sprint screenshot and team meetings)**
 
 In addition to the Kanban board, we used emails to share Meeting Minutes, helping document and monitor the work we had done each week. These included a helpful summary of the meetings to make sure that everyone understood the points discussed and clarified the future work we needed to complete. 
 
@@ -390,7 +461,9 @@ Another technique we used in line with the agile ethos was continuous integratio
 
 Where a programming pair was struggling with ironing out bugs or fixing an integration problem, they could quickly flag using our messaging channels which allowed other developers to help, increasing the speed of developer feedback loops. By only committing and merging code that was operational, various teams could work simultaneously, and this ensured no single team was hindered by the short-term struggles of another team. Thus, continuous integration was a key asset of our agile and test-driven development approach. 
 
-## 7. Conclusion
+## 8. Conclusion
+
+### Individual Contributions
 
 Hannah: 1.00
 
@@ -404,8 +477,20 @@ Shunyi: 1.00
 
 Antai: 1.00
 
-Reflecting on our project journey, we’ve encountered and overcome many challenges, such as refining collision detection, implementing multiplayer functionality and coordinating remote work during the Easter holidays. These hurdles reinforced the importance of effective communication and teamwork. The technical challenges also required collaborative debugging sessions. Understanding each other’s coding styles also proved challenging at times, however this process resulted in a deeper understanding of a code and the sharing of knowledge within the team. Moving forward, this experience will serve as a founding for future coding group projects.
+Building space swarm shooters was an incredible opportunity to showcase the skills we learnt during this course. Throughout the project, we used concepts outlined in lectures, including software design, testing and documentation. 
 
-Looking ahead, we plan further refining gameplay mechanisms, and integrating new features such as power-ups and level generation. Optimising performance is still a priority to ensure the game remains robust. In conclusion, our project journey has not only strengthened our technical skills, but it has also provided valuable insights into the software engineering process, including agile methods, requirements planning and evaluation techniques, which will undoubtedly be beneficial in future projects. 
+Our project’s success is centred on a well-structured development process, which adequately utilised the skillsets of every member. We divided up tasks ensuring every team member contributed to software development. We were able to master the use of Processing, using it to carry out development in an agile way, iteratively building features and testing them using the principles of continuous integration. 
+
+Central to the success of this collaborative effort was that every team member adequately understood the ideas behind the game and its twist and the requirements we were working towards. From generating ideas and paper prototyping to the final submission, all decisions and choices were made collaboratively, and we believe this team-centred approach was crucial to success. 
+
+We utilised our team’s expertise from prior experience to correctly implement agile project management workflow, task control, and team monitoring. While individual accountability was crucial, the collaborative approach during feature implementation ensured team member’s were able to assist with certain difficult features. The well-designed code structure, with class diagrams, communication diagrams and object-oriented design facilitates fast and efficient development. 
+
+As we developed our game, the principles of continuous integration, rigorous testing, and HCI evaluation were crucial. We wanted our game’s development to be truly test-driven, so we ensured quantitative and qualitative evaluations occurred. Think aloud and heuristic evaluations were integrated alongside the NASA TLX and the System Usability Scale. Simultaneously, the software and code was rigorously tested and refactored, to ensure optimal object-oriented design, time and space-efficient algorithms and data structures. This contributed to limiting bugs, errors and ensuring smooth and reliable game operation. 
+
+We encountered and overcame many challenges, such as refining collision detection, implementing multiplayer functionality and coordinating remote work during the holidays. These hurdles reinforced the importance of effective communication and teamwork. The technical challenges also required collaborative debugging sessions. Understanding each other’s coding styles also proved challenging at times, however this process resulted in a deeper understanding of a code and the sharing of knowledge within the team. Moving forward, this experience will serve as a founding for future coding group projects.
+
+Looking ahead, we plan on refining gameplay, and integrating new features such as additional power-ups and clearer levels. Optimising performance is still a priority to ensure the game remains robust. These new features and performance optimisation will go hand-in-hand with new software engineering skills we seek to develop. Having worked together, we believe the team is ideally placed to carry out the next phases of development. 
+
+In conclusion, our project journey has not only strengthened our technical skills, but it has also provided valuable insights into the software engineering process, including agile methods, requirements planning and evaluation techniques, which will undoubtedly be beneficial in future projects. 
 
 
