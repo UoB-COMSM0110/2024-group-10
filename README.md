@@ -4,7 +4,7 @@
 
 ## Table of Contents
 
-1. [Our Team](#our-team)
+- [Our Team](#our-team)
 2. [Introduction](#introduction)
 3. [Design](#design)
 4. [Implementation](#implementation)
