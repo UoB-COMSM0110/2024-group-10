@@ -16,7 +16,7 @@
    - [Early Stages Design and Ideation process](#early-stages-design-and-ideation-process)
    - [Decision-Making Process](#decision-making-process)
 4. [Design](#3-design)
-   - [System Architecture](#system architecture)
+   - [System Architecture](#system-architecture)
    - [Class Diagram](#class-diagram)
    - [Communication Diagram](#communication-diagram)
 5. [Implementation](#4-implementation)
@@ -33,7 +33,6 @@
 9. [Conclusion](#7-conclusion)
    - [Individual Contributions](#individual-contributions) 
 
-(add sub contents)
 
 # 1. Our Team
 
