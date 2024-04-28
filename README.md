@@ -5,12 +5,12 @@
 ## Table of Contents
 
 1. [Our Team](#1-our-team)
-2. [Introduction](#introduction)
-3. [Design](#design)
-4. [Implementation](#implementation)
-5. [Evaluation](#evaluation)
-6. [Process](#process)
-7. [Conclusion](#conclusion)
+2. [Introduction](#2-introduction)
+3. [Design](#3-design)
+4. [Implementation](#4-implementation)
+5. [Evaluation](#5-evaluation)
+6. [Process](#6-process)
+7. [Conclusion](#7-conclusion)
 
 (add sub contents)
 
