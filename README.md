@@ -29,7 +29,7 @@
     - [Code Testing](#code-testing)
 7. [Process](#6-process)
    - [Collaboration](#collaboration)
-   - [Tools and Techniques)(#tools-and-techniques)
+   - [Tools and Techniques](#tools-and-techniques)
 9. [Conclusion](#7-conclusion)
    - [Individual Contributions](#individual-contributions) 
 
@@ -427,7 +427,7 @@ At the start of the project, we made sure that every team member was clear about
 
 Together, these roles facilitated a well-rounded development process, each team member's expertise contributing uniquely to the project's success, resulting in a comprehensive and engaging game experience for users.
 
-## Tools and techniques
+### Tools and Techniques
 
 We chose Jira as our project management tool to create a Kanban board, which supports agile development workflows, allowing us to effectively plan, track, and release software development projects. A successful Kanban board focuses on continuous improvements (referred to as kaizen) [1]. 
 
