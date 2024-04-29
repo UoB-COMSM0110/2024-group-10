@@ -68,7 +68,7 @@ Our game is a shoot-’em-up game inspired by Space Invaders, offering both sing
 
 ## How to play!
 
-**Libraries**
+**Libraries:**
 To play our game, you need to install the DDF/Minim library (an audio library)
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/c9f16656-245c-49e5-8ec2-123f5b01873d" alt="Library" width="500">
@@ -96,7 +96,7 @@ To play our game, you need to install the DDF/Minim library (an audio library)
 
 
 
-**How to win:**: beat the enemies to land a victory!
+**How to win:** beat the enemies to land a victory!
 
 
 
@@ -109,10 +109,14 @@ We used the onion model to systematically identify our stakeholders across the d
 
 <img src="images/Onion%20model.png" alt="Onion Model" width="550">
 
+_Onion model_
+
 
 ### Use case diagram
 
 <img width="416" alt="Updated Use case diagram" src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/a2c18de7-8e9e-4071-aa96-717b3cd3ca9c">
+
+_Use case diagram_
 
 The use case diagram was crucial in identifying interactions between actors and system components in our game. Visualising use cases helped us understand the game's functionality and flow, clarifying requirements and prioritising features. It also facilitated planning for multiplayer functionality by illustrating player interactions.
 
@@ -160,6 +164,8 @@ At the early stage of our game concept development, our team conducted thorough 
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/6e5a520b-0828-4752-b391-5f4f6d65f074" alt="Brainstorm" width="500">
 
+_Game ideation brainstorm_
+
 
 During this process, we emphasised the need for a user-friendly interface paired with a comprehensive and easy-to-understand game guide, enabling new players to quickly grasp and enjoy the game. We also decided to offer a variety of game modes and levels, such as the option to play in solo or duo modes, which enhances the game's social interactions and broadens its audience appeal. In terms of level design, players can choose between easy or difficult modes based on their gaming skills, ensuring the game remains engaging over time and continues to attract players. We placed particular importance on innovative game mechanics, such as a dynamic enemy generation system. This ensures each game session remains fresh and challenging. By addressing these needs, our goal is to create an enjoyable gaming experience that meets player expectations.
 
@@ -167,6 +173,8 @@ Paper prototyping also helped us create an initial design plan for our game. Thi
 
 
 https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/6d184b86-b07b-4305-9748-12a1d2b701cb
+
+_Paper prototype video_
 
 
 
@@ -186,6 +194,8 @@ The core design of the game architecture is the Game State Management system, en
 
 <img src="images/GameState.png" alt="GameState" width="300">
 
+_GameState Enum_
+
 This enum controls the gameplay flow by managing state transitions, responding to user input and coordinating interactions between various game elements. Event handler methods translate keyboard and mouse events into actions within the game. In single-player mode, players navigate using the arrow keys and utilise the spacebar for shooting actions, providing an intuitive and straightforward control scheme. For two-player mode, we opted for the ``WASD`` keys for movement and the ``F`` key for shooting, ensuring a comfortable and balanced gameplay experience for both players. By using the GameState enum and responsive event handling mechanisms, the game architecture maintains coherence, resulting in a fulfilling gaming experience.
 
 **User Interface (UI)**
@@ -193,6 +203,8 @@ This enum controls the gameplay flow by managing state transitions, responding t
 The User Interface (UI) component plays an important role in providing players with visual feedback and interactive elements for a user-friendly experience. Through start screens and menus, the UI offers players different options to either begin or resume gameplay, adjust settings, access instructions and view highscores via a leaderboard. We aimed for a clear but effective design to ensure ease of use. 
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/ecc053bd-50d9-4f84-904c-7efdfac16e6d" width="400" height="410" alt="UI implementation">
+
+_Instruction pages_
 
 
 **Enemy Diversity**
@@ -210,15 +222,21 @@ To ensure optimal performance, we utilise efficient data structures for storing 
 
 ![new class diagram.png](images/new%20class%20diagram.png)
 
+_Refined class diagram_
+
 
 As our game development progressed, we refined and expanded our class diagram to reflect the evolving structure and the functionality of the game. The updated class diagram shows the inheritance hierarchy among the different game entities, such as the players and enemies, and their associated bullets. The updated class diagram brings a new level of structure to our design plan, providing a more cohesive architecture. While still aligning with our initial concept, the revised diagram has a more intuitive way for the enemies and players to interact. This helped with planning and implementing the collision-detection mechanism. 
 
 <img src="images/class%20diagram.jpg" alt="Class Diagram" width="500"/>
 
+_Initial class diagram_
+
 
 ### Communication Diagram
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/47fac732-8959-4e68-b58d-42df0a6e1226" alt="Communication Diagram" width="600"/>
+
+_Communication diagram_
 
 We created a communication diagram for a clear visual representation of how the different classes interacted with each other. This diagram allowed us to understand the flow of communication between objects and classes in our game. This also helped to ensure that player’s interactions with enemies and the game environment were handled properly, by mapping out methods such as ``shootBullets()`` and ``isHit()``. 
 
@@ -241,9 +259,12 @@ There were other challenges when implementing a multiplayer mode. Challenges inc
 
 Through dynamic code design and a flexible, agile approach, we were able to add local multiplayer functionality to our game. 
 
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/77d492c4-a257-42b9-aea3-cd77cb45e852" alt="1 player" width="400">
 
-**(add pictures of 1 player vs 2 player)**
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/746403c3-f121-4e33-8912-70c61ff182fe" alt="2 player" width="400">
 
+
+_1 player vs 2 player_
 ### Leaderboard functionality
 
 We wanted to implement a scoreboard similar to retro arcade games, which displays names and scores of top players. Thus we needed a dynamic data structure to store game information to ensure data persists between games. This required the design of various game pages:  name input, victory page and game-over pages alongside the scoreboard page, which would retrieve the stored data to display it to the user. 
@@ -254,19 +275,21 @@ Given the need for data persistence, we use a text file named “highscores.txt�
 
 Through these measures, we successfully overcame the challenges of implementing the leaderboard functionality and significantly enhanced interactivity and player engagement. 
 
+<img width="350" alt="Leaderboard" src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/654cea4b-4027-407a-a31f-0bb45dc78988">
 
-**(add gif of leaderboard)**
+_Leaderboard_
 
 ### UI Intergation
-
-**(add gif of instruction page)
-(gif of paused page)**
 
 We used UI storyboards to ensure development was guided with users in mind. Applying the agile ethos, we adapted our storyboards sprint by sprint and ensured each new feature was developed with UI in mind. For example, when implementing the leaderboard, we ensured scores were displayed in a large font - alongside the player’s name - in a visually appealing, recognizable way. 
 
 Through the design process, we studied Nielson’s 10 heuristic principles and sought to apply them. These principles enhance usability and create a user-friendly experience. For example, we used standardised controls to adhere to the principle of “Recognition not recall” and we created an instruction manual for “help and documentation”. 
 
 Through user-testing, users often couldn’t tell they’d received power ups. We wished to illustrate this but it was challenging to make this clear without having a distracting effect on gameplay or performance. To solve this we show shooting level upgrades by changing the aircraft's icon. This keeps players informed about their current shooting level status simply and effectively.
+
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/bc5b43fe-e1e4-4476-80cb-e8ea9195e3ed" alt="power upgrades" width="500">
+
+_Shooting level upgrade_
 
 When implementing a multiplayer mode, we found the UI could be unclear as to whose lives belong to which player as player hearts could overlap. To overcome this, we created a multilayer health visualisation, limiting the hearts display for each player to half the screen and changing the colour of the hearts to indicate more lives when each layer is “full”. 
 
@@ -283,7 +306,7 @@ In our evaluation, we utilised a think aloud approach, where participants vocali
 
 <img src="images/word%20cloud.png" alt="word cloud" width="400">
 
-
+_Word cloud from Think Aloud Evaluation_
 
 ### Feedback 1
 #### Positives:
@@ -433,11 +456,11 @@ Together, these roles facilitated a well-rounded development process, each team 
 
 ### Tools and Techniques
 
-We chose Jira as our project management tool to create a Kanban board, which supports agile development workflows, allowing us to effectively plan, track, and release software development projects. A successful Kanban board focuses on continuous improvements (referred to as kaizen) [1]. 
+We chose Jira as our project management tool to create a Kanban board, which supports agile development workflows, allowing us to effectively plan, track, and release software development projects. A successful Kanban board focuses on continuous improvements (referred to as kaizen). 
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/cdf1402a-b4d3-422c-b0dd-c38745101e0e" alt="Kanban Board" width="600">
 
-**We recognised the limitations of using a Kanban board to track progress, for example the length of a task is not always estimated appropriately [2]. To overcome this, we set up regular team meetings, including weekly progress updates and strategy discussions as needed. These meetings not only allowed us to monitor project progress in real time but also provided a platform for everyone to express opinions and raise issues, ensuring transparency in decision-making and synchronisation within the team. In addition to the Kanban board, we used emails to share Meeting Minutes, helping document and monitor the work we had done each week. These included a helpful summary of the meetings to make sure that everyone understood the points discussed and clarified the future work we needed to complete. Together, these roles facilitated a well-rounded development process, each team member's expertise contributing uniquely to the project's success, resulting in a comprehensive and engaging game experience for users.**
+**We recognised the limitations of using a Kanban board to track progress, for example the length of a task is not always estimated appropriately. To overcome this, we set up regular team meetings, including weekly progress updates and strategy discussions as needed. These meetings not only allowed us to monitor project progress in real time but also provided a platform for everyone to express opinions and raise issues, ensuring transparency in decision-making and synchronisation within the team. In addition to the Kanban board, we used emails to share Meeting Minutes, helping document and monitor the work we had done each week. These included a helpful summary of the meetings to make sure that everyone understood the points discussed and clarified the future work we needed to complete. Together, these roles facilitated a well-rounded development process, each team member's expertise contributing uniquely to the project's success, resulting in a comprehensive and engaging game experience for users.**
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/46058901-8ccf-4555-9df7-ff1fc006f839" alt="meeting minutes" width="550">
 
