@@ -1005,6 +1005,16 @@ class Controller {
       if (!enemy.toBeRemove) {
         enemy.update();
         enemy.display();
+        if(enemy.hitPlayer(player)) {
+          if (player.lives >0) player.lives -= 1;
+          player.decreaseShootingLevel();
+          enemy.toBeRemove = true;
+        }
+        if(enemy.hitPlayer(player2) && is2Player) {
+          if(player2.lives > 0) player2.lives -= 1;
+          player2.decreaseShootingLevel();
+          enemy.toBeRemove = true;
+        }
       } else enemiesToRemove.add(enemy);
     }
 

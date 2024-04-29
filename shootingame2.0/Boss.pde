@@ -19,12 +19,12 @@ class Boss extends Enemy {
           toBeRemove = true;
           state = GameState.VICTORY;
         }
-      if(frameCount % 300 == 0) shootBullets();
+      if(frameCount % 120 == 0) shootBullets();
     }
   }
   
   void shootBullets() {
-    for(int i = 0; i < 50; i++) {
+    for(int i = 0; i < 20; i++) {
       BossBullet bullet = new BossBullet(random(200, 800), 300, random(-45, 45));
       enemyBullets.add(bullet);
     }
