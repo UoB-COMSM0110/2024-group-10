@@ -157,7 +157,8 @@ Creating several use case specifications allowed the group to break down the gam
 ### Early Design Stages and Ideation Process
 At the early stage of our game concept development, our team conducted thorough research and preliminary surveys to identify the target audience and their specific needs. These included a demand for games that are easy to learn, a fast-paced and an addictive game. To ensure our game design was appealing, we organised multiple brainstorming sessions. These meetings not only facilitated the exchange of creative ideas but also allowed us to draw from successful elements of similar games on the market. 
 
-**create a mindmap for the brainstorming**
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/6e5a520b-0828-4752-b391-5f4f6d65f074" alt="Brainstorm" width="500">
+
 
 During this process, we emphasised the need for a user-friendly interface paired with a comprehensive and easy-to-understand game guide, enabling new players to quickly grasp and enjoy the game. We also decided to offer a variety of game modes and levels, such as the option to play in solo or duo modes, which enhances the game's social interactions and broadens its audience appeal. In terms of level design, players can choose between easy or difficult modes based on their gaming skills, ensuring the game remains engaging over time and continues to attract players. We placed particular importance on innovative game mechanics, such as a dynamic enemy generation system. This ensures each game session remains fresh and challenging. By addressing these needs, our goal is to create an enjoyable gaming experience that meets player expectations.
 
@@ -440,7 +441,11 @@ When it came to implementing game features, as Shunyi has experience working as 
 
 During the easter holidays, we divided up tasks ready to complete our sprints. However, a few team members were ill over the holidays, which delayed our progress. This led to some heroic efforts in the last week of break. To compensate we re-evaluated our tasks during a meeting and completed a second sprint where we managed to complete the implementation of all additional features.
 
-**(add burn charts)**
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/6bd88496-ac64-4441-a4e4-0734b9eba715" alt="sprint1-ezgif com-video-to-gif-converter" width="500">
+
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/0651d399-f1c2-4d23-9992-7438dd92188e" alt="sprint2-ezgif com-video-to-gif-converter" width="500">
+
+
 
 By having additional meetings where necessary, it helped us to progress quickly as a team to complete all necessary tasks. This allowed clear communication and contributed to a well-understood workflow and minimised impact of individual disruptions to the team, as each member was familiar with the other’s work, reducing the impact of a developer being sick, on holiday, or facing unseen circumstances.  
 
