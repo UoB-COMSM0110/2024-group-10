@@ -238,7 +238,7 @@ void keyReleased() {
       if (key == 'w' || key == 'W') player2.movingUp = false;
       if (key == 's' || key == 'S') player2.movingDown =false;
 
-      if (key == 'G' || key == 'g')player. shootingMissle = false;
+      if (key == 'G' || key == 'g')player2.  shootingMissle = false; 
       if (key == 'F' || key == 'f') {
         player2. isShooting = false;
         player2.isFirstBullet = true;
