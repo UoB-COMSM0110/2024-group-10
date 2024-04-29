@@ -16,7 +16,7 @@ class EnemyFour extends Enemy {
   }
   
   void update() {
-    int maxShootingCount = currentMode.equals("EASY") ? 400 : 800;
+    int maxShootingCount = 800;
     float distance = abs(x - startX);
     if(distance % 150 == 0) isShooting = true;
     if(isShooting) {
