@@ -64,14 +64,15 @@ class Enemy {
 
   
   boolean isHit(PlayerBullet bullet) {
+    float chance = random(0,1);
     Object object;
     if(dist(x, y, bullet.x, bullet.y) <= 30) {
       toBeRemove = true;
-      if(random(0,1) > 0.5) {
+      if(chance < 0.1) {
         object = new Object(x, y, true, false);
         objects.add(object);
       }
-      else{
+      if(chance > 0.9){
         object = new Object(x, y, false, true);
         objects.add(object);
       }
