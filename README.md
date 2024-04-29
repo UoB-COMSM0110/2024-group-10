@@ -79,21 +79,39 @@ To play our game, you need to install the ddf/Minim library (an audio library)
 (insert gifs!!)
 
 Jellyjellies
+
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/b5f8d4eb-a0c9-4408-b226-e89e0951d52e" alt="Jellyjellies" width="100">
+
 >Attack type: Jelly shots
 
 Octotos
+
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/7f4f5f39-70d6-479a-b1e8-68dbb888f33a" alt="SEvideo-5-ezgif com-video-to-gif-converter-2" width="120">
+
 >Attack type: Glitter Bomb-bardment
 
 Huggooctopuses
+
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/7a475366-d16f-4410-a88a-481285dd2747" alt="SEvideo-5-ezgif com-video-to-gif-converter" width="100">
+
 >Attack type: Free hugs :)
 
 Laser crabs:
+
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/9ac56e83-fbbf-4309-82f2-891df1464167" alt="Laser crabs" width="150">
+
 >Attack type: PDA that burns
 
 Astrachniss
+
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/f97ae3f7-631c-4283-bbba-f99d8444b3a7" alt="Astarachniss" width="80">
+
 >Attack type: Sniper no sniping
 
 The boss:
+
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/b84bb42e-a40d-40d3-87d0-48abd3760db5" alt="The Boss" width="150">
+
 >Attack type: Play to find out..
 
 How to win: beat the enemies to land a victory
