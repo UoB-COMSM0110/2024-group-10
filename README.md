@@ -49,7 +49,8 @@
 
 ## Team Photo
 
-![Team photo](https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/76f7173e-118e-43ea-abea-212066ee45dc)
+![Group 10](https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/6b5c0faf-d4f0-41f7-b7a2-0a8886996c30)
+
 
 ### Team Roles
 
@@ -68,53 +69,35 @@ Our game is a shoot-’em-up game inspired by Space Invaders, offering both sing
 ## How to play!
 
 **Libraries**
-To play our game, you need to install the ddf/Minim library (an audio library)
+To play our game, you need to install the DDF/Minim library (an audio library)
 
-**Controls**
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/c9f16656-245c-49e5-8ec2-123f5b01873d" alt="Library" width="500">
 
-<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/c9b96cd2-517e-46f8-b4ca-94858e991afd" width="400">
+
+**Controls**:
+
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/c556ffc4-d02b-4971-b919-0fc0c114b4ee" alt="Controls gif-2" width="400">
+
+
+
 
 **Enemies (beware!)**
 
-(insert gifs!!)
 
-Jellyjellies
 
-<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/b5f8d4eb-a0c9-4408-b226-e89e0951d52e" alt="Jellyjellies" width="100">
+| Enemy            | Photo                                                                                                          | Attack Type              |
+|------------------|----------------------------------------------------------------------------------------------------------------|--------------------------|
+| Jellyjellies     | <center><img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/b5f8d4eb-a0c9-4408-b226-e89e0951d52e" alt="Jellyjellies" width="100"></center> | Jelly shots          |
+| Octotos          | <center><img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/7f4f5f39-70d6-479a-b1e8-68dbb888f33a" alt="Octotos" width="120"></center> | Glitter Bomb-bardment |
+| Huggooctopuses   | <center><img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/7a475366-d16f-4410-a88a-481285dd2747" alt="Huggooctopuses" width="100"></center> | Free hugs :)          |
+| Laser crabs      | <center><img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/9ac56e83-fbbf-4309-82f2-891df1464167" alt="Laser crabs" width="150"></center> | PDA that burns      |
+| Astrachniss      | <center><img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/f97ae3f7-631c-4283-bbba-f99d8444b3a7" alt="Astrachniss" width="80"></center> | Sniper no sniping   |
+| The boss         | <center><img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/b84bb42e-a40d-40d3-87d0-48abd3760db5" alt="The Boss" width="150"></center> | Play to find out.. |
 
->Attack type: Jelly shots
 
-Octotos
 
-<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/7f4f5f39-70d6-479a-b1e8-68dbb888f33a" alt="SEvideo-5-ezgif com-video-to-gif-converter-2" width="120">
+**How to win:**: beat the enemies to land a victory!
 
->Attack type: Glitter Bomb-bardment
-
-Huggooctopuses
-
-<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/7a475366-d16f-4410-a88a-481285dd2747" alt="SEvideo-5-ezgif com-video-to-gif-converter" width="100">
-
->Attack type: Free hugs :)
-
-Laser crabs:
-
-<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/9ac56e83-fbbf-4309-82f2-891df1464167" alt="Laser crabs" width="150">
-
->Attack type: PDA that burns
-
-Astrachniss
-
-<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/f97ae3f7-631c-4283-bbba-f99d8444b3a7" alt="Astarachniss" width="80">
-
->Attack type: Sniper no sniping
-
-The boss:
-
-<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/b84bb42e-a40d-40d3-87d0-48abd3760db5" alt="The Boss" width="150">
-
->Attack type: Play to find out..
-
-How to win: beat the enemies to land a victory
 
 
 ## 3. Requirements
@@ -182,7 +165,10 @@ During this process, we emphasised the need for a user-friendly interface paired
 
 Paper prototyping also helped us create an initial design plan for our game. This was particularly helpful during discussions about the game’s architecture and class design, which helped us plan our class structure.
 
-**(add paper prototyping video)**
+
+https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/6d184b86-b07b-4305-9748-12a1d2b701cb
+
+
 
 ### Decision-Making Process
 
