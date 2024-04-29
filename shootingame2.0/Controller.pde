@@ -144,7 +144,7 @@ class Controller {
           player.decreaseShootingLevel();
           enemy.toBeRemove = true;
         }
-        if(enemy.hitPlayer(player2)) {
+        if(enemy.hitPlayer(player2) && is2Player) {
           if(player2.lives > 0) player2.lives -= 1;
           player2.decreaseShootingLevel();
           enemy.toBeRemove = true;
@@ -272,7 +272,7 @@ class Controller {
           object.toBeRemove = true;
           player.hitObject(object);
         }
-        if(object.isHit(player2)) {
+        if(object.isHit(player2) && is2Player) {
           object.toBeRemove = true;
           player2.hitObject(object);
         }
