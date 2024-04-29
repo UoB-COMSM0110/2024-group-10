@@ -36,12 +36,23 @@ class Stalker extends Enemy {
     } 
   }
 
-    void chooseTarget() {
-    if (player2 != null && isPlayer2) {  // 如果存在第二玩家且双人模式启用
-      // 随机选择追踪player1或player2
-      target = (random(0, 1) > 0.5) ? player : player2;
+  void chooseTarget() {
+    if (!player.isDied) {
+        if (player2 != null && isPlayer2) {
+            if (!player2.isDied) {
+                target = (random(0, 1) > 0.5) ? player : player2;
+            } else {
+                target = player;
+            }
+        } else {
+            target = player;
+        }
     } else {
-      target = player; // 单人模式或者player2不存在时，默认追踪player
+        if (player2 != null && isPlayer2 && !player2.isDied) {
+            target = player2;
+        } else {
+
+        }
     }
   }
 }
