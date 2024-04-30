@@ -1,6 +1,10 @@
 ![Space Swarm Shooters](https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/f97b3ee0-a710-4996-9065-0be3745a10ca)
 
 ## Our video
+[<img src="https://img.youtube.com/vi/xEedZadb3Oc/0.jpg" alt="Video" width="300">](https://youtu.be/xEedZadb3Oc)
+
+[_Click here or the picture above to watch our video!_](https://www.youtube.com/watch?v=xEedZadb3Oc)
+
 
 ## Table of Contents
 
