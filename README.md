@@ -62,7 +62,7 @@
 | Shunyi  | Lead Developer: Led the development of the game's main logic and wrote core code for gameplay. Conducted code reviews to maintain quality and consistency. |
 | Antai   | Developer: Implemented the leaderboard feature, allowing players to track scores and compete against others. |
 
-## 2. Introduction:
+# 2. Introduction:
 
 Our game is a shoot-’em-up game inspired by Space Invaders, offering both single and multiplayer modes. Space Swarm Shooters is a modern day version, with unique features to diversify our game. We’ve introduced diverse enemy types, each with its own distinct behaviour and attack strategies. This adds an extra challenge to the game by adding a layer of unpredictability to our game. To survive, players need to move strategically, aim precisely and eliminate enemies before they launch their attacks. Each enemy takedown contributes to the players’ score, as well as the opportunity for power-ups including bullet upgrades. As the game continues, the game intensity increases with a climatic attack from the boss enemy. Only when the boss is destroyed will players win against the enemies. 
 
@@ -71,13 +71,17 @@ Our game is a shoot-’em-up game inspired by Space Invaders, offering both sing
 **Libraries:**
 To play our game, you need to install the DDF/Minim library (an audio library)
 
+
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/c9f16656-245c-49e5-8ec2-123f5b01873d" alt="Library" width="500">
+
+_How to Install DDF/Minim library_
 
 
 **Controls**:
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/c556ffc4-d02b-4971-b919-0fc0c114b4ee" alt="Controls gif-2" width="400">
 
+_ Player Instructions page_
 
 
 
@@ -100,7 +104,7 @@ To play our game, you need to install the DDF/Minim library (an audio library)
 
 
 
-## 3. Requirements
+# 3. Requirements
 Requirements help to clearly define software projects and meet the expectations of the end-users and stakeholders. 
 
 ### Stakeholders
@@ -109,7 +113,7 @@ We used the onion model to systematically identify our stakeholders across the d
 
 <img src="images/Onion%20model.png" alt="Onion Model" width="550">
 
-_Onion model_
+_Onion Model_
 
 
 ### Use case diagram
@@ -164,7 +168,7 @@ At the early stage of our game concept development, our team conducted thorough 
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/6e5a520b-0828-4752-b391-5f4f6d65f074" alt="Brainstorm" width="500">
 
-_Game ideation brainstorm_
+_Game Ideation Brainstorm_
 
 
 During this process, we emphasised the need for a user-friendly interface paired with a comprehensive and easy-to-understand game guide, enabling new players to quickly grasp and enjoy the game. We also decided to offer a variety of game modes and levels, such as the option to play in solo or duo modes, which enhances the game's social interactions and broadens its audience appeal. In terms of level design, players can choose between easy or difficult modes based on their gaming skills, ensuring the game remains engaging over time and continues to attract players. We placed particular importance on innovative game mechanics, such as a dynamic enemy generation system. This ensures each game session remains fresh and challenging. By addressing these needs, our goal is to create an enjoyable gaming experience that meets player expectations.
@@ -174,7 +178,7 @@ Paper prototyping also helped us create an initial design plan for our game. Thi
 
 https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/6d184b86-b07b-4305-9748-12a1d2b701cb
 
-_Paper prototype video_
+_Paper Prototype video_
 
 
 
@@ -183,7 +187,7 @@ _Paper prototype video_
 Our team made decisions through open discussions and voting until a general consensus was made among team members. Initially, when choosing the theme and style of the game, each member presented different views based on their interests—for example, some preferred casual game styles, while others favoured combat-oriented games. Through group discussions, we assessed the potential advantages and risks of each option and ultimately selected the theme that best matched our collective interests. This led to the development of our current aircraft battle game. During the game feature brainstorming stage, we also went through a decision-making discussion where each member listed potential game features they wanted to implement. Considering creativity and technical feasibility, we decided to focus on the dynamic enemy generation as our main features.
 
 
-## 4. Design
+# 4. Design
 
 ### System architecture
 The system architecture of our game comprises several parts, including game state management, user interface, enemy type and game elements. Each part contributes to the overall functionality and experience of the game.
@@ -194,7 +198,7 @@ The core design of the game architecture is the Game State Management system, en
 
 <img src="images/GameState.png" alt="GameState" width="300">
 
-_GameState Enum_
+_``GameState`` Enum_
 
 This enum controls the gameplay flow by managing state transitions, responding to user input and coordinating interactions between various game elements. Event handler methods translate keyboard and mouse events into actions within the game. In single-player mode, players navigate using the arrow keys and utilise the spacebar for shooting actions, providing an intuitive and straightforward control scheme. For two-player mode, we opted for the ``WASD`` keys for movement and the ``F`` key for shooting, ensuring a comfortable and balanced gameplay experience for both players. By using the GameState enum and responsive event handling mechanisms, the game architecture maintains coherence, resulting in a fulfilling gaming experience.
 
@@ -222,34 +226,34 @@ To ensure optimal performance, we utilise efficient data structures for storing 
 
 ![new class diagram.png](images/new%20class%20diagram.png)
 
-_Refined class diagram_
+_Refined Class Diagram_
 
 
 As our game development progressed, we refined and expanded our class diagram to reflect the evolving structure and the functionality of the game. The updated class diagram shows the inheritance hierarchy among the different game entities, such as the players and enemies, and their associated bullets. The updated class diagram brings a new level of structure to our design plan, providing a more cohesive architecture. While still aligning with our initial concept, the revised diagram has a more intuitive way for the enemies and players to interact. This helped with planning and implementing the collision-detection mechanism. 
 
 <img src="images/class%20diagram.jpg" alt="Class Diagram" width="500"/>
 
-_Initial class diagram_
+_Initial Class Diagram_
 
 
 ### Communication Diagram
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/47fac732-8959-4e68-b58d-42df0a6e1226" alt="Communication Diagram" width="600"/>
 
-_Communication diagram_
+_Communication Diagram_
 
 We created a communication diagram for a clear visual representation of how the different classes interacted with each other. This diagram allowed us to understand the flow of communication between objects and classes in our game. This also helped to ensure that player’s interactions with enemies and the game environment were handled properly, by mapping out methods such as ``shootBullets()`` and ``isHit()``. 
 
 The extensive planning and object–oriented design was a major factor in the smooth operation of the game, the interoperability and usability of code, and the ease with which each team member could contribute to development in an agile-way, able to implement features and classes that independently and cohesively interact with each other.
 
-## 5. Implementation
+# 5. Implementation
 
 Areas of challenge:
 1. Multiplayer mode
 2. Leaderboard functionality
 3. UI Integration
 
-## Multiplayer mode
+### Multiplayer mode
 
 We wanted to incorporate a co-operative 2 player mode into our game in addition to the single player version. We explored two ways to do this: online or local (offline on the same PC). During research, we discovered that working with the networks needed to implement online multiplayer would be difficult, especially considering we have no prior experience working with networks. Our game relies heavily on the use of a large number of multiple entities on the screen and collision detection between them. Due to latency issues when using online multiplayer networks, it was likely our game would encounter bugs when trying to track all the object locations and interactions correctly in real-time for both players. Taking into account the development time allocated for the project, and our experience level, we felt more confident implementing the local multiplayer approach. 
 
@@ -264,7 +268,7 @@ Through dynamic code design and a flexible, agile approach, we were able to add 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/746403c3-f121-4e33-8912-70c61ff182fe" alt="2 player" width="400">
 
 
-_1 player vs 2 player_
+_1 Player vs 2 Player_
 ### Leaderboard functionality
 
 We wanted to implement a scoreboard similar to retro arcade games, which displays names and scores of top players. Thus we needed a dynamic data structure to store game information to ensure data persists between games. This required the design of various game pages:  name input, victory page and game-over pages alongside the scoreboard page, which would retrieve the stored data to display it to the user. 
@@ -289,14 +293,14 @@ Through user-testing, users often couldn’t tell they’d received power ups. W
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/bc5b43fe-e1e4-4476-80cb-e8ea9195e3ed" alt="power upgrades" width="500">
 
-_Shooting level upgrade_
+_Shooting Level Upgrade_
 
 When implementing a multiplayer mode, we found the UI could be unclear as to whose lives belong to which player as player hearts could overlap. To overcome this, we created a multilayer health visualisation, limiting the hearts display for each player to half the screen and changing the colour of the hearts to indicate more lives when each layer is “full”. 
 
 We were able to cleverly solve complex situations and adhere to industry-standard heuristic principles. This was consistently implemented and thoroughly tested through heuristic evaluation, contributing to user-driven development. 
 
 
-## 6. Evaluation
+# 6. Evaluation
 
 ### Qualitative Evaluations
 
@@ -306,7 +310,7 @@ In our evaluation, we utilised a think aloud approach, where participants vocali
 
 <img src="images/word%20cloud.png" alt="word cloud" width="400">
 
-_Word cloud from Think Aloud Evaluation_
+_Word Cloud from Think Aloud Evaluation_
 
 ### Feedback 1
 #### Positives:
@@ -375,6 +379,7 @@ We conducted a focus group test with 10 participants to assess the System Usabil
 | I needed to learn things before I could get going with this system.        | 2  | 2  | 3  | 2  | 2  | 2  | 1  | 2  | 1  | 1   | 1.8  |
 
 ![SUS graph](https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/287847fb-2d52-423c-99b4-7512b45ee42a)
+_Comparison of SUS Mean Scores between Easy Mode and Hard Mode_
 
 ### Wilcoxen Signed Rank Test
 1. Replace the data pairs with their difference
@@ -419,6 +424,8 @@ W test Statistic = 25
 
 <img width="429" alt="Wilcoxen signed rank graph" src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/9c7381ca-37aa-487e-8294-e405cf749fda">
 
+_Comparison of Wilcoxon Signed Rank Test Scores between Easy and Hard Mode_
+
 In our analysis of the System Usability Scale (SUS) scores for both the Easy Mode (EM) and Hard Mode (HM) of the game, we observed a notable difference between the two difficulty levels. Conducting a Wilcoxon signed-rank test revealed a significant distinction in participants' responses.
 
 Specifically, when comparing the mean scores for the statement "I thought the system was easy to use," we observed a clear contrast between the Easy and Hard modes. In the Easy Mode, participants rated the system's ease of use with a mean score of 4.1, indicating a generally favourable perception of usability. However, in the Hard Mode, this score decreased to 3.5, suggesting that participants found the system comparatively less user-friendly when faced with increased complexity or difficulty.
@@ -434,13 +441,14 @@ This is shown in the ``EnemyTest`` class, which tests collision detection and in
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/2aaa47f6-3540-48dd-81f9-a151bd656c39" alt="EnemyTest class" width="550">
 
+_``EnemyTest`` Class_
 
 Integration testing focused on evaluating how the different game components interacted and functioned together as one system. This involved writing test cases for various scenarios to assess the integration of components.
 
 In addition to automated testing, manual testing played a role in validating the game functionality and user experience. This involved hand-on testing of the game across different operating systems, which helped to identify bugs or usability issues that automated tests may have missed. This helped to improve the overall performance and quality of our game. 
 
 
-## 7. Process
+# 7. Process
 
 ### Collaboration
 
@@ -449,6 +457,10 @@ Throughout this project, we applied various methods to ensure smooth teamwork. A
 We used Teams as our main communication platform, which allowed us to maintain real-time communication in remote or hybrid setup. The features in Microsoft Teams, like video calls, team chat, and file sharing, really stepped up our teamwork. This made it easier to collaborate efficiently, ensuring that information flowed smoothly without any interruptions.
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/9e63b1da-2bfd-43a6-8e53-44a8373c9d34" alt="Teams" width="600">
+
+_Group 10 Teams Chat_
+
+**(add in autotranslation pictre)**
 
 At the start of the project, we made sure that every team member was clear about their role and specific responsibilities. This measure reduced redundant work and misunderstandings, with each role being assigned clear expectations, from project managers to technical experts, each person held accountable for the project's success.
 
@@ -460,9 +472,14 @@ We chose Jira as our project management tool to create a Kanban board, which sup
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/cdf1402a-b4d3-422c-b0dd-c38745101e0e" alt="Kanban Board" width="600">
 
+_Digital Kanban Board on Jira_
+
+
 **We recognised the limitations of using a Kanban board to track progress, for example the length of a task is not always estimated appropriately. To overcome this, we set up regular team meetings, including weekly progress updates and strategy discussions as needed. These meetings not only allowed us to monitor project progress in real time but also provided a platform for everyone to express opinions and raise issues, ensuring transparency in decision-making and synchronisation within the team. In addition to the Kanban board, we used emails to share Meeting Minutes, helping document and monitor the work we had done each week. These included a helpful summary of the meetings to make sure that everyone understood the points discussed and clarified the future work we needed to complete. Together, these roles facilitated a well-rounded development process, each team member's expertise contributing uniquely to the project's success, resulting in a comprehensive and engaging game experience for users.**
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/46058901-8ccf-4555-9df7-ff1fc006f839" alt="meeting minutes" width="550">
+
+_Team Meeting and Meeting Minutes_
 
 When it came to implementing game features, as Shunyi has experience working as a software engineer, he suggested we use pair programming. For example, during the implementation of multiplayer, Antai was the help whilst Shunyi was the tactician. Using this technique helped us all learn and benefit from Shuny’s prior knowledge whilst also helping to improve our code quality. 
 
@@ -472,7 +489,7 @@ During the easter holidays, we divided up tasks ready to complete our sprints. H
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/0651d399-f1c2-4d23-9992-7438dd92188e" alt="sprint2-ezgif com-video-to-gif-converter" width="500">
 
-
+_Burn Charts for Sprint 1 and Sprint 2_
 
 By having additional meetings where necessary, it helped us to progress quickly as a team to complete all necessary tasks. This allowed clear communication and contributed to a well-understood workflow and minimised impact of individual disruptions to the team, as each member was familiar with the other’s work, reducing the impact of a developer being sick, on holiday, or facing unseen circumstances.  
 
@@ -480,21 +497,18 @@ Another technique we used in line with the agile ethos was continuous integratio
 
 Where a programming pair was struggling with ironing out bugs or fixing an integration problem, they could quickly flag using our messaging channels which allowed other developers to help, increasing the speed of developer feedback loops. By only committing and merging code that was operational, various teams could work simultaneously, and this ensured no single team was hindered by the short-term struggles of another team. Thus, continuous integration was a key asset of our agile and test-driven development approach. 
 
-## 8. Conclusion
+# 8. Conclusion
 
 ### Individual Contributions
 
-Hannah: 1.00
-
-Jennifer: 1.00
-
-Mengmeng: 1.00
-
-Sudan: 1.00
-
-Shunyi: 1.00
-
-Antai: 1.00
+| Name    | Contribution |
+|---------|--------------|
+| Hannah  | 1.00         |
+| Jennifer| 1.00         |
+| Mengmeng| 1.00         |
+| Sudan   | 1.00         |
+| Shunyi  | 1.00         |
+| Antai   | 1.00         |
 
 Building space swarm shooters was an incredible opportunity to showcase the skills we learnt during this course. Throughout the project, we used concepts outlined in lectures, including software design, testing and documentation. 
 
@@ -511,5 +525,3 @@ We encountered and overcame many challenges, such as refining collision detectio
 Looking ahead, we plan on refining gameplay, and integrating new features such as additional power-ups and clearer levels. Optimising performance is still a priority to ensure the game remains robust. These new features and performance optimisation will go hand-in-hand with new software engineering skills we seek to develop. Having worked together, we believe the team is ideally placed to carry out the next phases of development. 
 
 In conclusion, our project journey has not only strengthened our technical skills, but it has also provided valuable insights into the software engineering process, including agile methods, requirements planning and evaluation techniques, which will undoubtedly be beneficial in future projects. 
-
-
