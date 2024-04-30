@@ -56,7 +56,7 @@
 
 | Name    | Role                                                                                                                                                                    |
 |---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Hannah  | Developer: Tasked with the strategic planning and coding of the game's special features. Implemented spawning mechanism for enemies, distinguishing between simple and complex modes. Enabled multiplayer functionality. |
+| Hannah  | Developer: Tasked with the strategic planning and coding of the game's special features. Implemented spawning mechanism for enemies, distinguishing between easy and hard mode. Enabled multiplayer functionality. |
 | Jennifer| UI/UX Designer: Focused on designing the user interface and experience. Responsible for the layout and implementation of the main menu. Wrote help documentation for new players. |
 | Mengmeng and Sudan | Artists: Responsible for artistic rendering of characters, enemies, and game backgrounds. Managed integration of background music and sound effects. |
 | Shunyi  | Lead Developer: Led the development of the game's main logic and wrote core code for gameplay. Conducted code reviews to maintain quality and consistency. |
@@ -64,7 +64,7 @@
 
 # 2. Introduction:
 
-Our game is a shoot-’em-up game inspired by Space Invaders, offering both single and multiplayer modes. Space Swarm Shooters is a modern day version, with unique features to diversify our game. We’ve introduced diverse enemy types, each with its own distinct behaviour and attack strategies. This adds an extra challenge to the game by adding a layer of unpredictability to our game. To survive, players need to move strategically, aim precisely and eliminate enemies before they launch their attacks. Each enemy takedown contributes to the players’ score, as well as the opportunity for power-ups including bullet upgrades. As the game continues, the game intensity increases with a climatic attack from the boss enemy. Only when the boss is destroyed will players win against the enemies. 
+Our game is a shoot-’em-up game inspired by Space Invaders, offering both single and multiplayer modes. Space Swarm Shooters is a modern day version, with unique features to diversify our game. We’ve introduced a range of enemy types, each with its own distinct behaviour and attack strategies. This adds an extra challenge to the game by adding a layer of unpredictability to our game. To survive, players need to move strategically, aim precisely and eliminate enemies before they launch their attacks. Each enemy takedown contributes to the players’ score, as well as the opportunity for power-ups including bullet upgrades. As the game continues, the game intensity increases with a climatic attack from the boss enemy. Only when the boss is destroyed will players win against the enemies. 
 
 ## How to play!
 
@@ -109,7 +109,7 @@ Requirements help to clearly define software projects and meet the expectations 
 
 ### Stakeholders
 
-We used the onion model to systematically identify our stakeholders across the different group layers. Our game is the core of the onion model, as the product that we are developing. Moving outwards to the system layer, we recognised ourselves as the normal operators developing the game’s core functionality. We also recognised students and university lecturers as stakeholders acting as game-testers and sources of feedback. Expanding further to the containing system, we acknowledged the users of our game, including students, friends and family and social gamers. The UI art team are also key stakeholders in this system, involved in maintaining the interface of the game. Finally, in the wider environment, we considered the influence our game could have on existing shoot ‘em games, recognising our effect as a negative stakeholder by creating a competitor-game. In contrast, we also included those who may play and enjoy the game, as well as those who could provide networking opportunities the expand the game further, for example a university gaming society. 
+**We used the onion model to systematically identify our stakeholders across the different group layers. Our game is the core of the onion model, as the product that we are developing. Moving outwards to the system layer, we recognised ourselves as the normal operators developing the game’s core functionality. We also recognised students and university lecturers as stakeholders acting as game-testers and sources of feedback. Expanding further to the containing system, we acknowledged the users of our game, including students, friends and family and social gamers. The UI art team are also key stakeholders in this system, involved in maintaining the interface of the game. Finally, in the wider environment, we considered the influence our game could have on existing shoot ‘em games, recognising our effect as a negative stakeholder by creating a competitor-game. In contrast, we also included those who may play and enjoy the game, as well as those who could provide networking opportunities the expand the game further, for example a university gaming society.** 
 
 <img src="images/Onion%20model.png" alt="Onion Model" width="550">
 
@@ -131,11 +131,11 @@ The use case diagram was crucial in identifying interactions between actors and 
 
 ##### Scenario 1: Navigate with Ease
 
->*As a player, I want a straightforward and easy-to-understand interface so that I can quickly get started without spending time learning complex operations. This will allow me to focus*
+>*As a player, I want a straightforward and easy-to-understand interface so that I can quickly get started without spending time learning complex operations. This will allow me to focus.*
 
 ##### Scenario 2: Master of Modes
 
->*As a player, I want to be able to choose between different game modes such as campaign, endless, and speed modes. This flexibility allows me to tailor the game experience to my preferences and skill level, enhancing engagement and satisfaction.*
+>*As a player, I want to be able to choose between different difficulty levels such as easy, challenging, and hard mode. This flexibility allows me to tailor the game experience to my preferences and skill level, enhancing engagement and satisfaction.*
 
 
 ##### Scenario 3: Embrace the Challenge
@@ -161,17 +161,23 @@ The use case diagram was crucial in identifying interactions between actors and 
 
 ### Use case reflection
 
-Creating several use case specifications allowed the group to break down the game into its different components, enabling us to explore key detaisl of the game. The key use case specifications for our game include: level design, optimisation, unique features and user interface. Each specification focused on specific elements of the game and helped us refine each part. For example, in the level design we decided on 2 main levels that the player can choose from - endless mode and speed mode. Furthermore, it allowed us to think about how each element of the game will integrate with each other. For example, a unique feature is enemy-spawning aliens, which needed to be adapted to fit each game mode. This process gave us a high level understanding of the game, which will aid us when planning the game.
+**Creating several use case specifications allowed the group to break down the game into its different components, enabling us to explore key detaisl of the game. The key use case specifications for our game include: level design, optimisation, unique features and user interface. Each specification focused on specific elements of the game and helped us refine each part. For example, in the level design we decided on 2 main levels that the player can choose from. Furthermore, it allowed us to think about how each element of the game will integrate with each other. For example, a unique feature is enemy-spawning aliens, which needed to be adapted to fit each game mode. This process gave us a high level understanding of the game, which aided us during game planning.**
 
 ### Early Design Stages and Ideation Process
 At the early stage of our game concept development, our team conducted thorough research and preliminary surveys to identify the target audience and their specific needs. These included a demand for games that are easy to learn, a fast-paced and an addictive game. To ensure our game design was appealing, we organised multiple brainstorming sessions. These meetings not only facilitated the exchange of creative ideas but also allowed us to draw from successful elements of similar games on the market. 
+
+[<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/aa3ece45-c1ed-41b0-8222-4dc30c2fa05c" alt="Google survey" width="300">](https://forms.gle/DivXHbwtZwCoHWHk8)
+
+
+
+_Group 10 Game Survey_
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/6e5a520b-0828-4752-b391-5f4f6d65f074" alt="Brainstorm" width="500">
 
 _Game Ideation Brainstorm_
 
 
-During this process, we emphasised the need for a user-friendly interface paired with a comprehensive and easy-to-understand game guide, enabling new players to quickly grasp and enjoy the game. We also decided to offer a variety of game modes and levels, such as the option to play in solo or duo modes, which enhances the game's social interactions and broadens its audience appeal. In terms of level design, players can choose between easy or difficult modes based on their gaming skills, ensuring the game remains engaging over time and continues to attract players. We placed particular importance on innovative game mechanics, such as a dynamic enemy generation system. This ensures each game session remains fresh and challenging. By addressing these needs, our goal is to create an enjoyable gaming experience that meets player expectations.
+During this process, we emphasised the need for a user-friendly interface paired with a comprehensive and easy-to-understand game guide, enabling new players to quickly grasp and enjoy the game. We also decided to offer a variety of game modes and levels, such as the option to play in solo or duo modes. This enhances the game's social interactions and broadens its audience appeal. In terms of level design, players can choose between easy or difficult modes based on their gaming skills, ensuring the game remains engaging over time and continues to attract players. We placed particular importance on innovative game mechanics, such as a dynamic enemy generation system. This ensures each game session remains fresh and challenging. By addressing these needs, our goal is to create an enjoyable gaming experience that meets player expectations.
 
 Paper prototyping also helped us create an initial design plan for our game. This was particularly helpful during discussions about the game’s architecture and class design, which helped us plan our class structure.
 
@@ -184,7 +190,7 @@ _Paper Prototype video_
 
 ### Decision-Making Process
 
-Our team made decisions through open discussions and voting until a general consensus was made among team members. Initially, when choosing the theme and style of the game, each member presented different views based on their interests—for example, some preferred casual game styles, while others favoured combat-oriented games. Through group discussions, we assessed the potential advantages and risks of each option and ultimately selected the theme that best matched our collective interests. This led to the development of our current aircraft battle game. During the game feature brainstorming stage, we also went through a decision-making discussion where each member listed potential game features they wanted to implement. Considering creativity and technical feasibility, we decided to focus on the dynamic enemy generation as our main features.
+**Our team made decisions through open discussions and voting until a general consensus was made among team members. Initially, when choosing the theme and style of the game, each member presented different views based on their interests—for example, some preferred casual game styles, while others favoured combat-oriented games. Through group discussions, we assessed the potential advantages and risks of each option and ultimately selected the theme that best matched our collective interests. This led to the development of our current aircraft battle game. During the game feature brainstorming stage, we also went through a decision-making discussion where each member listed potential game features they wanted to implement. Considering creativity and technical feasibility, we decided to focus on the dynamic enemy generation as our main features.**
 
 
 # 4. Design
@@ -452,15 +458,17 @@ In addition to automated testing, manual testing played a role in validating the
 
 ### Collaboration
 
-Throughout this project, we applied various methods to ensure smooth teamwork. After each Monday lab, we had a meeting to discuss the tasks given for that week and divided them equally based on their estimated story points. This approach ensured that each person had a fair and balanced workload, as well as checking that each task was achievable within the week. To check our progress, we had a follow-up meeting towards the end of the week. This involved each team member discussing their work and was an opportunity to ask any questions to the group. At the end of each major phase of the project, we organised review meetings, which not only helped us summarise experiences but also identified areas for improvement.
+Throughout this project, we applied various methods to ensure smooth teamwork. After each Monday lab, we had a scrum meeting with our most experienced member Shunyi as scrum master to discuss the tasks given for that week and divided them equally based on their estimated story points. This approach ensured that each person had a fair and balanced workload, as well as checking that each task was achievable within the week. To check our progress, we had a follow-up sprint review meeting towards the end of the week. This involved each team member discussing their work and was an opportunity to ask any questions to the group. At the end of each major phase of the project, we organised sprint retrospective  meetings to review, which not only helped us summarise experiences but also identified areas for improvement.
 
-We used Teams as our main communication platform, which allowed us to maintain real-time communication in remote or hybrid setup. The features in Microsoft Teams, like video calls, team chat, and file sharing, really stepped up our teamwork. This made it easier to collaborate efficiently, ensuring that information flowed smoothly without any interruptions.
+We used Teams as our main communication platform, which allowed us to maintain real-time communication in remote or hybrid setup. The features in Microsoft Teams, such as video calls, team chat, and file sharing, improved our teamwork.  As a multinational team we also found the auto-translate feature enhanced our team communication, aiding with clarity and understanding. This made it easier to collaborate efficiently, ensuring that information flowed smoothly without any interruptions. 
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/9e63b1da-2bfd-43a6-8e53-44a8373c9d34" alt="Teams" width="600">
 
 _Group 10 Teams Chat_
 
-**(add in autotranslation pictre)**
+<img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/ed69e399-8ecf-4caf-af1e-6bf8823b42f9" alt="Autotranslate" width="450">
+
+_Teams Auto-Translation Feature_
 
 At the start of the project, we made sure that every team member was clear about their role and specific responsibilities. This measure reduced redundant work and misunderstandings, with each role being assigned clear expectations, from project managers to technical experts, each person held accountable for the project's success.
 
@@ -475,7 +483,9 @@ We chose Jira as our project management tool to create a Kanban board, which sup
 _Digital Kanban Board on Jira_
 
 
-**We recognised the limitations of using a Kanban board to track progress, for example the length of a task is not always estimated appropriately. To overcome this, we set up regular team meetings, including weekly progress updates and strategy discussions as needed. These meetings not only allowed us to monitor project progress in real time but also provided a platform for everyone to express opinions and raise issues, ensuring transparency in decision-making and synchronisation within the team. In addition to the Kanban board, we used emails to share Meeting Minutes, helping document and monitor the work we had done each week. These included a helpful summary of the meetings to make sure that everyone understood the points discussed and clarified the future work we needed to complete. Together, these roles facilitated a well-rounded development process, each team member's expertise contributing uniquely to the project's success, resulting in a comprehensive and engaging game experience for users.**
+We recognised the limitations of using a Kanban board to track progress, for example the length of a task is not always estimated appropriately. To overcome this, we set up regular team meetings, including weekly progress updates and strategy discussions as needed. These meetings not only allowed us to monitor project progress in real time but also provided a platform for everyone to express opinions and raise issues, ensuring transparency in decision-making and synchronisation within the team.
+
+In addition to the Kanban board, we used emails to share Meeting Minutes, helping document and monitor the work we had done each week. These included a helpful summary of the meetings to make sure that everyone understood the points discussed and clarified the future work we needed to complete. 
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/46058901-8ccf-4555-9df7-ff1fc006f839" alt="meeting minutes" width="550">
 
@@ -483,7 +493,7 @@ _Team Meeting and Meeting Minutes_
 
 When it came to implementing game features, as Shunyi has experience working as a software engineer, he suggested we use pair programming. For example, during the implementation of multiplayer, Antai was the help whilst Shunyi was the tactician. Using this technique helped us all learn and benefit from Shuny’s prior knowledge whilst also helping to improve our code quality. 
 
-During the easter holidays, we divided up tasks ready to complete our sprints. However, a few team members were ill over the holidays, which delayed our progress. This led to some heroic efforts in the last week of break. To compensate we re-evaluated our tasks during a meeting and completed a second sprint where we managed to complete the implementation of all additional features.
+During the easter holidays, we divided up tasks ready to complete our sprints. However, a few team members were ill over the holidays, which delayed our progress. This led to some heroic efforts in the last week of break. To compensate we re-evaluated our tasks and completed a second sprint where we managed to complete the implementation of all additional features.
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/6bd88496-ac64-4441-a4e4-0734b9eba715" alt="sprint1-ezgif com-video-to-gif-converter" width="500">
 
@@ -491,11 +501,11 @@ During the easter holidays, we divided up tasks ready to complete our sprints. H
 
 _Burn Charts for Sprint 1 and Sprint 2_
 
-By having additional meetings where necessary, it helped us to progress quickly as a team to complete all necessary tasks. This allowed clear communication and contributed to a well-understood workflow and minimised impact of individual disruptions to the team, as each member was familiar with the other’s work, reducing the impact of a developer being sick, on holiday, or facing unseen circumstances.  
+By having additional meetings where necessary, it helped us to progress quickly as a team to complete all necessary tasks. The clear communication contributed to a well-understood workflow and minimised impact of individual disruptions to the team, as each member was familiar with the other’s work, reducing the impact of a developer being sick, on holiday, or facing unseen circumstances.  
 
 Another technique we used in line with the agile ethos was continuous integration. We ensured the game was built iteratively, with features built on top of one another, but simultaneously implemented a rule where code was automatically built and tested every time a change was made. Before merging, code pairs were required to show evidence of testing and building. This helped ensure new code integrated smoothly with the existing code base, reducing the likelihood of bugs and errors.
 
-Where a programming pair was struggling with ironing out bugs or fixing an integration problem, they could quickly flag using our messaging channels which allowed other developers to help, increasing the speed of developer feedback loops. By only committing and merging code that was operational, various teams could work simultaneously, and this ensured no single team was hindered by the short-term struggles of another team. Thus, continuous integration was a key asset of our agile and test-driven development approach. 
+Where a programming pair was struggling with ironing out bugs or fixing an integration problem, they could quickly flag using teams which allowed other developers to help, increasing the speed of developer feedback loops. By only committing and merging code that was operational, various teams could work simultaneously, and this ensured no single team was hindered by the short-term struggles of another team. Thus, continuous integration was a key asset of our agile and test-driven development approach. 
 
 # 8. Conclusion
 
@@ -518,7 +528,7 @@ Central to the success of this collaborative effort was that every team member a
 
 We utilised our team’s expertise from prior experience to correctly implement agile project management workflow, task control, and team monitoring. While individual accountability was crucial, the collaborative approach during feature implementation ensured team member’s were able to assist with certain difficult features. The well-designed code structure, with class diagrams, communication diagrams and object-oriented design facilitates fast and efficient development. 
 
-As we developed our game, the principles of continuous integration, rigorous testing, and HCI evaluation were crucial. We wanted our game’s development to be truly test-driven, so we ensured quantitative and qualitative evaluations occurred. Think aloud and heuristic evaluations were integrated alongside the NASA TLX and the System Usability Scale. Simultaneously, the software and code was rigorously tested and refactored, to ensure optimal object-oriented design, time and space-efficient algorithms and data structures. This contributed to limiting bugs, errors and ensuring smooth and reliable game operation. 
+As we developed our game, the principles of continuous integration, rigorous testing, and HCI evaluation were crucial. We wanted our game’s development to be truly test-driven, so we ensured quantitative and qualitative evaluations occurred. Think aloud and heuristic evaluations were integrated alongside the System Usability Scale. Simultaneously, the software and code was rigorously tested and refactored, to ensure optimal object-oriented design, time and space-efficient algorithms and data structures. This contributed to limiting bugs and errors, thus ensuring a smooth and reliable game operation. 
 
 We encountered and overcame many challenges, such as refining collision detection, implementing multiplayer functionality and coordinating remote work during the holidays. These hurdles reinforced the importance of effective communication and teamwork. The technical challenges also required collaborative debugging sessions. Understanding each other’s coding styles also proved challenging at times, however this process resulted in a deeper understanding of a code and the sharing of knowledge within the team. Moving forward, this experience will serve as a founding for future coding group projects.
 
