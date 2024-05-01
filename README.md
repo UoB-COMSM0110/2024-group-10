@@ -85,7 +85,7 @@ _How to Install DDF/Minim library_
 
 <img src="https://github.com/UoB-COMSM0110/2024-group-10/assets/47950124/c556ffc4-d02b-4971-b919-0fc0c114b4ee" alt="Controls gif-2" width="400">
 
-_ Player Instructions page_
+_Player Instructions page_
 
 
 
